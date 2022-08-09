@@ -102,7 +102,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                 <li class="nav-item">
                     <a class="nav-link" href="user.php">
                         <i class="fas fa-fw fa-table"></i>
-                        <span>จัดการบันชีผู้ใช้</span></a>
+                        <span>จัดการบัญชีผู้ใช้</span></a>
                 </li>
 
                 <!-- Divider -->
