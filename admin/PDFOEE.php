@@ -3,7 +3,7 @@ date_default_timezone_set("Asia/Bangkok");
 session_start();
 include "config.php";
 
-require("C:/xampp/htdocs/admin/fpdf182/fpdf.php");
+require("fpdf182/fpdf.php");
 ob_end_clean();
 ob_start();
 class PDF extends FPDF
