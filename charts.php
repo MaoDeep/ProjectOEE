@@ -286,7 +286,7 @@ if (isset($_POST['submit'])) {
                                                     <div>กราฟOEE</div>
                                                 </div>
                                                 <div class="card-body">
-                                                    <div class="text-right h6">วันที่ : <?= $_GET["date"] ?></div>
+                                                    <div class="text-right h6">วันที่ผู้บันทึก : <?= $_GET["date"] ?></div>
                                                     <div class="text-right h6">ผู้บันทึก : <?= $_GET["name"] ?></div>
 
                                                     <canvas id="myChart"></canvas>
