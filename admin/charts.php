@@ -1,7 +1,4 @@
 <?php
-
-use LDAP\Result;
-
 session_start();
 require('config.php');
 if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
@@ -54,7 +51,8 @@ if (isset($_POST['submit'])) {
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     <!-- Custom styles for this page -->
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+
 
 </head>
 
@@ -242,30 +240,37 @@ if (isset($_POST['submit'])) {
                                             <div class="col-auto"><button type="button" id="pdf" class="btn btn-sm btn-success" onclick="x()" style="width: 10rem;"><i class="bi bi-filetype-pdf"></i> ออกรายงาน PDF</button></div>
 
                                             <div class="table-responsive">
-                                                <table class="table table-bordered text-center table-sm " id="dataTable">
+                                                <form action="charts.php" method="get">
+                                                    <table class="table table-bordered text-center table-sm " id="dataTable">
+                                                        <thead>
+                                                            <tr bgcolor="PeachPuff">
+                                                                <th>#</th>
+                                                                <th>ลำดับ</th>
+                                                                <th>วันที่</th>
+                                                                <th>อัตราการเดินเครื่องจักร</th>
+                                                                <th>ประสิทธิภาพของเครื่องจักร</th>
+                                                                <th>อัตราคุณภาพ</th>
+                                                                <th>ผลรวม OEE</th>
+                                                                <th>ผู้บันทึก</th>
+                                                                <th>รายละเอียด</th>
 
-                                                    <thead>
-                                                        <tr bgcolor="PeachPuff">
-                                                            <th>ลำดับ</th>
-                                                            <th>วันที่</th>
-                                                            <th>อัตราการเดินเครื่องจักร</th>
-                                                            <th>ประสิทธิภาพของเครื่องจักร</th>
-                                                            <th>อัตราคุณภาพ</th>
-                                                            <th>ผลรวม OEE</th>
-                                                            <th>ผู้บันทึก</th>
-                                                            <th>รายละเอียด</th>
-                                                    </thead>
-                                                    <?php
+                                                        </thead>
+                                                        <?php
 
-                                                    mysqli_query($conn, 'SET NAMES UTF8');
-                                                    $sql = "SELECT * FROM `report` INNER JOIN users on report.u_id = users.u_id;";
-                                                    $query = mysqli_query($conn, $sql);
-                                                    $n1 = 0;
-                                                    while ($value = mysqli_fetch_array($query)) {
-                                                        $d = date_create($value['date']);
-                                                        $d1 = date_format($d, "d/m/Y");
-                                                        $n1++;
-                                                        echo '<tr>
+                                                        mysqli_query($conn, 'SET NAMES UTF8');
+                                                        $sql = "SELECT * FROM `report` INNER JOIN users on report.u_id = users.u_id;";
+                                                        $query = mysqli_query($conn, $sql);
+                                                        $n1 = 0;
+                                                        while ($value = mysqli_fetch_array($query)) {
+                                                            $d = date_create($value['date']);
+                                                            $d1 = date_format($d, "d/m/Y");
+                                                            $n1++;
+                                                            echo '<tr>
+                                                        <td>
+                                                        <div class="form-check">
+                                                        <input type="checkbox" class="form-check-input" id="no[]" name="no[]" value="' . $value["id"] . '">
+                                                        </div>
+                                                        </td>
                     <td>' . $n1 . '</td>
                     <td>' . $d1 . '</td>
                     <td>' . $value['TR'] . '</td>
@@ -273,48 +278,49 @@ if (isset($_POST['submit'])) {
                     <td>' . $value['NT'] . '</td>
                     <td>' . $value['EU'] . '</td>
                     <td>' . $value['u_usersname'] . '</td>
-                    <td><a href="charts.php?id=' . $value["id"] . '&name=' . $value["u_usersname"] . '&date=' . $d1 . '"><button type="button" class="btn btn-warning">ดู</button></a></td>
+                    <td><a href="charts.php?id=' . $value["id"] . '&name=' . $value["u_usersname"] . '&date=' . $d1 . '"><button type="submit" class="btn btn-warning">ดู</button></a></td>
                    
                 </tr>';
-                                                    }
+                                                        }
 
-                                                    ?>
-                                                    </tbody>
-                                                </table>
+                                                        ?>
+                                                        </tbody>
+                                                    </table>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 mx-auto">
+                                <div class=" col-12 mx-auto">
 
-                                    <?php
-                                    if (isset($_GET["id"])) {
-                                        $sql = "SELECT * FROM `report` INNER JOIN users on report.u_id = users.u_id WHERE report.id =" . $_GET["id"];
-                                        $re = mysqli_query($conn, $sql);
 
-                                        foreach ($re as $row) {
-                                            $date = date_create($row["date"]);
-                                            $d = date_format($date, "d/m/Y");
-                                    ?>
-                                            <div class="card mt-3 ">
+                                    <div class="card mt-3 ">
+                                        <div class="card-header">
+                                            <div>กราฟOEE</div>
+                                        </div>
+                                        <div class="card-body">
+
+                                            <canvas id="myChart"></canvas>
+                                            <div class="card mt-3">
                                                 <div class="card-header">
-                                                    <div>กราฟOEE</div>
+                                                    ข้อมูล
                                                 </div>
                                                 <div class="card-body">
-                                                    <div class="text-right h6">วันที่ : <?= $_GET["date"] ?></div>
-                                                    <div class="text-right h6">ผู้บันทึก : <?= $_GET["name"] ?></div>
+                                                    <div class="  alert alert-warning" role="alert">
+                                                        <b>Date = วันที่ /A = เวลาทำงานทั้งหมด /B = เวลาตอนพักของพนักงาน /C = เวลาทำงานหลังพัก /D = เวลาปิดเครื่องตอนพัก /E = อัตราการเดินเครื่องจักร</b><br>
+                                                        <br><b>F = เวลาเปิดเครื่องต่อ 1 กะ /G = เวลาหยุดเครื่องต่อ 1 กะ /H = ประสิทธิภาพของเครื่องจักร /I = จำนวนชิ้นงานที่ผลิตได้ต่อ 1 กะ /J = จำนวนชิ้นงานที่เสียต่อ 1 กะ</b><br>
+                                                        <b><br>K = อัตราคุณภาพของเครื่องจักร /L = อัตราการเดินเครื่องจักร /M = ประสิทธิภาพของเครื่องจักร /N = อัตราคุณภาพของเครื่องจักร /O = ผลรวม OEE /ชื่อ = ผู้บันทึก</b>
+                                                    </div>
+                                                    <?php
+                                                    if (isset($_GET["no"])) {
 
-                                                    <canvas id="myChart"></canvas>
-                                                    <div class="card mt-3">
-                                                        <div class="card-header">
-                                                            ข้อมูล
-                                                        </div>
-                                                        <div class="card-body">
-                                                            <div class="  alert alert-warning" role="alert">
-                                                                <b>Date = วันที่ /A = เวลาทำงานทั้งหมด /B = เวลาตอนพักของพนักงาน /C = เวลาทำงานหลังพัก /D = เวลาปิดเครื่องตอนพัก /E = อัตราการเดินเครื่องจักร</b><br>
-                                                                <br><b>F = เวลาเปิดเครื่องต่อ 1 กะ /G = เวลาหยุดเครื่องต่อ 1 กะ /H = ประสิทธิภาพของเครื่องจักร /I = จำนวนชิ้นงานที่ผลิตได้ต่อ 1 กะ /J = จำนวนชิ้นงานที่เสียต่อ 1 กะ</b><br>
-                                                                <b><br>K = อัตราคุณภาพของเครื่องจักร /L = อัตราการเดินเครื่องจักร /M = ประสิทธิภาพของเครื่องจักร /N = อัตราคุณภาพของเครื่องจักร /O = ผลรวม OEE /ชื่อ = ผู้บันทึก</b>
-                                                            </div>
+                                                        $sql = "SELECT * FROM `report` INNER JOIN users on report.u_id = users.u_id WHERE report.id =" . $_GET["no"][0];
+                                                        $re = mysqli_query($conn, $sql);
+
+                                                        foreach ($re as $row) {
+                                                            $date = date_create($row["date"]);
+                                                            $d = date_format($date, "d/m/Y");
+                                                    ?>
                                                             <table class="table table-bordered text-center">
                                                                 <thead>
                                                                     <tr bgcolor="PeachPuff">
@@ -361,17 +367,14 @@ if (isset($_POST['submit'])) {
 
                                                                 </tbody>
                                                             </table>
-
-                                                        </div>
-
-                                                    </div>
-
-                                            <?php
-                                        }
-                                    }
-                                            ?>
+                                                    <?php
+                                                        }
+                                                    }
+                                                    ?>
                                                 </div>
                                             </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                             </div>
@@ -412,81 +415,44 @@ if (isset($_POST['submit'])) {
             </div>
         </div>
     </div>
-    <?php
-    if (isset($_GET["id"])) {
-        $sql = "SELECT * FROM `report` WHERE id = '" . $_GET["id"] . "'";
-        $re = mysqli_query($conn, $sql);
 
-        foreach ($re as $rw) {
-            $d = date_create($rw["date"]);
-            $arr = array(
-                $rw["TR"],
-                $rw["TS"],
-                $rw["NT"],
-                $rw["EU"],
-            );
-            $arr1 = array(
-                "อัตราการเดินเครื่องจักร",
-                "ประสิทธิภาพของเครื่องจักร",
-                "อัตราคุณภาพ",
-                "ผลรวม OEE"
-            );
-            $js1 = json_encode($arr);
-            $js2 = json_encode($arr1);
-        }
-    }
-
-    ?>
     <script>
         const ctx = document.getElementById('myChart').getContext('2d');
         const myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: <?= $js2 ?>,
-                datasets: [{
-                    label: 'ยอดขาย',
-                    data: <?= $js1 ?>,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1,
-                    datalabels: {
-                        color: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                        anchor: "end",
-                        align: "top",
-                        formatter: function addCommas(value) {
-                            value += '';
-                            x = value.split('.');
-                            x1 = x[0];
-                            x2 = x.length > 1 ? '.' + x[1] : '';
-                            var rgx = /(\d+)(\d{3})/;
-                            while (rgx.test(x1)) {
-                                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                labels: ['อัตราการเดินเครื่อง', 'ประสิทธิภาพเครื่องจักร', 'อัตราคุณภาพ', 'ผลรวมOEE'],
+                datasets: [
+                    <?php
+                    if (isset($_GET["no"])) {
+                        foreach ($_GET["no"] as $k =>  $row) {
+                            $sql = "SELECT * FROM `report` INNER JOIN users on report.u_id = users.u_id WHERE report.id =" . $row;
+                            $re = mysqli_query($conn, $sql);
+                            $color = array(
+                                'rgba(75, 192, 192)',
+                                'rgba(255, 206, 86)',
+                                'rgba(54, 162, 235)',
+                                'rgba(255, 99, 132)'
+                            );
+                            foreach ($re as $row) {
+
+                    ?> {
+                                    label: <?= json_encode($row["u_usersname"]) ?>,
+                                    data: [<?= $row["TR"] ?>, <?= $row["TS"] ?>, <?= $row["NT"] ?>, <?= $row["EU"] ?>],
+                                    backgroundColor: [
+                                        '<?= $color[$k] ?>',
+                                    ],
+                                    borderColor: [
+                                        '<?= $color[$k] ?>',
+                                    ],
+                                    borderWidth: 1
+                                },
+                    <?php
                             }
-                            return x1 + x2;
                         }
                     }
-                }]
+                    ?>
+                ]
             },
             plugins: [ChartDataLabels],
             options: {
@@ -496,7 +462,7 @@ if (isset($_POST['submit'])) {
                     }
                 },
                 plugins: {
-                    legend: false // Hide legend
+                    legend: true // Hide legend
                 }
             }
         });
