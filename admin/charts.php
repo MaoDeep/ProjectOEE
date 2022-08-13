@@ -50,10 +50,21 @@ if (isset($_POST['submit'])) {
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
-    <!-- Custom styles for this page -->
-    <!-- Custom fonts for this template-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
+    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.bootstrap5.min.css">
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.bootstrap5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.colVis.min.js"></script>
 </head>
 
 <body id="page-top" style="font-family: 'Pridi', serif;">
@@ -228,7 +239,7 @@ if (isset($_POST['submit'])) {
                                         OEE
                                     </div>
                                     <div class="card-body">
-                                        <div class="row ">
+                                        <div class="row">
                                             <div class="col-auto">
                                                 <label for="d1" class="col-form-label">วันที่ : </label>
                                             </div>
@@ -238,8 +249,9 @@ if (isset($_POST['submit'])) {
                                             </div>
                                             <div class="col-auto"><input type="date" name="d2" id="d2" class="form-control form-control-sm"></div>
                                             <div class="col-auto"><button type="button" id="pdf" class="btn btn-sm btn-success" onclick="x()" style="width: 10rem;"><i class="bi bi-filetype-pdf"></i> ออกรายงาน PDF</button></div>
-
-                                            <div class="table-responsive">
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col-12 mx-auto">
                                                 <form action="charts.php" method="get">
                                                     <table class="table table-bordered text-center table-sm " id="dataTable">
                                                         <thead>
@@ -291,129 +303,134 @@ if (isset($_POST['submit'])) {
                                         </div>
                                     </div>
                                 </div>
-                                <div class=" col-12 mx-auto">
+                            </div>
+                        </div>
+                        <?php
+                        if (isset($_GET["no"])) {
+                        ?>
+                            <div class=" col-12 mx-auto">
+                                <div class="card mt-3 ">
+                                    <div class="card-header">
+                                        <div>กราฟOEE</div>
+                                    </div>
+                                    <div class="card-body">
 
-
-                                    <div class="card mt-3 ">
-                                        <div class="card-header">
-                                            <div>กราฟOEE</div>
-                                        </div>
-                                        <div class="card-body">
-
-                                            <canvas id="myChart"></canvas>
-                                            <div class="card mt-3">
-                                                <div class="card-header">
-                                                    ข้อมูล
+                                        <canvas id="myChart"></canvas>
+                                        <div class="card mt-3">
+                                            <div class="card-header">
+                                                ข้อมูล
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="  alert alert-warning" role="alert">
+                                                    <b>Date = วันที่ /A = เวลาทำงานทั้งหมด /B = เวลาตอนพักของพนักงาน /C = เวลาทำงานหลังพัก /D = เวลาปิดเครื่องตอนพัก /E = อัตราการเดินเครื่องจักร</b><br>
+                                                    <br><b>F = เวลาเปิดเครื่องต่อ 1 กะ /G = เวลาหยุดเครื่องต่อ 1 กะ /H = ประสิทธิภาพของเครื่องจักร /I = จำนวนชิ้นงานที่ผลิตได้ต่อ 1 กะ /J = จำนวนชิ้นงานที่เสียต่อ 1 กะ</b><br>
+                                                    <b><br>K = อัตราคุณภาพของเครื่องจักร /L = อัตราการเดินเครื่องจักร /M = ประสิทธิภาพของเครื่องจักร /N = อัตราคุณภาพของเครื่องจักร /O = ผลรวม OEE /ชื่อ = ผู้บันทึก</b>
                                                 </div>
-                                                <div class="card-body">
-                                                    <div class="  alert alert-warning" role="alert">
-                                                        <b>Date = วันที่ /A = เวลาทำงานทั้งหมด /B = เวลาตอนพักของพนักงาน /C = เวลาทำงานหลังพัก /D = เวลาปิดเครื่องตอนพัก /E = อัตราการเดินเครื่องจักร</b><br>
-                                                        <br><b>F = เวลาเปิดเครื่องต่อ 1 กะ /G = เวลาหยุดเครื่องต่อ 1 กะ /H = ประสิทธิภาพของเครื่องจักร /I = จำนวนชิ้นงานที่ผลิตได้ต่อ 1 กะ /J = จำนวนชิ้นงานที่เสียต่อ 1 กะ</b><br>
-                                                        <b><br>K = อัตราคุณภาพของเครื่องจักร /L = อัตราการเดินเครื่องจักร /M = ประสิทธิภาพของเครื่องจักร /N = อัตราคุณภาพของเครื่องจักร /O = ผลรวม OEE /ชื่อ = ผู้บันทึก</b>
-                                                    </div>
-                                                    <?php
-                                                    if (isset($_GET["no"])) {
 
-                                                        $sql = "SELECT * FROM `report` INNER JOIN users on report.u_id = users.u_id WHERE report.id =" . $_GET["no"][0];
-                                                        $re = mysqli_query($conn, $sql);
+                                                <table class="table table-bordered text-center" id="tabel1">
+                                                    <thead>
+                                                        <tr bgcolor="PeachPuff">
+                                                            <th>Date</th>
+                                                            <th>A</th>
+                                                            <th>B</th>
+                                                            <th>C</th>
+                                                            <th>D</th>
+                                                            <th>E</th>
+                                                            <th>F</th>
+                                                            <th>G</th>
+                                                            <th>H</th>
+                                                            <th>I</th>
+                                                            <th>J</th>
+                                                            <th>K</th>
+                                                            <th>L</th>
+                                                            <th>M</th>
+                                                            <th>N</th>
+                                                            <th>O</th>
+                                                            <th>ชื่อ</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php
 
-                                                        foreach ($re as $row) {
-                                                            $date = date_create($row["date"]);
-                                                            $d = date_format($date, "d/m/Y");
-                                                    ?>
-                                                            <table class="table table-bordered text-center">
-                                                                <thead>
-                                                                    <tr bgcolor="PeachPuff">
-                                                                        <th>Date</th>
-                                                                        <th>A</th>
-                                                                        <th>B</th>
-                                                                        <th>C</th>
-                                                                        <th>D</th>
-                                                                        <th>E</th>
-                                                                        <th>F</th>
-                                                                        <th>G</th>
-                                                                        <th>H</th>
-                                                                        <th>I</th>
-                                                                        <th>J</th>
-                                                                        <th>K</th>
-                                                                        <th>L</th>
-                                                                        <th>M</th>
-                                                                        <th>N</th>
-                                                                        <th>O</th>
-                                                                        <th>ชื่อ</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <th><?php echo $d ?></th>
-                                                                        <th><?php echo $row["AT"] ?></th>
-                                                                        <th><?php echo $row["SP"] ?></th>
-                                                                        <th><?php echo $row["WT"] ?></th>
-                                                                        <th><?php echo $row["MS"] ?></th>
-                                                                        <th><?php echo $row["MIX"] ?></th>
-                                                                        <th><?php echo $row["RT"] ?></th>
-                                                                        <th><?php echo $row["MSS"] ?></th>
-                                                                        <th><?php echo $row["TT"] ?></th>
-                                                                        <th><?php echo $row["NO"] ?></th>
-                                                                        <th><?php echo $row["NUM"] ?></th>
-                                                                        <th><?php echo $row["TOT"] ?></th>
-                                                                        <th><?php echo $row["TR"] ?></th>
-                                                                        <th><?php echo $row["TS"] ?></th>
-                                                                        <th><?php echo $row["NT"] ?></th>
-                                                                        <th><?php echo $row["EU"] ?></th>
-                                                                        <th><?php echo $row["u_usersname"] ?></th>
+                                                        foreach ($_GET["no"] as $row) {
+                                                            $sql = "SELECT * FROM `report` INNER JOIN users on report.u_id = users.u_id WHERE report.id =" . $row;
+                                                            $re = mysqli_query($conn, $sql);
 
-                                                                    </tr>
-
-                                                                </tbody>
-                                                            </table>
-                                                    <?php
+                                                            foreach ($re as $row) {
+                                                                $date = date_create($row["date"]);
+                                                                $d = date_format($date, "d/m/Y");
+                                                        ?>
+                                                                <tr>
+                                                                    <th><?php echo $d ?></th>
+                                                                    <th><?php echo number_format($row["AT"], 2) ?></th>
+                                                                    <th><?php echo number_format($row["SP"], 2) ?></th>
+                                                                    <th><?php echo number_format($row["WT"], 2) ?></th>
+                                                                    <th><?php echo number_format($row["MS"], 2) ?></th>
+                                                                    <th><?php echo number_format($row["MIX"], 2) ?></th>
+                                                                    <th><?php echo number_format($row["RT"], 2) ?></th>
+                                                                    <th><?php echo number_format($row["MSS"], 2) ?></th>
+                                                                    <th><?php echo number_format($row["TT"], 2) ?></th>
+                                                                    <th><?php echo number_format($row["NO"], 2) ?></th>
+                                                                    <th><?php echo number_format($row["NUM"], 2) ?></th>
+                                                                    <th><?php echo number_format($row["TOT"], 2) ?></th>
+                                                                    <th><?php echo number_format($row["TR"], 2) ?></th>
+                                                                    <th><?php echo number_format($row["TS"], 2) ?></th>
+                                                                    <th><?php echo number_format($row["NT"], 2) ?></th>
+                                                                    <th><?php echo number_format($row["EU"], 2) ?></th>
+                                                                    <th><?php echo $row["u_usersname"] ?></th>
+                                                                </tr>
+                                                        <?php
+                                                            }
                                                         }
-                                                    }
-                                                    ?>
-                                                </div>
+                                                        ?>
+                                                    </tbody>
+                                                </table>
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-                        </div>
-                    </div>
-                    <!-- /.container-fluid -->
-
-                </div>
-                <!-- End of Main Content -->
-
-                <!-- Footer -->
-
-                <!-- End of Footer -->
-
-            </div>
-            <!-- End of Content Wrapper -->
-
-        </div>
-        <!-- End of Page Wrapper -->
-
-
-        <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">ออกจากระบบ</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">คุณแน่ใจเเล้วนะว่าจะออกจากระบบ</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">ยกเลิก</button>
-                        <a class="btn btn-primary" href="index.php">ออกจากระบบ</a>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
+            <!-- /.container-fluid -->
+
         </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+
+        <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">ออกจากระบบ</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">คุณแน่ใจเเล้วนะว่าจะออกจากระบบ</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">ยกเลิก</button>
+                    <a class="btn btn-primary" href="index.php">ออกจากระบบ</a>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 
     <script>
@@ -424,6 +441,7 @@ if (isset($_POST['submit'])) {
                 labels: ['อัตราการเดินเครื่อง', 'ประสิทธิภาพเครื่องจักร', 'อัตราคุณภาพ', 'ผลรวมOEE'],
                 datasets: [
                     <?php
+
                     if (isset($_GET["no"])) {
                         foreach ($_GET["no"] as $k =>  $row) {
                             $sql = "SELECT * FROM `report` INNER JOIN users on report.u_id = users.u_id WHERE report.id =" . $row;
@@ -440,10 +458,20 @@ if (isset($_POST['submit'])) {
                                     label: <?= json_encode($row["u_usersname"]) ?>,
                                     data: [<?= $row["TR"] ?>, <?= $row["TS"] ?>, <?= $row["NT"] ?>, <?= $row["EU"] ?>],
                                     backgroundColor: [
-                                        '<?= $color[$k] ?>',
+                                        '<?php if (count($_GET["no"]) <= 4) {
+                                                echo  $color[$k];
+                                            } else {
+                                                echo $color[rand(0, 3)];
+                                            }
+                                            ?>',
                                     ],
                                     borderColor: [
-                                        '<?= $color[$k] ?>',
+                                        '<?php if (count($_GET["no"]) <= 4) {
+                                                echo $color[$k];
+                                            } else {
+                                                echo $color[rand(0, 3)];
+                                            }
+                                            ?>',
                                     ],
                                     borderWidth: 1
                                 },
@@ -476,24 +504,23 @@ if (isset($_POST['submit'])) {
 
         }
     </script>
-    <!-- Bootstrap core JavaScript-->
+    <script>
+        $(document).ready(function() {
+            $("#dataTable").DataTable();
+            $("#tabel1").DataTable();
+        });
+    </script>
+
+
+
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
-
-
 </body>
 
 </html>
