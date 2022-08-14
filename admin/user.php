@@ -12,24 +12,41 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
 <html lang="en">
 
 <head>
-
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta name="description" content="">
       <meta name="author" content="">
 
-      <title>กรอกข้อมูล</title>
+      <title>ตารางOEE</title>
 
-      <!-- Custom fonts for this template-->
+      <!-- Custom fonts for this template -->
       <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
       <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Pridi:wght@300&display=swap" rel="stylesheet">
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-      <!-- Custom styles for this template-->
+
+      <!-- Custom styles for this template -->
       <link href="css/sb-admin-2.min.css" rel="stylesheet">
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+      <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.bootstrap5.min.css">
+      <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+      <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+      <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.bootstrap5.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+      <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+      <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+      <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.colVis.min.js"></script>
 
 </head>
 
@@ -228,56 +245,53 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                           <div class="card shadow mb-4">
                                                 <div class="card-header py-3">
                                                       <h5 class="m-0 font-weight-bold text-primary">จัดการข้อมูลผู้ใช้</h5>
-                                                      <div class="row">
-                                                            <div class="col-6"></div>
-                                                            <div class="col-6 col order-last"><a href="post/add.php"><button type="button" class="btn-info btn-sm btn ">เพิ่มข้อมูล</button></a></div>
+                                                      <div class="d-flex flex-row-reverse">
+                                                            <div class="p-2"><a href="post/add.php"><button type="button" class="btn-info btn-sm btn ">เพิ่มข้อมูล</button></a></div>
                                                       </div>
-
                                                 </div>
 
 
                                                 <div class="card-body">
 
-                                                      <div class="table-responsive">
-                                                            <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                                                      <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                                                            <thead>
+                                                                  <tr>
+                                                                        <th>ลำดับ</th>
+                                                                        <th>ชื่อ</th>
+                                                                        <th>สถานะ</th>
+                                                                        <th>เเก้ไข</th>
+                                                                        <th>ลบ</th>
 
-                                                                  <thead>
+                                                                  </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                  <?php
+                                                                  $sql = "SELECT * FROM `users`";
+                                                                  $re = mysqli_query($conn, $sql);
+                                                                  foreach ($re as $k => $row) {
+                                                                  ?>
                                                                         <tr>
-                                                                              <th>ลำดับ</th>
-                                                                              <th>ชื่อ</th>
-                                                                              <th>สถานะ</th>
-                                                                              <th>เเก้ไข</th>
-                                                                              <th>ลบ</th>
-
+                                                                              <td><?= ($k + 1) ?></td>
+                                                                              <td><?= $row["u_usersname"]; ?></td>
+                                                                              <td><?= $row["Status"]; ?></td>
+                                                                              <td><a href="post/edit.php?id=<?= $row["u_id"]; ?>"><button class="btn btn-warning w-50">เเก้ไข</button></a></td>
+                                                                              <?php
+                                                                              if ($row["u_usersname"] == $_SESSION["user"]) {
+                                                                                    echo '<td></td>';
+                                                                              } else {
+                                                                              ?>
+                                                                                    <td><a href="post/del.php?id=<?= $row["u_id"]; ?>"><button class="btn btn-danger w-50">ลบ</button></a></td>
+                                                                              <?php
+                                                                              }
+                                                                              ?>
                                                                         </tr>
-                                                                  </thead>
-                                                                  <tbody>
-                                                                        <?php
-                                                                        $sql = "SELECT * FROM `users`";
-                                                                        $re = mysqli_query($conn, $sql);
-                                                                        foreach ($re as $k => $row) {
-                                                                        ?>
-                                                                              <tr>
-                                                                                    <td><?= ($k + 1) ?></td>
-                                                                                    <td><?= $row["u_usersname"]; ?></td>
-                                                                                    <td><?= $row["Status"]; ?></td>
-                                                                                    <td><a href="post/edit.php?id=<?= $row["u_id"]; ?>"><button class="btn btn-warning w-50">เเก้ไข</button></a></td>
-                                                                                    <?php
-                                                                                    if ($row["u_usersname"] == $_SESSION["user"]) {
-                                                                                    } else {
-                                                                                    ?>
-                                                                                          <td><a href="post/del.php?id=<?= $row["u_id"]; ?>"><button class="btn btn-danger w-50">ลบ</button></a></td>
-                                                                                    <?php
-                                                                                    }
-                                                                                    ?>
-                                                                              </tr>
 
-                                                                        <?php
-                                                                        }
-                                                                        ?>
-                                                                  </tbody>
-                                                            </table>
-                                                      </div>
+                                                                  <?php
+                                                                  }
+                                                                  ?>
+                                                            </tbody>
+                                                      </table>
+
                                                 </div>
                                           </div>
 
@@ -319,110 +333,9 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
             </div>
       </div>
       <script>
-            function in1() {
-                  var d = document.getElementById("txt1").value;
-                  var x = document.getElementById("txt2").value;
-                  var c = (d - x);
-                  document.getElementById("txt3").value = c;
-                  var c1 = document.getElementById("txt3").value;
-                  var c2 = document.getElementById("txt4").value;
-                  document.getElementById("txt5").value = (((c1 - c2) / c1) * 100).toFixed(2);
-                  document.getElementById("txt12").value = (((c1 - c2) / c1) * 100).toFixed(2)
-                  document.getElementById("ina").value = (((c1 - c2) / c1))
-
-
-                  var a1 = document.getElementById("ina").value;
-                  var a2 = document.getElementById("inb").value;
-                  var a3 = document.getElementById("inc").value;
-                  document.getElementById("txt15").value = (((a1 / 100) * (a2 / 100) * (a3 / 100) * 100) * 100).toFixed(2);
-
-                  document.getElementById("x1").value = document.getElementById("txt12").value;
-                  document.getElementById("x2").value = document.getElementById("txt13").value;
-                  document.getElementById("x3").value = document.getElementById("txt14").value;
-                  document.getElementById("x4").value = document.getElementById("txt15").value;
-
-
-
-                  if (document.getElementById("txt5").value < 90) {
-                        var arr = document.getElementById("er1")
-                        arr.classList.remove("text-success");
-                        arr.classList.add("text-danger");
-                        document.getElementById("er1").innerText = "ต่ำกว่า 90%"
-                  } else {
-                        var arr = document.getElementById("er1")
-                        arr.classList.remove("text-danger");
-                        arr.classList.add("text-success");
-                        document.getElementById("er1").innerText = "มากกว่า 90%"
-                  }
-
-
-            }
-
-            function in2() {
-                  var d = document.getElementById("txt6").value;
-                  var x = document.getElementById("txt7").value;
-                  var c = (((d - x) / d) * 100);
-                  document.getElementById("txt8").value = c.toFixed(2);
-                  document.getElementById("txt13").value = c.toFixed(2);
-                  document.getElementById("inb").value = c;
-
-                  var a1 = document.getElementById("ina").value;
-                  var a2 = document.getElementById("inb").value;
-                  var a3 = document.getElementById("inc").value;
-                  document.getElementById("txt15").value = (((a1 / 100) * (a2 / 100) * (a3 / 100) * 100) * 100).toFixed(2);
-
-                  document.getElementById("x1").value = document.getElementById("txt12").value
-                  document.getElementById("x2").value = document.getElementById("txt13").value
-                  document.getElementById("x3").value = document.getElementById("txt14").value
-                  document.getElementById("x4").value = document.getElementById("txt15").value
-
-                  if (c < 90) {
-                        var arr = document.getElementById("er2")
-                        arr.classList.remove("text-success");
-                        arr.classList.add("text-danger");
-                        document.getElementById("er2").innerText = "ต่ำกว่า 90%"
-                  } else {
-                        var arr = document.getElementById("er2")
-                        arr.classList.remove("text-danger");
-                        arr.classList.add("text-success");
-                        document.getElementById("er2").innerText = "มากกว่า 90%"
-                  }
-
-            }
-
-            function in3() {
-                  var d = document.getElementById("txt9").value;
-                  var x = document.getElementById("txt10").value;
-                  var c = (((d - x) / d) * 100);
-                  document.getElementById("txt11").value = c.toFixed(2);
-                  document.getElementById("txt14").value = c.toFixed(2);
-                  document.getElementById("inc").value = c;
-
-                  var a1 = document.getElementById("ina").value;
-                  var a2 = document.getElementById("inb").value;
-                  var a3 = document.getElementById("inc").value;
-                  document.getElementById("txt15").value = (((a1 / 100) * (a2 / 100) * (a3 / 100) * 100) * 100).toFixed(2);
-
-                  document.getElementById("x1").value = document.getElementById("txt12").value
-                  document.getElementById("x2").value = document.getElementById("txt13").value
-                  document.getElementById("x3").value = document.getElementById("txt14").value
-                  document.getElementById("x4").value = document.getElementById("txt15").value
-
-
-                  if (d < 4000) {
-                        var arr = document.getElementById("er3")
-                        arr.classList.remove("text-success");
-                        arr.classList.add("text-danger");
-                        document.getElementById("er3").innerText = "ต่ำกว่า 4000ชิ้น"
-                  } else {
-                        var arr = document.getElementById("er3")
-                        arr.classList.remove("text-danger");
-                        arr.classList.add("text-success");
-                        document.getElementById("er3").innerText = "ตรงเป้าหมาย"
-                  }
-
-
-            }
+            $(document).ready(function() {
+                  $("#dataTable").DataTable();
+            });
       </script>
       <script>
             (function() {
@@ -445,8 +358,6 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                         })
             })()
       </script>
-      <!-- Bootstrap core JavaScript-->
-      <script src="vendor/jquery/jquery.min.js"></script>
       <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
       <!-- Core plugin JavaScript-->

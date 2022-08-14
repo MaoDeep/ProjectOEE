@@ -571,8 +571,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
         </div>
     </div>
     <script>
-        $(document).ready(function() {
-            
+        $(document).ready(function() {        
             in3();
         });
 

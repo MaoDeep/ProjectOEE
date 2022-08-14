@@ -42,46 +42,41 @@ if (isset($_POST["submit"])) {
 <body>
     <form action="add.php" method="post" class="needs-validation" name="myform" novalidate>
         <div class="container mt-3">
-            <div class="card">
-                <div class="card-header">
-                    ข้อมูลผู้ใช้
-                </div>
-                <div class="card-body">
-
-                    <div class="mb-3">
-                        <label for="" class="form-label">ชื่อ</label>
-                        <input type="text" name="txt2" id="tx2" class="form-control form-control-sm" value="" required>
+            <div class="col-8 mx-auto">
+                <div class="card">
+                    <div class="card-header">
+                        ข้อมูลผู้ใช้
                     </div>
-                    <div class="mb-3">
-                        <label for="" class="form-label">รหัสผ่าน</label>
-                        <input type="text" name="txt3" id="txt3" class="form-control form-control-sm" value="" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="" class="form-label">สถานะ</label>
-                        <select name="txt4" id="txt4" class="form-select form-select-sm">
-                            <option value="Admin">Admin</option>
-                            <option value="User">User</option>
+                    <div class="card-body">
 
-                        </select>
-                    </div>
-
-
-
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <div class="d-grid gap-2 mt-3">
-                            <a href="../user.php"><button type="submit" class="btn btn-sm btn-primary w-100" name="submit">บันทึก</button>
-                            </div>
-                            <div class="d-grid gap-2 mt-3">
-                                <a href="../user.php"><button type="button" class="btn btn-sm btn-danger w-100">กลับไปหน้าหลัก</button></a>
-                            </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">ชื่อ</label>
+                            <input type="text" name="txt2" id="tx2" class="form-control form-control-sm" value="" required>
                         </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">รหัสผ่าน</label>
+                            <input type="text" name="txt3" id="txt3" class="form-control form-control-sm" value="" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">สถานะ</label>
+                            <select name="txt4" id="txt4" class="form-select form-select-sm">
+                                <option value="Admin">Admin</option>
+                                <option value="User">User</option>
 
+                            </select>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <div class="d-grid gap-2 mt-3">
+                                    <a href="../user.php"><button type="submit" class="btn btn-sm btn-primary w-100" name="submit">บันทึก</button>
+                                </div>
+                                <div class="d-grid gap-2 mt-3">
+                                    <a href="../user.php"><button type="button" class="btn btn-sm btn-danger w-100">กลับไปหน้าหลัก</button></a>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
-                </div>
-
-                <div class="card-footer text-muted">
-                    
                 </div>
             </div>
     </form>
