@@ -239,17 +239,19 @@ if (isset($_POST['submit'])) {
                                         OEE
                                     </div>
                                     <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-auto">
-                                                <label for="d1" class="col-form-label">วันที่ : </label>
+                                        <form action="PDFOEE.php" method="get">
+                                            <div class="row">
+                                                <div class="col-auto">
+                                                    <label for="d1" class="col-form-label">วันที่ : </label>
+                                                </div>
+                                                <div class="col-auto"><input type="date" name="d1" id="d1" class="form-control form-control-sm"></div>
+                                                <div class="col-auto">
+                                                    <label for="d2" class="col-form-label">ถึง : </label>
+                                                </div>
+                                                <div class="col-auto"><input type="date" name="d2" id="d2" class="form-control form-control-sm"></div>
+                                                <div class="col-auto"><button type="submit" id="pdf" class="btn btn-sm btn-success"  style="width: 10rem;"><i class="bi bi-filetype-pdf"></i> ออกรายงาน PDF</button></div>
                                             </div>
-                                            <div class="col-auto"><input type="date" name="d1" id="d1" class="form-control form-control-sm"></div>
-                                            <div class="col-auto">
-                                                <label for="d2" class="col-form-label">ถึง : </label>
-                                            </div>
-                                            <div class="col-auto"><input type="date" name="d2" id="d2" class="form-control form-control-sm"></div>
-                                            <div class="col-auto"><button type="button" id="pdf" class="btn btn-sm btn-success" onclick="x()" style="width: 10rem;"><i class="bi bi-filetype-pdf"></i> ออกรายงาน PDF</button></div>
-                                        </div>
+                                        </form>
                                         <div class="row mt-3">
                                             <div class="col-12 mx-auto">
                                                 <form action="charts.php" method="get">
@@ -517,15 +519,6 @@ if (isset($_POST['submit'])) {
                 }
             }
         });
-    </script>
-    <script>
-        function x() {
-            var x = document.getElementById("d1").value
-            var x1 = document.getElementById("d2").value
-
-            window.location.href = "PDFOEE.php?d1=" + x + "&d2=" + x1;
-
-        }
     </script>
     <script>
         $(document).ready(function() {
