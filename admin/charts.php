@@ -473,7 +473,30 @@ if (isset($_POST['submit'])) {
                                             }
                                             ?>',
                                     ],
-                                    borderWidth: 1
+                                    borderWidth: 1,
+                                    datalabels: {
+                                        color: [
+                                            '<?php if (count($_GET["no"]) <= 4) {
+                                                    echo $color[$k];
+                                                } else {
+                                                    echo $color[rand(0, 3)];
+                                                }
+                                                ?>',
+                                        ],
+                                        anchor: "end",
+                                        align: "top",
+                                        formatter: function addCommas(value) {
+                                            value += '';
+                                            x = value.split('.');
+                                            x1 = x[0];
+                                            x2 = x.length > 1 ? '.' + x[1] : '';
+                                            var rgx = /(\d+)(\d{3})/;
+                                            while (rgx.test(x1)) {
+                                                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                                            }
+                                            return x1 + x2;
+                                        }
+                                    }
                                 },
                     <?php
                             }
