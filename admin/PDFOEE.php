@@ -27,7 +27,7 @@ class PDF extends FPDF
 
         $this->AddFont('THSarabun', '', 'THSarabun Bold.php');
         $this->SetFont('THSarabun', '', 13);
-        $this->Cell(2, 45, iconv('UTF-8', 'cp874', 'วันที่ : ' . date("d/m/Y h:i:s")), 0, 0, 'R');
+        $this->Cell(2, 45, iconv('UTF-8', 'cp874', 'วันที่ : ' . date("d/m/Y H:i:s")), 0, 0, 'R');
         $this->Ln(0);
         $this->Cell(166, 60, iconv('UTF-8', 'cp874', 'ผู้พิมพ์ : ' . $_SESSION["user"]), 0, 0, 'R');
         // Line break
