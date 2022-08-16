@@ -249,7 +249,7 @@ if (isset($_POST['submit'])) {
                                                     <label for="d2" class="col-form-label">ถึง : </label>
                                                 </div>
                                                 <div class="col-auto"><input type="date" name="d2" id="d2" class="form-control form-control-sm"></div>
-                                                <div class="col-auto"><button type="submit" id="pdf" class="btn btn-sm btn-success"  style="width: 10rem;"><i class="bi bi-filetype-pdf"></i> ออกรายงาน PDF</button></div>
+                                                <div class="col-auto"><button type="submit" id="pdf" class="btn btn-sm btn-success" style="width: 10rem;"><i class="bi bi-filetype-pdf"></i> ออกรายงาน PDF</button></div>
                                             </div>
                                         </form>
                                         <div class="row mt-3">
@@ -282,17 +282,17 @@ if (isset($_POST['submit'])) {
                                                             echo '<tr>
                                                         <td>
                                                         <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input" id="no[]" name="no[]" value="' . $value["id"] . '">
+                                                        <input type="checkbox" class="form-check-input w-100" id="no[]" name="no[]" value="' . $value["id"] . '">
                                                         </div>
                                                         </td>
                     <td>' . $n1 . '</td>
                     <td>' . $d1 . '</td>
-                    <td>' . $value['TR'] . '</td>
-                    <td>' . $value['TS'] . '</td>
-                    <td>' . $value['NT'] . '</td>
-                    <td>' . $value['EU'] . '</td>
+                    <td>' . $value['TR'] .'%'. ' </td>
+                    <td>' . $value['TS'] .'%'. '</td>
+                    <td>' . $value['NT'] .'%'.'</td>
+                    <td>' . $value['EU'] .'%'.'</td>
                     <td>' . $value['u_usersname'] . '</td>
-                    <td><a href="charts.php?id=' . $value["id"] . '&name=' . $value["u_usersname"] . '&date=' . $d1 . '"><button type="submit" class="btn btn-warning">ดู</button></a></td>
+                    <td><a href="charts.php?id=' . $value["id"] . '&name=' . $value["u_usersname"] . '&date=' . $d1 . '"><button type="submit" class="btn btn-warning ">ดู</button></a></td>
                    
                 </tr>';
                                                         }
@@ -322,91 +322,70 @@ if (isset($_POST['submit'])) {
                                             <div class="card-header">
                                                 ข้อมูล
                                             </div>
-                                            <div class="card-body">
-                                                <div class="  alert alert-warning" role="alert">
-                                                    <b>Date = วันที่ /A = เวลาทำงานทั้งหมด /B = เวลาตอนพักของพนักงาน /C = เวลาทำงานหลังพัก /D = เวลาปิดเครื่องตอนพัก /E = อัตราการเดินเครื่องจักร</b><br>
-                                                    <br><b>F = เวลาเปิดเครื่องต่อ 1 กะ /G = เวลาหยุดเครื่องต่อ 1 กะ /H = ประสิทธิภาพของเครื่องจักร /I = จำนวนชิ้นงานที่ผลิตได้ต่อ 1 กะ /J = จำนวนชิ้นงานที่เสียต่อ 1 กะ</b><br>
-                                                    <b><br>K = อัตราคุณภาพของเครื่องจักร /L = อัตราการเดินเครื่องจักร /M = ประสิทธิภาพของเครื่องจักร /N = อัตราคุณภาพของเครื่องจักร /O = ผลรวม OEE /ชื่อ = ผู้บันทึก</b>
-                                                </div>
+                                            <table class="table table-bordered text-center" id="tabel1">
+                                                <thead>
+                                                    <tr bgcolor="PeachPuff">
+                                                        <th>วันที่</th>
+                                                        <th>เวลาทำงานทั้งหมด</th>
+                                                        <th>เวลาทำงานตอนพัก</th>
+                                                        <th>เวลาทำงานจริง</th>
+                                                        <th>เวลาเปิดเครื่องจักร</th>
+                                                        <th>เวลาปิดเครื่องจักร</th>
+                                                        <th>เวลาหยุดเครื่องจักร</th>
+                                                        <th>ชิ้นงานที่ผลิตได้</th>
+                                                        <th>ชิ้นงานเสีย</th>
+                                                        <th>ชื่อ</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
 
-                                                <table class="table table-bordered text-center" id="tabel1">
-                                                    <thead>
-                                                        <tr bgcolor="PeachPuff">
-                                                            <th>Date</th>
-                                                            <th>A</th>
-                                                            <th>B</th>
-                                                            <th>C</th>
-                                                            <th>D</th>
-                                                            <th>E</th>
-                                                            <th>F</th>
-                                                            <th>G</th>
-                                                            <th>H</th>
-                                                            <th>I</th>
-                                                            <th>J</th>
-                                                            <th>K</th>
-                                                            <th>L</th>
-                                                            <th>M</th>
-                                                            <th>N</th>
-                                                            <th>O</th>
-                                                            <th>ชื่อ</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <?php
+                                                    foreach ($_GET["no"] as $row) {
+                                                        $sql = "SELECT * FROM `report` INNER JOIN users on report.u_id = users.u_id WHERE report.id =" . $row;
+                                                        $re = mysqli_query($conn, $sql);
 
-                                                        foreach ($_GET["no"] as $row) {
-                                                            $sql = "SELECT * FROM `report` INNER JOIN users on report.u_id = users.u_id WHERE report.id =" . $row;
-                                                            $re = mysqli_query($conn, $sql);
-
-                                                            foreach ($re as $row) {
-                                                                $date = date_create($row["date"]);
-                                                                $d = date_format($date, "d/m/Y");
-                                                        ?>
-                                                                <tr>
-                                                                    <th><?php echo $d ?></th>
-                                                                    <th><?php echo number_format($row["AT"], 2) ?></th>
-                                                                    <th><?php echo number_format($row["SP"], 2) ?></th>
-                                                                    <th><?php echo number_format($row["WT"], 2) ?></th>
-                                                                    <th><?php echo number_format($row["MS"], 2) ?></th>
-                                                                    <th><?php echo number_format($row["MIX"], 2) ?></th>
-                                                                    <th><?php echo number_format($row["RT"], 2) ?></th>
-                                                                    <th><?php echo number_format($row["MSS"], 2) ?></th>
-                                                                    <th><?php echo number_format($row["TT"], 2) ?></th>
-                                                                    <th><?php echo number_format($row["NO"], 2) ?></th>
-                                                                    <th><?php echo number_format($row["NUM"], 2) ?></th>
-                                                                    <th><?php echo number_format($row["TOT"], 2) ?></th>
-                                                                    <th><?php echo number_format($row["TR"], 2) ?></th>
-                                                                    <th><?php echo number_format($row["TS"], 2) ?></th>
-                                                                    <th><?php echo number_format($row["NT"], 2) ?></th>
-                                                                    <th><?php echo number_format($row["EU"], 2) ?></th>
-                                                                    <th><?php echo $row["u_usersname"] ?></th>
-                                                                </tr>
-                                                        <?php
-                                                            }
+                                                        foreach ($re as $row) {
+                                                            $date = date_create($row["date"]);
+                                                            $d = date_format($date, "d/m/Y");
+                                                    ?>
+                                                            <tr>
+                                                                <th><?php echo $d ?></th>
+                                                                <th><?php echo number_format($row["AT"], 2) ?></th>
+                                                                <th><?php echo number_format($row["SP"], 2) ?></th>
+                                                                <th><?php echo number_format($row["WT"], 2) ?></th>
+                                                                <th><?php echo number_format($row["MS"], 2) ?></th>
+                                                                <th><?php echo number_format($row["RT"], 2) ?></th>
+                                                                <th><?php echo number_format($row["MSS"], 2) ?></th>
+                                                                <th><?php echo number_format($row["NO"], 2) ?></th>
+                                                                <th><?php echo number_format($row["NUM"], 2) ?></th>
+                                                                <th><?php echo $row["u_usersname"] ?></th>
+                                                            </tr>
+                                                    <?php
                                                         }
-                                                        ?>
-                                                    </tbody>
-                                                </table>
+                                                    }
+                                                    ?>
+                                                </tbody>
+                                            </table>
 
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        <?php
-                        }
-                        ?>
                     </div>
+                <?php
+                        }
+                ?>
                 </div>
             </div>
-            <!-- /.container-fluid -->
-
         </div>
-        <!-- End of Main Content -->
+        <!-- /.container-fluid -->
 
-        <!-- Footer -->
+    </div>
+    <!-- End of Main Content -->
 
-        <!-- End of Footer -->
+    <!-- Footer -->
+
+    <!-- End of Footer -->
 
     </div>
     <!-- End of Content Wrapper -->

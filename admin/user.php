@@ -182,13 +182,11 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                               <!-- Topbar Search -->
                               <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                                     <div class="input-group">
-
                                     </div>
                               </form>
 
                               <!-- Topbar Navbar -->
                               <ul class="navbar-nav ml-auto">
-
                                     <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                                     <li class="nav-item dropdown no-arrow d-sm-none">
                                           <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -212,7 +210,6 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
 
 
                                     <div class="topbar-divider d-none d-sm-block"></div>
-
                                     <!-- Nav Item - User Information -->
                                     <li class="nav-item dropdown no-arrow">
                                           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -234,6 +231,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                         </nav>
                         <!-- End of Topbar -->
 
+
                         <!-- Begin Page Content -->
                         <div class="container-fluid">
 
@@ -245,15 +243,12 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                           <div class="card shadow mb-4">
                                                 <div class="card-header py-3">
                                                       <h5 class="m-0 font-weight-bold text-primary">จัดการข้อมูลผู้ใช้</h5>
-                                                      <div class="d-flex flex-row-reverse">
-                                                            <div class="p-2"><a href="post/add.php"><button type="button" class="btn-info btn-sm btn ">เพิ่มข้อมูล</button></a></div>
-                                                      </div>
                                                 </div>
-
-
                                                 <div class="card-body">
-
-                                                      <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                                                      <div class="d-flex flex-row-reverse">
+                                                            <div class="p-2"><a href="post/add.php"><button type="button" class="btn btn-info ">เพิ่มข้อมูล</button></a></div>
+                                                      </div>
+                                                      <table class="table table-bordered table-sm" id="dataTable" width="100%" cellspacing="0">
                                                             <thead>
                                                                   <tr>
                                                                         <th>ลำดับ</th>
@@ -261,7 +256,6 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                                                         <th>สถานะ</th>
                                                                         <th>เเก้ไข</th>
                                                                         <th>ลบ</th>
-
                                                                   </tr>
                                                             </thead>
                                                             <tbody>
@@ -274,13 +268,13 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                                                               <td><?= ($k + 1) ?></td>
                                                                               <td><?= $row["u_usersname"]; ?></td>
                                                                               <td><?= $row["Status"]; ?></td>
-                                                                              <td><a href="post/edit.php?id=<?= $row["u_id"]; ?>"><button class="btn btn-warning w-50">เเก้ไข</button></a></td>
+                                                                              <td><a href="post/edit.php?id=<?= $row["u_id"]; ?>"><button class="btn btn-warning ">เเก้ไข</button></a></td>
                                                                               <?php
                                                                               if ($row["u_usersname"] == $_SESSION["user"]) {
                                                                                     echo '<td></td>';
                                                                               } else {
                                                                               ?>
-                                                                                    <td><a href="post/del.php?id=<?= $row["u_id"]; ?>"><button class="btn btn-danger w-50">ลบ</button></a></td>
+                                                                                    <td><a href="post/del.php?id=<?= $row["u_id"]; ?>"><button class="btn btn-danger ">ลบ</button></a></td>
                                                                               <?php
                                                                               }
                                                                               ?>
@@ -335,6 +329,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
       <script>
             $(document).ready(function() {
                   $("#dataTable").DataTable();
+                  $("#tabel1").DataTable();
             });
       </script>
       <script>
