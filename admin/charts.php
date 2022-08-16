@@ -356,7 +356,7 @@ if (isset($_POST['submit'])) {
                                                                 <th><?php echo number_format($row["MS"], 2) ?></th>
                                                                 <th><?php echo number_format($row["RT"], 2) ?></th>
                                                                 <th><?php echo number_format($row["MSS"], 2) ?></th>
-                                                                <th><?php echo number_format($row["NO"], 2) ?></th>
+                                                                <th><?php echo number_format($row["NO"], ) ?></th>
                                                                 <th><?php echo number_format($row["NUM"], 2) ?></th>
                                                                 <th><?php echo $row["u_usersname"] ?></th>
                                                             </tr>
@@ -428,10 +428,12 @@ if (isset($_POST['submit'])) {
                             $sql = "SELECT * FROM `report` INNER JOIN users on report.u_id = users.u_id WHERE report.id =" . $row;
                             $re = mysqli_query($conn, $sql);
                             $color = array(
-                                'rgba(75, 192, 192)',
-                                'rgba(255, 206, 86)',
-                                'rgba(54, 162, 235)',
-                                'rgba(255, 99, 132)'
+                                'rgba(255, 20, 147)',
+                                'rgba(154, 50, 205)',
+                                'rgba(0, 139, 69)',
+                                'rgba(139, 0, 0)',
+                                
+                                
                             );
                             foreach ($re as $row) {
 
