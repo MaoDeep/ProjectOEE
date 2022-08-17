@@ -5,11 +5,12 @@ if (isset($_POST["submit"])) {
 
         $_POST["txt2"],
         $_POST["txt3"],
-        $_POST["txt4"]
+        $_POST["txt4"],
+        $_POST["txt5"]
     );
 
 
-    $sql = "INSERT INTO `users` (`u_id`, `u_usersname`, `u_pssaword`, `Status`) VALUES (NULL, '" . $arr[0] . "', '" . $arr[1] . "', '" . $arr[2] . "');";
+    $sql = "INSERT INTO `users` (`u_id`, `u_usersname`, `u_pssaword`, `Status`, `Status2`) VALUES (NULL, '" . $arr[0] . "', '" . $arr[1] . "', '" . $arr[2] . "', '" . $arr[3] . "');";
     $re = mysqli_query($conn, $sql);
 
 
@@ -58,10 +59,19 @@ if (isset($_POST["submit"])) {
                             <input type="text" name="txt3" id="txt3" class="form-control form-control-sm" value="" required>
                         </div>
                         <div class="mb-3">
-                            <label for="" class="form-label">สถานะ</label>
+                            <label for="" class="form-label">สิทธิ์ผู้ใช้งาน</label>
                             <select name="txt4" id="txt4" class="form-select form-select-sm">
                                 <option value="Admin">Admin</option>
                                 <option value="User">User</option>
+
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">สถานะ</label>
+                            <select name="txt5" id="txt5" class="form-select form-select-sm">
+                                <option value="ปกติ">ปกติ</option>
+                                <option value="หยุดงาน">หยุดงาน</option>
+                                <option value="ลาออก">ลาออก</option>
 
                             </select>
                         </div>

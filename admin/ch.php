@@ -5,7 +5,6 @@ $arr = array(
       $_POST["txt1"],
       $_POST["txt2"]
 );
-
 $sql = "SELECT * FROM `users` WHERE users.u_usersname = '" . $arr[0] . "' AND users.u_pssaword = '" . $arr[1] . "' AND users.Status = 'Admin';";
 $re = mysqli_query($conn, $sql);
 

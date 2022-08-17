@@ -208,8 +208,6 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                 $NT = [0];
                                 $EU = [0];
                             }
-
-
                             ?>
                             <!-- Earnings (Monthly) Card Example -->
                             <div class="col-xl-3 col-md-6 mb-4">
@@ -295,7 +293,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
 
 
                         <div class="row">
-                            <div class="col-9">
+                            <div class="col-7">
                                 <div class="card">
                                     <div class="card-header">
                                         ประสิทธิผลโดยรวมของเครื่องจักร
@@ -309,7 +307,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-3">
+                            <div class="col-5">
                                 <div class="card">
                                     <div class="card-header">
                                         ค่าเฉลี่ย
@@ -347,7 +345,6 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                 <a class="scroll-to-top rounded" href="#page-top">
                     <i class="fas fa-angle-up"></i>
                 </a>
-
                 <!-- Logout Modal-->
                 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -370,31 +367,25 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                 $sql = "SELECT * FROM `report` INNER JOIN users on report.u_id = users.u_id ORDER BY id DESC LIMIT 4;";
                 $re = mysqli_query($conn, $sql);
                 $name = [];
-                $TR = [];
-                $TS = [];
-                $NT = [];
+
                 $EU = [];
+                
 
 
                 foreach ($re as $k => $row) {
                     $name[$k] = $row["u_usersname"];
-                    $TR[$k] = $row["TR"];
-                    $TS[$k] = $row["TS"];
-                    $NT[$k] = $row["NT"];
                     $EU[$k] = $row["EU"];
                 }
-
-
                 ?>
                 <script>
                     const ctx = document.getElementById('myChart').getContext('2d');
                     const myChart = new Chart(ctx, {
-                        type: 'line',
+                        type: 'bar',
                         data: {
-                            labels: ['อัตราการเดินเครื่อง', 'ประสิทธิภาพเครื่องจักร', 'อัตราคุณภาพ', 'ผลรวมOEE'],
+                            labels: ['ผลรวมOEE'],
                             datasets: [{
                                     label: <?= json_encode($name[0]) ?>,
-                                    data: [<?= $TR[0] ?>, <?= $TS[0] ?>, <?= $NT[0] ?>, <?= $EU[0] ?>, ],
+                                    data: [<?= $EU[0] ?>, ],
                                     backgroundColor: [
                                         'rgba(255, 99, 132)',
                                     ],
@@ -404,7 +395,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                     borderWidth: 1
                                 }, {
                                     label: <?= json_encode($name[1]) ?>,
-                                    data: [<?= $TR[1] ?>, <?= $TS[1] ?>, <?= $NT[1] ?>, <?= $EU[1] ?>],
+                                    data: [<?= $EU[1] ?>],
                                     backgroundColor: [
                                         'rgba(54, 162, 235)',
 
@@ -417,7 +408,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                 },
                                 {
                                     label: <?= json_encode($name[2]) ?>,
-                                    data: [<?= $TR[2] ?>, <?= $TS[2] ?>, <?= $NT[2] ?>, <?= $EU[2] ?>],
+                                    data: [<?= $EU[2] ?>],
                                     backgroundColor: [
 
                                         'rgba(255, 206, 86)',
@@ -432,7 +423,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                 },
                                 {
                                     label: <?= json_encode($name[3]) ?>,
-                                    data: [<?= $TR[3] ?>, <?= $TS[3] ?>, <?= $NT[3] ?>, <?= $EU[3] ?>],
+                                    data: [<?= $EU[3] ?>],
                                     backgroundColor: [
 
                                         'rgba(75, 192, 192)',
@@ -468,41 +459,49 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
 
                 ?>
                 <script>
-                    const ctx1 = document.getElementById('myChart12').getContext('2d');
-                    const myChart1 = new Chart(ctx1, {
-                        type: 'pie',
+                    const ctxx = document.getElementById('myChart12').getContext('2d');
+                    const myChart12 = new Chart(ctxx, {
+                        type: 'doughnut',
                         data: {
                             labels: ['สูง', 'ต่ำ'],
                             datasets: [{
-                                label: '# of Votes',
                                 data: [<?= max($arr1) ?>, <?= min($arr1) ?>],
                                 backgroundColor: [
-                                    'rgba(255, 99, 132, 0.2)',
-                                    'rgba(54, 162, 235, 0.2)',
-                                    'rgba(255, 206, 86, 0.2)',
-                                    'rgba(75, 192, 192, 0.2)',
-                                    'rgba(153, 102, 255, 0.2)',
-                                    'rgba(255, 159, 64, 0.2)'
+                                    'rgba(255, 206, 86)',
+                                    'rgba(0, 255, 0)',
                                 ],
                                 borderColor: [
-                                    'rgba(255, 99, 132, 0.2)',
-                                    'rgba(54, 162, 235, 0.2)',
-                                    'rgba(255, 206, 86, 0.2)',
-                                    'rgba(75, 192, 192, 0.2)',
-                                    'rgba(153, 102, 255, 0.2)',
-                                    'rgba(255, 159, 64, 0.2)'
+                                    'rgba(255, 206, 86)',
+                                    'rgba(0, 255, 0)',
                                 ],
                                 borderWidth: 1
                             }]
                         },
                         plugins: [ChartDataLabels],
-                        options: {
-                            scales: {
-                                y: {
-                                    beginAtZero: true
-                                }
-                            }
-                        }
+                        options: {}
+                    });
+                </script>
+                <script>
+                    const ctx1 = document.getElementById('myChar3').getContext('2d');
+                    const myChart3 = new Chart(ctx1, {
+                        type: 'doughnut',
+                        data: {
+                            labels: ['สูง', 'ต่ำ'],
+                            datasets: [{
+                                data: [<?= max($arr1) ?>, <?= min($arr1) ?>],
+                                backgroundColor: [
+                                    'rgba(255, 206, 86)',
+                                    'rgba(0, 255, 0)',
+                                ],
+                                borderColor: [
+                                    'rgba(255, 206, 86)',
+                                    'rgba(0, 255, 0)',
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        plugins: [ChartDataLabels],
+                        options: {}
                     });
                 </script>
                 <script>
@@ -523,7 +522,6 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                 }
                             });
                         }
-
 
                         function at1() {
                             const name = [];
@@ -577,6 +575,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
 
                 <!-- Custom scripts for all pages-->
                 <script src="js/sb-admin-2.min.js"></script>
+
 
 
 

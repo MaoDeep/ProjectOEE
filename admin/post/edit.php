@@ -18,13 +18,14 @@ if (isset($_POST["txt1"])) {
             $_POST["txt1"],
             $_POST["txt2"],
             $_POST["txt3"],
-            $_POST["txt4"]
+            $_POST["txt4"],
+            $_POST["txt5"]
       );
 
 
-      $sql = "UPDATE users SET  u_usersname = '" . $arr[1] . "', u_pssaword= '" . $arr[2] . "', Status = '" . $arr[3] . "' WHERE u_id = " . $arr[0] . ";";
+      $sql = "UPDATE users SET  u_usersname = '" . $arr[1] . "', u_pssaword = '" . $arr[2] . "', Status = '" . $arr[3] . "' , Status2 = '" . $arr[4] . "' , WHERE u_id = " . $arr[0] . ";";
       $re = mysqli_query($conn, $sql);
-    
+
       if ($re) {
             echo '<script>alert("บันทึกสำเร็จ")</script>';
             header('Location: ../user.php');
@@ -76,7 +77,7 @@ if (isset($_GET["id"]) && $_GET["id"] !== "") {
                                                 <input type="text" name="txt3" id="txt3" class="form-control form-control-sm" value="<?= $row["u_pssaword"] ?>" required>
                                           </div>
                                           <div class="mb-3">
-                                                <label for="" class="form-label">สถานะ</label>
+                                                <label for="" class="form-label">สิทธิ์ผู้ใช้งาน</label>
                                                 <select name="txt4" id="txt4" class="form-select form-select-sm">
                                                       <?php
                                                       if ($row["Status"] == "Admin") {
@@ -92,6 +93,26 @@ if (isset($_GET["id"]) && $_GET["id"] !== "") {
                                                       }
                                                       ?>
 
+                                                </select>
+                                          </div>
+                                          <div class="mb-3">
+                                                <label for="" class="form-label">สถานะ</label>
+                                                <select name="txt5" id="txt5" class="form-select form-select-sm">
+                                                      <?php
+                                                      if ($row["Status2"] == "Admin") {
+                                                      ?>
+                                                            <option value="ปกติ">ปกติ</option>
+                                                            <option value="หยุดงาน">หยุดงาน</option>
+                                                            <option value="ลาออก">ลาออก</option>
+                                                      <?php
+                                                      } else {
+                                                      ?>
+                                                            <option value="หยุดงาน">หยุดงาน</option>
+                                                            <option value="ลาออก">ลาออก</option>
+                                                            <option value="ปกติ">ปกติ</option>
+                                                      <?php
+                                                      }
+                                                      ?>
                                                 </select>
                                           </div>
                                     <?php } ?>

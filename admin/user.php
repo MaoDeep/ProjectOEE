@@ -18,7 +18,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
       <meta name="description" content="">
       <meta name="author" content="">
 
-      <title>ตารางOEE</title>
+      <title>จัดการข้อมูลผู้ใช้</title>
 
       <!-- Custom fonts for this template -->
       <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -253,6 +253,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                                                   <tr>
                                                                         <th>ลำดับ</th>
                                                                         <th>ชื่อ</th>
+                                                                        <th>สิทธิ์ผู้ใช้งาน</th>
                                                                         <th>สถานะ</th>
                                                                         <th>เเก้ไข</th>
                                                                         <th>ลบ</th>
@@ -268,6 +269,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                                                               <td><?= ($k + 1) ?></td>
                                                                               <td><?= $row["u_usersname"]; ?></td>
                                                                               <td><?= $row["Status"]; ?></td>
+                                                                              <td><?= $row["Status2"]; ?></td>
                                                                               <td><a href="post/edit.php?id=<?= $row["u_id"]; ?>"><button class="btn btn-warning ">เเก้ไข</button></a></td>
                                                                               <?php
                                                                               if ($row["u_usersname"] == $_SESSION["user"]) {
