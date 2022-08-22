@@ -1,29 +1,16 @@
 <?php
 include "../config.php";
 if (isset($_POST["txt1"])) {
-      /*
-      function autonum()
-      {
-            include "../config.php";
-            $sql = "SELECT MAX(users.u_id) FROM `users`;";
-            $re = mysqli_query($conn, $sql);
-            foreach ($re as $row) {
-                  $a = ($row["MAX(users.u_id)"] + 1);
-            }
-            return $a;
-      }
-  */
-
       $arr = array(
             $_POST["txt1"],
             $_POST["txt2"],
             $_POST["txt3"],
             $_POST["txt4"],
-            $_POST["txt5"]
+            $_POST["txt6"]
       );
 
 
-      $sql = "UPDATE users SET  u_usersname = '" . $arr[1] . "', u_pssaword = '" . $arr[2] . "', Status = '" . $arr[3] . "' , Status2 = '" . $arr[4] . "' , WHERE u_id = " . $arr[0] . ";";
+      $sql = "UPDATE users SET   u_usersname = '" . $arr[1] . "', u_pssaword = " . $arr[2] . ", Status = '" . $arr[3] . "' , std2 = '" . $arr[4] . "'  WHERE u_id = " . $arr[0] . "";
       $re = mysqli_query($conn, $sql);
 
       if ($re) {
@@ -70,7 +57,7 @@ if (isset($_GET["id"]) && $_GET["id"] !== "") {
                                           </div>
                                           <div class="mb-3">
                                                 <label for="" class="form-label">ชื่อ</label>
-                                                <input type="text" name="txt2" id="tx2" class="form-control form-control-sm" value="<?= $row["u_usersname"] ?>" required>
+                                                <input type="text" name="txt2" id="txt2" class="form-control form-control-sm" value="<?= $row["u_usersname"] ?>" required>
                                           </div>
                                           <div class="mb-3">
                                                 <label for="" class="form-label">รหัสผ่าน</label>
@@ -97,22 +84,10 @@ if (isset($_GET["id"]) && $_GET["id"] !== "") {
                                           </div>
                                           <div class="mb-3">
                                                 <label for="" class="form-label">สถานะ</label>
-                                                <select name="txt5" id="txt5" class="form-select form-select-sm">
-                                                      <?php
-                                                      if ($row["Status2"] == "Admin") {
-                                                      ?>
+                                                <select name="txt6" id="txt6" class="form-select form-select-sm">
                                                             <option value="ปกติ">ปกติ</option>
                                                             <option value="หยุดงาน">หยุดงาน</option>
                                                             <option value="ลาออก">ลาออก</option>
-                                                      <?php
-                                                      } else {
-                                                      ?>
-                                                            <option value="หยุดงาน">หยุดงาน</option>
-                                                            <option value="ลาออก">ลาออก</option>
-                                                            <option value="ปกติ">ปกติ</option>
-                                                      <?php
-                                                      }
-                                                      ?>
                                                 </select>
                                           </div>
                                     <?php } ?>

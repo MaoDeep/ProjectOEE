@@ -122,6 +122,19 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                             กรุณาใส่ข้อมูลให้ครบ
                                         </div>
                                     </div>
+
+                                <div class="form-group row"> 
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <div class="col-form-label-sm">กะ : </div>
+                                        <select name="txt5" id="txt5" class="form-select form-select-sm">
+                                            <option value="A">08:00-17:00</option>
+                                            <option value="B">17:00-20:00</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            กรุณาใส่ข้อมูลให้ครบ
+                                        </div>
+                                    </div>                            
+                                </div>
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <div class="col-form-label-sm">เวลาเข้างาน : </div>
