@@ -264,6 +264,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                                             ?>
 
                                                         </div>
+
                                                         <div class="col-sm-12">
                                                             <div class="col-form-label-sm">เวลาทำงานทั้งหมด : </div>
                                                             <div class="input-group input-group-sm">
@@ -283,11 +284,23 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    <div class="col-form-label-sm">เวลาตอนพักของพนักงาน :</div>
+                                                    <div class="col-form-label-sm">เวลาตอนพักของพนักงานนน :</div>
                                                     <div class="input-group input-group-sm">
                                                         <input type="number" step="any" class="form-control form-control-sm" id="txt2" name="txt2" placeholder="" onclick="select();" onkeyup="in1();" required>
                                                         <span class="input-group-text " id="basic-addon1">ชม.</span>
                                                     </div>
+
+                                                        <div class="invalid-feedback">
+                                                            กรุณาใส่ข้อมูลให้ครบ
+                                                        </div> 
+                                                    </div> 
+                                                    <div class="col-sm-6">
+                                                        <div class="col-form-label-sm">เวลาตอนพักของพนักงาน :</div>
+                                                        <div class="input-group input-group-sm">
+                                                            <input type="number" step="any" class="form-control form-control-sm" id="txt2" name="txt2" placeholder="" onclick="select();" onkeyup="in1();" required>
+                                                            <span class="input-group-text " id="basic-addon1">ชม.</span>
+                                                        </div>
+
 
                                                     <div class="invalid-feedback">
                                                         กรุณาใส่ข้อมูลให้ครบ
