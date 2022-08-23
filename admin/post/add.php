@@ -10,7 +10,7 @@ if (isset($_POST["submit"])) {
     );
 
 
-    $sql = "INSERT INTO `users` (`u_id`, `u_usersname`, `u_pssaword`, `Status`, `Status2`) VALUES (NULL, '" . $arr[0] . "', '" . $arr[1] . "', '" . $arr[2] . "', '" . $arr[3] . "');";
+    $sql = "INSERT INTO `users` (`u_id`, `u_usersname`, `u_pssaword`, `Status`, `std2`) VALUES (NULL, '" . $arr[0] . "', '" . $arr[1] . "', '" . $arr[2] . "', '" . $arr[3] . "');";
     $re = mysqli_query($conn, $sql);
 
 

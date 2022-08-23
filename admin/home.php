@@ -210,35 +210,32 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                             }
                             ?>
                             <!-- Earnings (Monthly) Card Example -->
-                            <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="col-md-3">
+                                <div class="card border-left-primary  py-2">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                    อัตราการเดินเครื่องจักร</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= max($TR) ?></div>
+                                                <div class="text-sm font-weight-bold text-primary text-uppercase mb-1">
+                                                เครื่องจักรที่ 1</div>
+                                                <canvas id="test1" width="12px" height="6px"></canvas>
+                                            
                                             </div>
-                                            <div class="col-auto">
-                                                <i class="fas 	fas fa-cogs fa-2x text-gray-300"></i>
-                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Earnings (Monthly) Card Example -->
-                            <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="col-md-3">
                                 <div class="card border-left-success shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                    ประสิทธิภาพของเครื่องจักร</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= max($TS) ?></div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fas fa-car-battery fa-2x text-gray-300"></i>
+                                                <div class="text-sm font-weight-bold text-success text-uppercase mb-1">
+                                                    เครื่องจักรที่ 2</div>
+                                                <canvas id="test2" width="12px" height="6px"></canvas>
+
                                             </div>
                                         </div>
                                     </div>
@@ -246,78 +243,64 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                             </div>
 
                             <!-- Earnings (Monthly) Card Example -->
-                            <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="col-md-3">
                                 <div class="card border-left-danger shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-danger  text-uppercase mb-1">อัตราคุณภาพ
+                                                <div class="text-sm font-weight-bold text-danger  text-uppercase mb-1">
+                                                   เครื่องจักรที่ 3
                                                 </div>
+                                                <canvas id="test3" width="12px" height="6px"></canvas>
                                                 <div class="row no-gutters align-items-center">
-                                                    <div class="col-auto">
-                                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= max($NT) ?></div>
-                                                    </div>
                                                     <div class="col">
 
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-auto">
-                                                <i class="fas fas 	far fa-thumbs-up fa-2x text-gray-300"></i>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                             <!-- Pending Requests Card Example -->
-                            <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="col-md-3">
                                 <div class="card border-left-warning shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                    ผลรวม OEE</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= max($EU) ?></div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fas fa-users fa-2x text-gray-300"></i>
+                                                <div class="text-sm font-weight-bold text-warning text-uppercase mb-1">
+                                                    เครื่องจักรที่ 4</div>
+                                                <canvas id="test4" width="12px" height="6px"></canvas>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
+                        <br>
                         <!-- Content Row -->
-
-
                         <div class="row">
-                            <div class="col-7">
+                            <div class="col-8">
                                 <div class="card">
                                     <div class="card-header">
-                                        ประสิทธิผลโดยรวมของเครื่องจักร
+                                        OEE
                                         <div id="test" class="h1"></div>
                                     </div>
                                     <div class="card-body">
                                         <canvas id="myChart"></canvas>
                                     </div>
-                                    <div class="card-footer text-muted">
-
-                                    </div>
+                                   
                                 </div>
                             </div>
-                            <div class="col-5">
+                            <div class="col-4">
                                 <div class="card">
                                     <div class="card-header">
-                                        ค่าเฉลี่ย
+                                        ประสิทธิภาพขของเครื่องจักร
                                     </div>
                                     <div class="card-body">
-                                        <canvas id="myChart12"></canvas>
+                                        <canvas id="myChart12" ></canvas>
                                     </div>
-                                    <div class="card-footer text-muted">
-
-                                    </div>
+                                   
                                 </div>
 
                             </div>
@@ -369,7 +352,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                 $name = [];
 
                 $EU = [];
-                
+
 
 
                 foreach ($re as $k => $row) {
@@ -382,7 +365,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                     const myChart = new Chart(ctx, {
                         type: 'bar',
                         data: {
-                            labels: ['ผลรวมOEE'],
+                            labels: ['ผลรวมของเครื่องจักร'],
                             datasets: [{
                                     label: <?= json_encode($name[0]) ?>,
                                     data: [<?= $EU[0] ?>, ],
@@ -392,7 +375,28 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                     borderColor: [
                                         'rgba(255, 99, 132)',
                                     ],
-                                    borderWidth: 1
+                                    borderWidth: 1,
+                                    datalabels: {
+                                        color: [
+
+                                            'rgba(255, 99, 132)',
+
+                                        ],
+
+                                        anchor: "end",
+                                        align: "top",
+                                        formatter: function addCommas(value) {
+                                            value += '';
+                                            x = value.split('.');
+                                            x1 = x[0];
+                                            x2 = x.length > 1 ? '.' + x[1] : '';
+                                            var rgx = /(\d+)(\d{3})/;
+                                            while (rgx.test(x1)) {
+                                                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                                            }
+                                            return x1 + x2;
+                                        }
+                                    }
                                 }, {
                                     label: <?= json_encode($name[1]) ?>,
                                     data: [<?= $EU[1] ?>],
@@ -404,7 +408,28 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                         'rgba(54, 162, 235)',
 
                                     ],
-                                    borderWidth: 1
+                                    borderWidth: 1,
+                                    datalabels: {
+                                        color: [
+
+                                            'rgba(54, 162, 235)',
+
+                                        ],
+
+                                        anchor: "end",
+                                        align: "top",
+                                        formatter: function addCommas(value) {
+                                            value += '';
+                                            x = value.split('.');
+                                            x1 = x[0];
+                                            x2 = x.length > 1 ? '.' + x[1] : '';
+                                            var rgx = /(\d+)(\d{3})/;
+                                            while (rgx.test(x1)) {
+                                                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                                            }
+                                            return x1 + x2;
+                                        }
+                                    }
                                 },
                                 {
                                     label: <?= json_encode($name[2]) ?>,
@@ -419,7 +444,28 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                         'rgba(255, 206, 86)',
 
                                     ],
-                                    borderWidth: 1
+                                    borderWidth: 1,
+                                    datalabels: {
+                                        color: [
+
+                                            'rgba(255, 206, 86)',
+
+                                        ],
+
+                                        anchor: "end",
+                                        align: "top",
+                                        formatter: function addCommas(value) {
+                                            value += '';
+                                            x = value.split('.');
+                                            x1 = x[0];
+                                            x2 = x.length > 1 ? '.' + x[1] : '';
+                                            var rgx = /(\d+)(\d{3})/;
+                                            while (rgx.test(x1)) {
+                                                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                                            }
+                                            return x1 + x2;
+                                        }
+                                    }
                                 },
                                 {
                                     label: <?= json_encode($name[3]) ?>,
@@ -434,10 +480,32 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                         'rgba(75, 192, 192)',
 
                                     ],
-                                    borderWidth: 1
+                                    borderWidth: 1,
+                                    datalabels: {
+                                        color: [
+
+                                            'rgba(75, 192, 192)',
+
+                                        ],
+
+                                        anchor: "end",
+                                        align: "top",
+                                        formatter: function addCommas(value) {
+                                            value += '';
+                                            x = value.split('.');
+                                            x1 = x[0];
+                                            x2 = x.length > 1 ? '.' + x[1] : '';
+                                            var rgx = /(\d+)(\d{3})/;
+                                            while (rgx.test(x1)) {
+                                                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                                            }
+                                            return x1 + x2;
+                                        }
+                                    }
                                 }
                             ]
                         },
+                        plugins: [ChartDataLabels],
                         options: {
                             scales: {
                                 y: {
@@ -469,6 +537,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                 backgroundColor: [
                                     'rgba(255, 206, 86)',
                                     'rgba(0, 255, 0)',
+                                    
                                 ],
                                 borderColor: [
                                     'rgba(255, 206, 86)',
@@ -482,26 +551,146 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                     });
                 </script>
                 <script>
-                    const ctx1 = document.getElementById('myChar3').getContext('2d');
-                    const myChart3 = new Chart(ctx1, {
-                        type: 'doughnut',
+                    const graph1 = document.getElementById('test1').getContext('2d');
+                    const test1 = new Chart(graph1, {
+                        type: 'bar',
                         data: {
-                            labels: ['สูง', 'ต่ำ'],
+                            labels: ['อัตราการเดินเครื่อง', 'ประสิทธิภาพเครื่องจักร', 'อัตราคุณภาพ', ],
                             datasets: [{
-                                data: [<?= max($arr1) ?>, <?= min($arr1) ?>],
+                                label: <?= json_encode($name[0]) ?>,
+                                data: [<?= $TR[0] ?>, <?= $TS[0] ?>, <?= $NT[0] ?>],
                                 backgroundColor: [
                                     'rgba(255, 206, 86)',
                                     'rgba(0, 255, 0)',
+                                    'rgba(255, 105, 180)',
+                                    
                                 ],
                                 borderColor: [
                                     'rgba(255, 206, 86)',
                                     'rgba(0, 255, 0)',
+                                    'rgba(255, 105, 180)',
+                                    
                                 ],
                                 borderWidth: 1
                             }]
                         },
                         plugins: [ChartDataLabels],
-                        options: {}
+                        options: {
+                            indexAxis: 'y',
+                            // Elements options apply to all of the options unless overridden in a dataset
+                            // In this case, we are setting the border of each horizontal bar to be 2px wide
+                            elements: {
+                                bar: {
+                                    borderWidth: 2,
+                                }
+                            }
+                        }
+                    });
+                </script>
+
+                <script>
+                    const graph2 = document.getElementById('test2').getContext('2d');
+                    const test2 = new Chart(graph2, {
+                        type: 'bar',
+                        data: {
+                            labels: ['อัตราการเดินเครื่อง', 'ประสิทธิภาพเครื่องจักร', 'อัตราคุณภาพ', ],
+                            datasets: [{
+                                label: <?= json_encode($name[0]) ?>,
+                                data: [<?= $TR[1] ?>, <?= $TS[1] ?>, <?= $NT[1] ?>],
+                                backgroundColor: [
+                                    'rgba(255, 206, 86)',
+                                    'rgba(0, 255, 0)',
+                                    'rgba(255, 105, 180)',
+                                ],
+                                borderColor: [
+                                    'rgba(255, 206, 86)',
+                                    'rgba(0, 255, 0)',
+                                    'rgba(255, 105, 180)',
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        plugins: [ChartDataLabels],
+                        options: {
+                            indexAxis: 'y',
+                            // Elements options apply to all of the options unless overridden in a dataset
+                            // In this case, we are setting the border of each horizontal bar to be 2px wide
+                            elements: {
+                                bar: {
+                                    borderWidth: 2,
+                                }
+                            }
+                        }
+                    });
+                </script>
+                <script>
+                    const graph3 = document.getElementById('test3').getContext('2d');
+                    const test3 = new Chart(graph3, {
+                        type: 'bar',
+                        data: {
+                            labels: ['อัตราการเดินเครื่อง', 'ประสิทธิภาพเครื่องจักร', 'อัตราคุณภาพ', ],
+                            datasets: [{
+                                label: <?= json_encode($name[0]) ?>,
+                                data: [<?= $TR[2] ?>, <?= $TS[2] ?>, <?= $NT[2] ?>],
+                                backgroundColor: [
+                                    'rgba(255, 206, 86)',
+                                    'rgba(0, 255, 0)',
+                                    'rgba(255, 105, 180)',
+                                ],
+                                borderColor: [
+                                    'rgba(255, 206, 86)',
+                                    'rgba(0, 255, 0)',
+                                    'rgba(255, 105, 180)',
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        plugins: [ChartDataLabels],
+                        options: {
+                            indexAxis: 'y',
+                            // Elements options apply to all of the options unless overridden in a dataset
+                            // In this case, we are setting the border of each horizontal bar to be 2px wide
+                            elements: {
+                                bar: {
+                                    borderWidth: 2,
+                                }
+                            }
+                        }
+                    });
+                </script>
+                <script>
+                    const graph4 = document.getElementById('test4').getContext('2d');
+                    const test4 = new Chart(graph4, {
+                        type: 'bar',
+                        data: {
+                            labels: ['อัตราการเดินเครื่อง', 'ประสิทธิภาพเครื่องจักร', 'อัตราคุณภาพ', ],
+                            datasets: [{
+                                label: <?= json_encode($name[0]) ?>,
+                                data: [<?= $TR[3] ?>, <?= $TS[3] ?>, <?= $NT[1] ?>],
+                                backgroundColor: [
+                                    'rgba(255, 206, 86)',
+                                    'rgba(0, 255, 0)',
+                                    'rgba(255, 105, 180)',
+                                ],
+                                borderColor: [
+                                    'rgba(255, 206, 86)',
+                                    'rgba(0, 255, 0)',
+                                    'rgba(255, 105, 180)',
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        plugins: [ChartDataLabels],
+                        options: {
+                            indexAxis: 'y',
+                            // Elements options apply to all of the options unless overridden in a dataset
+                            // In this case, we are setting the border of each horizontal bar to be 2px wide
+                            elements: {
+                                bar: {
+                                    borderWidth: 2,
+                                }
+                            }
+                        }
                     });
                 </script>
                 <script>
