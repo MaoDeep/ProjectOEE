@@ -40,15 +40,18 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
             $_POST["txt2"],
             $_POST["txt3"],
             $_POST["txt4"],
+            $_POST["txt8"],
             $_POST["txt7"],
             $_POST["txt5"],
             $_POST["txt6"],
             $_POST["txt1"]
-        );
-        $sql = "INSERT INTO `employee` (`E_id`, `EName`, `Econ`, `Epro`, `Edel` , `Etime`, `Etimet`, `DATE`) VALUES (NULL, '" . $arr1[0] . "', '" . $arr1[1] . "', '" . $arr1[2] . "', '" . $arr1[3] . "' , '" . $arr1[4] . "', '" . $arr1[5] . "', '" . $arr1[6] . "');";
+        
 
-        $date1 = new DateTime($arr1[4]);
-        $date2 = new DateTime($arr1[5]);
+        );
+        $sql = "INSERT INTO `employee`(`E_id`, `EName`, `Nmac`, `Econ`, `Epro`, `Edel`, `Etime`, `Etimet`, `DATE`) VALUES (NULL ,'" . $arr1[0] . "','" . $arr1[1] . "' , " . $arr1[2] . " , '" . $arr1[3] . "', " . $arr1[4] . " , '" . $arr1[5] . "' , '" . $arr1[6] . "' , " . $arr1[7] . ")";
+
+        $date1 = new DateTime($arr1[5]);
+        $date2 = new DateTime($arr1[6]);
 
         // The diff-methods returns a new DateInterval-object...
         $diff = $date2->diff($date1);
@@ -58,9 +61,9 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
 
         if ($re) {
             echo '<script>alert("[บันทึกสำเร็จ]")</script>';
-            echo "<script>window.location='form.php?x1=" . $arr1[1] . "&x2=" . $arr1[3] . "&x3=" . $diff->format('%h') . "&x4=" . $arr1[6] . "'</script>";
+            echo "<script>window.location='form.php?x1=" . $arr1[2] . "&x2=" . $arr1[4] . "&x3=" . $diff->format('%h') . "&x4=" . $arr1[7] . "'</script>";
         } else {
-            echo '<script>alert("บันทึกไม่สำเร็จ")</script>';
+            echo '<script>alert("[บันทึกไม่สำเร็จ]")</script>';
         }
     }
 
@@ -99,15 +102,20 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <div class="col-form-label-sm">ชิ้นงานที่ทำได้ : </div>
-                                        <input type="number" class="form-control form-control-sm " id="txt3" name="txt3" placeholder="" required>
+                                        <div class="col-form-label-sm">รหัสเครื่องจักร : </div>
+                                        <select name="txt3" id="txt3" class="form-select form-select-sm">
+                                            <option value="T200">T200</option>
+                                            <option value="T300">T300</option>
+                                            <option value="T400">T400</option>
+
+                                        </select>
                                         <div class="invalid-feedback">
                                             กรุณาใส่ข้อมูลให้ครบ
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="col-form-label-sm">รุ่นที่ผลิต :</div>
-                                        <input type="text" class="form-control form-control-sm" id="txt4" name="txt4" placeholder="" required>
+                                        <input type="text" class="form-control form-control-sm" id="txt8" name="txt8" placeholder="" required>
 
                                         <div class="invalid-feedback">
                                             กรุณาใส่ข้อมูลให้ครบ
@@ -116,25 +124,31 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <div class="col-form-label-sm">ชิ้นงานที่ทำได้ : </div>
+                                        <input type="number" class="form-control form-control-sm " id="txt4" name="txt4" placeholder="" required>
+                                        <div class="invalid-feedback">
+                                            กรุณาใส่ข้อมูลให้ครบ
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
                                         <div class="col-form-label-sm">ของเสีย : </div>
                                         <input type="number" class="form-control form-control-sm " id="txt7" name="txt7" placeholder="" required>
                                         <div class="invalid-feedback">
                                             กรุณาใส่ข้อมูลให้ครบ
                                         </div>
                                     </div>
-
-                                <div class="form-group row"> 
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <div class="col-form-label-sm">กะ : </div>
-                                        <select name="txt5" id="txt5" class="form-select form-select-sm">
-                                            <option value="A">08:00-17:00</option>
-                                            <option value="B">17:00-20:00</option>
-                                        </select>
-                                        <div class="invalid-feedback">
-                                            กรุณาใส่ข้อมูลให้ครบ
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                            <div class="col-form-label-sm">กะ : </div>
+                                            <select name="" id="" class="form-select form-select-sm">
+                                                <option value="A">08:00-17:00</option>
+                                                <option value="B">17:00-20:00</option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                กรุณาใส่ข้อมูลให้ครบ
+                                            </div>
                                         </div>
-                                    </div>                            
-                                </div>
+                                    </div>
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <div class="col-form-label-sm">เวลาเข้างาน : </div>
