@@ -48,7 +48,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
         
 
         );
-        $sql = "INSERT INTO `employee`(`E_id`, `EName`, `Nmac`, `Econ`, `Epro`, `Edel`, `Etime`, `Etimet`, `DATE`) VALUES (NULL ,'" . $arr1[0] . "','" . $arr1[1] . "' , " . $arr1[2] . " , '" . $arr1[3] . "', " . $arr1[4] . " , '" . $arr1[5] . "' , '" . $arr1[6] . "' , " . $arr1[7] . ")";
+        $sql = "INSERT INTO `employee`(`E_id`, `EName`, `Nmac`, `Econ`, `Epro`, `Edel`, `Etime`, `Etimet`, `DATE`) VALUES (NULL ,'" . $arr1[0] . "','" . $arr1[1] . "' , " . $arr1[2] . " , '" . $arr1[3] . "', " . $arr1[4] . " , '" . $arr1[5] . "' , '" . $arr1[6] . "' , '" . $arr1[7] . "')";
 
         $date1 = new DateTime($arr1[5]);
         $date2 = new DateTime($arr1[6]);
