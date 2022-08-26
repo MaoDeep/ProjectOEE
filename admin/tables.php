@@ -19,7 +19,7 @@ if (isset($_GET['del'])) {
     }
 }
 if (isset($_POST['submit'])) {
-    $sql = "UPDATE `employee` SET `EName` = '" . $_POST['txt1'] . "',`Econ` = '" . $_POST['txt2'] . "',`EPro` = '" . $_POST['txt3'] . "',`Etime` = '" . $_POST['txt4'] . "',`Etimet` = '" . $_POST['txt5'] . "'
+    $sql = "UPDATE `employee` SET `EName` = '" . $_POST['txt1'] . "', `Nmac` = '" . $_POST['txt2'] . "' , `Econ` = " . $_POST['txt3'] . " ,`EPro` = '" . $_POST['txt4'] . "', `Edel` = " . $_POST['txt5'] . " , `Etime` = '" . $_POST['txt6'] . "',`Etimet` = '" . $_POST['txt7'] . "'
      WHERE `employee`.`E_id` = '" . $_POST['txt0'] . "';";
     $re = mysqli_query($conn, $sql);
     if ($re) {
@@ -253,6 +253,7 @@ if (isset($_POST['submit'])) {
                                             <th>ลำดับ</th>
                                             <th>วันที่</th>
                                             <th>ชื่อ</th>
+                                            <th>รหัสเครื่อง</th>
                                             <th>ชิ้นงานที่ทำได้</th>
                                             <th>รุ่นที่ผลิต</th>
                                             <th>ของเสีย</th>
@@ -276,6 +277,7 @@ if (isset($_POST['submit'])) {
                     <td>' . $n1 . '</td>
                     <td>' . $d1 . '</td>
                     <td>' . $value['EName'] . '</td>
+                    <td>' . $value['Nmac'] . '</td>
                     <td>' . $value['Econ'] . '</td>
                     <td>' . $value['Epro'] . '</td>
                     <td>' . $value['Edel'] . '</td>

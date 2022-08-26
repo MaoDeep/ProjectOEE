@@ -355,8 +355,9 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
 
 
 
-                foreach ($re as $k => $row) {
+                foreach ($re as $k  => $row) {
                     $name[$k] = $row["u_usersname"];
+                    
                     $EU[$k] = $row["EU"];
                 }
                 ?>
@@ -533,6 +534,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                         data: {
                             labels: ['สูง', 'ต่ำ'],
                             datasets: [{
+
                                 data: [<?= max($arr1) ?>, <?= min($arr1) ?>],
                                 backgroundColor: [
                                     'rgba(255, 206, 86)',
@@ -595,7 +597,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                         data: {
                             labels: ['อัตราการเดินเครื่อง', 'ประสิทธิภาพเครื่องจักร', 'อัตราคุณภาพ', ],
                             datasets: [{
-                                label: <?= json_encode($name[0]) ?>,
+                                label: <?= json_encode($name[1]) ?>,
                                 data: [<?= $TR[1] ?>, <?= $TS[1] ?>, <?= $NT[1] ?>],
                                 backgroundColor: [
                                     'rgba(255, 206, 86)',
@@ -630,7 +632,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                         data: {
                             labels: ['อัตราการเดินเครื่อง', 'ประสิทธิภาพเครื่องจักร', 'อัตราคุณภาพ', ],
                             datasets: [{
-                                label: <?= json_encode($name[0]) ?>,
+                                label: <?= json_encode($name[2]) ?>,
                                 data: [<?= $TR[2] ?>, <?= $TS[2] ?>, <?= $NT[2] ?>],
                                 backgroundColor: [
                                     'rgba(255, 206, 86)',
@@ -665,7 +667,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                         data: {
                             labels: ['อัตราการเดินเครื่อง', 'ประสิทธิภาพเครื่องจักร', 'อัตราคุณภาพ', ],
                             datasets: [{
-                                label: <?= json_encode($name[0]) ?>,
+                                label: <?= json_encode($name[3]) ?>,
                                 data: [<?= $TR[3] ?>, <?= $TS[3] ?>, <?= $NT[1] ?>],
                                 backgroundColor: [
                                     'rgba(255, 206, 86)',
