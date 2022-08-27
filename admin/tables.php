@@ -19,8 +19,8 @@ if (isset($_GET['del'])) {
     }
 }
 if (isset($_POST['submit'])) {
-    $sql = "UPDATE `employee` SET `EName` = '" . $_POST['txt1'] . "', `Nmac` = '" . $_POST['txt2'] . "' , `Econ` = " . $_POST['txt3'] . " ,`EPro` = '" . $_POST['txt4'] . "', `Edel` = " . $_POST['txt5'] . " , `Etime` = '" . $_POST['txt6'] . "',`Etimet` = '" . $_POST['txt7'] . "'
-     WHERE `employee`.`E_id` = '" . $_POST['txt0'] . "';";
+    $sql = "UPDATE `employee` SET `EName` = '" . $_POST['txt1'] . "', `Nmac` = '" . $_POST['txt2'] . "' , `Econ` = " . $_POST['txt3'] . " ,`EPro` = '" . $_POST['txt4'] . "', `Edel` = " . $_POST['txt5'] . " , `Etime` =  '" . $_POST['txt6'] . "' ,  `Etimet` = '" . $_POST['txt7'] . "' 
+     WHERE `employee`. `E_id` = " . $_POST['txt0'] . "";
     $re = mysqli_query($conn, $sql);
     if ($re) {
         echo "<script>alert('บันทึกสำเร็จ')</script>";

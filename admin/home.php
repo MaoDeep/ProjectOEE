@@ -216,9 +216,9 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
                                                 <div class="text-sm font-weight-bold text-primary text-uppercase mb-1">
-                                                เครื่องจักรที่ 1</div>
+                                                    เครื่องจักรที่ 1</div>
                                                 <canvas id="test1" width="12px" height="6px"></canvas>
-                                            
+
                                             </div>
 
                                         </div>
@@ -249,7 +249,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
                                                 <div class="text-sm font-weight-bold text-danger  text-uppercase mb-1">
-                                                   เครื่องจักรที่ 3
+                                                    เครื่องจักรที่ 3
                                                 </div>
                                                 <canvas id="test3" width="12px" height="6px"></canvas>
                                                 <div class="row no-gutters align-items-center">
@@ -289,7 +289,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                     <div class="card-body">
                                         <canvas id="myChart"></canvas>
                                     </div>
-                                   
+
                                 </div>
                             </div>
                             <div class="col-4">
@@ -298,9 +298,9 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                         ประสิทธิภาพขของเครื่องจักร
                                     </div>
                                     <div class="card-body">
-                                        <canvas id="myChart12" ></canvas>
+                                        <canvas id="myChart12"></canvas>
                                     </div>
-                                   
+
                                 </div>
 
                             </div>
@@ -350,6 +350,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                 $sql = "SELECT * FROM `report` INNER JOIN users on report.u_id = users.u_id ORDER BY id DESC LIMIT 4;";
                 $re = mysqli_query($conn, $sql);
                 $name = [];
+                $surname = [];
 
                 $EU = [];
 
@@ -357,7 +358,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
 
                 foreach ($re as $k  => $row) {
                     $name[$k] = $row["u_usersname"];
-                    
+
                     $EU[$k] = $row["EU"];
                 }
                 ?>
@@ -539,7 +540,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                 backgroundColor: [
                                     'rgba(255, 206, 86)',
                                     'rgba(0, 255, 0)',
-                                    
+
                                 ],
                                 borderColor: [
                                     'rgba(255, 206, 86)',
@@ -565,13 +566,13 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                     'rgba(255, 206, 86)',
                                     'rgba(0, 255, 0)',
                                     'rgba(255, 105, 180)',
-                                    
+
                                 ],
                                 borderColor: [
                                     'rgba(255, 206, 86)',
                                     'rgba(0, 255, 0)',
                                     'rgba(255, 105, 180)',
-                                    
+
                                 ],
                                 borderWidth: 1
                             }]
