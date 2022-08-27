@@ -65,6 +65,30 @@ if (isset($_POST['submit'])) {
     <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.colVis.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+<style>
+    body { 
+  font: 14px/2 Georgia, serif; 
+}
+
+#page-wrap { 
+  max-width: 500px; 
+  margin: 1rem auto;
+  padding: 1rem;
+}
+
+h1, h2 {
+  line-height: 1.2;
+}
+
+p, ul, h1 { 
+  margin: 0 0 1rem 0; 
+}
+</style>
+    
 </head>
 
 <body id="page-top" style="font-family: 'Pridi', serif;">
@@ -292,8 +316,12 @@ if (isset($_POST['submit'])) {
                     <td>' . $value['NT'] .'%'.'</td>
                     <td>' . $value['EU'] .'%'.'</td>
                     <td>' . $value['u_usersname'] . '</td>
-                    <td><a href="charts.php?id=' . $value["id"] . '&name=' . $value["u_usersname"] . '&date=' . $d1 . '"><button type="submit" class="btn btn-warning ">ดู</button></a></td>
-                   
+                    <td><a href="charts.php?id=' . $value["id"] . '&name=' . $value["u_usersname"] . '&date=' . $d1 . '"><button type="submit"  ">ดู</button></a><a href="#two"><button>
+                    <span class="material-icons">
+                    arrow_circle_down
+                    </span>
+                    </button>
+                    </a></td>        
                 </tr>';
                                                         }
 
@@ -312,8 +340,8 @@ if (isset($_POST['submit'])) {
                         ?>
                             <div class=" col-12 mx-auto">
                                 <div class="card mt-3 ">
-                                    <div class="card-header">
-                                        <div>กราฟOEE</div>
+                                    <div class="card-header" >
+                                        <div id="two">กราฟOEE</div>
                                     </div>
                                     <div class="card-body">
 
@@ -508,7 +536,44 @@ if (isset($_POST['submit'])) {
         });
     </script>
 
-
+    <script>
+        // Select all links with hashes
+$('a[href*="#"]')
+  // Remove links that don't actually link to anything
+  .not('[href="#"]')
+  .not('[href="#0"]')
+  .click(function(event) {
+    // On-page links
+    if (
+      location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+      && 
+      location.hostname == this.hostname
+    ) {
+      // Figure out element to scroll to
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+      // Does a scroll target exist?
+      if (target.length) {
+        // Only prevent default if animation is actually gonna happen
+        event.preventDefault();
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000, function() {
+          // Callback after animation
+          // Must change focus!
+          var $target = $(target);
+          $target.focus();
+          if ($target.is(":focus")) { // Checking if the target was focused
+            return false;
+          } else {
+            $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+            $target.focus(); // Set focus again
+          };
+        });
+      }
+    }
+  });
+    </script>
 
 
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
