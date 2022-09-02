@@ -31,6 +31,7 @@ if (isset($_POST['submit'])) {
 <head>
 
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -66,29 +67,72 @@ if (isset($_POST['submit'])) {
     <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.colVis.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-<style>
-    body { 
-  font: 14px/2 Georgia, serif; 
-}
 
-#page-wrap { 
-  max-width: 500px; 
-  margin: 1rem auto;
-  padding: 1rem;
-}
+    <style>
+        body {
+            background: #111;
+        }
 
-h1, h2 {
-  line-height: 1.2;
-}
+        .arrowbtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 28px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: Turquoise;
+            color: Black;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 4px;
+        }
 
-p, ul, h1 { 
-  margin: 0 0 1rem 0; 
-}
-</style>
-    
+        .arrowbtn:hover {
+            background: white;
+            border-color: white;
+            color: #111;
+        }
+
+        .arrowbtn:after {
+            position: absolute;
+            display: inline-block;
+            content: "";
+            width: 25px;
+            height: 25px;
+            top: 50%;
+            left: 50%;
+        }
+
+        .arrowbtn-up {
+            top: 20px;
+        }
+
+        .arrowbtn-up:after {
+            margin-left: -12.5px;
+            margin-top: -6.25px;
+            border-top: 2px solid;
+            border-left: 2px solid;
+            transform: rotateZ(45deg);
+        }
+
+        .arrowbtn-down {
+            bottom: 20px;
+        }
+
+        .arrowbtn-down:after {
+            margin-left: -12.5px;
+            margin-top: -18.75px;
+            border-bottom: 2px solid;
+            border-right: 2px solid;
+            transform: rotateZ(45deg);
+        }
+    </style>
+    </style>
+
 </head>
 
 <body id="page-top" style="font-family: 'Pridi', serif;">
@@ -256,6 +300,7 @@ p, ul, h1 {
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary"> ตารางประสิทธิผลโดยรวมของเครื่องจักร</h6>
                         </div>
+
                         <div class="card-body">
                             <div class="mx-auto col-12">
                                 <div class="card">
@@ -309,20 +354,22 @@ p, ul, h1 {
                                                         <input type="checkbox" class="form-check-input w-100" id="no[]" name="no[]" value="' . $value["id"] . '">
                                                         </div>
                                                         </td>
-                    <td>' . $n1 . '</td>
-                    <td>' . $d1 . '</td>
-                    <td>' . $value['TR'] .'%'. ' </td>
-                    <td>' . $value['TS'] .'%'. '</td>
-                    <td>' . $value['NT'] .'%'.'</td>
-                    <td>' . $value['EU'] .'%'.'</td>
-                    <td>' . $value['u_usersname'] . '</td>
-                    <td><a href="charts.php?id=' . $value["id"] . '&name=' . $value["u_usersname"] . '&date=' . $d1 . '"><button type="submit"  ">ดู</button></a><a href="#two"><button>
-                    <span class="material-icons">
-                    arrow_circle_down
-                    </span>
-                    </button>
-                    </a></td>        
-                </tr>';
+                                                        </td>
+                                                        <td>' . $n1 . '</td>
+                                                        <td>' . $d1 . '</td>
+                                                        <td>' . $value['TR'] . '%' . ' </td>
+                                                        <td>' . $value['TS'] . '%' . '</td>
+                                                        <td>' . $value['NT'] . '%' . '</td>
+                                                        <td>' . $value['EU'] . '%' . '</td>
+                                                        <td>' . $value['u_usersname'] . '</td>
+                                                        <td><a href=" charts.php=' . $value["id"] . '&name=' . $value["u_usersname"] . '&date=' . $d1 . '"><button type="submit"  class="btn btn-warning  "name="button" >ดู</button>
+                                                        
+                                                     </button>
+                                                        </a></td>
+            
+                                                    </a>
+                                    
+                                                    </tr>';
                                                         }
 
                                                         ?>
@@ -332,6 +379,7 @@ p, ul, h1 {
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -340,7 +388,7 @@ p, ul, h1 {
                         ?>
                             <div class=" col-12 mx-auto">
                                 <div class="card mt-3 ">
-                                    <div class="card-header" >
+                                    <div class="card-header">
                                         <div id="two">กราฟOEE</div>
                                     </div>
                                     <div class="card-body">
@@ -384,7 +432,7 @@ p, ul, h1 {
                                                                 <th><?php echo number_format($row["MS"], 2) ?></th>
                                                                 <th><?php echo number_format($row["RT"], 2) ?></th>
                                                                 <th><?php echo number_format($row["MSS"], 2) ?></th>
-                                                                <th><?php echo number_format($row["NO"], ) ?></th>
+                                                                <th><?php echo number_format($row["NO"],) ?></th>
                                                                 <th><?php echo number_format($row["NUM"], 2) ?></th>
                                                                 <th><?php echo $row["u_usersname"] ?></th>
                                                             </tr>
@@ -406,6 +454,10 @@ p, ul, h1 {
                 </div>
             </div>
         </div>
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
         <!-- /.container-fluid -->
 
     </div>
@@ -460,8 +512,8 @@ p, ul, h1 {
                                 'rgba(154, 50, 205)',
                                 'rgba(0, 139, 69)',
                                 'rgba(139, 0, 0)',
-                                
-                                
+
+
                             );
                             foreach ($re as $row) {
 
@@ -538,44 +590,101 @@ p, ul, h1 {
 
     <script>
         // Select all links with hashes
-$('a[href*="#"]')
-  // Remove links that don't actually link to anything
-  .not('[href="#"]')
-  .not('[href="#0"]')
-  .click(function(event) {
-    // On-page links
-    if (
-      location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
-      && 
-      location.hostname == this.hostname
-    ) {
-      // Figure out element to scroll to
-      var target = $(this.hash);
-      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-      // Does a scroll target exist?
-      if (target.length) {
-        // Only prevent default if animation is actually gonna happen
-        event.preventDefault();
-        $('html, body').animate({
-          scrollTop: target.offset().top
-        }, 1000, function() {
-          // Callback after animation
-          // Must change focus!
-          var $target = $(target);
-          $target.focus();
-          if ($target.is(":focus")) { // Checking if the target was focused
-            return false;
-          } else {
-            $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
-            $target.focus(); // Set focus again
-          };
-        });
-      }
-    }
-  });
+        $('a[href*="#"]')
+            // Remove links that don't actually link to anything
+            .not('[href="#"]')
+            .not('[href="#0"]')
+            .click(function(event) {
+                // On-page links
+                if (
+                    location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') &&
+                    location.hostname == this.hostname
+                ) {
+                    // Figure out element to scroll to
+                    var target = $(this.hash);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                    // Does a scroll target exist?
+                    if (target.length) {
+                        // Only prevent default if animation is actually gonna happen
+                        event.preventDefault();
+                        $('html, body').animate({
+                            scrollTop: target.offset().top
+                        }, 1000, function() {
+                            // Callback after animation
+                            // Must change focus!
+                            var $target = $(target);
+                            $target.focus();
+                            if ($target.is(":focus")) { // Checking if the target was focused
+                                return false;
+                            } else {
+                                $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
+                                $target.focus(); // Set focus again
+                            };
+                        });
+                    }
+                }
+            });
     </script>
 
+    <script>
+        //Get the button
+        var mybutton = document.getElementById("myBtn");
 
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+    <script>
+        //Get the button
+        var mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.arrowbtn > 20 || document.documentElement.arrowbtn > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.arrowbtn = 0;
+            document.documentElement.arrowbtn = 0;
+        }
+    </script>
+    <script>
+    var offset = -100;
+
+function pageScroll() {
+        window.scrollBy(0,50); // horizontal and vertical scroll increments
+        if(window.pageYOffset == offset) return;
+        offset = window.pageYOffset;
+        scrolldelay = setTimeout('pageScroll()',100); // scrolls every 100 milliseconds
+}
+
+//actually scroll
+pageScroll();
+</script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- Core plugin JavaScript-->

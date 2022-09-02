@@ -31,7 +31,6 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
-
 <body id="page-top" style="font-family: 'Pridi', serif;">
     <?php
     $date = date("Y-m-d H:i:s");
