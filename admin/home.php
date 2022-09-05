@@ -208,11 +208,6 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                 $NT = [0];
                                 $EU = [0];
                             }
-                            $sqlrow = "SELECT * FROM `report` INNER JOIN users ON users.u_id = report.u_id INNER JOIN employee ON employee.EName = users.u_usersname ORDER BY id DESC LIMIT 4;";
-                            $rerow = mysqli_query($conn, $sqlrow);
-                            foreach ($rerow as $row) {
-                                $t[] = $row["Nmac"];
-                            }
                             ?>
                             <!-- Earnings (Monthly) Card Example -->
                             <div class="col-md-3">
@@ -221,7 +216,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
                                                 <div class="text-sm font-weight-bold text-primary text-uppercase mb-1">
-                                                    เครื่องจักร : <?php echo $t[0] ?></div>
+                                                    เครื่องจักรที่ 1</div>
                                                 <canvas id="test1" width="12px" height="6px"></canvas>
 
                                             </div>
@@ -238,7 +233,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
                                                 <div class="text-sm font-weight-bold text-success text-uppercase mb-1">
-                                                    เครื่องจักร : <?php echo $t[1] ?></div>
+                                                    เครื่องจักรที่ 2</div>
                                                 <canvas id="test2" width="12px" height="6px"></canvas>
 
                                             </div>
@@ -254,7 +249,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
                                                 <div class="text-sm font-weight-bold text-danger  text-uppercase mb-1">
-                                                    เครื่องจักร : <?php echo $t[2] ?>
+                                                    เครื่องจักรที่ 3
                                                 </div>
                                                 <canvas id="test3" width="12px" height="6px"></canvas>
                                                 <div class="row no-gutters align-items-center">
@@ -274,7 +269,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
                                                 <div class="text-sm font-weight-bold text-warning text-uppercase mb-1">
-                                                    เครื่องจักร : <?php echo $t[3] ?></div>
+                                                    เครื่องจักรที่ 4</div>
                                                 <canvas id="test4" width="12px" height="6px"></canvas>
                                             </div>
                                         </div>
