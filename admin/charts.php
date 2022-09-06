@@ -426,14 +426,14 @@ if (isset($_POST['submit'])) {
                                                     ?>
                                                             <tr>
                                                                 <th><?php echo $d ?></th>
-                                                                <th><?php echo number_format($row["AT"], 2) ?></th>
-                                                                <th><?php echo number_format($row["SP"], 2) ?></th>
-                                                                <th><?php echo number_format($row["WT"], 2) ?></th>
-                                                                <th><?php echo number_format($row["MS"], 2) ?></th>
-                                                                <th><?php echo number_format($row["RT"], 2) ?></th>
-                                                                <th><?php echo number_format($row["MSS"], 2) ?></th>
-                                                                <th><?php echo number_format($row["NO"],) ?></th>
-                                                                <th><?php echo number_format($row["NUM"], 2) ?></th>
+                                                                <th><?php echo number_format($row["AT"], 2). " ชม."; ?></th>
+                                                                <th><?php echo number_format($row["SP"], 2). " ชม.";  ?></th>
+                                                                <th><?php echo number_format($row["WT"], 2). " ชม.";  ?></th>
+                                                                <th><?php echo number_format($row["MS"], 2). " ชม.";  ?></th>
+                                                                <th><?php echo number_format($row["RT"], 2). " ชม.";  ?></th>
+                                                                <th><?php echo number_format($row["MSS"], 2) . " ชม."; ?></th>
+                                                                <th><?php echo number_format($row["NO"],) . " ชิ้น."; ?></th>
+                                                                <th><?php echo number_format($row["NUM"], ) . " ชิ้น."; ?></th>
                                                                 <th><?php echo $row["u_usersname"] ?></th>
                                                             </tr>
                                                     <?php

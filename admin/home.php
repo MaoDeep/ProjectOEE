@@ -200,13 +200,13 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                     $TR[] = $rw2["TR"];
                                     $TS[] = $rw2["TS"];
                                     $NT[] = $rw2["NT"];
-                                    $EU[] = $rw2["EU"];
+                                    
                                 }
                             } else {
                                 $TR = [0];
                                 $TS = [0];
                                 $NT = [0];
-                                $EU = [0];
+                               
                             }
                             $sqlrow = "SELECT * FROM `report` INNER JOIN users ON users.u_id = report.u_id INNER JOIN employee ON employee.EName = users.u_usersname ORDER BY id DESC ";
                             $rerow = mysqli_query($conn, $sqlrow);
@@ -360,11 +360,11 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                foreach ($re as $k  => $row) {
                 $name[$k] = $row["u_usersname"];
 
-                
+                $EU[$k] = $row["EU"];
                 $TR[$k] = $row["TR"];
                 $TS[$k] = $row["TS"];
                 $NT[$k] = $row["NT"];
-                $EU[$k] = $row["EU"];
+               
             }
 
 
@@ -374,7 +374,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                 ?>
                 <script>
                     const ctx = document.getElementById('myChart').getContext('2d');
-                    const myChart = new Chart(ctx, {
+                    const myChart0 = new Chart(ctx, {
                         type: 'bar',
                         data: {
                             labels: ['ผลรวมของเครื่องจักร'],
