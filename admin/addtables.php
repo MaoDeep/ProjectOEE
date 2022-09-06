@@ -106,6 +106,10 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                             <option value="T200">T200</option>
                                             <option value="T300">T300</option>
                                             <option value="T400">T400</option>
+                                            <option value="T500">T500</option>
+                                            <option value="T600">T600</option>
+
+
 
                                         </select>
                                         <div class="invalid-feedback">

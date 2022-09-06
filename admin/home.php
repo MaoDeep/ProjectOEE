@@ -208,9 +208,12 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                 $NT = [0];
                                 $EU = [0];
                             }
-                            $sqlrow = "SELECT * FROM `report` INNER JOIN users ON users.u_id = report.u_id INNER JOIN employee ON employee.EName = users.u_usersname ORDER BY id DESC LIMIT 4 ";
+                            $sqlrow = "SELECT * FROM `report` INNER JOIN users ON users.u_id = report.u_id INNER JOIN employee ON employee.EName = users.u_usersname ORDER BY id DESC ";
                             $rerow = mysqli_query($conn, $sqlrow);
                             foreach ($rerow as $row) {
+
+                                $name5[] = $row["EName"];
+
                                 $t[] = $row["Nmac"];
                             }
                             ?>
@@ -352,20 +355,22 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                     </div>
                 </div>
                 <?php
-                $sql = "SELECT * FROM `report` INNER JOIN users on report.u_id = users.u_id ORDER BY id DESC LIMIT 4;";
-                $re = mysqli_query($conn, $sql);
-                $name = [];
-        
+               $sql = "SELECT * FROM `report` INNER JOIN users ON users.u_id = report.u_id  ORDER BY id DESC LIMIT 4;";
+               $re = mysqli_query($conn, $sql);
+               foreach ($re as $k  => $row) {
+                $name[$k] = $row["u_usersname"];
 
-                $EU = [];
+                
+                $TR[$k] = $row["TR"];
+                $TS[$k] = $row["TS"];
+                $NT[$k] = $row["NT"];
+                $EU[$k] = $row["EU"];
+            }
 
 
 
-                foreach ($re as $k  => $row) {
-                    $name[$k] = $row["u_usersname"];
-
-                    $EU[$k] = $row["EU"];
-                }
+             
+                
                 ?>
                 <script>
                     const ctx = document.getElementById('myChart').getContext('2d');
