@@ -208,7 +208,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                 $NT = [0];
                                 $EU = [0];
                             }
-                            $sqlrow = "SELECT * FROM `report` INNER JOIN users ON users.u_id = report.u_id INNER JOIN employee ON employee.EName = users.u_usersname ORDER BY id DESC LIMIT 4;";
+                            $sqlrow = "SELECT * FROM `report` INNER JOIN users ON users.u_id = report.u_id INNER JOIN employee ON employee.EName = users.u_usersname ORDER BY id DESC LIMIT 4 ";
                             $rerow = mysqli_query($conn, $sqlrow);
                             foreach ($rerow as $row) {
                                 $t[] = $row["Nmac"];
@@ -355,7 +355,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                 $sql = "SELECT * FROM `report` INNER JOIN users on report.u_id = users.u_id ORDER BY id DESC LIMIT 4;";
                 $re = mysqli_query($conn, $sql);
                 $name = [];
-                $surname = [];
+        
 
                 $EU = [];
 
