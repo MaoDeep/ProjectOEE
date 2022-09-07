@@ -570,7 +570,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                         data: {
                             labels: ['อัตราการเดินเครื่อง', 'ประสิทธิภาพเครื่องจักร', 'อัตราคุณภาพ', ],
                             datasets: [{
-                                label: <?= json_encode($name[0]) ?>,
+                                label:  <?= json_encode($name[0]) ?>,
                                 data: [<?= $TR[0] ?>, <?= $TS[0] ?>, <?= $NT[0] ?>],
                                 backgroundColor: [
                                     'rgba(255, 206, 86)',

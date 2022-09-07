@@ -103,12 +103,10 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <div class="col-form-label-sm">รหัสเครื่องจักร : </div>
                                         <select name="txt3" id="txt3" class="form-select form-select-sm">
-                                            <option value="T200">T200</option>
-                                            <option value="T300">T300</option>
-                                            <option value="T400">T400</option>
-                                            <option value="T500">T500</option>
-                                            <option value="T600">T600</option>
-
+                                        <option value="MC-HTP-2016-1">MC-HTP-2016-1</option>
+                                            <option value="MC-HTP-2009-2">MC-HTP-2009-2</option>
+                                            <option value="MC-HTP-2005-3">MC-HTP-2005-3</option>
+                                            <option value="MC-HTP-2014-4">MC-HTP-2014-4</option>
 
 
                                         </select>
@@ -143,8 +141,8 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <div class="col-form-label-sm">กะ : </div>
-                                            <select name="" id="" class="form-select form-select-sm">
-                                                <option value="A">08:00-17:00</option>
+                                            <select name="" id="" class="form-select form-select-sm" >
+                                                <option value="A" step="any" onkeyup="A();" onclick="select();"  >08:00-17:00</option>
                                                 <option value="B">17:00-20:00</option>
                                             </select>
                                             <div class="invalid-feedback">
@@ -155,7 +153,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <div class="col-form-label-sm">เวลาเข้างาน : </div>
-                                            <input type="time" class="form-control form-control-sm " id="txt5" name="txt5" placeholder="" required>
+                                            <input type="time" class="form-control form-control-sm " id="txt5" name="txt5" placeholder="" >
                                             <div class="invalid-feedback">
                                                 กรุณาใส่ข้อมูลให้ครบ
                                             </div>
@@ -211,6 +209,9 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                     }, false)
                 })
         })()
+    </script>
+    <script>
+        
     </script>
 </body>
 
