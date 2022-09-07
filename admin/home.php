@@ -208,13 +208,13 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                 $NT = [0];
                                
                             }
-                            $sqlrow = "SELECT * FROM `report` INNER JOIN users ON users.u_id = report.u_id INNER JOIN employee ON employee.EName = users.u_usersname ORDER BY id DESC ";
+                            $sqlrow = "SELECT * FROM `report` INNER JOIN users ON users.u_id = report.u_id INNER JOIN machine ON machine.mac_id = users.mac_id ORDER BY id DESC ";
                             $rerow = mysqli_query($conn, $sqlrow);
                             foreach ($rerow as $row) {
 
-                                $name5[] = $row["EName"];
+                                $name5[] = $row["u_usersname"];
 
-                                $t[] = $row["Nmac"];
+                                $t[] = $row["mac_name"];
                             }
                             ?>
                             <!-- Earnings (Monthly) Card Example -->
