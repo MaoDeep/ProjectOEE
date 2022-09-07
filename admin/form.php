@@ -2,7 +2,7 @@
 session_start();
 include "config.php";
 date_default_timezone_set('Asia/Bangkok');
-if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
+if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
     header('Location: index.php');
     exit(0);
 }
@@ -200,7 +200,9 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Name : <?php echo $_SESSION["user"] ?> <br>Status : <?php echo $_SESSION["status"] ?> </span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Name : <?php echo $_SESSION["user"] ?> <br>Status : <?php echo $_SESSION["status"] ?>
+                                </span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> </span>
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"> </span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>

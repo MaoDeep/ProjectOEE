@@ -1,10 +1,12 @@
 <?php
 session_start();
+
 include "config.php";
 if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
     header('Location: index.php');
     exit(0);
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,6 +33,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
+
 <body id="page-top" style="font-family: 'Pridi', serif;">
     <?php
     $date = date("Y-m-d H:i:s");
@@ -44,7 +47,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
             $_POST["txt5"],
             $_POST["txt6"],
             $_POST["txt1"]
-        
+
 
         );
         $sql = "INSERT INTO `employee`(`E_id`, `EName`, `Nmac`, `Econ`, `Epro`, `Edel`, `Etime`, `Etimet`, `DATE`) VALUES (NULL ,'" . $arr1[0] . "','" . $arr1[1] . "' , " . $arr1[2] . " , '" . $arr1[3] . "', " . $arr1[4] . " , '" . $arr1[5] . "' , '" . $arr1[6] . "' , '" . $arr1[7] . "')";
@@ -99,17 +102,22 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <div class="col-form-label-sm">รหัสเครื่องจักร : </div>
-                                        <select name="txt3" id="txt3" class="form-select form-select-sm">
-                                        <option value="MC-HTP-2016-1">MC-HTP-2016-1</option>
-                                            <option value="MC-HTP-2009-2">MC-HTP-2009-2</option>
-                                            <option value="MC-HTP-2005-3">MC-HTP-2005-3</option>
-                                            <option value="MC-HTP-2014-4">MC-HTP-2014-4</option>
+                                        <?php
+                                        $sqlrow = "SELECT * FROM `users` INNER JOIN machine ON machine.mac_id = users.mac_id where users.u_usersname = '". $_SESSION["user"] ."' ";
+                                        $rerow = mysqli_query($conn, $sqlrow);
+                                        foreach ($rerow as $row ) {
+                                        
+                                        $user = $row["u_usersname"];
 
-
-                                        </select>
+                                        $mac = $row["mac_name"];
+                                        
+                                    }
+                                        ?>
+                                        <input type="text" class="form-control form-control-sm" id="txt3" name="txt3" readonly placeholder="" value="<?= $mac ?>" required>
                                         <div class="invalid-feedback">
                                             กรุณาใส่ข้อมูลให้ครบ
                                         </div>
@@ -141,8 +149,8 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <div class="col-form-label-sm">กะ : </div>
-                                            <select name="" id="" class="form-select form-select-sm" >
-                                                <option value="A" step="any" onkeyup="A();" onclick="select();"  >08:00-17:00</option>
+                                            <select name="" id="" class="form-select form-select-sm">
+                                                <option value="A">08:00-17:00</option>
                                                 <option value="B">17:00-20:00</option>
                                             </select>
                                             <div class="invalid-feedback">
@@ -153,7 +161,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <div class="col-form-label-sm">เวลาเข้างาน : </div>
-                                            <input type="time" class="form-control form-control-sm " id="txt5" name="txt5" placeholder="" >
+                                            <input type="time" class="form-control form-control-sm " id="txt5" name="txt5" placeholder="" required>
                                             <div class="invalid-feedback">
                                                 กรุณาใส่ข้อมูลให้ครบ
                                             </div>
@@ -161,7 +169,13 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                         <div class="col-sm-6">
                                             <div class="col-form-label-sm">เวลาออกงาน :</div>
                                             <input type="time" class="form-control form-control-sm" id="txt6" name="txt6" placeholder="" required>
-
+                                            <div class="col-6">
+                                                <fieldset>
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" id="customSwitch1" name='machine_state'>
+                                                        <label class="custom-control-label" id="statusText" for="customSwitch1"></label>
+                                                    </div>
+                                            </div>
                                             <div class="invalid-feedback">
                                                 กรุณาใส่ข้อมูลให้ครบ
                                             </div>
@@ -209,9 +223,6 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                     }, false)
                 })
         })()
-    </script>
-    <script>
-        
     </script>
 </body>
 
