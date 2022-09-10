@@ -264,9 +264,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                                                 $d1 = "";
                                                             }
                                                             ?>
-
                                                         </div>
-
                                                         <div class="col-sm-12">
                                                             <div class="col-form-label-sm">เวลาทำงานทั้งหมด : </div>
                                                             <div class="input-group input-group-sm">
