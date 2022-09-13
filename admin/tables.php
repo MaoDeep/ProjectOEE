@@ -9,15 +9,6 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
     exit(0);
 }
 
-
-
-if (isset($_GET['del'])) {
-    if ($_GET['del'] == 1) {
-        echo "<script>alert('ลบสำเร็จ')</script>";
-    } elseif ($_GET['del'] == 0) {
-        echo "<script>alert('ลบไม่สำเร็จ')</script>";
-    }
-}
 if (isset($_POST['submit'])) {
     $sql = "UPDATE `employee` SET `EName` = '" . $_POST['txt1'] . "', `Nmac` = '" . $_POST['txt2'] . "' , `Econ` = " . $_POST['txt3'] . " ,`EPro` = '" . $_POST['txt4'] . "', `Edel` = " . $_POST['txt5'] . " , `Etime` =  '" . $_POST['txt6'] . "' ,  `Etimet` = '" . $_POST['txt7'] . "' 
      WHERE `employee`. `E_id` = " . $_POST['txt0'] . "";
@@ -29,6 +20,17 @@ if (isset($_POST['submit'])) {
     }
 }
 ?>
+<script>
+    function myFunction() {
+  var txt;
+  if (confirm("คุณต้องการที่จะลบข้อมูลหรือไม่")) {
+    txt = "You pressed OK!";
+  } else {
+    txt = "You pressed Cancel!";
+  }
+  document.getElementById("demo").innerHTML = txt;
+}
+</script>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -284,7 +286,7 @@ if (isset($_POST['submit'])) {
                     <td>' . $value['Etime'] . '</td>
                     <td>' . $value['Etimet'] . '</td>
                     <td><a href="edittables.php?id=' . $value['E_id'] . '"><button class="btn-warning btn-md btn">เเก้ไข</button></a></td>
-                    <td><a href="Delete.php?edit=' . $value['E_id'] . '"><button class="btn-danger btn-md btn" onclick="del()">ลบ</button><a/></td>
+                    <td><a href="Delete.php?edit=' . $value['E_id'] . '"><button class="btn-danger btn-md btn" onclick="myFunction()">ลบ</button><a/></td>
                 </tr>';
                                     }
 
