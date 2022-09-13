@@ -9,5 +9,6 @@ if (isset($_GET["id"]) && $_GET["id"] !== "") {
       } else {
             echo '<script>alert("บันทึกไม่สำเร็จ")</script>';
       }
+       
 }
 ?>

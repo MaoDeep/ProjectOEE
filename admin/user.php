@@ -84,6 +84,16 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
             }
       }
       ?>
+      
+<script>
+function chkdel(){if(confirm('  กรุณายืนยันการลบอีกครั้ง !!!  ')){
+	return true;
+}else{
+	return false;
+}
+}
+</script>
+
       <!-- Page Wrapper -->
       <div id="wrapper">
 
@@ -276,7 +286,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                                                                     echo '<td></td>';
                                                                               } else {
                                                                               ?>
-                                                                                    <td><a href="post/del.php?id=<?= $row["u_id"]; ?>"><button class="btn btn-danger ">ลบ</button></a></td>
+                                                                                    <td><a href="post/del.php?id=<?= $row["u_id"]; ?>" ><button  class="btn btn-danger " OnClick="return chkdel();" >ลบ</button></a></td>
                                                                               <?php
                                                                               }
                                                                               ?>

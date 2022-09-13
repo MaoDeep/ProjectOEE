@@ -20,17 +20,16 @@ if (isset($_POST['submit'])) {
     }
 }
 ?>
+
 <script>
-    function myFunction() {
-  var txt;
-  if (confirm("คุณต้องการที่จะลบข้อมูลหรือไม่")) {
-    txt = "You pressed OK!";
-  } else {
-    txt = "You pressed Cancel!";
-  }
-  document.getElementById("demo").innerHTML = txt;
+function chkdel(){if(confirm('  กรุณายืนยันการลบอีกครั้ง !!!  ')){
+	return true;
+}else{
+	return false;
+}
 }
 </script>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -286,7 +285,7 @@ if (isset($_POST['submit'])) {
                     <td>' . $value['Etime'] . '</td>
                     <td>' . $value['Etimet'] . '</td>
                     <td><a href="edittables.php?id=' . $value['E_id'] . '"><button class="btn-warning btn-md btn">เเก้ไข</button></a></td>
-                    <td><a href="Delete.php?edit=' . $value['E_id'] . '"><button class="btn-danger btn-md btn" onclick="myFunction()">ลบ</button><a/></td>
+                    <td><a href="Delete.php?edit=' . $value['E_id'] . '"><button class="btn-danger btn-md btn" OnClick="return chkdel();">ลบ</button><a/></td>
                 </tr>';
                                     }
 
