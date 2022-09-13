@@ -146,9 +146,9 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <div class="col-form-label-sm">กะ : </div>
-                                            <select  class="form-select form-select-sm" id="language">
-                                                <option value="08:00" >17:00</option>
-                                                <option value="17:00" >20:00</option>
+                                            <select  class="form-select form-select-sm" id="language" onChange="update()">
+                                                <option value="08:00" id="17:00" >08:00-17:00</option>
+                                                <option value="17:00" id="20:00" >17:00-20:00</option>
                                             </select>
                                             <div class="invalid-feedback">
                                                 กรุณาใส่ข้อมูลให้ครบ
@@ -222,13 +222,13 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                 })
         })()
     </script>
-    <script>
+    <script type="text/javascript">
       function update() {
 				var select = document.getElementById('language');
 				var option = select.options[select.selectedIndex];
 
 				document.getElementById('txt5').value = option.value;
-				document.getElementById('txt6').value = option.text;
+				document.getElementById('txt6').value = option.id;
 			}
 
 			update();
