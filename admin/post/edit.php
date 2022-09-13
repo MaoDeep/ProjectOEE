@@ -65,15 +65,17 @@ if (isset($_GET["id"]) && $_GET["id"] !== "") {
                                           </div>
                                           <div class="mb-3">
                                                 <label for="" class="form-label">สิทธิ์ผู้ใช้งาน</label>
-                                                <select name="txt4" id="txt4" class="form-select form-select-sm">
+                                                <select name="txt4" id="txt4" class="form-select form-select-sm" value="" required >
                                                       <?php
                                                       if ($row["Status"] == "Admin") {
                                                       ?>
+                                                            
                                                             <option value="Admin">Admin</option>
                                                             <option value="User">User</option>
                                                       <?php
                                                       } else {
                                                       ?>
+                                                           
                                                             <option value="User">User</option>
                                                             <option value="Admin">Admin</option>
                                                       <?php
@@ -84,10 +86,11 @@ if (isset($_GET["id"]) && $_GET["id"] !== "") {
                                           </div>
                                           <div class="mb-3">
                                                 <label for="" class="form-label">สถานะ</label>
-                                                <select name="txt6" id="txt6" class="form-select form-select-sm">
-                                                            <option value="ปกติ">ปกติ</option>
-                                                            <option value="หยุดงาน">หยุดงาน</option>
-                                                            <option value="ลาออก">ลาออก</option>
+                                                <select name="txt6" id="txt6" class="form-select form-select-sm" value="" required >
+                                                
+                                                      <option value="ปกติ">ปกติ</option>
+                                                      <option value="หยุดงาน">หยุดงาน</option>
+                                                      <option value="ลาออก">ลาออก</option>
                                                 </select>
                                           </div>
                                     <?php } ?>
