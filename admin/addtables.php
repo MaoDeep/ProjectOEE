@@ -158,7 +158,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <div class="col-form-label-sm">เวลาเข้างาน : </div>
-                                            <input type="time" class="form-control form-control-sm " id="txt5" name="txt5" placeholder="" required>
+                                            <input type="time" step="1" class="form-control form-control-sm " id="txt5" name="txt5" placeholder="" required>
                                             <div class="invalid-feedback">
                                                 กรุณาใส่ข้อมูลให้ครบ
                                             </div>
@@ -166,7 +166,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                         <div class="col-sm-6">
                                             <div class="col-form-label-sm">เวลาออกงาน :</div>
                                             <div class="input-group input-group-sm">
-                                                <input type="time" class="form-control form-control-sm w-50" id="txt6" name="txt6" placeholder="" required>
+                                                <input type="time" step="1" class="form-control form-control-sm w-50" id="txt6" name="txt6" placeholder="" required>
                                                 <div class="col-sm-2">
                                                     <fieldset>
                                                         <div class="custom-control custom-switch">
@@ -232,6 +232,9 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
 			}
 
 			update();
+    </script>
+    <script>
+        f
     </script>
 </body>
 
