@@ -154,11 +154,12 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                                 กรุณาใส่ข้อมูลให้ครบ
                                             </div>
                                         </div>
+                                        
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <div class="col-form-label-sm">เวลาเข้างาน : </div>
-                                            <input type="time" step="1" class="form-control form-control-sm " id="txt5" name="txt5" placeholder="" required>
+                                            <input type="time" class="form-control form-control-sm " id="txt5" name="txt5" placeholder="" required>
                                             <div class="invalid-feedback">
                                                 กรุณาใส่ข้อมูลให้ครบ
                                             </div>
@@ -166,12 +167,12 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                         <div class="col-sm-6">
                                             <div class="col-form-label-sm">เวลาออกงาน :</div>
                                             <div class="input-group input-group-sm">
-                                                <input type="time" step="1" class="form-control form-control-sm w-50" id="txt6" name="txt6" placeholder="" required>
+                                                <input type="time" class="form-control form-control-sm w-50" id="txt6" name="txt6" placeholder="" required>
                                                 <div class="col-sm-2">
                                                     <fieldset>
-                                                        <div class="custom-control custom-switch">
-                                                            <input type="checkbox" class="custom-control-input" id="customSwitch1" name='machine_state'>
-                                                            <label class="custom-control-label" id="statusText" for="customSwitch1"></label>
+                                                       <div class="custom-control custom-switch" >
+                                                            <input type="checkbox" class="custom-control-input" id="customSwitch1"onclick="myStopFunction()"value="stop" name='machine_state'>
+                                                            <label class="custom-control-label" id="div"  for="customSwitch1"></label>
                                                         </div>
                                                 </div>
                                                 <div class="invalid-feedback">
@@ -233,9 +234,22 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
 
 			update();
     </script>
-    <script>
-        f
-    </script>
+                                      <script type="text/javascript">
+      
+
+      function showClockRealTime() {
+      var d = new Date();
+      document.getElementById("div").innerHTML = +d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+  }
+  setInterval("showClockRealTime()", 1000);
+
+     
+    
+  function myStopFunction() {
+      clearInterval(sec);
+    }
+  </script>
+                
 </body>
 
 </html>
