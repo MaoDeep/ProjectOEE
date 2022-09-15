@@ -146,15 +146,15 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <div class="col-form-label-sm">กะ : </div>
-                                            <select  class="form-select form-select-sm" id="language" onChange="update()">
-                                                <option value="08:00" id="17:00" >08:00-17:00</option>
-                                                <option value="17:00" id="20:00" >17:00-20:00</option>
+                                            <select class="form-select form-select-sm" id="language" onChange="update()">
+                                                <option value="08:00" id="17:00">08:00-17:00</option>
+                                                <option value="17:00" id="20:00">17:00-20:00</option>
                                             </select>
                                             <div class="invalid-feedback">
                                                 กรุณาใส่ข้อมูลให้ครบ
                                             </div>
                                         </div>
-                                        
+
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">
@@ -168,12 +168,8 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                             <div class="col-form-label-sm">เวลาออกงาน :</div>
                                             <div class="input-group input-group-sm">
                                                 <input type="time" class="form-control form-control-sm w-50" id="txt6" name="txt6" placeholder="" required>
-                                                <div class="col-sm-2">
-                                                    <fieldset>
-                                                       <div class="custom-control custom-switch" >
-                                                            <input type="checkbox" class="custom-control-input" id="customSwitch1"onclick="myStopFunction()"value="stop" name='machine_state'>
-                                                            <label class="custom-control-label" id="div"  for="customSwitch1"></label>
-                                                        </div>
+                                                <div class="col-sm-3">
+                                                    <button type="button" class="btn btn-primary btn-user btn-block btn-sm" name="get_time" id="get_time">ดึงเวลา</button>
                                                 </div>
                                                 <div class="invalid-feedback">
                                                     กรุณาใส่ข้อมูลให้ครบ
@@ -224,32 +220,30 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
         })()
     </script>
     <script type="text/javascript">
-      function update() {
-				var select = document.getElementById('language');
-				var option = select.options[select.selectedIndex];
+        function update() {
+            var select = document.getElementById('language');
+            var option = select.options[select.selectedIndex];
 
-				document.getElementById('txt5').value = option.value;
-				document.getElementById('txt6').value = option.id;
-			}
+            document.getElementById('txt5').value = option.value;
+            document.getElementById('txt6').value = option.id;
+        }
 
-			update();
+        update();
     </script>
-                                      <script type="text/javascript">
-      
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#get_time").click(function() {
+                var date = new Date();
+                var h = String(date.getHours()).padStart(2, '0');
+                var i = String(date.getMinutes()).padStart(2, '0');
+                var v = h + ":" + i;
+                $("#txt6").val(v);
 
-      function showClockRealTime() {
-      var d = new Date();
-      document.getElementById("div").innerHTML = +d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
-  }
-  setInterval("showClockRealTime()", 1000);
+            });
 
-     
-    
-  function myStopFunction() {
-      clearInterval(sec);
-    }
-  </script>
-                
+        });
+    </script>
+
 </body>
 
 </html>
