@@ -288,7 +288,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                         <br>
                         <!-- Content Row -->
                         <div class="row">
-                            <div class="col-8">
+                            <div class="col-12">
                                 <div class="card">
                                     <div class="card-header">
                                         OEE
@@ -297,23 +297,11 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                     <div class="card-body">
                                         <canvas id="myChart"></canvas>
                                     </div>
-
                                 </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="card">
-                                    <div class="card-header">
-                                        ประสิทธิภาพขของเครื่องจักร
-                                    </div>
-                                    <div class="card-body">
-                                        <canvas id="myChart12"></canvas>
-                                    </div>
+                        
+                           
 
-                                </div>
-
-                            </div>
-
-                        </div>
+                        
                         <!-- End of Main Content -->
 
                         <!-- Footer -->
@@ -527,42 +515,8 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                         }
                     });
                 </script>
-                <input type="hidden" name="tst" id="tst" value="">
-                <?php
-                include "config.php";
-                $sql1 = "SELECT * FROM `report`";
-                $re1 = mysqli_query($conn, $sql1);
-
-                foreach ($re1 as $rw1) {
-                    $arr1[] = $rw1["EU"];
-                }
-
-                ?>
-                <script>
-                    const ctxx = document.getElementById('myChart12').getContext('2d');
-                    const myChart12 = new Chart(ctxx, {
-                        type: 'doughnut',
-                        data: {
-                            labels: ['สูง', 'ต่ำ'],
-                            datasets: [{
-
-                                data: [<?= max($arr1) ?>, <?= min($arr1) ?>],
-                                backgroundColor: [
-                                    'rgba(255, 206, 86)',
-                                    'rgba(0, 255, 0)',
-
-                                ],
-                                borderColor: [
-                                    'rgba(255, 206, 86)',
-                                    'rgba(0, 255, 0)',
-                                ],
-                                borderWidth: 1
-                            }]
-                        },
-                        plugins: [ChartDataLabels],
-                        options: {}
-                    });
-                </script>
+       
+                
                 <script>
                     const graph1 = document.getElementById('test1').getContext('2d');
                     const test1 = new Chart(graph1, {
