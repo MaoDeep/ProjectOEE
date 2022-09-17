@@ -71,6 +71,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
     <form action="addtables.php" method="post" class="needs-validation" novalidate>
         <br>
 
+
         <div class="container">
 
             <!-- Circle Buttons -->
@@ -143,36 +144,37 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-md-3">
+                                        <div class="col-md-2">
                                             <div class="col-form-label-sm">เวลาเข้างาน : </div>
                                             <input type="time" class="form-control form-control-sm " id="txt5" name="txt5" placeholder="" required>
                                             <div class="invalid-feedback">
                                                 กรุณาใส่ข้อมูลให้ครบ
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
-                                            <div class="col-form-label-sm">เวลา : </div>
+                                        <div class="col-md-2">
+                                            <div class="col-form-label-sm">เวลาเริ่มพัก : </div>
                                             <input type="time" class="form-control form-control-sm " id="txt9" name="txt9" placeholder="" required>
                                             <div class="invalid-feedback">
                                                 กรุณาใส่ข้อมูลให้ครบ
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
-                                            <div class="col-form-label-sm">เวลาพัก : </div>
+                                        <div class="col-md-2">
+                                            <div class="col-form-label-sm">เวลาพักเสร็จ : </div>
                                             <input type="time" class="form-control form-control-sm " id="txt10" name="txt10" placeholder="" required>
                                             <div class="invalid-feedback">
                                                 กรุณาใส่ข้อมูลให้ครบ
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-2">
                                             <div class="col-form-label-sm">เวลาออกงาน : </div>
                                             <input type="time" class="form-control form-control-sm " id="txt6" name="txt6" placeholder="" required>
                                             <div class="invalid-feedback">
                                                 กรุณาใส่ข้อมูลให้ครบ
                                             </div>
                                         </div>
-                                        <div class="col-md-3 mt-3">
+                                        <div class="col-md-4 mt-3">
                                             <button type="button" class="btn btn-primary btn-sm mt-3" name="get_time" id="get_time">ยืนยันเวลาเข้างาน</button>
+                                            <button type="button" class="btn btn-primary btn-sm mt-3" name="get_cul" id="get_cul">คำนวน</button>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -233,11 +235,55 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
     </script>
     <script type="text/javascript">
         $(document).ready(function() {
+            function timeDiffCalc(dateFuture, dateNow) {
+                let diffInMilliSeconds = Math.abs(dateFuture - dateNow) / 1000;
+
+                // calculate days
+                const days = Math.floor(diffInMilliSeconds / 86400);
+                diffInMilliSeconds -= days * 86400;
+                console.log('calculated days', days);
+
+                // calculate hours
+                const hours = Math.floor(diffInMilliSeconds / 3600) % 24;
+                diffInMilliSeconds -= hours * 3600;
+                console.log('calculated hours', hours);
+
+                // calculate minutes
+                const minutes = Math.floor(diffInMilliSeconds / 60) % 60;
+                diffInMilliSeconds -= minutes * 60;
+                console.log('minutes', minutes);
+
+                let difference = '';
+                if (days > 0) {
+                    difference += (days === 1) ? `${days} day, ` : `${days} days, `;
+                }
+
+                difference += (hours === 0 || hours === 1) ? `${String(hours).padStart(2, '0')}` : `${String(hours).padStart(2, '0')}`;
+                difference += ":";
+                difference += (minutes === 0 || hours === 1) ? `${String(minutes).padStart(2, '0')}` : `${String(minutes).padStart(2, '0')}`;
+
+                return difference;
+            }
             $("#submit").addClass("disabled");
+
+            $("#get_cul").click(function() {
+                var datein = $("#txt5").val();
+                var breakin = $("#txt10").val()
+                var breakout = $("#txt9").val();
+                var dateout = $("#txt6").val()
+                var date1 = new Date('2019-10-01 ' + timeDiffCalc(new Date('2019/10/1 ' + breakin + ':00'), new Date('2019/10/1 ' + breakout + ':00')) + ':00');
+                var date2 = new Date('2019-10-01 ' + timeDiffCalc(new Date('2019/10/1 ' + datein + ':00'), new Date('2019/10/1 ' + dateout + ':00')) + ':00');
+              
+                date1.setHours(date1.getHours() - 1);
+                console.log(date1);
+                console.log(date2);
+            });
+
             var status = 1;
             $("#get_time").click(function() {
+
                 if (status == 1) {
-                    
+
                     let text = "ยืนยันเวลาเข้างาน";
                     if (confirm(text) == true) {
                         var date = new Date();
@@ -257,11 +303,25 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                         var i = String(date.getMinutes()).padStart(2, '0');
                         var v = h + ":" + i;
                         $("#txt9").val(v);
+
+                        status++;
+                        $("#get_time").text("ยืนยันเวลาออกงาน");
+
+                        $("#submit").removeClass("disabled");
+                    }
+                } else if (status == 3) {
+                    let text = "ยืนยันเวลาพัก";
+                    if (confirm(text) == true) {
+                        var date = new Date();
+                        var h = String(date.getHours()).padStart(2, '0');
+                        var i = String(date.getMinutes()).padStart(2, '0');
+                        var v = h + ":" + i;
+                        $("#txt10").val(v);
                         status++;
                         $("#get_time").text("ยืนยันเวลาออกงาน");
                     }
 
-                } else if (status == 3) {
+                } else if (status == 4) {
                     let text = "ยืนยันเวลาออกงาน";
                     if (confirm(text) == true) {
                         var date = new Date();
@@ -275,7 +335,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                         $("#submit").removeClass("disabled");
                     }
                 }
-               
+
 
             });
 
