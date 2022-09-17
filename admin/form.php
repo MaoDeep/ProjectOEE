@@ -270,13 +270,6 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                                             <div class="input-group input-group-sm">
                                                                 <input type="number" step="any" class="form-control form-control-sm " id="txt1" name="txt1" placeholder="" onkeyup="in1();" onclick="select();" value="<?php echo $d1 ?>" required>
                                                                 <span class="input-group-text " id="basic-addon1">ชม.</span>
-                                                                <div class="col-6">
-                                                                    <fieldset>
-                                                                        <div class="custom-control custom-switch">
-                                                                            <input type="checkbox" class="custom-control-input" id="customSwitch1" name='machine_state'>
-                                                                            <label class="custom-control-label" id="statusText" for="customSwitch1"></label>
-                                                                        </div>
-                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="invalid-feedback">
@@ -721,7 +714,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                 })
         })()
     </script>
- 
+
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

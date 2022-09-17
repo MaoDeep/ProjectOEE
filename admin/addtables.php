@@ -47,8 +47,6 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
             $_POST["txt5"],
             $_POST["txt6"],
             $_POST["txt1"]
-
-
         );
         $sql = "INSERT INTO `employee`(`E_id`, `EName`, `Nmac`, `Econ`, `Epro`, `Edel`, `Etime`, `Etimet`, `DATE`) VALUES (NULL ,'" . $arr1[0] . "','" . $arr1[1] . "' , " . $arr1[2] . " , '" . $arr1[3] . "', " . $arr1[4] . " , '" . $arr1[5] . "' , '" . $arr1[6] . "' , '" . $arr1[7] . "')";
 
@@ -143,44 +141,47 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                             กรุณาใส่ข้อมูลให้ครบ
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-6 mb-3 mb-sm-0">
-                                            <div class="col-form-label-sm">กะ : </div>
-                                            <select class="form-select form-select-sm" id="language" onChange="update()">
-                                                <option value="08:00" id="17:00">08:00-17:00</option>
-                                                <option value="17:00" id="20:00">17:00-20:00</option>
-                                            </select>
-                                            <div class="invalid-feedback">
-                                                กรุณาใส่ข้อมูลให้ครบ
-                                            </div>
-                                        </div>
 
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <div class="row">
+                                        <div class="col-md-3">
                                             <div class="col-form-label-sm">เวลาเข้างาน : </div>
                                             <input type="time" class="form-control form-control-sm " id="txt5" name="txt5" placeholder="" required>
                                             <div class="invalid-feedback">
                                                 กรุณาใส่ข้อมูลให้ครบ
                                             </div>
                                         </div>
-                                        <div class="col-sm-6">
-                                            <div class="col-form-label-sm">เวลาออกงาน :</div>
-                                            <div class="input-group input-group-sm">
-                                                <input type="time" class="form-control form-control-sm w-50" id="txt6" name="txt6" placeholder="" required>
-                                                <div class="col-sm-3">
-                                                    <button type="button" class="btn btn-primary btn-user btn-block btn-sm" name="get_time" id="get_time">ดึงเวลา</button>
-                                                </div>
-                                                <div class="invalid-feedback">
-                                                    กรุณาใส่ข้อมูลให้ครบ
-                                                </div>
+                                        <div class="col-md-3">
+                                            <div class="col-form-label-sm">เวลา : </div>
+                                            <input type="time" class="form-control form-control-sm " id="txt9" name="txt9" placeholder="" required>
+                                            <div class="invalid-feedback">
+                                                กรุณาใส่ข้อมูลให้ครบ
                                             </div>
                                         </div>
+                                        <div class="col-md-3">
+                                            <div class="col-form-label-sm">เวลาพัก : </div>
+                                            <input type="time" class="form-control form-control-sm " id="txt10" name="txt10" placeholder="" required>
+                                            <div class="invalid-feedback">
+                                                กรุณาใส่ข้อมูลให้ครบ
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="col-form-label-sm">เวลาออกงาน : </div>
+                                            <input type="time" class="form-control form-control-sm " id="txt6" name="txt6" placeholder="" required>
+                                            <div class="invalid-feedback">
+                                                กรุณาใส่ข้อมูลให้ครบ
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 mt-3">
+                                            <button type="button" class="btn btn-primary btn-sm mt-3" name="get_time" id="get_time">ยืนยันเวลาเข้างาน</button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-12 mt-3">
-                                            <button type="submit" class="btn btn-primary btn-user btn-block btn-sm" name="submit">บันทึก</button>
+                                            <button type="submit" class="btn btn-primary btn-user btn-block btn-sm" name="submit" id="submit">บันทึก</button>
                                             <a href="tables.php"><button type="button" class="btn btn-danger btn-sm btn-user btn-block mt-3" name="Back">กลับ </button></a>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -232,12 +233,49 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
     </script>
     <script type="text/javascript">
         $(document).ready(function() {
+            $("#submit").addClass("disabled");
+            var status = 1;
             $("#get_time").click(function() {
-                var date = new Date();
-                var h = String(date.getHours()).padStart(2, '0');
-                var i = String(date.getMinutes()).padStart(2, '0');
-                var v = h + ":" + i;
-                $("#txt6").val(v);
+                if (status == 1) {
+                    
+                    let text = "ยืนยันเวลาเข้างาน";
+                    if (confirm(text) == true) {
+                        var date = new Date();
+                        var h = String(date.getHours()).padStart(2, '0');
+                        var i = String(date.getMinutes()).padStart(2, '0');
+                        var v = h + ":" + i;
+                        $("#txt5").val(v);
+                        $("#get_time").text("ยืนยันเวลาพัก");
+                        status++;
+                    }
+
+                } else if (status == 2) {
+                    let text = "ยืนยันเวลาพัก";
+                    if (confirm(text) == true) {
+                        var date = new Date();
+                        var h = String(date.getHours()).padStart(2, '0');
+                        var i = String(date.getMinutes()).padStart(2, '0');
+                        var v = h + ":" + i;
+                        $("#txt9").val(v);
+                        status++;
+                        $("#get_time").text("ยืนยันเวลาออกงาน");
+                    }
+
+                } else if (status == 3) {
+                    let text = "ยืนยันเวลาออกงาน";
+                    if (confirm(text) == true) {
+                        var date = new Date();
+                        var h = String(date.getHours()).padStart(2, '0');
+                        var i = String(date.getMinutes()).padStart(2, '0');
+                        var v = h + ":" + i;
+                        $("#txt6").val(v);
+                        status++;
+                        $("#get_time").text("ยืนยันเวลาออกงาน");
+                        $("#get_time").addClass("disabled");
+                        $("#submit").removeClass("disabled");
+                    }
+                }
+               
 
             });
 
