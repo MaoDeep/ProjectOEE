@@ -82,9 +82,6 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                 </div>
             </a>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="home.php">
@@ -92,36 +89,18 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                     <span>หน้าหลัก</span></a>
             </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Form
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-clipboard"></i>
-                    <span>จัดการข้อมูล</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">แบบฟอร์มการทำงาน:</h6>
-                        <a class="collapse-item" href="tables.php">บันทึกยอดผลิตประจำวัน</a>
-                        <a class="collapse-item" href="form.php">กรอกข้อมูลการทำงาน</a>
-                    </div>
-                </div>
+                <a class="nav-link" href="tables.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>บันทึกยอดผลิตประจำวัน</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="form.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>กรอกข้อมูลการทำงาน</span></a>
             </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Report
-            </div>
             <!-- Nav Item - Charts -->
             <li class="nav-item">
                 <a class="nav-link" href="charts.php">
@@ -224,513 +203,515 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                 <div class="container-fluid">
 
                     <div class="row">
-
-                        <div class="col-sm-12">
-                            <form action="form.php" method="post" class="needs-validation" novalidate>
-                                <!-- Circle Buttons -->
-                                <div class="card shadow mb-4">
-                                    <div class="card-header py-3">
-                                        <h5 class="m-0 font-weight-bold text-primary">กรอกข้อมูล</h5>
-                                    </div>
-                                    <div class="row mt-3 ">
-                                        <div class="col-9">
-                                            <div class="text-end col-form-label-sm">วันที่ :</div>
+                        <div class="form-group row">
+                            <div class="col-sm-12  ">
+                                <form action="form.php" method="post" class="needs-validation" novalidate>
+                                    <!-- Circle Buttons -->
+                                    <div class="card shadow mb-4">
+                                        <div class="card-header py-3">
+                                            <h5 class="m-0 font-weight-bold text-primary">กรอกข้อมูล</h5>
                                         </div>
-                                        <div class="col-3">
-                                            <?php
-                                            if (isset($_GET["x4"])) {
-                                                $d = date($_GET["x4"] . '\TH:i');
-                                            } else {
-                                                $d = date('Y-m-d\TH:i');
-                                            }
-                                            ?>
-                                            <input type="datetime-local" name="date" id="date" class="form-control form-control-sm w-75" value="<?php echo $d ?>" max="<?php echo $d ?>">
-                                        </div>
-                                    </div>
-                                    <div class="card-body ">
-                                        <div class="card">
-                                            <div class="card-header col-form-label-sm">
-                                                อัตราการเดินเครื่องจักร
+                                        <div class="row mt-3 ">
+                                            <div class="col-9">
+                                                <div class="text-end col-form-label-sm">วันที่ :</div>
                                             </div>
-                                            <div class="card-body">
-                                                <div class="form-group row">
-                                                    <div class="col-sm-6  ">
-
-                                                        <div class="input-group input-group-sm">
-                                                            <?php
-                                                            if (isset($_GET["x3"])) {
-                                                                $d1 = $_GET["x3"];
-                                                            } else {
-                                                                $d1 = "";
-                                                            }
-                                                            ?>
-                                                        </div>
-                                                        <div class="col-sm-12">
-                                                            <div class="col-form-label-sm">เวลาทำงานทั้งหมด : </div>
+                                            <div class="col-3">
+                                                <?php
+                                                if (isset($_GET["x4"])) {
+                                                    $d = date($_GET["x4"] . '\TH:i');
+                                                } else {
+                                                    $d = date('Y-m-d\TH:i');
+                                                }
+                                                ?>
+                                                <input type="datetime-local" name="date" id="date" class="form-control form-control-sm w-75" value="<?php echo $d ?>" max="<?php echo $d ?>">
+                                            </div>
+                                        </div>
+                                        <div class="card-body ">
+                                            <div class="card">
+                                                <div class="card-header col-form-label-sm">
+                                                    อัตราการเดินเครื่องจักร
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-6  ">
                                                             <div class="input-group input-group-sm">
-                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt1" name="txt1" placeholder="" onkeyup="in1();" onclick="select();" value="<?php echo $d1 ?>" required>
-                                                                <span class="input-group-text " id="basic-addon1">ชม.</span>
+                                                                <?php
+                                                                if (isset($_GET["x3"])) {
+                                                                    $d1 = $_GET["x3"];
+                                                                } else {
+                                                                    $d1 = "";
+                                                                }
+                                                                ?>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="col-sm-12  ">
+                                                                    <div class="col-form-label-sm">เวลาทำงานทั้งหมด : </div>
+                                                                    <div class="input-group input-group-sm">
+                                                                        <input type="number" step="any" class="form-control form-control-sm " id="txt1" name="txt1" placeholder="" onkeyup="in1();" onclick="select();" value="<?php echo $d1 ?>" required>
+                                                                        <span class="input-group-text " id="basic-addon1">นาที</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="invalid-feedback">
+                                                                กรุณาใส่ข้อมูลให้ครบ
                                                             </div>
                                                         </div>
-                                                        <div class="invalid-feedback">
-                                                            กรุณาใส่ข้อมูลให้ครบ
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <?php
-                                                        if (isset($_GET["x5"])) {
-                                                            $d7 = $_GET["x5"];
-                                                        } else {
-                                                            $d7 = "";
-                                                        }
-                                                        ?>
-                                                        <div class="col-form-label-sm">เวลาตอนพักของพนักงาน :</div>
-                                                        <div class="input-group input-group-sm">
-                                                            <input type="number" step="any" class="form-control form-control-sm" id="txt2" name="txt2" placeholder="" onclick="select();" onkeyup="in1();" value="<?php echo $d7 ?>" required>
-                                                            <span class="input-group-text " id="basic-addon1">ชม.</span>
-                                                        </div>
-                                                        <div class="invalid-feedback">
-                                                            กรุณาใส่ข้อมูลให้ครบ
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <div class="col-sm-6  ">
-                                                        <div class="col-form-label-sm">เวลาทำงานจริง : </div>
-                                                        <div class="input-group input-group-sm">
-                                                            <input type="number" step="any" class="form-control form-control-sm " id="txt3" name="txt3" placeholder="" onclick="select();" onkeyup="in1();" required>
-                                                            <span class="input-group-text " id="basic-addon1">ชม.</span>
-                                                        </div>
-
-                                                        <div class="invalid-feedback">
-                                                            กรุณาใส่ข้อมูลให้ครบ
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <div class="col-form-label-sm">เวลาปิดเครื่องตอนพัก :</div>
-                                                        <div class="input-group input-group-sm">
-                                                            <input type="number" step="any" class="form-control form-control-sm" id="txt4" name="txt4" placeholder="" onclick="select();" onkeyup="in1();" required>
-                                                            <span class="input-group-text " id="basic-addon1">ชม.</span>
-                                                        </div>
-
-
-                                                        <div class="invalid-feedback">
-                                                            กรุณาใส่ข้อมูลให้ครบ
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <div class="col-sm-12  ">
-                                                        <div class="row">
-                                                            <div class="col-2">
-                                                                <div class="col-form-label-sm">อัตราการเดินเครื่องจักร : </div>
-                                                            </div>
-                                                            <div class="col-10">
-                                                                <div class="col-form-label-sm" id="er1"></div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="input-group input-group-sm">
-                                                            <input type="number" step="any" class="form-control form-control-sm " id="txt5" name="txt5" readonly="" placeholder="" onclick="select();" onkeyup="in1();">
-                                                            <span class="input-group-text " id="basic-addon1">%</span>
-                                                        </div>
-
-                                                        <input type="hidden" id="ina" value="">
-                                                        <div class="invalid-feedback">
-                                                            กรุณาใส่ข้อมูลให้ครบ
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="card mt-3">
-                                            <div class="card-header col-form-label-sm">
-                                                ประสิทธิภาพของเครื่องจักร
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="form-group row">
-                                                    <div class="col-sm-6  ">
-                                                        <div class="col-form-label-sm">เวลาเปิดเครื่องต่อ 1 กะ : </div>
-                                                        <div class="input-group input-group-sm">
+                                                        <div class="col-sm-6">
                                                             <?php
-                                                            if (isset($_GET["x3"])) {
-                                                                $d1 = $_GET["x3"];
+                                                            if (isset($_GET["x5"])) {
+                                                                $d7 = $_GET["x5"];
                                                             } else {
-                                                                $d1 = "";
+                                                                $d7 = "";
                                                             }
                                                             ?>
-                                                            <input type="number" step="any" class="form-control form-control-sm " id="txt6" name="txt6" placeholder="" onkeyup="in2();" onclick="select();" value="<?= $d1 ?>" required>
-                                                            <span class="input-group-text " id="basic-addon1">ชม.</span>
-                                                        </div>
 
-                                                        <div class="invalid-feedback">
-                                                            กรุณาใส่ข้อมูลให้ครบ
+                                                            <div class="col-form-label-sm">เวลาตอนพักของพนักงาน :</div>
+                                                            <div class="input-group input-group-sm">
+                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt2" name="txt2" placeholder="" onclick="select();" onkeyup="in1();" value="<?php echo $d7 ?>" required>
+                                                                <span class="input-group-text " id="basic-addon1">นาที</span>
+                                                            </div>
+                                                            <div class="invalid-feedback">
+                                                                กรุณาใส่ข้อมูลให้ครบ
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-6">
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-6  ">
+                                                            <div class="col-form-label-sm">เวลาทำงานจริง : </div>
+                                                            <div class="input-group input-group-sm">
+                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt3" name="txt3" placeholder="" onclick="select();" onkeyup="in1();" required>
+                                                                <span class="input-group-text " id="basic-addon1">นาที</span>
+                                                            </div>
 
-                                                        <div class="col-form-label-sm">เวลาหยุดเดินเครื่องต่อ 1 กะ : </div>
-                                                        <div class="input-group input-group-sm">
-                                                            <input type="number" step="any" class="form-control form-control-sm" id="txt7" name="txt7" placeholder="" onclick="select();" onkeyup="in2();" required>
-                                                            <span class="input-group-text " id="basic-addon1">ชม.</span>
+                                                            <div class="invalid-feedback">
+                                                                กรุณาใส่ข้อมูลให้ครบ
+                                                            </div>
                                                         </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="col-form-label-sm">เวลาปิดเครื่องตอนพัก :</div>
+                                                            <div class="input-group input-group-sm">
+                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt4" name="txt4" placeholder="" onclick="select();" onkeyup="in1();" required>
+                                                                <span class="input-group-text " id="basic-addon1">นาที</span>
+                                                            </div>
 
-                                                        <div class="invalid-feedback">
-                                                            กรุณาใส่ข้อมูลให้ครบ
+
+                                                            <div class="invalid-feedback">
+                                                                กรุณาใส่ข้อมูลให้ครบ
+                                                            </div>
                                                         </div>
                                                     </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-12  ">
+                                                            <div class="row">
+                                                                <div class="col-2">
+                                                                    <div class="col-form-label-sm">อัตราการเดินเครื่องจักร : </div>
+                                                                </div>
+                                                                <div class="col-10">
+                                                                    <div class="col-form-label-sm" id="er1"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="input-group input-group-sm">
+                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt5" name="txt5" readonly="" placeholder="" onclick="select();" onkeyup="in1();">
+                                                                <span class="input-group-text " id="basic-addon1">%</span>
+                                                            </div>
+
+                                                            <input type="hidden" id="ina" value="">
+                                                            <div class="invalid-feedback">
+                                                                กรุณาใส่ข้อมูลให้ครบ
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
                                                 </div>
-                                                <div class="form-group row">
-                                                    <div class="col-sm-12  ">
-                                                        <div class="row">
-                                                            <div class="col-2">
-                                                                <div class="col-form-label-sm">ประสิทธิภาพของเครื่องจักร : </div>
+                                            </div>
+                                            <div class="card mt-3">
+                                                <div class="card-header col-form-label-sm">
+                                                    ประสิทธิภาพของเครื่องจักร
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-6  ">
+                                                            <div class="col-form-label-sm">เวลาเปิดเครื่องต่อ 1 กะ : </div>
+                                                            <div class="input-group input-group-sm">
+                                                                <?php
+                                                                if (isset($_GET["x3"])) {
+                                                                    $d1 = $_GET["x3"];
+                                                                } else {
+                                                                    $d1 = "";
+                                                                }
+                                                                ?>
+                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt6" name="txt6" placeholder="" onkeyup="in2();" onclick="select();" value="<?= $d1 ?>" required>
+                                                                <span class="input-group-text " id="basic-addon1">นาที</span>
                                                             </div>
-                                                            <div class="col-10">
-                                                                <div class="col-form-label-sm" id="er2"></div>
+
+                                                            <div class="invalid-feedback">
+                                                                กรุณาใส่ข้อมูลให้ครบ
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+
+                                                            <div class="col-form-label-sm">เวลาหยุดเดินเครื่องต่อ 1 กะ : </div>
+                                                            <div class="input-group input-group-sm">
+                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt7" name="txt7" placeholder="" onclick="select();" onkeyup="in2();" required>
+                                                                <span class="input-group-text " id="basic-addon1">นาที</span>
+                                                            </div>
+
+                                                            <div class="invalid-feedback">
+                                                                กรุณาใส่ข้อมูลให้ครบ
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-12  ">
+                                                            <div class="row">
+                                                                <div class="col-2">
+                                                                    <div class="col-form-label-sm">ประสิทธิภาพของเครื่องจักร : </div>
+                                                                </div>
+                                                                <div class="col-10">
+                                                                    <div class="col-form-label-sm" id="er2"></div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="input-group input-group-sm">
+                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt8" name="txt8" readonly="" placeholder="" onclick="select();" onkeyup="in2();">
+                                                                <span class="input-group-text " id="basic-addon1">%</span>
+                                                            </div>
+
+                                                            <input type="hidden" id="inb" value="">
+                                                            <div class="invalid-feedback">
+                                                                กรุณาใส่ข้อมูลให้ครบ
                                                             </div>
                                                         </div>
 
-                                                        <div class="input-group input-group-sm">
-                                                            <input type="number" step="any" class="form-control form-control-sm " id="txt8" name="txt8" readonly="" placeholder="" onclick="select();" onkeyup="in2();">
-                                                            <span class="input-group-text " id="basic-addon1">%</span>
-                                                        </div>
-
-                                                        <input type="hidden" id="inb" value="">
-                                                        <div class="invalid-feedback">
-                                                            กรุณาใส่ข้อมูลให้ครบ
-                                                        </div>
                                                     </div>
 
                                                 </div>
-
                                             </div>
-                                        </div>
-                                        <div class="card mt-3">
-                                            <div class="card-header col-form-label-sm">
-                                                อัตราคุณภาพเครื่องจักร
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="form-group row">
-                                                    <div class="col-sm-6  ">
-                                                        <div class="row">
-                                                            <div class="col-5">
-                                                                <div class="col-form-label-sm">จำนวนชิ้นงานที่ผลิตได้ต่อ 1 กะ : </div>
+                                            <div class="card mt-3">
+                                                <div class="card-header col-form-label-sm">
+                                                    อัตราคุณภาพเครื่องจักร
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-6  ">
+                                                            <div class="row">
+                                                                <div class="col-5">
+                                                                    <div class="col-form-label-sm">จำนวนชิ้นงานที่ผลิตได้ต่อ 1 กะ : </div>
+                                                                </div>
+                                                                <div class="col-7">
+                                                                    <div class="col-form-label-sm" id="er3"></div>
+                                                                </div>
                                                             </div>
-                                                            <div class="col-7">
-                                                                <div class="col-form-label-sm" id="er3"></div>
-                                                            </div>
-                                                        </div>
-                                                        <?php
-                                                        if (isset($_GET["x1"])) {
-                                                            $d2 = $_GET["x1"];
-                                                        } else {
-                                                            $d2 = "";
-                                                        }
-                                                        ?>
-                                                        <div class="input-group input-group-sm ">
-                                                            <input type="number" step="any" class="form-control form-control-sm " id="txt9" name="txt9" placeholder="" onkeyup="in3();" onclick="select();" value="<?php echo $d2; ?>" required>
-                                                            <span class="input-group-text " id="basic-addon1">ชิ้น</span>
-                                                        </div>
-
-                                                        <div class="invalid-feedback">
-                                                            กรุณาใส่ข้อมูลให้ครบ
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <div class="col-form-label-sm">จำนวนชิ้นงานที่เสียต่อ 1 กะ :</div>
-                                                        <div class="input-group input-group-sm">
                                                             <?php
-                                                            if (isset($_GET["x2"])) {
-                                                                $d3 = $_GET["x2"];
+                                                            if (isset($_GET["x1"])) {
+                                                                $d2 = $_GET["x1"];
                                                             } else {
-                                                                $d3 = "";
+                                                                $d2 = "";
                                                             }
                                                             ?>
-                                                            <input type="number" step="any" class="form-control form-control-sm" id="txt10" name="txt10" placeholder="" onclick="select();" onkeyup="in3();" value="<?php echo $d3; ?>" required>
-                                                            <span class="input-group-text " id="basic-addon1">ชิ้น</span>
-                                                        </div>
+                                                            <div class="input-group input-group-sm ">
+                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt9" name="txt9" placeholder="" onkeyup="in3();" onclick="select();" value="<?php echo $d2; ?>" required>
+                                                                <span class="input-group-text " id="basic-addon1">ชิ้น</span>
+                                                            </div>
 
-                                                        <div class="invalid-feedback">
-                                                            กรุณาใส่ข้อมูลให้ครบ
+                                                            <div class="invalid-feedback">
+                                                                กรุณาใส่ข้อมูลให้ครบ
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="col-form-label-sm">จำนวนชิ้นงานที่เสียต่อ 1 กะ :</div>
+                                                            <div class="input-group input-group-sm">
+                                                                <?php
+                                                                if (isset($_GET["x2"])) {
+                                                                    $d3 = $_GET["x2"];
+                                                                } else {
+                                                                    $d3 = "";
+                                                                }
+                                                                ?>
+                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt10" name="txt10" placeholder="" onclick="select();" onkeyup="in3();" value="<?php echo $d3; ?>" required>
+                                                                <span class="input-group-text " id="basic-addon1">ชิ้น</span>
+                                                            </div>
+
+                                                            <div class="invalid-feedback">
+                                                                กรุณาใส่ข้อมูลให้ครบ
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <div class="col-sm-12  ">
-                                                        <div class="col-form-label-sm">อัตราการคุณภาพของเครื่องจักร : </div>
-                                                        <div class="input-group input-group-sm">
-                                                            <input type="number" step="any" class="form-control form-control-sm " id="txt11" name="txt11" readonly="" placeholder="" onclick="select();" onkeyup="in3();">
-                                                            <span class="input-group-text " id="basic-addon1">%</span>
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-12  ">
+                                                            <div class="col-form-label-sm">อัตราการคุณภาพของเครื่องจักร : </div>
+                                                            <div class="input-group input-group-sm">
+                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt11" name="txt11" readonly="" placeholder="" onclick="select();" onkeyup="in3();">
+                                                                <span class="input-group-text " id="basic-addon1">%</span>
+                                                            </div>
+
+                                                            <input type="hidden" id="inc" value="">
+                                                            <div class="invalid-feedback">
+                                                                กรุณาใส่ข้อมูลให้ครบ
+                                                            </div>
                                                         </div>
 
-                                                        <input type="hidden" id="inc" value="">
-                                                        <div class="invalid-feedback">
-                                                            กรุณาใส่ข้อมูลให้ครบ
-                                                        </div>
                                                     </div>
 
                                                 </div>
-
                                             </div>
-                                        </div>
-                                        <div class="card mt-3">
-                                            <div class="card-header col-form-label-sm">
-                                                OEE
+                                            <div class="card mt-3">
+                                                <div class="card-header col-form-label-sm">
+                                                    OEE
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-4  ">
+                                                            <div class="col-form-label-sm">อัตราการเดินเครื่องจักร : </div>
+                                                            <div class="input-group input-group-sm">
+                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt12" name="txt12" readonly="" placeholder="" required>
+                                                                <span class="input-group-text " id="basic-addon1">%</span>
+                                                            </div>
+
+                                                            <input type="hidden" id="x1" name="x1" value="">
+                                                            <div class="invalid-feedback">
+                                                                กรุณาใส่ข้อมูลให้ครบ
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="col-form-label-sm">ประสิทธิภาพของเครื่องจักร :</div>
+                                                            <div class="input-group input-group-sm">
+                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt13" name="txt13" readonly="" placeholder="" required>
+                                                                <span class="input-group-text " id="basic-addon1">%</span>
+                                                            </div>
+
+                                                            <input type="hidden" id="x2" name="x2" value="">
+                                                            <div class="invalid-feedback">
+                                                                กรุณาใส่ข้อมูลให้ครบ
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="col-form-label-sm">อัตราคุณภาพเครื่องจักร :</div>
+                                                            <div class="input-group input-group-sm">
+                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt14" name="txt14" readonly="" placeholder="" required>
+                                                                <span class="input-group-text " id="basic-addon1">%</span>
+                                                            </div>
+
+                                                            <input type="hidden" id="x3" name="x3" value="">
+                                                            <div class="invalid-feedback">
+                                                                กรุณาใส่ข้อมูลให้ครบ
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-12  ">
+                                                            <div class="col-form-label-sm">OEE : </div>
+                                                            <div class="input-group input-group-sm">
+                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt15" name="txt15" readonly="" placeholder="">
+                                                                <span class="input-group-text " id="basic-addon1">%</span>
+                                                            </div>
+
+                                                            <input type="hidden" id="x4" name="x4" value="">
+                                                            <div class="invalid-feedback">
+                                                                กรุณาใส่ข้อมูลให้ครบ
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
                                             </div>
-                                            <div class="card-body">
-                                                <div class="form-group row">
-                                                    <div class="col-sm-4  ">
-                                                        <div class="col-form-label-sm">อัตราการเดินเครื่องจักร : </div>
-                                                        <div class="input-group input-group-sm">
-                                                            <input type="number" step="any" class="form-control form-control-sm " id="txt12" name="txt12" readonly="" placeholder="" required>
-                                                            <span class="input-group-text " id="basic-addon1">%</span>
-                                                        </div>
-
-                                                        <input type="hidden" id="x1" name="x1" value="">
-                                                        <div class="invalid-feedback">
-                                                            กรุณาใส่ข้อมูลให้ครบ
-                                                        </div>
+                                            <div class="form-group row mt-3">
+                                                <center>
+                                                    <div class="row mt-3">
+                                                        <div class="col-6"><input class="btn btn-primary btn-user btn-block" id="submit" name="math" type="submit" value="บันทึก"></div>
+                                                        <div class="col-6"><input class="btn btn-danger btn-user btn-block" type="reset" value="คืนค่า"></button></div>
                                                     </div>
-                                                    <div class="col-sm-4">
-                                                        <div class="col-form-label-sm">ประสิทธิภาพของเครื่องจักร :</div>
-                                                        <div class="input-group input-group-sm">
-                                                            <input type="number" step="any" class="form-control form-control-sm" id="txt13" name="txt13" readonly="" placeholder="" required>
-                                                            <span class="input-group-text " id="basic-addon1">%</span>
-                                                        </div>
-
-                                                        <input type="hidden" id="x2" name="x2" value="">
-                                                        <div class="invalid-feedback">
-                                                            กรุณาใส่ข้อมูลให้ครบ
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-4">
-                                                        <div class="col-form-label-sm">อัตราคุณภาพเครื่องจักร :</div>
-                                                        <div class="input-group input-group-sm">
-                                                            <input type="number" step="any" class="form-control form-control-sm" id="txt14" name="txt14" readonly="" placeholder="" required>
-                                                            <span class="input-group-text " id="basic-addon1">%</span>
-                                                        </div>
-
-                                                        <input type="hidden" id="x3" name="x3" value="">
-                                                        <div class="invalid-feedback">
-                                                            กรุณาใส่ข้อมูลให้ครบ
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <div class="col-sm-12  ">
-                                                        <div class="col-form-label-sm">OEE : </div>
-                                                        <div class="input-group input-group-sm">
-                                                            <input type="number" step="any" class="form-control form-control-sm " id="txt15" name="txt15" readonly="" placeholder="">
-                                                            <span class="input-group-text " id="basic-addon1">%</span>
-                                                        </div>
-
-                                                        <input type="hidden" id="x4" name="x4" value="">
-                                                        <div class="invalid-feedback">
-                                                            กรุณาใส่ข้อมูลให้ครบ
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-
                                             </div>
-                                        </div>
-                                        <div class="form-group row mt-3">
-                                            <center>
-                                                <div class="row mt-3">
-                                                    <div class="col-6"><input class="btn btn-primary btn-user btn-block" id="submit" name="math" type="submit" value="บันทึก"></div>
-                                                    <div class="col-6"><input class="btn btn-danger btn-user btn-block" type="reset" value="คืนค่า"></button></div>
-                                                </div>
                                         </div>
                                     </div>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- /.container-fluid -->
+                    <!-- /.container-fluid -->
+
+                </div>
 
             </div>
+            <!-- End of Content Wrapper -->
 
         </div>
-        <!-- End of Content Wrapper -->
+        <!-- End of Page Wrapper -->
 
-    </div>
-    <!-- End of Page Wrapper -->
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">ออกจากระบบ</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">คุณแน่ใจนะว่าจะออกจากระบบ</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">ยกเลิก</button>
-                    <a class="btn btn-primary" href="index.php">ตกลง</a>
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">ออกจากระบบ</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">คุณแน่ใจนะว่าจะออกจากระบบ</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">ยกเลิก</button>
+                        <a class="btn btn-primary" href="index.php">ตกลง</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <script>
-        $(document).ready(function() {
-            in3();
-        });
+        <script>
+            $(document).ready(function() {
+                in3();
+            });
 
-        function in1() {
+            function in1() {
 
-            var d = document.getElementById("txt1").value;
-            var x = document.getElementById("txt2").value;
-            var c = (d - x);
-            document.getElementById("txt4").value = x;
-            document.getElementById("txt7").value = x;
+                var d = document.getElementById("txt1").value;
+                var x = document.getElementById("txt2").value;
+                var c = (d - x);
+                document.getElementById("txt4").value = x;
+                document.getElementById("txt7").value = x;
 
-            document.getElementById("txt3").value = c;
-            var c1 = document.getElementById("txt3").value;
-            var c2 = document.getElementById("txt4").value;
-            document.getElementById("txt5").value = (((c1 - c2) / c1) * 100).toFixed(2);
-            document.getElementById("txt12").value = (((c1 - c2) / c1) * 100).toFixed(2)
-            document.getElementById("ina").value = (((c1 - c2) / c1))
-
-
-            var a1 = document.getElementById("ina").value;
-            var a2 = document.getElementById("inb").value;
-            var a3 = document.getElementById("inc").value;
-            document.getElementById("txt15").value = (((a1 / 100) * (a2 / 100) * (a3 / 100) * 100) * 100).toFixed(2);
-
-            document.getElementById("x1").value = document.getElementById("txt12").value;
-            document.getElementById("x2").value = document.getElementById("txt13").value;
-            document.getElementById("x3").value = document.getElementById("txt14").value;
-            document.getElementById("x4").value = document.getElementById("txt15").value;
+                document.getElementById("txt3").value = c;
+                var c1 = document.getElementById("txt3").value;
+                var c2 = document.getElementById("txt4").value;
+                document.getElementById("txt5").value = (((c1 - c2) / c1) * 100).toFixed(2);
+                document.getElementById("txt12").value = (((c1 - c2) / c1) * 100).toFixed(2)
+                document.getElementById("ina").value = (((c1 - c2) / c1))
 
 
+                var a1 = document.getElementById("ina").value;
+                var a2 = document.getElementById("inb").value;
+                var a3 = document.getElementById("inc").value;
+                document.getElementById("txt15").value = (((a1 / 100) * (a2 / 100) * (a3 / 100) * 100) * 100).toFixed(2);
 
-            if (document.getElementById("txt5").value < 90) {
-                var arr = document.getElementById("er1")
-                arr.classList.remove("text-success");
-                arr.classList.add("text-danger");
-                document.getElementById("er1").innerText = "ต่ำกว่า 90%"
-            } else {
-                var arr = document.getElementById("er1")
-                arr.classList.remove("text-danger");
-                arr.classList.add("text-success");
-                document.getElementById("er1").innerText = "มากกว่า 90%"
+                document.getElementById("x1").value = document.getElementById("txt12").value;
+                document.getElementById("x2").value = document.getElementById("txt13").value;
+                document.getElementById("x3").value = document.getElementById("txt14").value;
+                document.getElementById("x4").value = document.getElementById("txt15").value;
+
+
+
+                if (document.getElementById("txt5").value < 90) {
+                    var arr = document.getElementById("er1")
+                    arr.classList.remove("text-success");
+                    arr.classList.add("text-danger");
+                    document.getElementById("er1").innerText = "ต่ำกว่า 90%"
+                } else {
+                    var arr = document.getElementById("er1")
+                    arr.classList.remove("text-danger");
+                    arr.classList.add("text-success");
+                    document.getElementById("er1").innerText = "มากกว่า 90%"
+                }
+                in2();
+                in3();
+
             }
-            in2();
-            in3();
 
-        }
+            function in2() {
+                var d = document.getElementById("txt6").value;
+                var x = document.getElementById("txt7").value;
+                var c = (((d - x) / d) * 100);
+                document.getElementById("txt8").value = c.toFixed(2);
+                document.getElementById("txt13").value = c.toFixed(2);
+                document.getElementById("inb").value = c;
 
-        function in2() {
-            var d = document.getElementById("txt6").value;
-            var x = document.getElementById("txt7").value;
-            var c = (((d - x) / d) * 100);
-            document.getElementById("txt8").value = c.toFixed(2);
-            document.getElementById("txt13").value = c.toFixed(2);
-            document.getElementById("inb").value = c;
+                var a1 = document.getElementById("ina").value;
+                var a2 = document.getElementById("inb").value;
+                var a3 = document.getElementById("inc").value;
+                document.getElementById("txt15").value = (((a1 / 100) * (a2 / 100) * (a3 / 100) * 100) * 100).toFixed(2);
 
-            var a1 = document.getElementById("ina").value;
-            var a2 = document.getElementById("inb").value;
-            var a3 = document.getElementById("inc").value;
-            document.getElementById("txt15").value = (((a1 / 100) * (a2 / 100) * (a3 / 100) * 100) * 100).toFixed(2);
+                document.getElementById("x1").value = document.getElementById("txt12").value
+                document.getElementById("x2").value = document.getElementById("txt13").value
+                document.getElementById("x3").value = document.getElementById("txt14").value
+                document.getElementById("x4").value = document.getElementById("txt15").value
 
-            document.getElementById("x1").value = document.getElementById("txt12").value
-            document.getElementById("x2").value = document.getElementById("txt13").value
-            document.getElementById("x3").value = document.getElementById("txt14").value
-            document.getElementById("x4").value = document.getElementById("txt15").value
-
-            if (c < 90) {
-                var arr = document.getElementById("er2")
-                arr.classList.remove("text-success");
-                arr.classList.add("text-danger");
-                document.getElementById("er2").innerText = "ต่ำกว่า 90%"
-            } else {
-                var arr = document.getElementById("er2")
-                arr.classList.remove("text-danger");
-                arr.classList.add("text-success");
-                document.getElementById("er2").innerText = "มากกว่า 90%"
+                if (c < 90) {
+                    var arr = document.getElementById("er2")
+                    arr.classList.remove("text-success");
+                    arr.classList.add("text-danger");
+                    document.getElementById("er2").innerText = "ต่ำกว่า 90%"
+                } else {
+                    var arr = document.getElementById("er2")
+                    arr.classList.remove("text-danger");
+                    arr.classList.add("text-success");
+                    document.getElementById("er2").innerText = "มากกว่า 90%"
+                }
+                in1();
+                in3();
             }
-            in1();
-            in3();
-        }
 
-        function in3() {
-            var d = document.getElementById("txt9").value;
-            var x = document.getElementById("txt10").value;
-            var c = (((d - x) / d) * 100);
-            document.getElementById("txt11").value = c.toFixed(2);
-            document.getElementById("txt14").value = c.toFixed(2);
-            document.getElementById("inc").value = c;
+            function in3() {
+                var d = document.getElementById("txt9").value;
+                var x = document.getElementById("txt10").value;
+                var c = (((d - x) / d) * 100);
+                document.getElementById("txt11").value = c.toFixed(2);
+                document.getElementById("txt14").value = c.toFixed(2);
+                document.getElementById("inc").value = c;
 
-            var a1 = document.getElementById("ina").value;
-            var a2 = document.getElementById("inb").value;
-            var a3 = document.getElementById("inc").value;
-            document.getElementById("txt15").value = (((a1 / 100) * (a2 / 100) * (a3 / 100) * 100) * 100).toFixed(2);
+                var a1 = document.getElementById("ina").value;
+                var a2 = document.getElementById("inb").value;
+                var a3 = document.getElementById("inc").value;
+                document.getElementById("txt15").value = (((a1 / 100) * (a2 / 100) * (a3 / 100) * 100) * 100).toFixed(2);
 
-            document.getElementById("x1").value = document.getElementById("txt12").value
-            document.getElementById("x2").value = document.getElementById("txt13").value
-            document.getElementById("x3").value = document.getElementById("txt14").value
-            document.getElementById("x4").value = document.getElementById("txt15").value
+                document.getElementById("x1").value = document.getElementById("txt12").value
+                document.getElementById("x2").value = document.getElementById("txt13").value
+                document.getElementById("x3").value = document.getElementById("txt14").value
+                document.getElementById("x4").value = document.getElementById("txt15").value
 
 
-            if (d < 4000) {
-                var arr = document.getElementById("er3")
-                arr.classList.remove("text-success");
-                arr.classList.add("text-danger");
-                document.getElementById("er3").innerText = "ต่ำกว่า 4000ชิ้น"
-            } else {
-                var arr = document.getElementById("er3")
-                arr.classList.remove("text-danger");
-                arr.classList.add("text-success");
-                document.getElementById("er3").innerText = "ตรงเป้าหมาย"
+                if (d < 4000) {
+                    var arr = document.getElementById("er3")
+                    arr.classList.remove("text-success");
+                    arr.classList.add("text-danger");
+                    document.getElementById("er3").innerText = "ต่ำกว่า 4000ชิ้น"
+                } else {
+                    var arr = document.getElementById("er3")
+                    arr.classList.remove("text-danger");
+                    arr.classList.add("text-success");
+                    document.getElementById("er3").innerText = "ตรงเป้าหมาย"
+                }
+                in1();
+                in2();
+
             }
-            in1();
-            in2();
+        </script>
+        <script>
+            (function() {
+                'use strict'
 
-        }
-    </script>
-    <script>
-        (function() {
-            'use strict'
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.querySelectorAll('.needs-validation')
 
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.querySelectorAll('.needs-validation')
+                // Loop over them and prevent submission
+                Array.prototype.slice.call(forms)
+                    .forEach(function(form) {
+                        form.addEventListener('submit', function(event) {
+                            if (!form.checkValidity()) {
+                                event.preventDefault()
+                                event.stopPropagation()
+                            }
 
-            // Loop over them and prevent submission
-            Array.prototype.slice.call(forms)
-                .forEach(function(form) {
-                    form.addEventListener('submit', function(event) {
-                        if (!form.checkValidity()) {
-                            event.preventDefault()
-                            event.stopPropagation()
-                        }
+                            form.classList.add('was-validated')
+                        }, false)
+                    })
+            })()
+        </script>
 
-                        form.classList.add('was-validated')
-                    }, false)
-                })
-        })()
-    </script>
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="js/sb-admin-2.min.js"></script>
 
 </body>
 

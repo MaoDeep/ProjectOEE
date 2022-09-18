@@ -51,74 +51,52 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                     </div>
                 </a>
 
-                <!-- Divider -->
-                <hr class="sidebar-divider my-0">
-
                 <!-- Nav Item - Dashboard -->
-                <li class="nav-item active">
-                    <a class="nav-link" href="">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>หน้าหลัก</span></a>
-                </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="home.php">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>หน้าหลัก</span></a>
+            </li>
 
-                <!-- Divider -->
-                <hr class="sidebar-divider">
-
-                <!-- Heading -->
-                <div class="sidebar-heading">
-                    Form
-                </div>
-
-                <!-- Nav Item - Pages Collapse Menu -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                        <i class="fas fa-fw fa-clipboard"></i>
-                        <span>จัดการข้อมูล</span>
-                    </a>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">แบบฟอร์มการทำงาน:</h6>
-                            <a class="collapse-item" href="tables.php">บันทึกยอดผลิตประจำวัน</a>
-                            <a class="collapse-item" href="form.php">กรอกข้อมูลการทำงาน</a>
-                        </div>
-                    </div>
-                </li>
-
-                <!-- Divider -->
-                <hr class="sidebar-divider">
-
-                <!-- Heading -->
-                <div class="sidebar-heading">
-                    Report
-                </div>
-                <!-- Nav Item - Charts -->
-                <li class="nav-item">
-                    <a class="nav-link" href="charts.php">
-                        <i class="fas fa-fw fa-chart-line"></i>
-                        <span>กราฟ</span></a>
-                </li>
-
-                <!-- Nav Item - Tables -->
-                <li class="nav-item">
-                    <a class="nav-link" href="user.php">
-                        <i class="fas fa-fw fa-table"></i>
-                        <span>จัดการข้อมูลผู้ใช้</span></a>
-                </li>
-
-                <!-- Divider -->
-                <hr class="sidebar-divider d-none d-md-block">
-
-                <!-- Sidebar Toggler (Sidebar) -->
-                <div class="text-center d-none d-md-inline">
-                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
-                </div>
-
-                <!-- Sidebar Message -->
+            <li class="nav-item">
+                <a class="nav-link" href="tables.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>บันทึกยอดผลิตประจำวัน</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="form.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>กรอกข้อมูลการทำงาน</span></a>
+            </li>
 
 
-            </ul>
-            <!-- End of Sidebar -->
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="charts.php">
+                    <i class="fas fa-fw fa-chart-line"></i>
+                    <span>กราฟ</span></a>
+            </li>
 
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="user.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>จัดการข้อมูลผู้ใช้</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+            <!-- Sidebar Message -->
+
+
+        </ul>
+        <!-- End of Sidebar -->
             <!-- Content Wrapper -->
             <div id="content-wrapper" class="d-flex flex-column">
 

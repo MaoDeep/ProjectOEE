@@ -73,48 +73,25 @@ function chkdel(){if(confirm('  กรุณายืนยันการลบ
                 </div>
             </a>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
+             <!-- Nav Item - Dashboard -->
+             <li class="nav-item active">
                 <a class="nav-link" href="home.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>หน้าหลัก</span></a>
             </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Form
-            </div>
-
-
-
-            <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-clipboard"></i>
-                    <span>จัดการข้อมูล</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">แบบฟอร์มการทำงาน:</h6>
-                        <a class="collapse-item" href="tables.php">บันทึกยอดผลิตประจำวัน</a>
-                        <a class="collapse-item" href="form.php">กรอกข้อมูลการทำงาน</a>
-                    </div>
-                </div>
+                <a class="nav-link" href="tables.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>บันทึกยอดผลิตประจำวัน</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="form.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>กรอกข้อมูลการทำงาน</span></a>
             </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Report
-            </div>
             <!-- Nav Item - Charts -->
             <li class="nav-item">
                 <a class="nav-link" href="charts.php">
@@ -136,6 +113,9 @@ function chkdel(){if(confirm('  กรุณายืนยันการลบ
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
+
+            <!-- Sidebar Message -->
+
 
         </ul>
         <!-- End of Sidebar -->
