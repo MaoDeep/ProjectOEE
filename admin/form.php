@@ -277,9 +277,16 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
+                                                        <?php
+                                                        if (isset($_GET["x5"])) {
+                                                            $d7 = $_GET["x5"];
+                                                        } else {
+                                                            $d7 = "";
+                                                        }
+                                                        ?>
                                                         <div class="col-form-label-sm">เวลาตอนพักของพนักงาน :</div>
                                                         <div class="input-group input-group-sm">
-                                                            <input type="number" step="any" class="form-control form-control-sm" id="txt2" name="txt2" placeholder="" onclick="select();" onkeyup="in1();" required>
+                                                            <input type="number" step="any" class="form-control form-control-sm" id="txt2" name="txt2" placeholder="" onclick="select();" onkeyup="in1();" value="<?php echo $d7 ?>" required>
                                                             <span class="input-group-text " id="basic-addon1">ชม.</span>
                                                         </div>
                                                         <div class="invalid-feedback">

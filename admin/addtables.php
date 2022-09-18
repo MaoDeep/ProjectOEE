@@ -46,7 +46,9 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
             $_POST["txt7"],
             $_POST["txt5"],
             $_POST["txt6"],
-            $_POST["txt1"]
+            $_POST["txt1"],
+            $_POST["breakmin"],
+            $_POST["workmin"]
         );
         $sql = "INSERT INTO `employee`(`E_id`, `EName`, `Nmac`, `Econ`, `Epro`, `Edel`, `Etime`, `Etimet`, `DATE`) VALUES (NULL ,'" . $arr1[0] . "','" . $arr1[1] . "' , " . $arr1[2] . " , '" . $arr1[3] . "', " . $arr1[4] . " , '" . $arr1[5] . "' , '" . $arr1[6] . "' , '" . $arr1[7] . "')";
 
@@ -61,7 +63,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
 
         if ($re) {
             echo '<script>alert("[บันทึกสำเร็จ]")</script>';
-            echo "<script>window.location='form.php?x1=" . $arr1[2] . "&x2=" . $arr1[4] . "&x3=" . $diff->format('%h') . "&x4=" . $arr1[7] . "'</script>";
+            echo "<script>window.location='form.php?x1=" . $arr1[2] . "&x2=" . $arr1[4] . "&x3=" .  $arr1[9] . "&x4=" . $arr1[7] . "&x5=" . $arr1[8] . "'</script>";
         } else {
             echo '<script>alert("[บันทึกไม่สำเร็จ]")</script>';
         }
@@ -84,7 +86,8 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                     <div class="form-group row">
                         <div class="col-sm-12 mb-3 mb-sm-0">
                             <div class="card-body">
-
+                                <input type="hidden" name="breakmin" id="breakmin" value="">
+                                <input type="hidden" name="workmin" id="workmin" value="">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <div class="col-form-label-sm"> วันที่ : </div>
@@ -172,9 +175,10 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                                 กรุณาใส่ข้อมูลให้ครบ
                                             </div>
                                         </div>
+
                                         <div class="col-md-4 mt-3">
                                             <button type="button" class="btn btn-primary btn-sm mt-3" name="get_time" id="get_time">ยืนยันเวลาเข้างาน</button>
-                                            <button type="button" class="btn btn-primary btn-sm mt-3" name="get_cul" id="get_cul">คำนวน</button>
+                                           
                                         </div>
                                     </div>
                                     <div class="row">
@@ -241,17 +245,17 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                 // calculate days
                 const days = Math.floor(diffInMilliSeconds / 86400);
                 diffInMilliSeconds -= days * 86400;
-                console.log('calculated days', days);
+                // console.log('calculated days', days);
 
                 // calculate hours
                 const hours = Math.floor(diffInMilliSeconds / 3600) % 24;
                 diffInMilliSeconds -= hours * 3600;
-                console.log('calculated hours', hours);
+                //console.log('calculated hours', hours);
 
                 // calculate minutes
                 const minutes = Math.floor(diffInMilliSeconds / 60) % 60;
                 diffInMilliSeconds -= minutes * 60;
-                console.log('minutes', minutes);
+                // console.log('minutes', minutes);
 
                 let difference = '';
                 if (days > 0) {
@@ -265,25 +269,38 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                 return difference;
             }
             $("#submit").addClass("disabled");
+            
 
-            $("#get_cul").click(function() {
+            function gettime() {
                 var datein = $("#txt5").val();
                 var breakin = $("#txt10").val()
                 var breakout = $("#txt9").val();
                 var dateout = $("#txt6").val()
                 var date1 = new Date('2019-10-01 ' + timeDiffCalc(new Date('2019/10/1 ' + breakin + ':00'), new Date('2019/10/1 ' + breakout + ':00')) + ':00');
                 var date2 = new Date('2019-10-01 ' + timeDiffCalc(new Date('2019/10/1 ' + datein + ':00'), new Date('2019/10/1 ' + dateout + ':00')) + ':00');
-              
-                date1.setHours(date1.getHours() - 1);
-                console.log(date1);
-                console.log(date2);
+                //console.log((date2.getHours() - date1.getHours()) + ":" + ((date2.getTime() - date1.getTime()) / 60000));
+
+                var breakmin1 = Number(timeDiffCalc(new Date('2019/10/1 ' + breakin + ':00'), new Date('2019/10/1 ' + breakout + ':00')).substring(0, 2) * 60);
+                var breakmin2 = Number(timeDiffCalc(new Date('2019/10/1 ' + breakin + ':00'), new Date('2019/10/1 ' + breakout + ':00')).substring(3, 5))
+                var breakmin = breakmin1 + breakmin2;
+
+                var workmin1 = Number(timeDiffCalc(new Date('2019/10/1 ' + datein + ':00'), new Date('2019/10/1 ' + dateout + ':00')).substring(0, 2) * 60);
+                var workmin2 = Number(timeDiffCalc(new Date('2019/10/1 ' + datein + ':00'), new Date('2019/10/1 ' + dateout + ':00')).substring(3, 5));
+                var workmin = workmin1 + workmin2;
+
+                console.log(breakmin);
+                console.log(workmin);
+                $("#breakmin").val(breakmin);
+                $("#workmin").val(workmin);
+            }
+            $("#submit").click(function() {
+                gettime();
             });
 
             var status = 1;
             $("#get_time").click(function() {
 
                 if (status == 1) {
-
                     let text = "ยืนยันเวลาเข้างาน";
                     if (confirm(text) == true) {
                         var date = new Date();
@@ -294,7 +311,6 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                         $("#get_time").text("ยืนยันเวลาพัก");
                         status++;
                     }
-
                 } else if (status == 2) {
                     let text = "ยืนยันเวลาพัก";
                     if (confirm(text) == true) {
@@ -303,11 +319,8 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                         var i = String(date.getMinutes()).padStart(2, '0');
                         var v = h + ":" + i;
                         $("#txt9").val(v);
-
                         status++;
                         $("#get_time").text("ยืนยันเวลาออกงาน");
-
-                        $("#submit").removeClass("disabled");
                     }
                 } else if (status == 3) {
                     let text = "ยืนยันเวลาพัก";
@@ -335,7 +348,6 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                         $("#submit").removeClass("disabled");
                     }
                 }
-
 
             });
 
