@@ -39,7 +39,6 @@ class PDF extends FPDF
 
         $this->Cell(7);
 
-       
         $this->Cell(30, 10, iconv('UTF-8', 'cp874', 'วันที่'), 1, 0, 'C', true);
         $this->Cell(20, 10, iconv('UTF-8', 'cp874', 'ผู้บันทึก'), 1, 0, 'C', true);
         $this->Cell(30, 10, iconv('UTF-8', 'cp874', 'รหัสเครื่อง'), 1, 0, 'C', true);

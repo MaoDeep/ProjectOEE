@@ -15,7 +15,7 @@ session_start();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dashboard</title>
+    <title>หน้าหลัก</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -48,69 +48,47 @@ session_start();
                     </div>
                 </a>
 
-                <!-- Divider -->
-                <hr class="sidebar-divider my-0">
-
                 <!-- Nav Item - Dashboard -->
-                <li class="nav-item active">
-                    <a class="nav-link" href="">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>หน้าหลัก</span></a>
-                </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="home.php">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>หน้าหลัก</span></a>
+            </li>
 
-                <!-- Divider -->
-                <hr class="sidebar-divider">
-
-                <!-- Heading -->
-                <div class="sidebar-heading">
-                    form
-                </div>
-
-                <!-- Nav Item - Pages Collapse Menu -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                        <i class="fas fa-fw fa-clipboard"></i>
-                        <span>จัดการข้อมูล</span>
-                    </a>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">แบบฟอร์มการทำงาน:</h6>
-                            <a class="collapse-item" href="tables.php">บันทึกยอดผลิตประจำวัน</a>
-                            <a class="collapse-item" href="form.php">กรอกข้อมูลการทำงาน</a>
-                            
-                        </div>
-                    </div>
-                </li>
-
-                <!-- Divider -->
-                <hr class="sidebar-divider">
-
-                <!-- Heading -->
-                <div class="sidebar-heading">
-                    Report
-                </div>
-                <!-- Nav Item - Charts -->
-                <li class="nav-item">
-                    <a class="nav-link" href="charts.php">
-                        <i class="fas fa-fw fa-chart-line"></i>
-                        <span>กราฟ</span></a>
-                </li>
-
-                
-                <!-- Divider -->
-                <hr class="sidebar-divider d-none d-md-block">
-
-                <!-- Sidebar Toggler (Sidebar) -->
-                <div class="text-center d-none d-md-inline">
-                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
-                </div>
-
-                <!-- Sidebar Message -->
+            <li class="nav-item">
+                <a class="nav-link" href="tables.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>บันทึกยอดผลิตประจำวัน</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="form.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>กรอกข้อมูลการทำงาน</span></a>
+            </li>
 
 
-            </ul>
-            <!-- End of Sidebar -->
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="charts.php">
+                    <i class="fas fa-fw fa-chart-line"></i>
+                    <span>กราฟ</span></a>
+            </li>
 
+          
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+            <!-- Sidebar Message -->
+
+
+        </ul>
+        <!-- End of Sidebar -->
             <!-- Content Wrapper -->
             <div id="content-wrapper" class="d-flex flex-column">
 
@@ -192,47 +170,50 @@ session_start();
                                     $TR[] = $rw2["TR"];
                                     $TS[] = $rw2["TS"];
                                     $NT[] = $rw2["NT"];
-                                    $EU[] = $rw2["EU"];
+                                    
                                 }
                             } else {
                                 $TR = [0];
                                 $TS = [0];
                                 $NT = [0];
-                                $EU = [0];
+                               
                             }
+                            $sqlrow = "SELECT * FROM `report` INNER JOIN users ON users.u_id = report.u_id INNER JOIN machine ON machine.mac_id = users.mac_id ORDER BY id DESC ";
+                            $rerow = mysqli_query($conn, $sqlrow);
+                            foreach ($rerow as $row) {
 
+                                $name5[] = $row["u_usersname"];
 
+                                $t[] = $row["mac_name"];
+                            }
                             ?>
                             <!-- Earnings (Monthly) Card Example -->
-                            <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="col-md-3">
+                                <div class="card border-left-primary  py-2">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                    อัตราการเดินเครื่องจักร</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= max($TR) ?></div>
+                                                <div class="text-sm font-weight-bold text-primary text-uppercase mb-1">
+                                                    เครื่องจักร : <?php echo $t[0] ?></div>
+                                                <canvas id="test1" width="12px" height="6px"></canvas>
+
                                             </div>
-                                            <div class="col-auto">
-                                                <i class="fas 	fas fa-cogs fa-2x text-gray-300"></i>
-                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Earnings (Monthly) Card Example -->
-                            <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="col-md-3">
                                 <div class="card border-left-success shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                    ประสิทธิภาพของเครื่องจักร</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= max($TS) ?></div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fas fa-car-battery fa-2x text-gray-300"></i>
+                                                <div class="text-sm font-weight-bold text-success text-uppercase mb-1">
+                                                    เครื่องจักร : <?php echo $t[1] ?></div>
+                                                <canvas id="test2" width="12px" height="6px"></canvas>
+
                                             </div>
                                         </div>
                                     </div>
@@ -240,54 +221,44 @@ session_start();
                             </div>
 
                             <!-- Earnings (Monthly) Card Example -->
-                            <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-left-info shadow h-100 py-2">
+                            <div class="col-md-3">
+                                <div class="card border-left-danger shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">อัตราคุณภาพ
+                                                <div class="text-sm font-weight-bold text-danger  text-uppercase mb-1">
+                                                    เครื่องจักร : <?php echo $t[2] ?>
                                                 </div>
+                                                <canvas id="test3" width="12px" height="6px"></canvas>
                                                 <div class="row no-gutters align-items-center">
-                                                    <div class="col-auto">
-                                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= max($NT) ?></div>
-                                                    </div>
                                                     <div class="col">
 
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-auto">
-                                                <i class="fas fas 	far fa-thumbs-up fa-2x text-gray-300"></i>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                             <!-- Pending Requests Card Example -->
-                            <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="col-md-3">
                                 <div class="card border-left-warning shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                    ผลรวม OEE</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= max($EU) ?></div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fas fa-users fa-2x text-gray-300"></i>
+                                                <div class="text-sm font-weight-bold text-warning text-uppercase mb-1">
+                                                    เครื่องจักร : <?php echo $t[3] ?></div>
+                                                <canvas id="test4" width="12px" height="6px"></canvas>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
+                        <br>
                         <!-- Content Row -->
-
-
                         <div class="row">
-                            <div class="col-9">
+                            <div class="col-12">
                                 <div class="card">
                                     <div class="card-header">
                                         OEE
@@ -296,27 +267,11 @@ session_start();
                                     <div class="card-body">
                                         <canvas id="myChart"></canvas>
                                     </div>
-                                    <div class="card-footer text-muted">
-
-                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="card">
-                                    <div class="card-header">
-                                        ผลรวมOEE
-                                    </div>
-                                    <div class="card-body">
-                                        <canvas id="myChart12"></canvas>
-                                    </div>
-                                    <div class="card-footer text-muted">
+                        
+                           
 
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
+                        
                         <!-- End of Main Content -->
 
                         <!-- Footer -->
@@ -339,7 +294,6 @@ session_start();
                 <a class="scroll-to-top rounded" href="#page-top">
                     <i class="fas fa-angle-up"></i>
                 </a>
-
                 <!-- Logout Modal-->
                 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -359,44 +313,63 @@ session_start();
                     </div>
                 </div>
                 <?php
-                $sql = "SELECT * FROM `report` INNER JOIN users on report.u_id = users.u_id ORDER BY id DESC LIMIT 4;";
-                $re = mysqli_query($conn, $sql);
-                $name = [];
-                $TR = [];
-                $TS = [];
-                $NT = [];
-                $EU = [];
+               $sql = "SELECT * FROM `report` INNER JOIN users ON users.u_id = report.u_id  ORDER BY id DESC LIMIT 4;";
+               $re = mysqli_query($conn, $sql);
+               foreach ($re as $k  => $row) {
+                $name[$k] = $row["u_usersname"];
+
+                $EU[$k] = $row["EU"];
+                $TR[$k] = $row["TR"];
+                $TS[$k] = $row["TS"];
+                $NT[$k] = $row["NT"];
+               
+            }
 
 
-                foreach ($re as $k => $row) {
-                    $name[$k] = $row["u_usersname"];
-                    $TR[$k] = $row["TR"];
-                    $TS[$k] = $row["TS"];
-                    $NT[$k] = $row["NT"];
-                    $EU[$k] = $row["EU"];
-                }
 
-
+             
+                
                 ?>
                 <script>
                     const ctx = document.getElementById('myChart').getContext('2d');
-                    const myChart = new Chart(ctx, {
-                        type: 'line',
+                    const myChart0 = new Chart(ctx, {
+                        type: 'bar',
                         data: {
-                            labels: ['อัตราการเดินเครื่อง', 'ประสิทธิภาพเครื่องจักร', 'อัตราคุณภาพ', 'ผลรวมOEE'],
+                            labels: ['ผลรวมของเครื่องจักร'],
                             datasets: [{
                                     label: <?= json_encode($name[0]) ?>,
-                                    data: [<?= $TR[0] ?>, <?= $TS[0] ?>, <?= $NT[0] ?>, <?= $EU[0] ?>, ],
+                                    data: [<?= $EU[0] ?>, ],
                                     backgroundColor: [
                                         'rgba(255, 99, 132)',
                                     ],
                                     borderColor: [
                                         'rgba(255, 99, 132)',
                                     ],
-                                    borderWidth: 1
+                                    borderWidth: 1,
+                                    datalabels: {
+                                        color: [
+
+                                            'rgba(255, 99, 132)',
+
+                                        ],
+
+                                        anchor: "end",
+                                        align: "top",
+                                        formatter: function addCommas(value) {
+                                            value += '';
+                                            x = value.split('.');
+                                            x1 = x[0];
+                                            x2 = x.length > 1 ? '.' + x[1] : '';
+                                            var rgx = /(\d+)(\d{3})/;
+                                            while (rgx.test(x1)) {
+                                                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                                            }
+                                            return x1 + x2;
+                                        }
+                                    }
                                 }, {
                                     label: <?= json_encode($name[1]) ?>,
-                                    data: [<?= $TR[1] ?>, <?= $TS[1] ?>, <?= $NT[1] ?>, <?= $EU[1] ?>],
+                                    data: [<?= $EU[1] ?>],
                                     backgroundColor: [
                                         'rgba(54, 162, 235)',
 
@@ -405,11 +378,32 @@ session_start();
                                         'rgba(54, 162, 235)',
 
                                     ],
-                                    borderWidth: 1
+                                    borderWidth: 1,
+                                    datalabels: {
+                                        color: [
+
+                                            'rgba(54, 162, 235)',
+
+                                        ],
+
+                                        anchor: "end",
+                                        align: "top",
+                                        formatter: function addCommas(value) {
+                                            value += '';
+                                            x = value.split('.');
+                                            x1 = x[0];
+                                            x2 = x.length > 1 ? '.' + x[1] : '';
+                                            var rgx = /(\d+)(\d{3})/;
+                                            while (rgx.test(x1)) {
+                                                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                                            }
+                                            return x1 + x2;
+                                        }
+                                    }
                                 },
                                 {
                                     label: <?= json_encode($name[2]) ?>,
-                                    data: [<?= $TR[2] ?>, <?= $TS[2] ?>, <?= $NT[2] ?>, <?= $EU[2] ?>],
+                                    data: [<?= $EU[2] ?>],
                                     backgroundColor: [
 
                                         'rgba(255, 206, 86)',
@@ -420,11 +414,32 @@ session_start();
                                         'rgba(255, 206, 86)',
 
                                     ],
-                                    borderWidth: 1
+                                    borderWidth: 1,
+                                    datalabels: {
+                                        color: [
+
+                                            'rgba(255, 206, 86)',
+
+                                        ],
+
+                                        anchor: "end",
+                                        align: "top",
+                                        formatter: function addCommas(value) {
+                                            value += '';
+                                            x = value.split('.');
+                                            x1 = x[0];
+                                            x2 = x.length > 1 ? '.' + x[1] : '';
+                                            var rgx = /(\d+)(\d{3})/;
+                                            while (rgx.test(x1)) {
+                                                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                                            }
+                                            return x1 + x2;
+                                        }
+                                    }
                                 },
                                 {
                                     label: <?= json_encode($name[3]) ?>,
-                                    data: [<?= $TR[3] ?>, <?= $TS[3] ?>, <?= $NT[3] ?>, <?= $EU[3] ?>],
+                                    data: [<?= $EU[3] ?>],
                                     backgroundColor: [
 
                                         'rgba(75, 192, 192)',
@@ -435,57 +450,30 @@ session_start();
                                         'rgba(75, 192, 192)',
 
                                     ],
-                                    borderWidth: 1
+                                    borderWidth: 1,
+                                    datalabels: {
+                                        color: [
+
+                                            'rgba(75, 192, 192)',
+
+                                        ],
+
+                                        anchor: "end",
+                                        align: "top",
+                                        formatter: function addCommas(value) {
+                                            value += '';
+                                            x = value.split('.');
+                                            x1 = x[0];
+                                            x2 = x.length > 1 ? '.' + x[1] : '';
+                                            var rgx = /(\d+)(\d{3})/;
+                                            while (rgx.test(x1)) {
+                                                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                                            }
+                                            return x1 + x2;
+                                        }
+                                    }
                                 }
                             ]
-                        },
-                        options: {
-                            scales: {
-                                y: {
-                                    beginAtZero: true
-                                }
-                            }
-                        }
-                    });
-                </script>
-                <input type="hidden" name="tst" id="tst" value="">
-                <?php
-                include "config.php";
-                $sql1 = "SELECT * FROM `report`";
-                $re1 = mysqli_query($conn, $sql1);
-
-                foreach ($re1 as $rw1) {
-                    $arr1[] = $rw1["EU"];
-                }
-
-                ?>
-                <script>
-                    const ctx1 = document.getElementById('myChart12').getContext('2d');
-                    const myChart1 = new Chart(ctx1, {
-                        type: 'pie',
-                        data: {
-                            labels: ['สูง', 'ต่ำ'],
-                            datasets: [{
-                                label: '# of Votes',
-                                data: [<?= max($arr1) ?>, <?= min($arr1) ?>],
-                                backgroundColor: [
-                                    'rgba(255, 99, 132, 0.2)',
-                                    'rgba(54, 162, 235, 0.2)',
-                                    'rgba(255, 206, 86, 0.2)',
-                                    'rgba(75, 192, 192, 0.2)',
-                                    'rgba(153, 102, 255, 0.2)',
-                                    'rgba(255, 159, 64, 0.2)'
-                                ],
-                                borderColor: [
-                                    'rgba(255, 99, 132, 0.2)',
-                                    'rgba(54, 162, 235, 0.2)',
-                                    'rgba(255, 206, 86, 0.2)',
-                                    'rgba(75, 192, 192, 0.2)',
-                                    'rgba(153, 102, 255, 0.2)',
-                                    'rgba(255, 159, 64, 0.2)'
-                                ],
-                                borderWidth: 1
-                            }]
                         },
                         plugins: [ChartDataLabels],
                         options: {
@@ -497,15 +485,160 @@ session_start();
                         }
                     });
                 </script>
+       
+                
+                <script>
+                    const graph1 = document.getElementById('test1').getContext('2d');
+                    const test1 = new Chart(graph1, {
+                        type: 'bar',
+                        data: {
+                            labels: ['อัตราการเดินเครื่อง', 'ประสิทธิภาพเครื่องจักร', 'อัตราคุณภาพ', ],
+                            datasets: [{
+                                label:  <?= json_encode($name[0]) ?>,
+                                data: [<?= $TR[0] ?>, <?= $TS[0] ?>, <?= $NT[0] ?>],
+                                backgroundColor: [
+                                    'rgba(255, 206, 86)',
+                                    'rgba(0, 255, 0)',
+                                    'rgba(255, 105, 180)',
+
+                                ],
+                                borderColor: [
+                                    'rgba(255, 206, 86)',
+                                    'rgba(0, 255, 0)',
+                                    'rgba(255, 105, 180)',
+
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        plugins: [ChartDataLabels],
+                        options: {
+                            indexAxis: 'y',
+                            // Elements options apply to all of the options unless overridden in a dataset
+                            // In this case, we are setting the border of each horizontal bar to be 2px wide
+                            elements: {
+                                bar: {
+                                    borderWidth: 2,
+                                }
+                            }
+                        }
+                    });
+                </script>
+
+                <script>
+                    const graph2 = document.getElementById('test2').getContext('2d');
+                    const test2 = new Chart(graph2, {
+                        type: 'bar',
+                        data: {
+                            labels: ['อัตราการเดินเครื่อง', 'ประสิทธิภาพเครื่องจักร', 'อัตราคุณภาพ', ],
+                            datasets: [{
+                                label: <?= json_encode($name[1]) ?>,
+                                data: [<?= $TR[1] ?>, <?= $TS[1] ?>, <?= $NT[1] ?>],
+                                backgroundColor: [
+                                    'rgba(255, 206, 86)',
+                                    'rgba(0, 255, 0)',
+                                    'rgba(255, 105, 180)',
+                                ],
+                                borderColor: [
+                                    'rgba(255, 206, 86)',
+                                    'rgba(0, 255, 0)',
+                                    'rgba(255, 105, 180)',
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        plugins: [ChartDataLabels],
+                        options: {
+                            indexAxis: 'y',
+                            // Elements options apply to all of the options unless overridden in a dataset
+                            // In this case, we are setting the border of each horizontal bar to be 2px wide
+                            elements: {
+                                bar: {
+                                    borderWidth: 2,
+                                }
+                            }
+                        }
+                    });
+                </script>
+                <script>
+                    const graph3 = document.getElementById('test3').getContext('2d');
+                    const test3 = new Chart(graph3, {
+                        type: 'bar',
+                        data: {
+                            labels: ['อัตราการเดินเครื่อง', 'ประสิทธิภาพเครื่องจักร', 'อัตราคุณภาพ', ],
+                            datasets: [{
+                                label: <?= json_encode($name[2]) ?>,
+                                data: [<?= $TR[2] ?>, <?= $TS[2] ?>, <?= $NT[2] ?>],
+                                backgroundColor: [
+                                    'rgba(255, 206, 86)',
+                                    'rgba(0, 255, 0)',
+                                    'rgba(255, 105, 180)',
+                                ],
+                                borderColor: [
+                                    'rgba(255, 206, 86)',
+                                    'rgba(0, 255, 0)',
+                                    'rgba(255, 105, 180)',
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        plugins: [ChartDataLabels],
+                        options: {
+                            indexAxis: 'y',
+                            // Elements options apply to all of the options unless overridden in a dataset
+                            // In this case, we are setting the border of each horizontal bar to be 2px wide
+                            elements: {
+                                bar: {
+                                    borderWidth: 2,
+                                }
+                            }
+                        }
+                    });
+                </script>
+                <script>
+                    const graph4 = document.getElementById('test4').getContext('2d');
+                    const test4 = new Chart(graph4, {
+                        type: 'bar',
+                        data: {
+                            labels: ['อัตราการเดินเครื่อง', 'ประสิทธิภาพเครื่องจักร', 'อัตราคุณภาพ', ],
+                            datasets: [{
+                                label: <?= json_encode($name[3]) ?>,
+                                data: [<?= $TR[3] ?>, <?= $TS[3] ?>, <?= $NT[1] ?>],
+                                backgroundColor: [
+                                    'rgba(255, 206, 86)',
+                                    'rgba(0, 255, 0)',
+                                    'rgba(255, 105, 180)',
+                                ],
+                                borderColor: [
+                                    'rgba(255, 206, 86)',
+                                    'rgba(0, 255, 0)',
+                                    'rgba(255, 105, 180)',
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        plugins: [ChartDataLabels],
+                        options: {
+                            indexAxis: 'y',
+                            // Elements options apply to all of the options unless overridden in a dataset
+                            // In this case, we are setting the border of each horizontal bar to be 2px wide
+                            elements: {
+                                bar: {
+                                    borderWidth: 2,
+                                }
+                            }
+                        }
+                    });
+                </script>
                 <script>
                     $(document).ready(function() {
-                        function at() {     
+                        function at() {
                             const x = [];
-                            $.ajax({        // ส่งค่าแค่บางส่วน 
+                            $.ajax({ // ส่งค่าแค่บางส่วน 
                                 type: "GET",
-                                url: "test.php?id=1", 
+                                url: "test.php?id=1",
                                 dataType: "text", // ส่งเป็นข้อความ
-                                success: function(response) {  // ถ้าสำเร็จเเล้วให้เก็บหน้าผลลัพธ์ของไฟล์ที่ส่งไป
+                                success: function(response) { // ถ้าสำเร็จเเล้วให้เก็บหน้าผลลัพธ์ของไฟล์ที่ส่งไป
                                     var arr = $.parseJSON(response) // ถอดรหัสของ json หน้า text.php
                                     x.push(arr.Max) // เอาตัวเลขจาก json ที่ผ่านการแปลงมา 
                                     x.push(arr.Min) // เอาตัวเลขจาก json ที่ผ่านการแปลงมา 
@@ -515,7 +648,6 @@ session_start();
                                 }
                             });
                         }
-
 
                         function at1() {
                             const name = [];
@@ -569,6 +701,7 @@ session_start();
 
                 <!-- Custom scripts for all pages-->
                 <script src="js/sb-admin-2.min.js"></script>
+
 
 
 

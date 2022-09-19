@@ -8,16 +8,9 @@ require('config.php');
 
 
 
-if (isset($_GET['del'])) {
-    if ($_GET['del'] == 1) {
-        echo "<script>alert('ลบสำเร็จ')</script>";
-    } elseif ($_GET['del'] == 0) {
-        echo "<script>alert('ลบไม่สำเร็จ')</script>";
-    }
-}
 if (isset($_POST['submit'])) {
-    $sql = "UPDATE `employee` SET `EName` = '" . $_POST['txt1'] . "',`Econ` = '" . $_POST['txt2'] . "',`EPro` = '" . $_POST['txt3'] . "',`Etime` = '" . $_POST['txt4'] . "',`Etimet` = '" . $_POST['txt5'] . "'
-     WHERE `employee`.`E_id` = '" . $_POST['txt0'] . "';";
+    $sql = "UPDATE `employee` SET `EName` = '" . $_POST['txt1'] . "', `Nmac` = '" . $_POST['txt2'] . "' , `Econ` = " . $_POST['txt3'] . " ,`EPro` = '" . $_POST['txt4'] . "', `Edel` = " . $_POST['txt5'] . " , `Etime` =  '" . $_POST['txt6'] . "' ,  `Etimet` = '" . $_POST['txt7'] . "' 
+     WHERE `employee`. `E_id` = " . $_POST['txt0'] . "";
     $re = mysqli_query($conn, $sql);
     if ($re) {
         echo "<script>alert('บันทึกสำเร็จ')</script>";
@@ -26,6 +19,16 @@ if (isset($_POST['submit'])) {
     }
 }
 ?>
+
+<script>
+function chkdel(){if(confirm('  กรุณายืนยันการลบอีกครั้ง !!!  ')){
+	return true;
+}else{
+	return false;
+}
+}
+</script>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -69,50 +72,25 @@ if (isset($_POST['submit'])) {
                 </div>
             </a>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
+             <!-- Nav Item - Dashboard -->
+             <li class="nav-item active">
                 <a class="nav-link" href="home.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>หน้าหลัก</span></a>
             </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                From
-            </div>
-
-
-
-            <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-clipboard"></i>
-                    <span>จัดการข้อมูล</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">แบบฟอร์มการทำงาน:</h6>
-                        <a class="collapse-item" href="tables.php">บันทึกยอดผลิตประจำวัน</a>
-                        <a class="collapse-item" href="form.php">กรอกข้อมูลการทำงาน</a>
-                        
-                       
-                    </div>
-                </div>
+                <a class="nav-link" href="tables.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>บันทึกยอดผลิตประจำวัน</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="form.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>กรอกข้อมูลการทำงาน</span></a>
             </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Report
-            </div>
             <!-- Nav Item - Charts -->
             <li class="nav-item">
                 <a class="nav-link" href="charts.php">
@@ -120,7 +98,7 @@ if (isset($_POST['submit'])) {
                     <span>กราฟ</span></a>
             </li>
 
-           
+        
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -129,6 +107,9 @@ if (isset($_POST['submit'])) {
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
+
+            <!-- Sidebar Message -->
+
 
         </ul>
         <!-- End of Sidebar -->
@@ -219,27 +200,41 @@ if (isset($_POST['submit'])) {
                         </div>
                         <div class="card-body">
                             <div class="row mb-4">
-                                <div class="col-6"></div>
                                 <div class="col-6">
-                                    <div class="row">
-                                        <div class="col-6"></div>
-                                        <div class="col-6 col order-last"><a href="addtables.php"><button type="button" class="btn-info btn-sm btn ">เพิ่มข้อมูล</button></a></div>
+                                    <div class="row mt-3">
+                                        <div class="col-auto">
+                                            <label for="d1" class="col-form-label">วันที่ : </label>
+                                        </div>
+                                        <div class="col-sm-3"><input type="date" name="d1" id="d1" class="form-control form-control-sm"></div>
+                                        <div class="col-auto">
+                                            <label for="d2" class="col-form-label">ถึง : </label>
+                                        </div>
+                                        <div class="col-sm-3"><input type="date" name="d2" id="d2" class="form-control form-control-sm"></div>
+                                        <div class="col-sm-3"><button type="button" id="pdf" class="btn btn-sm btn-success" onclick="x()" style="width: 10rem;"><i class="bi bi-filetype-pdf"></i> ออกรายงาน PDF</button></div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="d-flex flex-row-reverse">
+                                        <div class="p-2"><a href="addtables.php"><button type="button" class="btn-info btn-sm btn ">เพิ่มข้อมูล</button></a></div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="table-responsive">
                                 <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+
                                     <thead>
                                         <tr>
                                             <th>ลำดับ</th>
                                             <th>วันที่</th>
                                             <th>ชื่อ</th>
+                                            <th>รหัสเครื่อง</th>
                                             <th>ชิ้นงานที่ทำได้</th>
                                             <th>รุ่นที่ผลิต</th>
                                             <th>ของเสีย</th>
                                             <th>เวลาเข้างาน</th>
                                             <th>เวลาเลิกงาน</th>
+                                            
                                         </tr>
                                     </thead>
                                     <?php
@@ -256,13 +251,16 @@ if (isset($_POST['submit'])) {
                     <td>' . $n1 . '</td>
                     <td>' . $d1 . '</td>
                     <td>' . $value['EName'] . '</td>
+                    <td>' . $value['Nmac'] . '</td>
                     <td>' . $value['Econ'] . '</td>
                     <td>' . $value['Epro'] . '</td>
                     <td>' . $value['Edel'] . '</td>
                     <td>' . $value['Etime'] . '</td>
                     <td>' . $value['Etimet'] . '</td>
+                    
                 </tr>';
                                     }
+
                                     ?>
                                     </tbody>
                                 </table>
