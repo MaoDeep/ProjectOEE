@@ -103,7 +103,7 @@ date_default_timezone_set('Asia/Bangkok')
                     <span>กราฟ</span></a>
             </li>
 
-          
+
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -237,7 +237,7 @@ date_default_timezone_set('Asia/Bangkok')
                                                                 <div class="col-sm-12  ">
                                                                     <div class="col-form-label-sm">เวลาทำงานทั้งหมด : </div>
                                                                     <div class="input-group input-group-sm">
-                                                                        <input type="number" step="any" class="form-control form-control-sm " id="txt1" name="txt1" placeholder="" readonly=""  onkeyup="in1();" onclick="select();" value="<?php echo $d1 ?>" required>
+                                                                        <input type="number" step="any" class="form-control form-control-sm " id="txt1" name="txt1" placeholder="" readonly="" onkeyup="in1();" onclick="select();" value="<?php echo $d1 ?>" required>
                                                                         <span class="input-group-text " id="basic-addon1">นาที</span>
                                                                     </div>
                                                                 </div>
@@ -257,7 +257,7 @@ date_default_timezone_set('Asia/Bangkok')
 
                                                             <div class="col-form-label-sm">เวลาตอนพักของพนักงาน :</div>
                                                             <div class="input-group input-group-sm">
-                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt2" name="txt2" placeholder="" readonly=""  onclick="select();" onkeyup="in1();" value="<?php echo $d7 ?>" required>
+                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt2" name="txt2" placeholder="" readonly="" onclick="select();" onkeyup="in1();" value="<?php echo $d7 ?>" required>
                                                                 <span class="input-group-text " id="basic-addon1">นาที</span>
                                                             </div>
                                                             <div class="invalid-feedback">
@@ -269,7 +269,7 @@ date_default_timezone_set('Asia/Bangkok')
                                                         <div class="col-sm-6  ">
                                                             <div class="col-form-label-sm">เวลาทำงานจริง : </div>
                                                             <div class="input-group input-group-sm">
-                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt3" name="txt3" placeholder="" readonly=""  onclick="select();" onkeyup="in1();" required>
+                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt3" name="txt3" placeholder="" readonly="" onclick="select();" onkeyup="in1();" required>
                                                                 <span class="input-group-text " id="basic-addon1">นาที</span>
                                                             </div>
 
@@ -280,7 +280,7 @@ date_default_timezone_set('Asia/Bangkok')
                                                         <div class="col-sm-6">
                                                             <div class="col-form-label-sm">เวลาปิดเครื่องตอนพัก :</div>
                                                             <div class="input-group input-group-sm">
-                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt4" name="txt4" placeholder="" readonly=""  onclick="select();" onkeyup="in1();" required>
+                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt4" name="txt4" placeholder="" readonly="" onclick="select();" onkeyup="in1();" required>
                                                                 <span class="input-group-text " id="basic-addon1">นาที</span>
                                                             </div>
 
@@ -510,8 +510,7 @@ date_default_timezone_set('Asia/Bangkok')
                                             <div class="form-group row mt-3">
                                                 <center>
                                                     <div class="row mt-3">
-                                                        <div class="col-6"><input class="btn btn-primary btn-user btn-block" id="submit" name="math" type="submit" value="บันทึก"></div>
-                                                        <div class="col-6"><input class="btn btn-danger btn-user btn-block" type="reset" value="คืนค่า"></button></div>
+                                                        <div class="col-12"><input class="btn btn-primary btn-user btn-block w-100" id="submit" name="math" type="submit" value="บันทึก"></div>
                                                     </div>
                                             </div>
                                         </div>

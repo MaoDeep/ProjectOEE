@@ -520,8 +520,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                             <div class="form-group row mt-3">
                                                 <center>
                                                     <div class="row mt-3">
-                                                        <div class="col-6"><input class="btn btn-primary btn-user btn-block" id="submit" name="math" type="submit" value="บันทึก"></div>
-                                                        <div class="col-6"><input class="btn btn-danger btn-user btn-block" type="reset" value="คืนค่า"></button></div>
+                                                        <div class="col-12"><input class="btn btn-primary btn-user btn-block" id="submit" name="math" type="submit" value="บันทึก"></div>                               
                                                     </div>
                                             </div>
                                         </div>
