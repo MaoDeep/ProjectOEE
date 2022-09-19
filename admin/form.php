@@ -22,6 +22,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
     <title>กรอกข้อมูล</title>
 
     <!-- Custom fonts for this template-->
+    
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -66,7 +67,44 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
         } else {
             echo '<script>alert("บันทึกไม่สำเร็จ")</script>';
         }
+        
+        $txt12 = $_POST['txt12'];
+        $txt13 = $_POST['txt13'];
+        $txt14 = $_POST['txt14'];
+
+        $sToken = "ia7RhNxkGcGs79AXG4iKXWJ4IvoeuLnXWQguBy02eAc";
+	    $sMessage = "ข้อมูล OEE";
+        $sMessage .= "อัตราการเดินเครื่องจักร : ". $txt12.  " \n";
+        $sMessage .= "ประสิทธิภาพของเครื่องจักร : ". $txt13. " \n";
+        $sMessage .= "อัตราคุณภาพเครื่องจักร : ". $txt14. " \n";
+
+
+	
+	$chOne = curl_init(); 
+	curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
+	curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0); 
+	curl_setopt( $chOne, CURLOPT_SSL_VERIFYPEER, 0); 
+	curl_setopt( $chOne, CURLOPT_POST, 1); 
+	curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=".$sMessage); 
+	$headers = array( 'Content-type: application/x-www-form-urlencoded', 'Authorization: Bearer '.$sToken.'', );
+	curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
+	curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
+	$result = curl_exec( $chOne ); 
+
+	//Result error 
+	if(curl_error($chOne)) 
+	{ 
+		echo 'error:' . curl_error($chOne); 
+	} 
+	else { 
+		$result_ = json_decode($result, true); 
+		echo "status : ".$result_['status']; echo "message : ". $result_['message'];
+	} 
+	curl_close( $chOne );   
+    
     }
+    
+        
     ?>
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -179,7 +217,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Name : <?php echo $_SESSION["user"] ?> <br>Status : <?php echo $_SESSION["status"] ?>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="">Name : <?php echo $_SESSION["user"] ?> <br>Status : <?php echo $_SESSION["status"] ?>
                                 </span>
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"> </span>
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"> </span>
@@ -465,7 +503,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                                         <div class="col-sm-4  ">
                                                             <div class="col-form-label-sm">อัตราการเดินเครื่องจักร : </div>
                                                             <div class="input-group input-group-sm">
-                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt12" name="txt12" readonly="" placeholder="" required>
+                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt12" name="txt12" aria-describedby="txt12" readonly="" placeholder="" required>
                                                                 <span class="input-group-text " id="basic-addon1">%</span>
                                                             </div>
 
@@ -477,7 +515,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                                         <div class="col-sm-4">
                                                             <div class="col-form-label-sm">ประสิทธิภาพของเครื่องจักร :</div>
                                                             <div class="input-group input-group-sm">
-                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt13" name="txt13" readonly="" placeholder="" required>
+                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt13" name="txt13" aria-describedby="txt13" readonly="" placeholder="" required>
                                                                 <span class="input-group-text " id="basic-addon1">%</span>
                                                             </div>
 
@@ -489,7 +527,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                                         <div class="col-sm-4">
                                                             <div class="col-form-label-sm">อัตราคุณภาพเครื่องจักร :</div>
                                                             <div class="input-group input-group-sm">
-                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt14" name="txt14" readonly="" placeholder="" required>
+                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt14" name="txt14" aria-describedby="txt14" readonly="" placeholder="" required>
                                                                 <span class="input-group-text " id="basic-addon1">%</span>
                                                             </div>
 
