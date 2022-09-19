@@ -117,8 +117,16 @@ include "config.php";
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="col-form-label-sm">รุ่นที่ผลิต :</div>
-                                        <input type="text" class="form-control form-control-sm" id="txt8" name="txt8" placeholder="" required>
+                                        <?php
+                                        $sqlrow = "SELECT * FROM `users` INNER JOIN brand ON brand.b_id = users.b_id where users.u_usersname = '" . $_SESSION["user"] . "' ";
+                                        $rerow = mysqli_query($conn, $sqlrow);
+                                        foreach ($rerow as $row) {
 
+                                            $user = $row["u_usersname"];
+                                            $bra = $row["b_name"];
+                                        }
+                                        ?>
+                                        <input type="text" class="form-control form-control-sm" id="txt8" name="txt8" readonly placeholder="" value="<?= $bra ?>" required>
                                         <div class="invalid-feedback">
                                             กรุณาใส่ข้อมูลให้ครบ
                                         </div>
@@ -172,7 +180,7 @@ include "config.php";
 
                                         <div class="col-md-4 mt-3">
                                             <button type="button" class="btn btn-primary btn-sm mt-3" name="get_time" id="get_time">ยืนยันเวลาเข้างาน</button>
-                                           
+
                                         </div>
                                     </div>
                                     <div class="row">
@@ -263,7 +271,7 @@ include "config.php";
                 return difference;
             }
             $("#submit").addClass("disabled");
-            
+
 
             function gettime() {
                 var datein = $("#txt5").val();
