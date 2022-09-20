@@ -17,7 +17,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
 <html lang="en">
 
 <head>
-    
+
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -46,8 +46,8 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
     <form action="tables.php" method="post" class="needs-validation" novalidate>
         <br>
         <div class="container">
-
             <!-- Circle Buttons -->
+
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <div class="m-0 font-weight-bold text-primary h5">แก้ไขข้อมูล</div>
@@ -60,9 +60,9 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <div class="col-form-label-sm"> วันที่ : </div>
                                         <input type="DATE" class="form-control form-control-sm " id="txt1" name="txt1" placeholder="" required value="<?php echo $op['DATE'] ?>">
-                                        <div class="invalid-feedback">
-                                            กรุณาใส่ข้อมูลให้ครบ
-                                        </div>
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        กรุณาใส่ข้อมูลให้ครบ
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="col-form-label-sm"> ลำดับที่ :</div>
@@ -71,72 +71,73 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                             กรุณาใส่ข้อมูลให้ครบ
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-6 mb-3 mb-sm">
-                                            <div class="col-form-label-sm">ชื่อ :</div>
-                                            <input type="text" class="form-control form-control-sm" id="txt1" name="txt1" placeholder="" required value="<?php echo $op['EName'] ?>">
-                                            <div class="invalid-feedback">
-                                                กรุณาใส่ข้อมูลให้ครบ
-                                            </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-6">
+                                        <div class="col-form-label-sm">ชื่อ :</div>
+                                        <input type="text" class="form-control form-control-sm" id="txt1" name="txt1" placeholder="" required value="<?php echo $op['EName'] ?>">
+                                        <div class="invalid-feedback">
+                                            กรุณาใส่ข้อมูลให้ครบ
                                         </div>
-                                        <div class="col-sm-6">
-                                            <div class="col-form-label-sm">รหัสเครื่อง : </div>
-                                            <select name="txt2" id="txt2" class="form-select form-select-sm" placeholder="" required value="<?php echo $op['Nmac'] ?>">
-                                                <option value="T200">T200</option>
-                                                <option value="T300">T300</option>
-                                                <option value="T400">T400</option>
-                                            </select>
-                                            <div class="invalid-feedback">
-                                                กรุณาใส่ข้อมูลให้ครบ
-                                            </div>
+                                    </div>
+                                    <div class="col-6 ">
+                                        <div class="col-form-label-sm">รหัสเครื่อง : </div>
+                                        <input name="txt2" id="txt2" class="form-control form-control-sm" placeholder="" required value="<?php echo $op['Nmac'] ?>">
+                                        <div class="invalid-feedback">
+                                            กรุณาใส่ข้อมูลให้ครบ
                                         </div>
-                                        <div class="col-sm-6">
-                                            <div class="col-form-label-sm">รุ่นที่ผลิต : </div>
-                                            <input type="text" class="form-control form-control-sm" id="txt4" name="txt4" placeholder="" required value="<?php echo $op['Epro'] ?>">
-                                            <div class="invalid-feedback">
-                                                กรุณาใส่ข้อมูลให้ครบ
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-sm-6 mb-3 mb-sm">
-                                                <div class="col-form-label-sm">ชิ้นงานที่ทำได้ : </div>
-                                                <input type="number" class="form-control form-control-sm " id="txt3" name="txt3" placeholder="" required value="<?php echo $op['Econ'] ?>">
-                                                <div class="invalid-feedback">
-                                                    กรุณาใส่ข้อมูลให้ครบ
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="col-form-label-sm">ของเสีย:</div>
-                                                <input type="number" class="form-control form-control-sm " id="txt5" name="txt5" placeholder="" required value="<?php echo $op['Edel'] ?>">
-                                                <div class="invalid-feedback">
-                                                    กรุณาใส่ข้อมูลให้ครบ
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col-sm-6 mb-3 mb-sm">
-                                                    <div class="col-form-label-sm">เวลาเข้างาน : </div>
-                                                    <input type="time" class="form-control form-control-sm " id="txt5" name="txt6" placeholder="" required value="<?php echo $op['Etime'] ?>">
-                                                    <div class="invalid-feedback">
-                                                        กรุณาใส่ข้อมูลให้ครบ
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <div class="col-form-label-sm">เวลาออกงาน :</div>
-                                                    <input type="time" class="form-control form-control-sm" id="txt7" name="txt7" placeholder="" required value="<?php echo $op['Etimet'] ?>">
-                                                    <div class="invalid-feedback">
-                                                        กรุณาใส่ข้อมูลให้ครบ
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 mt-3">
-                                                    <button type="submit" class="btn btn-primary btn-user btn-block btn-sm" name="submit">บันทึก</button>
-                                                    <br>
-                                                    <a href="tables.php"><button type="button" class="btn btn-danger btn-sm btn-user btn-block " name="Back">กลับ </button></a>
-                                                </div>
-                                            </div>
+                                    </div>
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <div class="col-form-label-sm">รุ่นที่ผลิต : </div>
+                                        <input type="text" class="form-control form-control-sm" id="txt4" name="txt4" placeholder="" required value="<?php echo $op['Epro'] ?>">
+                                        <div class="invalid-feedback">
+                                            กรุณาใส่ข้อมูลให้ครบ
                                         </div>
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <div class="col-6 ">
+                                        <div class="col-form-label-sm">ชิ้นงานที่ทำได้ : </div>
+                                        <input type="number" class="form-control form-control-sm " id="txt3" name="txt3" placeholder="" required value="<?php echo $op['Econ'] ?>">
+                                        <div class="invalid-feedback">
+                                            กรุณาใส่ข้อมูลให้ครบ
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="col-form-label-sm">ของเสีย:</div>
+                                        <input type="number" class="form-control form-control-sm " id="txt5" name="txt5" placeholder="" required value="<?php echo $op['Edel'] ?>">
+                                        <div class="invalid-feedback">
+                                            กรุณาใส่ข้อมูลให้ครบ
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm">
+                                        <div class="col-form-label-sm">เวลาเข้างาน : </div>
+                                        <input type="time" class="form-control form-control-sm " id="txt5" name="txt6" placeholder="" required value="<?php echo $op['Etime'] ?>">
+                                        <div class="invalid-feedback">
+                                            กรุณาใส่ข้อมูลให้ครบ
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="col-form-label-sm">เวลาออกงาน :</div>
+                                        <input type="time" class="form-control form-control-sm" id="txt7" name="txt7" placeholder="" required value="<?php echo $op['Etimet'] ?>">
+                                        <div class="invalid-feedback">
+                                            กรุณาใส่ข้อมูลให้ครบ
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-12 mt-3">
+                                        <button type="submit" class="btn btn-primary btn-user btn-block btn-sm" name="submit">บันทึก</button>
+                                        <br>
+                                        <a href="tables.php"><button type="button" class="btn btn-danger btn-sm btn-user btn-block " name="Back">กลับ </button></a>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+                    </div>
+
 
     </form>
     </script>
