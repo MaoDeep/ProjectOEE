@@ -98,7 +98,7 @@ function chkdel(){if(confirm('  กรุณายืนยันการลบ
                     <span>กราฟ</span></a>
             </li>
 
-        
+        ชื่อ
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
