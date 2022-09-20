@@ -116,12 +116,13 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                             $mac = $row["mac_name"];
                                         }
                                         ?>
-                                        <input type="text" class="form-control form-control-sm" id="txt3" name="txt3" readonly placeholder="" value="<?= $mac ?>" required>
-                                        
-                                        <!--<select name="txt3" id="txt3" class="form-select form-select-sm">
-                                            <option value="A">08:00-17:00</option>
-                                            <option value="B">17:00-20:00</option>
-                                        </select>-->
+                                       
+                                        <select name="txt3" id="txt3" class="form-select form-select-sm">
+                                            <option value="MC-HTP-2016-1">MC-HTP-2016-1</option>
+                                            <option value="MC-HTP-2009-2">MC-HTP-2009-2</option>
+                                            <option value="MC-HTP-2005-3">MC-HTP-2005-3</option>
+                                            <option value="MC-HTP-2014-4">MC-HTP-2014-4</option>
+                                        </select>
                                         <div class="invalid-feedback">
                                             กรุณาใส่ข้อมูลให้ครบ
                                         </div>
@@ -137,7 +138,13 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                             $bra = $row["b_name"];
                                         }
                                         ?>
-                                        <input type="text" class="form-control form-control-sm" id="txt8" name="txt8" readonly placeholder="" value="<?= $bra ?>" required>
+                                        
+                                        <select name="txt8" id="txt8" class="form-select form-select-sm">
+                                            <option value="ผ้าเบรค Yasaki VIP กล่องรุ่น WA<">ผ้าเบรค Yasaki VIP กล่องรุ่น WA</option>
+                                            <option value="ผ้าเบรค Yasaki VIP เเพ็ค+สปริง รุ่น CL">ผ้าเบรค Yasaki VIP เเพ็ค+สปริง รุ่น CL</option>
+                                            <option value="ผ้าเบรค Yasaki VIP แพ็ค+สปริง RX-Z,Dream">ผ้าเบรค Yasaki VIP แพ็ค+สปริง RX-Z,Dream</option>
+                                            <option value="ผ้าเบรค Yasaki VIP Super เเพ็ค+สปริง รุ่น CL">ผ้าเบรค Yasaki VIP Super เเพ็ค+สปริง รุ่น CL</option>
+                                        </select>
                                         <div class="invalid-feedback">
                                             กรุณาใส่ข้อมูลให้ครบ
                                         </div>
@@ -314,7 +321,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
             $("#get_time").click(function() {
 
                 if (status == 1) {
-                    let text = "ยืนยันเวลาเข้างาน";
+                    let text = "!! คุณตกลงที่จะบันทึกเวลาเข้างาน !!";
                     if (confirm(text) == true) {
                         var date = new Date();
                         var h = String(date.getHours()).padStart(2, '0');
@@ -325,7 +332,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                         status++;
                     }
                 } else if (status == 2) {
-                    let text = "ยืนยันเวลาพัก";
+                    let text = "!! คุณตกลงที่จะบันทึกเวลาพัก !!";
                     if (confirm(text) == true) {
                         var date = new Date();
                         var h = String(date.getHours()).padStart(2, '0');
@@ -333,10 +340,10 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                         var v = h + ":" + i;
                         $("#txt9").val(v);
                         status++;
-                        $("#get_time").text("ยืนยันเวลาออกงาน");
+                        $("#get_time").text("ยืนยันเวลาหลังพัก");
                     }
                 } else if (status == 3) {
-                    let text = "ยืนยันเวลาพัก";
+                    let text = "!! คุณตกลงที่จะบันทึกเวลาหลังพัก !!";
                     if (confirm(text) == true) {
                         var date = new Date();
                         var h = String(date.getHours()).padStart(2, '0');
@@ -344,11 +351,11 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                         var v = h + ":" + i;
                         $("#txt10").val(v);
                         status++;
-                        $("#get_time").text("ยืนยันเวลาออกงาน");
+                        $("#get_time").text("ยืนยันเวลาเลิกงาน");
                     }
 
                 } else if (status == 4) {
-                    let text = "ยืนยันเวลาออกงาน";
+                    let text = "!! คุณตกลงที่จะบันทึกเวลาเลิกงาน !!";
                     if (confirm(text) == true) {
                         var date = new Date();
                         var h = String(date.getHours()).padStart(2, '0');

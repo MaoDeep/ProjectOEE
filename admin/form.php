@@ -285,7 +285,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                                                 <div class="col-sm-12  ">
                                                                     <div class="col-form-label-sm">เวลาทำงานทั้งหมด : </div>
                                                                     <div class="input-group input-group-sm">
-                                                                        <input type="number" step="any" class="form-control form-control-sm " id="txt1" name="txt1" placeholder="" readonly="" onkeyup="in1();" onclick="select();" value="<?php echo $d1 ?>" required>
+                                                                        <input type="number" step="any" class="form-control form-control-sm " id="txt1" name="txt1" placeholder=""  onkeyup="in1();" onclick="select();" value="<?php echo $d1 ?>" required>
                                                                         <span class="input-group-text " id="basic-addon1">นาที</span>
                                                                     </div>
                                                                 </div>
@@ -305,7 +305,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
 
                                                             <div class="col-form-label-sm">เวลาตอนพักของพนักงาน :</div>
                                                             <div class="input-group input-group-sm">
-                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt2" name="txt2" placeholder="" readonly="" onclick="select();" onkeyup="in1();" value="<?php echo $d7 ?>" required>
+                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt2" name="txt2" placeholder=""  onclick="select();" onkeyup="in1();" value="<?php echo $d7 ?>" required>
                                                                 <span class="input-group-text " id="basic-addon1">นาที</span>
                                                             </div>
                                                             <div class="invalid-feedback">
@@ -317,7 +317,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                                         <div class="col-sm-6  ">
                                                             <div class="col-form-label-sm">เวลาทำงานจริง : </div>
                                                             <div class="input-group input-group-sm">
-                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt3" name="txt3" placeholder="" readonly="" onclick="select();" onkeyup="in1();" required>
+                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt3" name="txt3" placeholder=""  onclick="select();" onkeyup="in1();" required>
                                                                 <span class="input-group-text " id="basic-addon1">นาที</span>
                                                             </div>
 
@@ -328,7 +328,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                                         <div class="col-sm-6">
                                                             <div class="col-form-label-sm">เวลาปิดเครื่องตอนพัก :</div>
                                                             <div class="input-group input-group-sm">
-                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt4" name="txt4" placeholder="" readonly="" onclick="select();" onkeyup="in1();" required>
+                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt4" name="txt4" placeholder=""  onclick="select();" onkeyup="in1();" required>
                                                                 <span class="input-group-text " id="basic-addon1">นาที</span>
                                                             </div>
 
@@ -349,7 +349,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                                                 </div>
                                                             </div>
                                                             <div class="input-group input-group-sm">
-                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt5" name="txt5" readonly="" placeholder="" onclick="select();" onkeyup="in1();">
+                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt5" name="txt5"  placeholder="" onclick="select();" onkeyup="in1();">
                                                                 <span class="input-group-text " id="basic-addon1">%</span>
                                                             </div>
 
@@ -379,7 +379,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                                                     $d1 = "";
                                                                 }
                                                                 ?>
-                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt6" name="txt6" placeholder="" readonly="" onkeyup="in2();" onclick="select();" value="<?= $d1 ?>" required>
+                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt6" name="txt6" placeholder=""  onkeyup="in2();" onclick="select();" value="<?= $d1 ?>" required>
                                                                 <span class="input-group-text " id="basic-addon1">นาที</span>
                                                             </div>
 
@@ -391,7 +391,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
 
                                                             <div class="col-form-label-sm">เวลาหยุดเดินเครื่องต่อ 1 กะ : </div>
                                                             <div class="input-group input-group-sm">
-                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt7" name="txt7" placeholder="" readonly="" onclick="select();" onkeyup="in2();" required>
+                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt7" name="txt7" placeholder=""  onclick="select();" onkeyup="in2();" required>
                                                                 <span class="input-group-text " id="basic-addon1">นาที</span>
                                                             </div>
 
@@ -412,7 +412,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                                             </div>
 
                                                             <div class="input-group input-group-sm">
-                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt8" name="txt8" readonly="" placeholder="" onclick="select();" onkeyup="in2();">
+                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt8" name="txt8"  placeholder="" onclick="select();" onkeyup="in2();">
                                                                 <span class="input-group-text " id="basic-addon1">%</span>
                                                             </div>
 
@@ -449,7 +449,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                                             }
                                                             ?>
                                                             <div class="input-group input-group-sm ">
-                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt9" name="txt9" placeholder=""  readonly=""onkeyup="in3();" onclick="select();" value="<?php echo $d2; ?>" required>
+                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt9" name="txt9" placeholder=""  onkeyup="in3();" onclick="select();" value="<?php echo $d2; ?>" required>
                                                                 <span class="input-group-text " id="basic-addon1">ชิ้น</span>
                                                             </div>
 
@@ -467,7 +467,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                                                     $d3 = "";
                                                                 }
                                                                 ?>
-                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt10" name="txt10" placeholder="" readonly="" onclick="select();" onkeyup="in3();" value="<?php echo $d3; ?>" required>
+                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt10" name="txt10" placeholder=""  onclick="select();" onkeyup="in3();" value="<?php echo $d3; ?>" required>
                                                                 <span class="input-group-text " id="basic-addon1">ชิ้น</span>
                                                             </div>
 
@@ -480,7 +480,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                                         <div class="col-sm-12  ">
                                                             <div class="col-form-label-sm">อัตราการคุณภาพของเครื่องจักร : </div>
                                                             <div class="input-group input-group-sm">
-                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt11" name="txt11" readonly="" placeholder="" onclick="select();" onkeyup="in3();">
+                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt11" name="txt11"  placeholder="" onclick="select();" onkeyup="in3();">
                                                                 <span class="input-group-text " id="basic-addon1">%</span>
                                                             </div>
 
@@ -503,7 +503,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                                         <div class="col-sm-4  ">
                                                             <div class="col-form-label-sm">อัตราการเดินเครื่องจักร : </div>
                                                             <div class="input-group input-group-sm">
-                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt12" name="txt12" aria-describedby="txt12" readonly="" placeholder="" required>
+                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt12" name="txt12" aria-describedby="txt12" readonly  placeholder="" required>
                                                                 <span class="input-group-text " id="basic-addon1">%</span>
                                                             </div>
 
@@ -515,7 +515,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                                         <div class="col-sm-4">
                                                             <div class="col-form-label-sm">ประสิทธิภาพของเครื่องจักร :</div>
                                                             <div class="input-group input-group-sm">
-                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt13" name="txt13" aria-describedby="txt13" readonly="" placeholder="" required>
+                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt13" name="txt13" aria-describedby="txt13" readonly placeholder="" required>
                                                                 <span class="input-group-text " id="basic-addon1">%</span>
                                                             </div>
 
@@ -527,7 +527,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                                         <div class="col-sm-4">
                                                             <div class="col-form-label-sm">อัตราคุณภาพเครื่องจักร :</div>
                                                             <div class="input-group input-group-sm">
-                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt14" name="txt14" aria-describedby="txt14" readonly="" placeholder="" required>
+                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt14" name="txt14" aria-describedby="txt14" readonly placeholder="" required>
                                                                 <span class="input-group-text " id="basic-addon1">%</span>
                                                             </div>
 

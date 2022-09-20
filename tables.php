@@ -223,18 +223,18 @@ function chkdel(){if(confirm('  กรุณายืนยันการลบ
                             <div class="table-responsive">
                                 <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
 
-                                    <thead>
+                                <thead>
                                         <tr>
                                             <th>ลำดับ</th>
                                             <th>วันที่</th>
                                             <th>ชื่อ</th>
                                             <th>รหัสเครื่อง</th>
-                                            <th>ชิ้นงานที่ทำได้</th>
                                             <th>รุ่นที่ผลิต</th>
+                                            <th>ชิ้นงานที่ทำได้</th>
                                             <th>ของเสีย</th>
                                             <th>เวลาเข้างาน</th>
                                             <th>เวลาเลิกงาน</th>
-                                            
+                                          
                                         </tr>
                                     </thead>
                                     <?php
@@ -252,8 +252,8 @@ function chkdel(){if(confirm('  กรุณายืนยันการลบ
                     <td>' . $d1 . '</td>
                     <td>' . $value['EName'] . '</td>
                     <td>' . $value['Nmac'] . '</td>
-                    <td>' . $value['Econ'] . '</td>
                     <td>' . $value['Epro'] . '</td>
+                    <td>' . $value['Econ'] . '</td>
                     <td>' . $value['Edel'] . '</td>
                     <td>' . $value['Etime'] . '</td>
                     <td>' . $value['Etimet'] . '</td>
