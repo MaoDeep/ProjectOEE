@@ -303,7 +303,7 @@ include "config.php";
             $("#get_time").click(function() {
 
                 if (status == 1) {
-                    let text = "ยืนยันเวลาเข้างาน";
+                    let text = "!! คุณตกลงที่จะบันทึกเวลาเข้างาน !!";
                     if (confirm(text) == true) {
                         var date = new Date();
                         var h = String(date.getHours()).padStart(2, '0');
@@ -314,7 +314,7 @@ include "config.php";
                         status++;
                     }
                 } else if (status == 2) {
-                    let text = "ยืนยันเวลาพัก";
+                    let text = "!! คุณตกลงที่จะบันทึกเวลาพัก !!";
                     if (confirm(text) == true) {
                         var date = new Date();
                         var h = String(date.getHours()).padStart(2, '0');
@@ -322,10 +322,10 @@ include "config.php";
                         var v = h + ":" + i;
                         $("#txt9").val(v);
                         status++;
-                        $("#get_time").text("ยืนยันเวลาออกงาน");
+                        $("#get_time").text("ยืนยันเวลาหลังพัก");
                     }
                 } else if (status == 3) {
-                    let text = "ยืนยันเวลาพัก";
+                    let text = "!! คุณตกลงที่จะบันทึกเวลาหลังพัก !!";
                     if (confirm(text) == true) {
                         var date = new Date();
                         var h = String(date.getHours()).padStart(2, '0');
@@ -333,11 +333,11 @@ include "config.php";
                         var v = h + ":" + i;
                         $("#txt10").val(v);
                         status++;
-                        $("#get_time").text("ยืนยันเวลาออกงาน");
+                        $("#get_time").text("ยืนยันเวลาเลิกงาน");
                     }
 
                 } else if (status == 4) {
-                    let text = "ยืนยันเวลาออกงาน";
+                    let text = "!! คุณตกลงที่จะบันทึกเวลาเลิกงาน !!";
                     if (confirm(text) == true) {
                         var date = new Date();
                         var h = String(date.getHours()).padStart(2, '0');
