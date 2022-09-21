@@ -68,16 +68,19 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
             echo '<script>alert("บันทึกไม่สำเร็จ")</script>';
         }
         
-        $txt12 = $_POST['txt12'];
-        $txt13 = $_POST['txt13'];
-        $txt14 = $_POST['txt14'];
+        $L1 = $_POST['txt12'];
+        $L2 = $_POST['txt13'];
+        $L3 = $_POST['txt14'];
+        $L4 = $_POST['txt15'];
+        $NName = $_SESSION['user']; 
 
-        $sToken = "ia7RhNxkGcGs79AXG4iKXWJ4IvoeuLnXWQguBy02eAc";
-	    $sMessage = "ข้อมูล OEE";
-        $sMessage .= "อัตราการเดินเครื่องจักร : ". $txt12.  " \n";
-        $sMessage .= "ประสิทธิภาพของเครื่องจักร : ". $txt13. " \n";
-        $sMessage .= "อัตราคุณภาพเครื่องจักร : ". $txt14. " \n";
-
+        $sToken = "cz8VFUTRNX5Pcu2PUKBJNHhbPvYTwJtI7OmMDPmgVtI";
+        $sMessage = "ข้อมูล OEE \n";
+        $sMessage .= "ชื่อพนักงาน : ". $NName.  " \n";
+        $sMessage .= "อัตราการเดินเครื่องจักร : ". $L1 .  " \n";
+        $sMessage .= "ประสิทธิภาพของเครื่องจักร : ". $L2 . " \n";
+        $sMessage .= "อัตราคุณภาพเครื่องจักร : ". $L3 . " \n";
+        $sMessage .= "ผลรวม : ". $L4 . " \n";
 
 	
 	$chOne = curl_init(); 

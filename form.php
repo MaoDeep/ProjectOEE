@@ -60,26 +60,22 @@ date_default_timezone_set('Asia/Bangkok')
             echo '<script>alert("บันทึกสำเร็จ")</script>';
         } else {
             echo '<script>alert("บันทึกไม่สำเร็จ")</script>';
-        }
-
-       
-        }
-            
+        }          
+     
+        $L1 = $_POST['txt12'];
+        $L2 = $_POST['txt13'];
+        $L3 = $_POST['txt14'];
+        $L4 = $_POST['txt15'];
         $NName = $_SESSION['user']; 
-        $txt12 = $_POST['txt12'];
-        $txt13 = $_POST['txt13'];
-        $txt14 = $_POST['txt14'];
-        $txt15 = $_POST['txt15'];
 
         $sToken = "cz8VFUTRNX5Pcu2PUKBJNHhbPvYTwJtI7OmMDPmgVtI";
-	    $sMessage = "ข้อมูล OEE \n";
+        $sMessage = "ข้อมูล OEE \n";
         $sMessage .= "ชื่อพนักงาน : ". $NName.  " \n";
-        $sMessage .= "อัตราการเดินเครื่องจักร : ". $txt12.  " \n";
-        $sMessage .= "ประสิทธิภาพของเครื่องจักร : ". $txt13. " \n";
-        $sMessage .= "อัตราคุณภาพเครื่องจักร : ". $txt14. " \n";
-        $sMessage .= "ผลรวม : ". $txt15. " \n";
-
-
+        $sMessage .= "อัตราการเดินเครื่องจักร : ". $L1 .  " \n";
+        $sMessage .= "ประสิทธิภาพของเครื่องจักร : ". $L2 . " \n";
+        $sMessage .= "อัตราคุณภาพเครื่องจักร : ". $L3 . " \n";
+        $sMessage .= "ผลรวม : ". $L4 . " \n";
+    
 	
 	$chOne = curl_init(); 
 	curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
@@ -93,18 +89,17 @@ date_default_timezone_set('Asia/Bangkok')
 	$result = curl_exec( $chOne ); 
 
 	//Result error 
- /*if(curl_error($chOne)) 
+	if(curl_error($chOne)) 
 	{ 
 		echo 'error:' . curl_error($chOne); 
 	} 
-	else  { 
+	else { 
 		$result_ = json_decode($result, true); 
-		 echo "status : ".$result_['status']; echo "message : ". $result_['message'];
-	} 
+	 //	echo "status : ".$result_['status']; echo "message : ". $result_['message']; //
+    }
 	curl_close( $chOne );   
-    
-    */
-    
+
+    }
     ?>
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -498,7 +493,7 @@ date_default_timezone_set('Asia/Bangkok')
                                                         <div class="col-sm-4  ">
                                                             <div class="col-form-label-sm">อัตราการเดินเครื่องจักร : </div>
                                                             <div class="input-group input-group-sm">
-                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt12" name="txt12" readonly="" placeholder="" required>
+                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt12" name="txt12" aria-describedby="txt12" readonly=""  placeholder="" required>
                                                                 <span class="input-group-text " id="basic-addon1">%</span>
                                                             </div>
 
@@ -510,7 +505,7 @@ date_default_timezone_set('Asia/Bangkok')
                                                         <div class="col-sm-4">
                                                             <div class="col-form-label-sm">ประสิทธิภาพของเครื่องจักร :</div>
                                                             <div class="input-group input-group-sm">
-                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt13" name="txt13" readonly="" placeholder="" required>
+                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt13" name="txt13" aria-describedby="txt13" readonly=""   placeholder="" required>
                                                                 <span class="input-group-text " id="basic-addon1">%</span>
                                                             </div>
 
@@ -522,7 +517,7 @@ date_default_timezone_set('Asia/Bangkok')
                                                         <div class="col-sm-4">
                                                             <div class="col-form-label-sm">อัตราคุณภาพเครื่องจักร :</div>
                                                             <div class="input-group input-group-sm">
-                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt14" name="txt14" readonly="" placeholder="" required>
+                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt14" name="txt14" aria-describedby="txt14"  readonly=""  placeholder="" required>
                                                                 <span class="input-group-text " id="basic-addon1">%</span>
                                                             </div>
 
@@ -536,7 +531,7 @@ date_default_timezone_set('Asia/Bangkok')
                                                         <div class="col-sm-12  ">
                                                             <div class="col-form-label-sm">OEE : </div>
                                                             <div class="input-group input-group-sm">
-                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt15" name="txt15" readonly="" placeholder="">
+                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt15" name="txt15" aria-describedby="txt15"  readonly="" placeholder="">
                                                                 <span class="input-group-text " id="basic-addon1">%</span>
                                                             </div>
 
