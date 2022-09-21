@@ -23,13 +23,13 @@ class PDF extends FPDF
         $this->Cell(5);
         // Title
         $this->Image('img/logo.png', 20, 10, 40, 0, 'PNG');
-        $this->Cell(182, 45, iconv('UTF-8', 'cp874', 'รายงานผลผลิตประจำวัน'), 0, 0, 'C');
+        $this->Cell(265, 45, iconv('UTF-8', 'cp874', 'รายงานผลผลิตประจำวัน'), 0, 0, 'C');
 
         $this->AddFont('THSarabun', '', 'THSarabun Bold.php');
         $this->SetFont('THSarabun', '', 16);
-        $this->Cell(2, 45, iconv('UTF-8', 'cp874', 'วันที่ : ' . date("d/m/Y H:i:s")), 0, 0, 'R');
+        $this->Cell(1, 45, iconv('UTF-8', 'cp874', 'วันที่ : ' . date("d/m/Y H:i:s")), 0, 0, 'R');
         $this->Ln(0);
-        $this->Cell(162, 60, iconv('UTF-8', 'cp874', 'ผู้พิมพ์ : ' . $_SESSION["user"]), 0, 0, 'R');
+        $this->Cell(250, 60, iconv('UTF-8', 'cp874', 'ผู้พิมพ์ : ' . $_SESSION["user"]), 0, 0, 'R');
         // Line break
         $this->Ln(35);
 
@@ -39,15 +39,15 @@ class PDF extends FPDF
 
         $this->Cell(7);
 
-       
+
         $this->Cell(30, 10, iconv('UTF-8', 'cp874', 'วันที่'), 1, 0, 'C', true);
-        $this->Cell(20, 10, iconv('UTF-8', 'cp874', 'ผู้บันทึก'), 1, 0, 'C', true);
-        $this->Cell(30, 10, iconv('UTF-8', 'cp874', 'รหัสเครื่อง'), 1, 0, 'C', true);
-        $this->Cell(25, 10, iconv('UTF-8', 'cp874', 'ชิ้นงานที่ทำได้'), 1, 0, 'C', true);
-        $this->Cell(20, 10, iconv('UTF-8', 'cp874', 'ของเสีย'), 1, 0, 'C', true);
-        $this->Cell(15, 10, iconv('UTF-8', 'cp874', 'รุ่นที่ผลิต'), 1, 0, 'C', true);
-        $this->Cell(20, 10, iconv('UTF-8', 'cp874', 'เวลาเข้างาน'), 1, 0, 'C', true);
-        $this->Cell(20, 10, iconv('UTF-8', 'cp874', 'เวลาเลิกงาน'), 1, 0, 'C', true);
+        $this->Cell(35, 10, iconv('UTF-8', 'cp874', 'ผู้บันทึก'), 1, 0, 'C', true);
+        $this->Cell(40, 10, iconv('UTF-8', 'cp874', 'รหัสเครื่อง'), 1, 0, 'C', true);
+        $this->Cell(30, 10, iconv('UTF-8', 'cp874', 'ชิ้นงานที่ทำได้'), 1, 0, 'C', true);
+        $this->Cell(30, 10, iconv('UTF-8', 'cp874', 'ของเสีย'), 1, 0, 'C', true);
+        $this->Cell(40, 10, iconv('UTF-8', 'cp874', 'รุ่นที่ผลิต'), 1, 0, 'C', true);
+        $this->Cell(30, 10, iconv('UTF-8', 'cp874', 'เวลาเข้างาน'), 1, 0, 'C', true);
+        $this->Cell(30, 10, iconv('UTF-8', 'cp874', 'เวลาเลิกงาน'), 1, 0, 'C', true);
         $this->Ln();
     }
 
@@ -63,7 +63,7 @@ class PDF extends FPDF
 }
 
 // Instanciation of inherited class
-$pdf = new PDF();
+$pdf = new PDF('L');
 
 
 $title = 'บันทึกผลผลิต';
@@ -103,13 +103,13 @@ while ($array = mysqli_fetch_assoc($result)) {
     $pdf->Cell(7);
 
     $pdf->Cell(30, 10, iconv('UTF-8', 'cp874', $DATE), 1, 0, 'C');
-    $pdf->Cell(20, 10, iconv('UTF-8', 'cp874', $EName), 1, 0, 'C');
-    $pdf->Cell(30, 10, iconv('UTF-8', 'cp874', $Nmac), 1, 0, 'C');
-    $pdf->Cell(25, 10, iconv('UTF-8', 'cp874', $Econ), 1, 0, 'C');
-    $pdf->Cell(20, 10, iconv('UTF-8', 'cp874', $Edel), 1, 0, 'C');
-    $pdf->Cell(15, 10, iconv('UTF-8', 'cp874', $Epro), 1, 0, 'C');
-    $pdf->Cell(20, 10, iconv('UTF-8', 'cp874', $Etime), 1, 0, 'C');
-    $pdf->Cell(20, 10, iconv('UTF-8', 'cp874', $Etimet), 1, 0, 'C');
+    $pdf->Cell(35, 10, iconv('UTF-8', 'cp874', $EName), 1, 0, 'C');
+    $pdf->Cell(40, 10, iconv('UTF-8', 'cp874', $Nmac), 1, 0, 'C');
+    $pdf->Cell(30, 10, iconv('UTF-8', 'cp874', $Econ), 1, 0, 'C');
+    $pdf->Cell(30, 10, iconv('UTF-8', 'cp874', $Edel), 1, 0, 'C');
+    $pdf->Cell(40, 10, iconv('UTF-8', 'cp874', $Epro), 1, 0, 'C');
+    $pdf->Cell(30, 10, iconv('UTF-8', 'cp874', $Etime), 1, 0, 'C');
+    $pdf->Cell(30, 10, iconv('UTF-8', 'cp874', $Etimet), 1, 0, 'C');
     $pdf->Ln();
 }
 
