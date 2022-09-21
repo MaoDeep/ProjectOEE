@@ -164,7 +164,7 @@ include "config.php";
                                             </div>
                                         </div>
                                         <div class="col-md-2">
-                                            <div class="col-form-label-sm">เวลาพักเสร็จ : </div>
+                                            <div class="col-form-label-sm">เวลาหลังพัก : </div>
                                             <input type="time" class="form-control form-control-sm " id="txt10" name="txt10" placeholder="" required>
                                             <div class="invalid-feedback">
                                                 กรุณาใส่ข้อมูลให้ครบ

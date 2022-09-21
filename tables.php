@@ -21,12 +21,13 @@ if (isset($_POST['submit'])) {
 ?>
 
 <script>
-function chkdel(){if(confirm('  กรุณายืนยันการลบอีกครั้ง !!!  ')){
-	return true;
-}else{
-	return false;
-}
-}
+    function chkdel() {
+        if (confirm('  กรุณายืนยันการลบอีกครั้ง !!!  ')) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 </script>
 
 <!DOCTYPE html>
@@ -72,8 +73,8 @@ function chkdel(){if(confirm('  กรุณายืนยันการลบ
                 </div>
             </a>
 
-             <!-- Nav Item - Dashboard -->
-             <li class="nav-item active">
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
                 <a class="nav-link" href="home.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>หน้าหลัก</span></a>
@@ -98,7 +99,7 @@ function chkdel(){if(confirm('  กรุณายืนยันการลบ
                     <span>กราฟ</span></a>
             </li>
 
-        ชื่อ
+
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -200,20 +201,9 @@ function chkdel(){if(confirm('  กรุณายืนยันการลบ
                         </div>
                         <div class="card-body">
                             <div class="row mb-4">
-                                <div class="col-6">
-                                    <div class="row mt-3">
-                                        <div class="col-auto">
-                                            <label for="d1" class="col-form-label">วันที่ : </label>
-                                        </div>
-                                        <div class="col-sm-3"><input type="date" name="d1" id="d1" class="form-control form-control-sm"></div>
-                                        <div class="col-auto">
-                                            <label for="d2" class="col-form-label">ถึง : </label>
-                                        </div>
-                                        <div class="col-sm-3"><input type="date" name="d2" id="d2" class="form-control form-control-sm"></div>
-                                        <div class="col-sm-3"><button type="button" id="pdf" class="btn btn-sm btn-success" onclick="x()" style="width: 10rem;"><i class="bi bi-filetype-pdf"></i> ออกรายงาน PDF</button></div>
-                                    </div>
-                                </div>
-                                <div class="col-6">
+
+
+                                <div class="col-12">
                                     <div class="d-flex flex-row-reverse">
                                         <div class="p-2"><a href="addtables.php"><button type="button" class="btn-info btn-sm btn ">เพิ่มข้อมูล</button></a></div>
                                     </div>
@@ -223,7 +213,7 @@ function chkdel(){if(confirm('  กรุณายืนยันการลบ
                             <div class="table-responsive">
                                 <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
 
-                                <thead>
+                                    <thead>
                                         <tr>
                                             <th>ลำดับ</th>
                                             <th>วันที่</th>
@@ -234,7 +224,7 @@ function chkdel(){if(confirm('  กรุณายืนยันการลบ
                                             <th>ของเสีย</th>
                                             <th>เวลาเข้างาน</th>
                                             <th>เวลาเลิกงาน</th>
-                                          
+
                                         </tr>
                                     </thead>
                                     <?php
