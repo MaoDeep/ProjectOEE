@@ -261,7 +261,7 @@ session_start();
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        OEE
+                                        ประสิทธิผลโดยรวมของเครื่องจักร
                                         <div id="test" class="h1"></div>
                                     </div>
                                     <div class="card-body">

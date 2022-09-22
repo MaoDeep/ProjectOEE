@@ -23,13 +23,13 @@ class PDF extends FPDF
         $this->Cell(5);
         // Title
         $this->Image('img/logo.png', 20, 10, 40, 0, 'PNG');
-        $this->Cell(182, 45, iconv('UTF-8', 'cp874', 'สรุปผลรวมOEE'), 0, 0, 'C');
+        $this->Cell(182, 45, iconv('UTF-8', 'cp874', 'ประสิทธิผลโดยรวมของเครื่่องจักร'), 0, 0, 'C');
 
         $this->AddFont('THSarabun', '', 'THSarabun Bold.php');
-        $this->SetFont('THSarabun', '', 13);
+        $this->SetFont('THSarabun', '', 14);
         $this->Cell(2, 45, iconv('UTF-8', 'cp874', 'วันที่ : ' . date("d/m/Y H:i:s")), 0, 0, 'R');
         $this->Ln(0);
-        $this->Cell(166, 60, iconv('UTF-8', 'cp874', 'ผู้พิมพ์ : ' . $_SESSION["user"]), 0, 0, 'R');
+        $this->Cell(170, 60, iconv('UTF-8', 'cp874', 'ผู้พิมพ์ : ' . $_SESSION["user"]), 0, 0, 'R');
         // Line break
         $this->Ln(35);
 
@@ -42,9 +42,9 @@ class PDF extends FPDF
         $this->Cell(30, 10, iconv('UTF-8', 'cp874', 'วันที่'), 1, 0, 'C', true);
         $this->Cell(30, 10, iconv('UTF-8', 'cp874', 'ชื่อผู้บันทึก'), 1, 0, 'C', true);
         $this->Cell(30, 10, iconv('UTF-8', 'cp874', 'อัตราการเดินเครื่อง'), 1, 0, 'C', true);
-        $this->Cell(30, 10, iconv('UTF-8', 'cp874', 'ประสิทธิภาพเครื่องจักร'), 1, 0, 'C', true);
+        $this->Cell(32, 10, iconv('UTF-8', 'cp874', 'ประสิทธิภาพเครื่องจักร'), 1, 0, 'C', true);
         $this->Cell(30, 10, iconv('UTF-8', 'cp874', 'อัตราคุณภาพ'), 1, 0, 'C', true);
-        $this->Cell(30, 10, iconv('UTF-8', 'cp874', 'ผลรวมOEE'), 1, 0, 'C', true);
+        $this->Cell(30, 10, iconv('UTF-8', 'cp874', 'OEE'), 1, 0, 'C', true);
         $this->Ln();
     }
 
@@ -100,7 +100,7 @@ while ($array = mysqli_fetch_assoc($result)) {
     $pdf->Cell(30, 10, iconv('UTF-8', 'cp874', $date), 1, 0, 'C');
     $pdf->Cell(30, 10, iconv('UTF-8', 'cp874', $user), 1, 0, 'C');
     $pdf->Cell(30, 10, iconv('UTF-8', 'cp874', $TR), 1, 0, 'C');
-    $pdf->Cell(30, 10, iconv('UTF-8', 'cp874', $TS), 1, 0, 'C');
+    $pdf->Cell(32, 10, iconv('UTF-8', 'cp874', $TS), 1, 0, 'C');
     $pdf->Cell(30, 10, iconv('UTF-8', 'cp874', $NT), 1, 0, 'C');
     $pdf->Cell(30, 10, iconv('UTF-8', 'cp874', $EU), 1, 0, 'C');
     $pdf->Ln();

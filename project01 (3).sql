@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 19, 2022 at 02:37 PM
+-- Generation Time: Sep 22, 2022 at 09:34 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.0.19
 
@@ -37,10 +37,10 @@ CREATE TABLE `brand` (
 --
 
 INSERT INTO `brand` (`b_id`, `b_name`) VALUES
-('1', 'ผ้าเบรค Yasaki VIP กล่องรุ่น WA'),
-('2', 'ผ้าเบรค Yasaki VIP เเพ็ค+สปริง รุ่น CL'),
-('3', 'ผ้าเบรค Yasaki VIP แพ็ค+สปริง RX-Z,Dream'),
-('4', 'ผ้าเบรค Yasaki VIP Super เเพ็ค+สปริง รุ่น CL');
+('1', 'ผ้าเบรค Yasaki VIP รุ่น WA'),
+('2', 'ผ้าเบรค Yasaki VIP รุ่น CL'),
+('3', 'ผ้าเบรค Yasaki VIP รุ่น RX-Z,Dream'),
+('4', 'ผ้าเบรค  Yasaki VIP Super รุ่น CL');
 
 -- --------------------------------------------------------
 
@@ -53,7 +53,7 @@ CREATE TABLE `employee` (
   `EName` varchar(20) NOT NULL,
   `Nmac` varchar(50) NOT NULL,
   `Econ` int(20) NOT NULL,
-  `Epro` varchar(20) NOT NULL,
+  `Epro` varchar(100) NOT NULL,
   `Edel` int(11) NOT NULL,
   `Etime` varchar(20) NOT NULL,
   `Etimet` varchar(20) NOT NULL,
@@ -65,16 +65,10 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`E_id`, `EName`, `Nmac`, `Econ`, `Epro`, `Edel`, `Etime`, `Etimet`, `DATE`) VALUES
-(369, 'Khun sen win', 'MC-HTP-2016-1', 4100, 'ผ้าเบรค Yasaki VIP ก', 47, '08:00', '17:00', '2022-09-19'),
-(370, 'Saw maung tin', 'MC-HTP-2009-2', 5000, 'ผ้าเบรค Yasaki VIP เ', 50, '08:00', '17:00', '2022-09-19'),
-(371, 'Kyaw win joe wen', 'MC-HTP-2005-3', 50000, 'ผ้าเบรค Yasaki VIP แ', 500, '17:00', '20:00', '2022-09-19'),
-(372, 'Kyaw win joe wen', 'MC-HTP-2005-3', 4500, 'ผ้าเบรค Yasaki VIP แ', 48, '08:00', '17:00', '2022-09-19'),
-(373, 'Khun tun naing', 'MC-HTP-2014-4', 4600, 'ผ้าเบรค Yasaki VIP S', 47, '08:00', '17:00', '2022-09-19'),
-(374, 'Saw maung tin', 'MC-HTP-2009-2', 7000, 'ผ้าเบรค Yasaki VIP เ', 14, '08:00', '18:00', '2022-09-19'),
-(375, 'Saw maung tin', 'MC-HTP-2009-2', 4100, 'ผ้าเบรค Yasaki VIP เ', 10, '08:00', '17:00', '2022-09-19'),
-(376, 'Khun sen win', 'MC-HTP-2016-1', 4100, 'ผ้าเบรค Yasaki VIP ก', 100, '08:00', '18:00', '2022-09-19'),
-(377, 'Kyaw win joe wen', 'MC-HTP-2005-3', 5000, 'ผ้าเบรค Yasaki VIP แ', 10, '08:00', '17:00', '2022-09-19'),
-(378, 'Khun tun naing', 'MC-HTP-2014-4', 112, 'ผ้าเบรค Yasaki VIP S', 1, '08:00', '18:00', '2022-09-19');
+(395, ' sen win', 'MC-HTP-2016-1', 4100, 'ผ้าเบรค Yasaki VIP รุ่น WA', 40, '08:05', '17:03', '2022-09-22'),
+(396, 'Saw maung tin', 'MC-HTP-2009-2', 4500, 'ผ้าเบรค Yasaki VIP รุ่น CL', 41, '08:00', '18:00', '2022-09-22'),
+(397, ' joe wen', 'MC-HTP-2005-3', 4000, 'ผ้าเบรค Yasaki VIP รุ่น RX-Z,Dream', 10, '08:00', '18:30', '2022-09-22'),
+(398, ' tun naing', 'MC-HTP-2014-4', 5000, 'ผ้าเบรค  Yasaki VIP Super รุ่น CL', 100, '08:00', '20:30', '2022-09-22');
 
 -- --------------------------------------------------------
 
@@ -129,15 +123,10 @@ CREATE TABLE `report` (
 --
 
 INSERT INTO `report` (`id`, `AT`, `SP`, `WT`, `MS`, `MIX`, `RT`, `MSS`, `TT`, `NO`, `NUM`, `TOT`, `TR`, `TS`, `NT`, `EU`, `date`, `u_id`) VALUES
-(119, 180, 60, 120, 60, 50, 180, 60, 66.67, 50000, 500, 99, 50, 66.67, 99, 33, '2022-09-19', '47'),
-(120, 180, 60, 120, 60, 50, 180, 60, 66.67, 50000, 500, 99, 50, 66.67, 99, 33, '2022-09-19', '47'),
-(121, 540, 90, 450, 90, 80, 540, 90, 83.33, 4500, 48, 98.93, 80, 83.33, 99, 65.96, '2022-09-19', '47'),
-(122, 540, 60, 480, 60, 87.5, 540, 60, 88.89, 4600, 47, 98.98, 87.5, 88.89, 99, 76.98, '2022-09-19', '48'),
-(123, 600, 90, 510, 90, 82.35, 600, 90, 85, 7000, 14, 99.8, 82.35, 85, 100, 69.86, '2022-09-19', '46'),
-(124, 540, 60, 480, 60, 87.5, 540, 60, 88.89, 4100, 10, 99.76, 87.5, 88.89, 100, 77.59, '2022-09-19', '46'),
-(125, 600, 60, 540, 60, 88.89, 600, 60, 90, 4100, 100, 97.56, 88.89, 90, 98, 78.05, '2022-09-19', '45'),
-(126, 540, 90, 450, 90, 80, 540, 90, 83.33, 5000, 10, 99.8, 80, 83.33, 100, 66.53, '2022-09-19', '47'),
-(127, 600, 60, 540, 60, 88.89, 600, 60, 90, 112, 1, 99.11, 88.89, 90, 99, 79.29, '2022-09-19', '48');
+(139, 538, 60, 478, 60, 87.45, 538, 60, 88.85, 4100, 41, 99, 87.45, 88.85, 99, 76.92, '2022-09-22', '45'),
+(140, 600, 90, 510, 90, 82.35, 600, 90, 85, 4500, 41, 99.09, 82.35, 85, 99, 69.36, '2022-09-22', '46'),
+(141, 630, 60, 570, 60, 89.47, 630, 60, 90.48, 4000, 10, 99.75, 89.47, 90.48, 100, 80.75, '2022-09-22', '47'),
+(142, 750, 63, 687, 63, 90.83, 750, 63, 91.6, 5000, 100, 98, 90.83, 91.6, 98, 81.54, '2022-09-22', '48');
 
 -- --------------------------------------------------------
 
@@ -162,10 +151,10 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`u_id`, `u_usersname`, `u_pssaword`, `Status`, `std2`, `mac_id`, `b_id`) VALUES
 (0, 'ชิด', 1111, 'Admin', 'ปกติ', '', ''),
 (5, 'admin', 1111, 'Admin', 'ปกติ', '', ''),
-(45, 'Khun sen win', 1111, 'User', 'ปกติ', '1', '1'),
+(45, ' sen win', 1111, 'User', 'ปกติ', '1', '1'),
 (46, 'Saw maung tin', 1111, 'User', 'ปกติ', '2', '2'),
-(47, 'Kyaw win joe wen', 1111, 'User', 'ปกติ', '3', '3'),
-(48, 'Khun tun naing', 1111, 'User', 'ปกติ', '4', '4');
+(47, ' joe wen', 1111, 'User', 'ปกติ', '3', '3'),
+(48, ' tun naing', 1111, 'User', 'ปกติ', '4', '4');
 
 --
 -- Indexes for dumped tables
@@ -209,19 +198,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `E_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=379;
+  MODIFY `E_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=399;
 
 --
 -- AUTO_INCREMENT for table `report`
 --
 ALTER TABLE `report`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

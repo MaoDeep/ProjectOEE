@@ -132,8 +132,6 @@ if (isset($_POST['submit'])) {
                     </form>
 
                     <!-- Topbar Search -->
-
-
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
@@ -142,11 +140,8 @@ if (isset($_POST['submit'])) {
                         <li class="nav-item dropdown no-arrow d-sm-none">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search fa-fw"></i>
-
                             </a>
-
                             <!-- Dropdown - Messages -->
-
                             <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                                 <form class="form-inline mr-auto w-100 navbar-search">
                                     <div class="input-group">
@@ -214,7 +209,7 @@ if (isset($_POST['submit'])) {
                                 <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
 
                                     <thead>
-                                        <tr>
+                                        <tr bgcolor="PeachPuff">
                                             <th>ลำดับ</th>
                                             <th>วันที่</th>
                                             <th>ชื่อ</th>

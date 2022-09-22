@@ -16,6 +16,8 @@ if (isset($_POST["submit"])) {
 
     if ($re) {
         echo '<script>alert("บันทึกสำเร็จ")</script>';
+        header('Location: ../user.php');
+        exit(0);
     } else {
         echo '<script>alert("บันทึกไม่สำเร็จ")</script>';
     }
@@ -73,7 +75,7 @@ if (isset($_POST["submit"])) {
                                 <option value="">--เลือกสถานะ--</option>
                                 <option value="ปกติ">ปกติ</option>
                                 <option value="หยุดงาน">หยุดงาน</option>
-                                <option value="ลาออก">ลาออก</option>
+                                
 
                             </select>
                         </div>

@@ -278,14 +278,14 @@ if (isset($_POST['submit'])) {
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary"> ตารางประสิทธิผลโดยรวมของเครื่องจักร</h6>
+                            <h5 class="m-0 font-weight-bold text-primary"> ตาราง OEE</h5>
                         </div>
 
                         <div class="card-body">
                             <div class="mx-auto col-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        OEE
+                                        ประสิทธิผลโดยรวมของเครื่องจักร
                                     </div>
                                     <div class="card-body">
                                         <form action="PDFOEE.php" method="get">
@@ -369,76 +369,77 @@ if (isset($_POST['submit'])) {
                             <div class=" col-12 mx-auto">
                                 <div class="card mt-3 ">
                                     <div class="card-header">
-                                        <div id="two">กราฟOEE</div>
+                                        <div id="two">ประสิทธิผลโดยรวมของเครื่องจักร</div>
                                     </div>
                                     <div class="card-body">
-
                                         <canvas id="myChart"></canvas>
                                         <div class="card mt-3">
                                             <div class="card-header">
                                                 ข้อมูล
                                             </div>
-                                            <table class="table table-bordered text-center" id="tabel1">
-                                                <thead>
-                                                    <tr bgcolor="PeachPuff">
-                                                        <th>วันที่</th>
-                                                        <th>เวลาทำงานทั้งหมด</th>
-                                                        <th>เวลาทำงานตอนพัก</th>
-                                                        <th>เวลาทำงานจริง</th>
-                                                        <th>เวลาเปิดเครื่องจักร</th>
-                                                        <th>เวลาปิดเครื่องจักร</th>
-                                                        <th>เวลาหยุดเครื่องจักร</th>
-                                                        <th>ชิ้นงานที่ผลิตได้</th>
-                                                        <th>ชิ้นงานเสีย</th>
-                                                        <th>ชื่อ</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-
-                                                    foreach ($_GET["no"] as $row) {
-                                                        $sql = "SELECT * FROM `report` INNER JOIN users on report.u_id = users.u_id WHERE report.id =" . $row;
-                                                        $re = mysqli_query($conn, $sql);
-
-                                                        foreach ($re as $row) {
-                                                            $date = date_create($row["date"]);
-                                                            $d = date_format($date, "d/m/Y");
-                                                    ?>
-                                                            <tr>
-                                                                <th><?php echo $d ?></th>
-                                                                <th><?php echo number_format($row["AT"], 2). " ชม."; ?></th>
-                                                                <th><?php echo number_format($row["SP"], 2). " ชม.";  ?></th>
-                                                                <th><?php echo number_format($row["WT"], 2). " ชม.";  ?></th>
-                                                                <th><?php echo number_format($row["MS"], 2). " ชม.";  ?></th>
-                                                                <th><?php echo number_format($row["RT"], 2). " ชม.";  ?></th>
-                                                                <th><?php echo number_format($row["MSS"], 2) . " ชม."; ?></th>
-                                                                <th><?php echo number_format($row["NO"],) . " ชิ้น."; ?></th>
-                                                                <th><?php echo number_format($row["NUM"], ) . " ชิ้น."; ?></th>
-                                                                <th><?php echo $row["u_usersname"] ?></th>
-                                                            </tr>
-                                                    <?php
-                                                        }
-                                                    }
-                                                    ?>
-                                                </tbody>
-                                            </table>
-
                                         </div>
+                                        <table class="table table-bordered text-center" id="tabel1">
+                                            <thead>
+                                                <br>
+                                                <tr bgcolor="PeachPuff">
+                                                    <th>วันที่</th>
+                                                    <th>เวลาทำงานทั้งหมด</th>
+                                                    <th>เวลาทำงานตอนพัก</th>
+                                                    <th>เวลาทำงานจริง</th>
+                                                    <th>เวลาเปิดเครื่องจักร</th>
+                                                    <th>เวลาปิดเครื่องจักร</th>
+                                                    <th>เวลาหยุดเครื่องจักร</th>
+                                                    <th>ชิ้นงานที่ผลิตได้</th>
+                                                    <th>ชิ้นงานเสีย</th>
+                                                    <th>ชื่อ</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+
+                                                foreach ($_GET["no"] as $row) {
+                                                    $sql = "SELECT * FROM `report` INNER JOIN users on report.u_id = users.u_id WHERE report.id =" . $row;
+                                                    $re = mysqli_query($conn, $sql);
+
+                                                    foreach ($re as $row) {
+                                                        $date = date_create($row["date"]);
+                                                        $d = date_format($date, "d/m/Y");
+                                                ?>
+                                                        <tr>
+                                                            <th><?php echo $d ?></th>
+                                                            <th><?php echo number_format($row["AT"],) . " นาที."; ?></th>
+                                                            <th><?php echo number_format($row["SP"],) . " นาที.";  ?></th>
+                                                            <th><?php echo number_format($row["WT"],) . " นาที.";  ?></th>
+                                                            <th><?php echo number_format($row["MS"],) . " นาที.";  ?></th>
+                                                            <th><?php echo number_format($row["RT"],) . " นาที.";  ?></th>
+                                                            <th><?php echo number_format($row["MSS"],) . " นาที."; ?></th>
+                                                            <th><?php echo number_format($row["NO"],) . " ชิ้น."; ?></th>
+                                                            <th><?php echo number_format($row["NUM"],) . " ชิ้น."; ?></th>
+                                                            <th><?php echo $row["u_usersname"] ?></th>
+                                                        </tr>
+                                                <?php
+                                                    }
+                                                }
+                                                ?>
+                                            </tbody>
+                                        </table>
+
                                     </div>
                                 </div>
                             </div>
                     </div>
-                <?php
-                        }
-                ?>
                 </div>
+            <?php
+                        }
+            ?>
             </div>
         </div>
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
-        </a>
+    </div>
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
 
-        <!-- /.container-fluid -->
+    <!-- /.container-fluid -->
 
     </div>
     <!-- End of Main Content -->
@@ -653,18 +654,19 @@ if (isset($_POST['submit'])) {
         }
     </script>
     <script>
-    var offset = -100;
+        var offset = -100;
 
-function pageScroll() {
-        window.scrollBy(0,50); // horizontal and vertical scroll increments
-        if(window.pageYOffset == offset) return;
-        offset = window.pageYOffset;
-        scrolldelay = setTimeout('pageScroll()',100); // scrolls every 100 milliseconds
-}
+        function pageScroll() {
+            window.scrollBy(0, 50); // horizontal and vertical scroll increments
+            if (window.pageYOffset == offset) return;
+            offset = window.pageYOffset;
+            scrolldelay = setTimeout('pageScroll()', 100); // scrolls every 100 milliseconds
+        }
 
-//actually scroll
-pageScroll();
-</script>
+
+        //actually scroll
+        pageScroll();
+    </script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- Core plugin JavaScript-->
@@ -672,6 +674,15 @@ pageScroll();
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>
+
+
 </body>
 
 </html>

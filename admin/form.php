@@ -75,7 +75,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
         $NName = $_SESSION['user']; 
 
         $sToken = "cz8VFUTRNX5Pcu2PUKBJNHhbPvYTwJtI7OmMDPmgVtI";
-        $sMessage = "ข้อมูล OEE \n";
+        $sMessage = "ประสิทธิผลโดยรวมของเครื่องจักร \n";
         $sMessage .= "ชื่อพนักงาน : ". $NName.  " \n";
         $sMessage .= "อัตราการเดินเครื่องจักร : ". $L1 .  " \n";
         $sMessage .= "ประสิทธิภาพของเครื่องจักร : ". $L2 . " \n";
@@ -95,7 +95,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
 	$result = curl_exec( $chOne ); 
 
 	//Result error 
-	if(curl_error($chOne)) 
+	/*if(curl_error($chOne)) 
 	{ 
 		echo 'error:' . curl_error($chOne); 
 	} 
@@ -103,7 +103,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
 		$result_ = json_decode($result, true); 
 		echo "status : ".$result_['status']; echo "message : ". $result_['message'];
 	} 
-	curl_close( $chOne );   
+	curl_close( $chOne );   */
     
     }
     
@@ -373,7 +373,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                                 <div class="card-body">
                                                     <div class="form-group row">
                                                         <div class="col-sm-6  ">
-                                                            <div class="col-form-label-sm">เวลาเปิดเครื่องต่อ 1 กะ : </div>
+                                                            <div class="col-form-label-sm">เวลาเปิดเครื่องต่อ 1 วัน : </div>
                                                             <div class="input-group input-group-sm">
                                                                 <?php
                                                                 if (isset($_GET["x3"])) {
@@ -392,7 +392,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                                         </div>
                                                         <div class="col-sm-6">
 
-                                                            <div class="col-form-label-sm">เวลาหยุดเดินเครื่องต่อ 1 กะ : </div>
+                                                            <div class="col-form-label-sm">เวลาหยุดเดินเครื่องต่อ 1 วัน : </div>
                                                             <div class="input-group input-group-sm">
                                                                 <input type="number" step="any" class="form-control form-control-sm" id="txt7" name="txt7" placeholder=""  onclick="select();" onkeyup="in2();" required>
                                                                 <span class="input-group-text " id="basic-addon1">นาที</span>
@@ -438,7 +438,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                                         <div class="col-sm-6  ">
                                                             <div class="row">
                                                                 <div class="col-5">
-                                                                    <div class="col-form-label-sm">จำนวนชิ้นงานที่ผลิตได้ต่อ 1 กะ : </div>
+                                                                    <div class="col-form-label-sm">จำนวนชิ้นงานที่ผลิตได้ต่อ 1 วัน : </div>
                                                                 </div>
                                                                 <div class="col-7">
                                                                     <div class="col-form-label-sm" id="er3"></div>
@@ -461,7 +461,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-6">
-                                                            <div class="col-form-label-sm">จำนวนชิ้นงานที่เสียต่อ 1 กะ :</div>
+                                                            <div class="col-form-label-sm">จำนวนชิ้นงานที่เสียต่อ 1 วัน :</div>
                                                             <div class="input-group input-group-sm">
                                                                 <?php
                                                                 if (isset($_GET["x2"])) {
@@ -499,7 +499,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                             </div>
                                             <div class="card mt-3">
                                                 <div class="card-header col-form-label-sm">
-                                                    OEE
+                                                OEE
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="form-group row">
@@ -542,7 +542,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                                     </div>
                                                     <div class="form-group row">
                                                         <div class="col-sm-12  ">
-                                                            <div class="col-form-label-sm">OEE : </div>
+                                                            <div class="col-form-label-sm">ประสิทธิผลโดยรวมของเครื่องจักร : </div>
                                                             <div class="input-group input-group-sm">
                                                                 <input type="number" step="any" class="form-control form-control-sm " id="txt15" name="txt15" readonly="" placeholder="">
                                                                 <span class="input-group-text " id="basic-addon1">%</span>
@@ -599,7 +599,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                     <div class="modal-body">คุณแน่ใจนะว่าจะออกจากระบบ</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">ยกเลิก</button>
-                        <a class="btn btn-primary" href="index.php">ตกลง</a>
+                        <a class="btn btn-primary" href="index.php">ออกจากระบบ</a>
                     </div>
                 </div>
             </div>

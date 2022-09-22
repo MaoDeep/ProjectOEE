@@ -52,51 +52,51 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                 </a>
 
                 <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="home.php">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>หน้าหลัก</span></a>
-            </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="home.php">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>หน้าหลัก</span></a>
+                </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="tables.php">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>บันทึกยอดผลิตประจำวัน</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="form.php">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>กรอกข้อมูลการทำงาน</span></a>
-            </li>
-
-
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.php">
-                    <i class="fas fa-fw fa-chart-line"></i>
-                    <span>กราฟ</span></a>
-            </li>
-
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="user.php">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>จัดการข้อมูลผู้ใช้</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
-            <!-- Sidebar Message -->
+                <li class="nav-item">
+                    <a class="nav-link" href="tables.php">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>บันทึกยอดผลิตประจำวัน</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="form.php">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>กรอกข้อมูลการทำงาน</span></a>
+                </li>
 
 
-        </ul>
-        <!-- End of Sidebar -->
+                <!-- Nav Item - Charts -->
+                <li class="nav-item">
+                    <a class="nav-link" href="charts.php">
+                        <i class="fas fa-fw fa-chart-line"></i>
+                        <span>กราฟ</span></a>
+                </li>
+
+                <!-- Nav Item - Tables -->
+                <li class="nav-item">
+                    <a class="nav-link" href="user.php">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>จัดการข้อมูลผู้ใช้</span></a>
+                </li>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider d-none d-md-block">
+
+                <!-- Sidebar Toggler (Sidebar) -->
+                <div class="text-center d-none d-md-inline">
+                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+                </div>
+
+                <!-- Sidebar Message -->
+
+
+            </ul>
+            <!-- End of Sidebar -->
             <!-- Content Wrapper -->
             <div id="content-wrapper" class="d-flex flex-column">
 
@@ -178,13 +178,11 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                     $TR[] = $rw2["TR"];
                                     $TS[] = $rw2["TS"];
                                     $NT[] = $rw2["NT"];
-                                    
                                 }
                             } else {
                                 $TR = [0];
                                 $TS = [0];
                                 $NT = [0];
-                               
                             }
                             $sqlrow = "SELECT * FROM `report` INNER JOIN users ON users.u_id = report.u_id INNER JOIN machine ON machine.mac_id = users.mac_id ORDER BY id DESC ";
                             $rerow = mysqli_query($conn, $sqlrow);
@@ -269,446 +267,445 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        OEE
+                                        ประสิทธิผลโดยรวมของเครื่องจักร
                                         <div id="test" class="h1"></div>
                                     </div>
                                     <div class="card-body">
                                         <canvas id="myChart"></canvas>
                                     </div>
                                 </div>
-                        
-                           
 
-                        
-                        <!-- End of Main Content -->
 
-                        <!-- Footer -->
-                        <footer class="sticky-footer bg-white mt-3">
-                            <div class="container my-auto">
-                                <div class="copyright text-center my-auto">
 
+
+                                <!-- End of Main Content -->
+
+                                <!-- Footer -->
+                                <footer class="sticky-footer bg-white mt-3">
+                                    <div class="container my-auto">
+                                        <div class="copyright text-center my-auto">
+
+                                        </div>
+                                    </div>
+                                </footer>
+                                <!-- End of Footer -->
+
+                            </div>
+                            <!-- End of Content Wrapper -->
+
+                        </div>
+                        <!-- End of Page Wrapper -->
+
+                        <!-- Scroll to Top Button-->
+                        <a class="scroll-to-top rounded" href="#page-top">
+                            <i class="fas fa-angle-up"></i>
+                        </a>
+                        <!-- Logout Modal-->
+                        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">ออกจากระบบ</h5>
+                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">คุณแน่ใจเเล้วนะว่าจะออกจากระบบ</div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-secondary" type="button" data-dismiss="modal">ยกเลิก</button>
+                                        <a class="btn btn-primary" href="index.php">ออกจากระบบ</a>
+                                    </div>
                                 </div>
                             </div>
-                        </footer>
-                        <!-- End of Footer -->
-
-                    </div>
-                    <!-- End of Content Wrapper -->
-
-                </div>
-                <!-- End of Page Wrapper -->
-
-                <!-- Scroll to Top Button-->
-                <a class="scroll-to-top rounded" href="#page-top">
-                    <i class="fas fa-angle-up"></i>
-                </a>
-                <!-- Logout Modal-->
-                <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">ออกจากระบบ</h5>
-                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">คุณแน่ใจเเล้วนะว่าจะออกจากระบบ</div>
-                            <div class="modal-footer">
-                                <button class="btn btn-secondary" type="button" data-dismiss="modal">ยกเลิก</button>
-                                <a class="btn btn-primary" href="index.php">ออกจากระบบ</a>
-                            </div>
                         </div>
-                    </div>
-                </div>
-                <?php
-               $sql = "SELECT * FROM `report` INNER JOIN users ON users.u_id = report.u_id  ORDER BY id DESC LIMIT 4;";
-               $re = mysqli_query($conn, $sql);
-               foreach ($re as $k  => $row) {
-                $name[$k] = $row["u_usersname"];
+                        <?php
+                        $sql = "SELECT * FROM `report` INNER JOIN users ON users.u_id = report.u_id  ORDER BY id DESC LIMIT 4;";
+                        $re = mysqli_query($conn, $sql);
+                        foreach ($re as $k  => $row) {
+                            $name[$k] = $row["u_usersname"];
 
-                $EU[$k] = $row["EU"];
-                $TR[$k] = $row["TR"];
-                $TS[$k] = $row["TS"];
-                $NT[$k] = $row["NT"];
-               
-            }
+                            $EU[$k] = $row["EU"];
+                            $TR[$k] = $row["TR"];
+                            $TS[$k] = $row["TS"];
+                            $NT[$k] = $row["NT"];
+                        }
 
 
 
-             
-                
-                ?>
-                <script>
-                    const ctx = document.getElementById('myChart').getContext('2d');
-                    const myChart0 = new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: ['ผลรวมของเครื่องจักร'],
-                            datasets: [{
-                                    label: <?= json_encode($name[0]) ?>,
-                                    data: [<?= $EU[0] ?>, ],
-                                    backgroundColor: [
-                                        'rgba(255, 99, 132)',
-                                    ],
-                                    borderColor: [
-                                        'rgba(255, 99, 132)',
-                                    ],
-                                    borderWidth: 1,
-                                    datalabels: {
-                                        color: [
 
-                                            'rgba(255, 99, 132)',
 
-                                        ],
+                        ?>
+                        <script>
+                            const ctx = document.getElementById('myChart').getContext('2d');
+                            const myChart0 = new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: ['ผลรวมของเครื่องจักร'],
+                                    datasets: [{
+                                            label: <?= json_encode($name[0]) ?>,
+                                            data: [<?= $EU[0] ?>, ],
+                                            backgroundColor: [
+                                                'rgba(255, 99, 132)',
+                                            ],
+                                            borderColor: [
+                                                'rgba(255, 99, 132)',
+                                            ],
+                                            borderWidth: 1,
+                                            datalabels: {
+                                                color: [
 
-                                        anchor: "end",
-                                        align: "top",
-                                        formatter: function addCommas(value) {
-                                            value += '';
-                                            x = value.split('.');
-                                            x1 = x[0];
-                                            x2 = x.length > 1 ? '.' + x[1] : '';
-                                            var rgx = /(\d+)(\d{3})/;
-                                            while (rgx.test(x1)) {
-                                                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                                                    'rgba(255, 99, 132)',
+
+                                                ],
+
+                                                anchor: "end",
+                                                align: "top",
+                                                formatter: function addCommas(value) {
+                                                    value += '';
+                                                    x = value.split('.');
+                                                    x1 = x[0];
+                                                    x2 = x.length > 1 ? '.' + x[1] : '';
+                                                    var rgx = /(\d+)(\d{3})/;
+                                                    while (rgx.test(x1)) {
+                                                        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                                                    }
+                                                    return x1 + x2;
+                                                }
                                             }
-                                            return x1 + x2;
-                                        }
-                                    }
-                                }, {
-                                    label: <?= json_encode($name[1]) ?>,
-                                    data: [<?= $EU[1] ?>],
-                                    backgroundColor: [
-                                        'rgba(54, 162, 235)',
+                                        }, {
+                                            label: <?= json_encode($name[1]) ?>,
+                                            data: [<?= $EU[1] ?>],
+                                            backgroundColor: [
+                                                'rgba(54, 162, 235)',
 
-                                    ],
-                                    borderColor: [
-                                        'rgba(54, 162, 235)',
+                                            ],
+                                            borderColor: [
+                                                'rgba(54, 162, 235)',
 
-                                    ],
-                                    borderWidth: 1,
-                                    datalabels: {
-                                        color: [
+                                            ],
+                                            borderWidth: 1,
+                                            datalabels: {
+                                                color: [
 
-                                            'rgba(54, 162, 235)',
+                                                    'rgba(54, 162, 235)',
 
-                                        ],
+                                                ],
 
-                                        anchor: "end",
-                                        align: "top",
-                                        formatter: function addCommas(value) {
-                                            value += '';
-                                            x = value.split('.');
-                                            x1 = x[0];
-                                            x2 = x.length > 1 ? '.' + x[1] : '';
-                                            var rgx = /(\d+)(\d{3})/;
-                                            while (rgx.test(x1)) {
-                                                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                                                anchor: "end",
+                                                align: "top",
+                                                formatter: function addCommas(value) {
+                                                    value += '';
+                                                    x = value.split('.');
+                                                    x1 = x[0];
+                                                    x2 = x.length > 1 ? '.' + x[1] : '';
+                                                    var rgx = /(\d+)(\d{3})/;
+                                                    while (rgx.test(x1)) {
+                                                        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                                                    }
+                                                    return x1 + x2;
+                                                }
                                             }
-                                            return x1 + x2;
+                                        },
+                                        {
+                                            label: <?= json_encode($name[2]) ?>,
+                                            data: [<?= $EU[2] ?>],
+                                            backgroundColor: [
+
+                                                'rgba(255, 206, 86)',
+
+                                            ],
+                                            borderColor: [
+
+                                                'rgba(255, 206, 86)',
+
+                                            ],
+                                            borderWidth: 1,
+                                            datalabels: {
+                                                color: [
+
+                                                    'rgba(255, 206, 86)',
+
+                                                ],
+
+                                                anchor: "end",
+                                                align: "top",
+                                                formatter: function addCommas(value) {
+                                                    value += '';
+                                                    x = value.split('.');
+                                                    x1 = x[0];
+                                                    x2 = x.length > 1 ? '.' + x[1] : '';
+                                                    var rgx = /(\d+)(\d{3})/;
+                                                    while (rgx.test(x1)) {
+                                                        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                                                    }
+                                                    return x1 + x2;
+                                                }
+                                            }
+                                        },
+                                        {
+                                            label: <?= json_encode($name[3]) ?>,
+                                            data: [<?= $EU[3] ?>],
+                                            backgroundColor: [
+
+                                                'rgba(75, 192, 192)',
+
+                                            ],
+                                            borderColor: [
+
+                                                'rgba(75, 192, 192)',
+
+                                            ],
+                                            borderWidth: 1,
+                                            datalabels: {
+                                                color: [
+
+                                                    'rgba(75, 192, 192)',
+
+                                                ],
+
+                                                anchor: "end",
+                                                align: "top",
+                                                formatter: function addCommas(value) {
+                                                    value += '';
+                                                    x = value.split('.');
+                                                    x1 = x[0];
+                                                    x2 = x.length > 1 ? '.' + x[1] : '';
+                                                    var rgx = /(\d+)(\d{3})/;
+                                                    while (rgx.test(x1)) {
+                                                        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                                                    }
+                                                    return x1 + x2;
+                                                }
+                                            }
                                         }
-                                    }
+                                    ]
                                 },
-                                {
-                                    label: <?= json_encode($name[2]) ?>,
-                                    data: [<?= $EU[2] ?>],
-                                    backgroundColor: [
+                                plugins: [ChartDataLabels],
+                                options: {
+                                    scales: {
+                                        y: {
+                                            beginAtZero: true
+                                        }
+                                    }
+                                }
+                            });
+                        </script>
 
-                                        'rgba(255, 206, 86)',
 
-                                    ],
-                                    borderColor: [
-
-                                        'rgba(255, 206, 86)',
-
-                                    ],
-                                    borderWidth: 1,
-                                    datalabels: {
-                                        color: [
-
+                        <script>
+                            const graph1 = document.getElementById('test1').getContext('2d');
+                            const test1 = new Chart(graph1, {
+                                type: 'bar',
+                                data: {
+                                    labels: ['อัตราการเดินเครื่อง', 'ประสิทธิภาพเครื่องจักร', 'อัตราคุณภาพ', ],
+                                    datasets: [{
+                                        label: <?= json_encode($name[0]) ?>,
+                                        data: [<?= $TR[0] ?>, <?= $TS[0] ?>, <?= $NT[0] ?>],
+                                        backgroundColor: [
                                             'rgba(255, 206, 86)',
+                                            'rgba(0, 255, 0)',
+                                            'rgba(255, 105, 180)',
 
                                         ],
+                                        borderColor: [
+                                            'rgba(255, 206, 86)',
+                                            'rgba(0, 255, 0)',
+                                            'rgba(255, 105, 180)',
 
-                                        anchor: "end",
-                                        align: "top",
-                                        formatter: function addCommas(value) {
-                                            value += '';
-                                            x = value.split('.');
-                                            x1 = x[0];
-                                            x2 = x.length > 1 ? '.' + x[1] : '';
-                                            var rgx = /(\d+)(\d{3})/;
-                                            while (rgx.test(x1)) {
-                                                x1 = x1.replace(rgx, '$1' + ',' + '$2');
-                                            }
-                                            return x1 + x2;
-                                        }
-                                    }
+                                        ],
+                                        borderWidth: 1
+                                    }]
                                 },
-                                {
-                                    label: <?= json_encode($name[3]) ?>,
-                                    data: [<?= $EU[3] ?>],
-                                    backgroundColor: [
-
-                                        'rgba(75, 192, 192)',
-
-                                    ],
-                                    borderColor: [
-
-                                        'rgba(75, 192, 192)',
-
-                                    ],
-                                    borderWidth: 1,
-                                    datalabels: {
-                                        color: [
-
-                                            'rgba(75, 192, 192)',
-
-                                        ],
-
-                                        anchor: "end",
-                                        align: "top",
-                                        formatter: function addCommas(value) {
-                                            value += '';
-                                            x = value.split('.');
-                                            x1 = x[0];
-                                            x2 = x.length > 1 ? '.' + x[1] : '';
-                                            var rgx = /(\d+)(\d{3})/;
-                                            while (rgx.test(x1)) {
-                                                x1 = x1.replace(rgx, '$1' + ',' + '$2');
-                                            }
-                                            return x1 + x2;
+                                plugins: [ChartDataLabels],
+                                options: {
+                                    indexAxis: 'y',
+                                    // Elements options apply to all of the options unless overridden in a dataset
+                                    // In this case, we are setting the border of each horizontal bar to be 2px wide
+                                    elements: {
+                                        bar: {
+                                            borderWidth: 2,
                                         }
                                     }
                                 }
-                            ]
-                        },
-                        plugins: [ChartDataLabels],
-                        options: {
-                            scales: {
-                                y: {
-                                    beginAtZero: true
-                                }
-                            }
-                        }
-                    });
-                </script>
-       
-                
-                <script>
-                    const graph1 = document.getElementById('test1').getContext('2d');
-                    const test1 = new Chart(graph1, {
-                        type: 'bar',
-                        data: {
-                            labels: ['อัตราการเดินเครื่อง', 'ประสิทธิภาพเครื่องจักร', 'อัตราคุณภาพ', ],
-                            datasets: [{
-                                label:  <?= json_encode($name[0]) ?>,
-                                data: [<?= $TR[0] ?>,<?= $TS[0] ?>, <?= $NT[0] ?>],
-                                backgroundColor: [
-                                    'rgba(255, 206, 86)',
-                                    'rgba(0, 255, 0)',
-                                    'rgba(255, 105, 180)',
+                            });
+                        </script>
 
-                                ],
-                                borderColor: [
-                                    'rgba(255, 206, 86)',
-                                    'rgba(0, 255, 0)',
-                                    'rgba(255, 105, 180)',
-
-                                ],
-                                borderWidth: 1
-                            }]
-                        },
-                        plugins: [ChartDataLabels],
-                        options: {
-                            indexAxis: 'y',
-                            // Elements options apply to all of the options unless overridden in a dataset
-                            // In this case, we are setting the border of each horizontal bar to be 2px wide
-                            elements: {
-                                bar: {
-                                    borderWidth: 2,
-                                }
-                            }
-                        }
-                    });
-                </script>
-
-                <script>
-                    const graph2 = document.getElementById('test2').getContext('2d');
-                    const test2 = new Chart(graph2, {
-                        type: 'bar',
-                        data: {
-                            labels: ['อัตราการเดินเครื่อง', 'ประสิทธิภาพเครื่องจักร', 'อัตราคุณภาพ', ],
-                            datasets: [{
-                                label: <?= json_encode($name[1]) ?>,
-                                data: [<?= $TR[1] ?>, <?= $TS[1] ?>, <?= $NT[1] ?>],
-                                backgroundColor: [
-                                    'rgba(255, 206, 86)',
-                                    'rgba(0, 255, 0)',
-                                    'rgba(255, 105, 180)',
-                                ],
-                                borderColor: [
-                                    'rgba(255, 206, 86)',
-                                    'rgba(0, 255, 0)',
-                                    'rgba(255, 105, 180)',
-                                ],
-                                borderWidth: 1
-                            }]
-                        },
-                        plugins: [ChartDataLabels],
-                        options: {
-                            indexAxis: 'y',
-                            // Elements options apply to all of the options unless overridden in a dataset
-                            // In this case, we are setting the border of each horizontal bar to be 2px wide
-                            elements: {
-                                bar: {
-                                    borderWidth: 2,
-                                }
-                            }
-                        }
-                    });
-                </script>
-                <script>
-                    const graph3 = document.getElementById('test3').getContext('2d');
-                    const test3 = new Chart(graph3, {
-                        type: 'bar',
-                        data: {
-                            labels: ['อัตราการเดินเครื่อง', 'ประสิทธิภาพเครื่องจักร', 'อัตราคุณภาพ', ],
-                            datasets: [{
-                                label: <?= json_encode($name[2]) ?>,
-                                data: [<?= $TR[2] ?>, <?= $TS[2] ?>, <?= $NT[2] ?>],
-                                backgroundColor: [
-                                    'rgba(255, 206, 86)',
-                                    'rgba(0, 255, 0)',
-                                    'rgba(255, 105, 180)',
-                                ],
-                                borderColor: [
-                                    'rgba(255, 206, 86)',
-                                    'rgba(0, 255, 0)',
-                                    'rgba(255, 105, 180)',
-                                ],
-                                borderWidth: 1
-                            }]
-                        },
-                        plugins: [ChartDataLabels],
-                        options: {
-                            indexAxis: 'y',
-                            // Elements options apply to all of the options unless overridden in a dataset
-                            // In this case, we are setting the border of each horizontal bar to be 2px wide
-                            elements: {
-                                bar: {
-                                    borderWidth: 2,
-                                }
-                            }
-                        }
-                    });
-                </script>
-                <script>
-                    const graph4 = document.getElementById('test4').getContext('2d');
-                    const test4 = new Chart(graph4, {
-                        type: 'bar',
-                        data: {
-                            labels: ['อัตราการเดินเครื่อง', 'ประสิทธิภาพเครื่องจักร', 'อัตราคุณภาพ', ],
-                            datasets: [{
-                                label: <?= json_encode($name[3]) ?>,
-                                data: [<?= $TR[3] ?>, <?= $TS[3] ?>, <?= $NT[1] ?>],
-                                backgroundColor: [
-                                    'rgba(255, 206, 86)',
-                                    'rgba(0, 255, 0)',
-                                    'rgba(255, 105, 180)',
-                                ],
-                                borderColor: [
-                                    'rgba(255, 206, 86)',
-                                    'rgba(0, 255, 0)',
-                                    'rgba(255, 105, 180)',
-                                ],
-                                borderWidth: 1
-                            }]
-                        },
-                        plugins: [ChartDataLabels],
-                        options: {
-                            indexAxis: 'y',
-                            // Elements options apply to all of the options unless overridden in a dataset
-                            // In this case, we are setting the border of each horizontal bar to be 2px wide
-                            elements: {
-                                bar: {
-                                    borderWidth: 2,
-                                }
-                            }
-                        }
-                    });
-                </script>
-                <script>
-                    $(document).ready(function() {
-                        function at() {
-                            const x = [];
-                            $.ajax({ // ส่งค่าแค่บางส่วน 
-                                type: "GET",
-                                url: "test.php?id=1",
-                                dataType: "text", // ส่งเป็นข้อความ
-                                success: function(response) { // ถ้าสำเร็จเเล้วให้เก็บหน้าผลลัพธ์ของไฟล์ที่ส่งไป
-                                    var arr = $.parseJSON(response) // ถอดรหัสของ json หน้า text.php
-                                    x.push(arr.Max) // เอาตัวเลขจาก json ที่ผ่านการแปลงมา 
-                                    x.push(arr.Min) // เอาตัวเลขจาก json ที่ผ่านการแปลงมา 
-                                    myChart1.data.datasets[0].data = x; // เอาข้อมูลขึ้น กราฟ
-                                    myChart1.update(); // เอาข้อมูลขึ้น กราฟ
-
+                        <script>
+                            const graph2 = document.getElementById('test2').getContext('2d');
+                            const test2 = new Chart(graph2, {
+                                type: 'bar',
+                                data: {
+                                    labels: ['อัตราการเดินเครื่อง', 'ประสิทธิภาพเครื่องจักร', 'อัตราคุณภาพ', ],
+                                    datasets: [{
+                                        label: <?= json_encode($name[1]) ?>,
+                                        data: [<?= $TR[1] ?>, <?= $TS[1] ?>, <?= $NT[1] ?>],
+                                        backgroundColor: [
+                                            'rgba(255, 206, 86)',
+                                            'rgba(0, 255, 0)',
+                                            'rgba(255, 105, 180)',
+                                        ],
+                                        borderColor: [
+                                            'rgba(255, 206, 86)',
+                                            'rgba(0, 255, 0)',
+                                            'rgba(255, 105, 180)',
+                                        ],
+                                        borderWidth: 1
+                                    }]
+                                },
+                                plugins: [ChartDataLabels],
+                                options: {
+                                    indexAxis: 'y',
+                                    // Elements options apply to all of the options unless overridden in a dataset
+                                    // In this case, we are setting the border of each horizontal bar to be 2px wide
+                                    elements: {
+                                        bar: {
+                                            borderWidth: 2,
+                                        }
+                                    }
                                 }
                             });
-                        }
-
-                        function at1() {
-                            const name = [];
-                            const n1 = [];
-                            const n2 = [];
-                            const n3 = [];
-                            const n4 = [];
-                            $.ajax({
-                                type: "GET",
-                                url: "test.php?id=2",
-                                dataType: "text",
-                                success: function(response) {
-                                    var arr = $.parseJSON(response)
-
-                                    n1.push(arr.n1[0], arr.n1[1], arr.n1[2], arr.n1[3]) // เอาตัวเลขจาก json ที่ผ่านการแปลงมา 
-                                    n2.push(arr.n2[0], arr.n2[1], arr.n2[2], arr.n2[3])
-                                    n3.push(arr.n3[0], arr.n3[1], arr.n3[2], arr.n3[3])
-                                    n4.push(arr.n4[0], arr.n4[1], arr.n4[2], arr.n4[3])
-
-                                    name.push(arr.name[0], arr.name[1], arr.name[2], arr.name[3])
-
-                                    myChart.data.datasets[0].label = name[0]; // เอาข้อมูลขึ้น กราฟ
-                                    myChart.data.datasets[1].label = name[1];
-                                    myChart.data.datasets[2].label = name[2];
-                                    myChart.data.datasets[3].label = name[3];
-
-                                    myChart.data.datasets[0].data = n1; // เอาข้อมูลขึ้น กราฟ
-                                    myChart.data.datasets[1].data = n2;
-                                    myChart.data.datasets[2].data = n3;
-                                    myChart.data.datasets[3].data = n4;
-
-                                    myChart.update(); // เอาข้อมูลขึ้น กราฟ
-
+                        </script>
+                        <script>
+                            const graph3 = document.getElementById('test3').getContext('2d');
+                            const test3 = new Chart(graph3, {
+                                type: 'bar',
+                                data: {
+                                    labels: ['อัตราการเดินเครื่อง', 'ประสิทธิภาพเครื่องจักร', 'อัตราคุณภาพ', ],
+                                    datasets: [{
+                                        label: <?= json_encode($name[2]) ?>,
+                                        data: [<?= $TR[2] ?>, <?= $TS[2] ?>, <?= $NT[2] ?>],
+                                        backgroundColor: [
+                                            'rgba(255, 206, 86)',
+                                            'rgba(0, 255, 0)',
+                                            'rgba(255, 105, 180)',
+                                        ],
+                                        borderColor: [
+                                            'rgba(255, 206, 86)',
+                                            'rgba(0, 255, 0)',
+                                            'rgba(255, 105, 180)',
+                                        ],
+                                        borderWidth: 1
+                                    }]
+                                },
+                                plugins: [ChartDataLabels],
+                                options: {
+                                    indexAxis: 'y',
+                                    // Elements options apply to all of the options unless overridden in a dataset
+                                    // In this case, we are setting the border of each horizontal bar to be 2px wide
+                                    elements: {
+                                        bar: {
+                                            borderWidth: 2,
+                                        }
+                                    }
                                 }
                             });
-                        }
+                        </script>
+                        <script>
+                            const graph4 = document.getElementById('test4').getContext('2d');
+                            const test4 = new Chart(graph4, {
+                                type: 'bar',
+                                data: {
+                                    labels: ['อัตราการเดินเครื่อง', 'ประสิทธิภาพเครื่องจักร', 'อัตราคุณภาพ', ],
+                                    datasets: [{
+                                        label: <?= json_encode($name[3]) ?>,
+                                        data: [<?= $TR[3] ?>, <?= $TS[3] ?>, <?= $NT[1] ?>],
+                                        backgroundColor: [
+                                            'rgba(255, 206, 86)',
+                                            'rgba(0, 255, 0)',
+                                            'rgba(255, 105, 180)',
+                                        ],
+                                        borderColor: [
+                                            'rgba(255, 206, 86)',
+                                            'rgba(0, 255, 0)',
+                                            'rgba(255, 105, 180)',
+                                        ],
+                                        borderWidth: 1
+                                    }]
+                                },
+                                plugins: [ChartDataLabels],
+                                options: {
+                                    indexAxis: 'y',
+                                    // Elements options apply to all of the options unless overridden in a dataset
+                                    // In this case, we are setting the border of each horizontal bar to be 2px wide
+                                    elements: {
+                                        bar: {
+                                            borderWidth: 2,
+                                        }
+                                    }
+                                }
+                            });
+                        </script>
+                        <script>
+                            $(document).ready(function() {
+                                function at() {
+                                    const x = [];
+                                    $.ajax({ // ส่งค่าแค่บางส่วน 
+                                        type: "GET",
+                                        url: "test.php?id=1",
+                                        dataType: "text", // ส่งเป็นข้อความ
+                                        success: function(response) { // ถ้าสำเร็จเเล้วให้เก็บหน้าผลลัพธ์ของไฟล์ที่ส่งไป
+                                            var arr = $.parseJSON(response) // ถอดรหัสของ json หน้า text.php
+                                            x.push(arr.Max) // เอาตัวเลขจาก json ที่ผ่านการแปลงมา 
+                                            x.push(arr.Min) // เอาตัวเลขจาก json ที่ผ่านการแปลงมา 
+                                            myChart1.data.datasets[0].data = x; // เอาข้อมูลขึ้น กราฟ
+                                            myChart1.update(); // เอาข้อมูลขึ้น กราฟ
+
+                                        }
+                                    });
+                                }
+
+                                function at1() {
+                                    const name = [];
+                                    const n1 = [];
+                                    const n2 = [];
+                                    const n3 = [];
+                                    const n4 = [];
+                                    $.ajax({
+                                        type: "GET",
+                                        url: "test.php?id=2",
+                                        dataType: "text",
+                                        success: function(response) {
+                                            var arr = $.parseJSON(response)
+
+                                            n1.push(arr.n1[0], arr.n1[1], arr.n1[2], arr.n1[3]) // เอาตัวเลขจาก json ที่ผ่านการแปลงมา 
+                                            n2.push(arr.n2[0], arr.n2[1], arr.n2[2], arr.n2[3])
+                                            n3.push(arr.n3[0], arr.n3[1], arr.n3[2], arr.n3[3])
+                                            n4.push(arr.n4[0], arr.n4[1], arr.n4[2], arr.n4[3])
+
+                                            name.push(arr.name[0], arr.name[1], arr.name[2], arr.name[3])
+
+                                            myChart.data.datasets[0].label = name[0]; // เอาข้อมูลขึ้น กราฟ
+                                            myChart.data.datasets[1].label = name[1];
+                                            myChart.data.datasets[2].label = name[2];
+                                            myChart.data.datasets[3].label = name[3];
+
+                                            myChart.data.datasets[0].data = n1; // เอาข้อมูลขึ้น กราฟ
+                                            myChart.data.datasets[1].data = n2;
+                                            myChart.data.datasets[2].data = n3;
+                                            myChart.data.datasets[3].data = n4;
+
+                                            myChart.update(); // เอาข้อมูลขึ้น กราฟ
+
+                                        }
+                                    });
+                                }
 
 
-                        setInterval(function() { // ให้มันดึงข้อมูลทุกๆ 1 วิ
-                            at1()
-                            at()
-                        }, 1000)
-                    });
-                </script>
-                <!-- Bootstrap core JavaScript-->
-                <script src="vendor/jquery/jquery.min.js"></script>
-                <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+                                setInterval(function() { // ให้มันดึงข้อมูลทุกๆ 1 วิ
+                                    at1()
+                                    at()
+                                }, 1000)
+                            });
+                        </script>
+                        <!-- Bootstrap core JavaScript-->
+                        <script src="vendor/jquery/jquery.min.js"></script>
+                        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-                <!-- Core plugin JavaScript-->
-                <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+                        <!-- Core plugin JavaScript-->
+                        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-                <!-- Custom scripts for all pages-->
-                <script src="js/sb-admin-2.min.js"></script>
+                        <!-- Custom scripts for all pages-->
+                        <script src="js/sb-admin-2.min.js"></script>
 
 
 
