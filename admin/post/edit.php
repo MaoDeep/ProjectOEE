@@ -87,10 +87,21 @@ if (isset($_GET["id"]) && $_GET["id"] !== "") {
                                           <div class="mb-3">
                                                 <label for="" class="form-label">สถานะ</label>
                                                 <select name="txt6" id="txt6" class="form-select form-select-sm" value="" required>
-                                                      
-                                                      <option value="ปกติ">ปกติ</option>
-                                                      <option value="หยุดงาน">หยุดงาน</option>
-
+                                                      <?php
+                                                      if ($row["std2"] == "ปกติ" ) {
+                                                      ?>
+                                                            <option value="ปกติ">ปกติ</option>
+                                                            <option value="หยุดงาน">หยุดงาน</option>
+                                                            
+                                                      <?php
+                                                      } else {
+                                                      ?>
+                                                            <option value="หยุดงาน">หยุดงาน</option>
+                                                            <option value="ปกติ">ปกติ</option>
+                                                            
+                                                      <?php
+                                                      }
+                                                      ?>
                                                 </select>
                                           </div>
                                     <?php } ?>

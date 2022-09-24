@@ -151,7 +151,7 @@ include "config.php";
                                     <div class="row">
                                         <div class="col-md-2">
                                             <div class="col-form-label-sm">เวลาเข้างาน : </div>
-                                            <input type="time" class="form-control form-control-sm " id="txt5" name="txt5" placeholder="" required>
+                                            <input type="time" class="form-control form-control-sm "  id="txt5" name="txt5" placeholder="" required>
                                             <div class="invalid-feedback">
                                                 กรุณาใส่ข้อมูลให้ครบ
                                             </div>
