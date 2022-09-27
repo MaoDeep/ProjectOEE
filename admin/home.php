@@ -76,6 +76,12 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                         <i class="fas fa-fw fa-chart-line"></i>
                         <span>กราฟ</span></a>
                 </li>
+                <!-- Nav Item - Tables -->
+                <li class="nav-item">
+                    <a class="nav-link" href="machine.php">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>จัดการข้อมูลเครื่องจักร</span></a>
+                </li>
 
                 <!-- Nav Item - Tables -->
                 <li class="nav-item">
