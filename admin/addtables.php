@@ -108,20 +108,31 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <div class="col-form-label-sm">รหัสเครื่องจักร : </div>
                                         <?php
+                                        /*
                                         $sqlrow = "SELECT * FROM `users` INNER JOIN machine ON machine.mac_id = users.mac_id where users.u_usersname = '" . $_SESSION["user"] . "' ";
                                         $rerow = mysqli_query($conn, $sqlrow);
                                         foreach ($rerow as $row) {
 
                                             $user = $row["u_usersname"];
                                             $mac = $row["mac_name"];
+                                            
                                         }
+                                        */
+
                                         ?>
-                                       
+
                                         <select name="txt3" id="txt3" class="form-select form-select-sm">
-                                            <option value="MC-HTP-2016-1">MC-HTP-2016-1</option>
-                                            <option value="MC-HTP-2009-2">MC-HTP-2009-2</option>
-                                            <option value="MC-HTP-2005-3">MC-HTP-2005-3</option>
-                                            <option value="MC-HTP-2014-4">MC-HTP-2014-4</option>
+                                            <?php
+                                            $sqlrow = "SELECT * FROM `machine`";
+                                            $rerow = mysqli_query($conn, $sqlrow);
+                                            foreach ($rerow as $row) {
+                                            ?>
+                                                <option value="<?=$row["mac_id"]?>"><?=$row["mac_name"]?></option>
+                                                
+                                            <?php
+                                            }
+                                            ?>
+
                                         </select>
                                         <div class="invalid-feedback">
                                             กรุณาใส่ข้อมูลให้ครบ
@@ -138,7 +149,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                             $bra = $row["b_name"];
                                         }
                                         ?>
-                                        
+
                                         <select name="txt8" id="txt8" class="form-select form-select-sm">
                                             <option value="ผ้าเบรค Yasaki VIP กล่องรุ่น WA<">ผ้าเบรค Yasaki VIP กล่องรุ่น WA</option>
                                             <option value="ผ้าเบรค Yasaki VIP รุ่น CL">ผ้าเบรค Yasaki VIP รุ่น CL</option>
