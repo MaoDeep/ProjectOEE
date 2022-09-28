@@ -22,7 +22,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
     <title>กรอกข้อมูล</title>
 
     <!-- Custom fonts for this template-->
-    
+
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -67,35 +67,35 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
         } else {
             echo '<script>alert("บันทึกไม่สำเร็จ")</script>';
         }
-        
+
         $L1 = $_POST['txt12'];
         $L2 = $_POST['txt13'];
         $L3 = $_POST['txt14'];
         $L4 = $_POST['txt15'];
-        $NName = $_SESSION['user']; 
+        $NName = $_SESSION['user'];
 
         $sToken = "cz8VFUTRNX5Pcu2PUKBJNHhbPvYTwJtI7OmMDPmgVtI";
         $sMessage = "ประสิทธิผลโดยรวมของเครื่องจักร \n";
-        $sMessage .= "ชื่อพนักงาน : ". $NName.  " \n";
-        $sMessage .= "อัตราการเดินเครื่องจักร : ". $L1 .  " \n";
-        $sMessage .= "ประสิทธิภาพของเครื่องจักร : ". $L2 . " \n";
-        $sMessage .= "อัตราคุณภาพเครื่องจักร : ". $L3 . " \n";
-        $sMessage .= "ผลรวม : ". $L4 . " \n";
+        $sMessage .= "ชื่อพนักงาน : " . $NName .  " \n";
+        $sMessage .= "อัตราการเดินเครื่องจักร : " . $L1 .  " \n";
+        $sMessage .= "ประสิทธิภาพของเครื่องจักร : " . $L2 . " \n";
+        $sMessage .= "อัตราคุณภาพเครื่องจักร : " . $L3 . " \n";
+        $sMessage .= "ผลรวม : " . $L4 . " \n";
 
-	
-	$chOne = curl_init(); 
-	curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
-	curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0); 
-	curl_setopt( $chOne, CURLOPT_SSL_VERIFYPEER, 0); 
-	curl_setopt( $chOne, CURLOPT_POST, 1); 
-	curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=".$sMessage); 
-	$headers = array( 'Content-type: application/x-www-form-urlencoded', 'Authorization: Bearer '.$sToken.'', );
-	curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
-	curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
-	$result = curl_exec( $chOne ); 
 
-	//Result error 
-	/*if(curl_error($chOne)) 
+        $chOne = curl_init();
+        curl_setopt($chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify");
+        curl_setopt($chOne, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($chOne, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($chOne, CURLOPT_POST, 1);
+        curl_setopt($chOne, CURLOPT_POSTFIELDS, "message=" . $sMessage);
+        $headers = array('Content-type: application/x-www-form-urlencoded', 'Authorization: Bearer ' . $sToken . '',);
+        curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($chOne, CURLOPT_RETURNTRANSFER, 1);
+        $result = curl_exec($chOne);
+
+        //Result error 
+        /*if(curl_error($chOne)) 
 	{ 
 		echo 'error:' . curl_error($chOne); 
 	} 
@@ -104,10 +104,9 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
 		echo "status : ".$result_['status']; echo "message : ". $result_['message'];
 	} 
 	curl_close( $chOne );   */
-    
     }
-    
-        
+
+
     ?>
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -122,7 +121,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                     <img src="img/logo.png" height="65px" width="140px">
                 </div>
             </a>
-
+            \
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="home.php">
@@ -132,7 +131,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
 
             <li class="nav-item">
                 <a class="nav-link" href="tables.php">
-                    <i class="fas fa-fw fa-table"></i>
+                    <i class="fas fa-fw fa-book"></i>
                     <span>บันทึกยอดผลิตประจำวัน</span></a>
             </li>
             <li class="nav-item">
@@ -148,11 +147,17 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                     <i class="fas fa-fw fa-chart-line"></i>
                     <span>กราฟ</span></a>
             </li>
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="machine.php">
+                    <i class="fas fa-fw fa-microchip"></i>
+                    <span>จัดการข้อมูลเครื่องจักร</span></a>
+            </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="user.php">
-                    <i class="fas fa-fw fa-table"></i>
+                    <i class="fas fa-fw fa-users"></i>
                     <span>จัดการข้อมูลผู้ใช้</span></a>
             </li>
 
@@ -288,7 +293,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                                                 <div class="col-sm-12  ">
                                                                     <div class="col-form-label-sm">เวลาทำงานทั้งหมด : </div>
                                                                     <div class="input-group input-group-sm">
-                                                                        <input type="number" step="any" class="form-control form-control-sm " id="txt1" name="txt1" placeholder=""  onkeyup="in1();" onclick="select();" value="<?php echo $d1 ?>" required>
+                                                                        <input type="number" step="any" class="form-control form-control-sm " id="txt1" name="txt1" placeholder="" onkeyup="in1();" onclick="select();" value="<?php echo $d1 ?>" required>
                                                                         <span class="input-group-text " id="basic-addon1">นาที</span>
                                                                     </div>
                                                                 </div>
@@ -308,7 +313,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
 
                                                             <div class="col-form-label-sm">เวลาตอนพักของพนักงาน :</div>
                                                             <div class="input-group input-group-sm">
-                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt2" name="txt2" placeholder=""  onclick="select();" onkeyup="in1();" value="<?php echo $d7 ?>" required>
+                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt2" name="txt2" placeholder="" onclick="select();" onkeyup="in1();" value="<?php echo $d7 ?>" required>
                                                                 <span class="input-group-text " id="basic-addon1">นาที</span>
                                                             </div>
                                                             <div class="invalid-feedback">
@@ -320,7 +325,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                                         <div class="col-sm-6  ">
                                                             <div class="col-form-label-sm">เวลาทำงานจริง : </div>
                                                             <div class="input-group input-group-sm">
-                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt3" name="txt3" placeholder=""  onclick="select();" onkeyup="in1();" required>
+                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt3" name="txt3" placeholder="" onclick="select();" onkeyup="in1();" required>
                                                                 <span class="input-group-text " id="basic-addon1">นาที</span>
                                                             </div>
 
@@ -331,7 +336,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                                         <div class="col-sm-6">
                                                             <div class="col-form-label-sm">เวลาปิดเครื่องตอนพัก :</div>
                                                             <div class="input-group input-group-sm">
-                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt4" name="txt4" placeholder=""  onclick="select();" onkeyup="in1();" required>
+                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt4" name="txt4" placeholder="" onclick="select();" onkeyup="in1();" required>
                                                                 <span class="input-group-text " id="basic-addon1">นาที</span>
                                                             </div>
 
@@ -352,7 +357,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                                                 </div>
                                                             </div>
                                                             <div class="input-group input-group-sm">
-                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt5" name="txt5"  placeholder="" onclick="select();" onkeyup="in1();">
+                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt5" name="txt5" placeholder="" onclick="select();" onkeyup="in1();">
                                                                 <span class="input-group-text " id="basic-addon1">%</span>
                                                             </div>
 
@@ -382,7 +387,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                                                     $d1 = "";
                                                                 }
                                                                 ?>
-                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt6" name="txt6" placeholder=""  onkeyup="in2();" onclick="select();" value="<?= $d1 ?>" required>
+                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt6" name="txt6" placeholder="" onkeyup="in2();" onclick="select();" value="<?= $d1 ?>" required>
                                                                 <span class="input-group-text " id="basic-addon1">นาที</span>
                                                             </div>
 
@@ -394,7 +399,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
 
                                                             <div class="col-form-label-sm">เวลาหยุดเดินเครื่องต่อ 1 วัน : </div>
                                                             <div class="input-group input-group-sm">
-                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt7" name="txt7" placeholder=""  onclick="select();" onkeyup="in2();" required>
+                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt7" name="txt7" placeholder="" onclick="select();" onkeyup="in2();" required>
                                                                 <span class="input-group-text " id="basic-addon1">นาที</span>
                                                             </div>
 
@@ -415,7 +420,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                                             </div>
 
                                                             <div class="input-group input-group-sm">
-                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt8" name="txt8"  placeholder="" onclick="select();" onkeyup="in2();">
+                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt8" name="txt8" placeholder="" onclick="select();" onkeyup="in2();">
                                                                 <span class="input-group-text " id="basic-addon1">%</span>
                                                             </div>
 
@@ -452,7 +457,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                                             }
                                                             ?>
                                                             <div class="input-group input-group-sm ">
-                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt9" name="txt9" placeholder=""  onkeyup="in3();" onclick="select();" value="<?php echo $d2; ?>" required>
+                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt9" name="txt9" placeholder="" onkeyup="in3();" onclick="select();" value="<?php echo $d2; ?>" required>
                                                                 <span class="input-group-text " id="basic-addon1">ชิ้น</span>
                                                             </div>
 
@@ -470,7 +475,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                                                     $d3 = "";
                                                                 }
                                                                 ?>
-                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt10" name="txt10" placeholder=""  onclick="select();" onkeyup="in3();" value="<?php echo $d3; ?>" required>
+                                                                <input type="number" step="any" class="form-control form-control-sm" id="txt10" name="txt10" placeholder="" onclick="select();" onkeyup="in3();" value="<?php echo $d3; ?>" required>
                                                                 <span class="input-group-text " id="basic-addon1">ชิ้น</span>
                                                             </div>
 
@@ -483,7 +488,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                                         <div class="col-sm-12  ">
                                                             <div class="col-form-label-sm">อัตราการคุณภาพของเครื่องจักร : </div>
                                                             <div class="input-group input-group-sm">
-                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt11" name="txt11"  placeholder="" onclick="select();" onkeyup="in3();">
+                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt11" name="txt11" placeholder="" onclick="select();" onkeyup="in3();">
                                                                 <span class="input-group-text " id="basic-addon1">%</span>
                                                             </div>
 
@@ -499,14 +504,14 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                             </div>
                                             <div class="card mt-3">
                                                 <div class="card-header col-form-label-sm">
-                                                OEE
+                                                    OEE
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="form-group row">
                                                         <div class="col-sm-4  ">
                                                             <div class="col-form-label-sm">อัตราการเดินเครื่องจักร : </div>
                                                             <div class="input-group input-group-sm">
-                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt12" name="txt12" aria-describedby="txt12" readonly  placeholder="" required>
+                                                                <input type="number" step="any" class="form-control form-control-sm " id="txt12" name="txt12" aria-describedby="txt12" readonly placeholder="" required>
                                                                 <span class="input-group-text " id="basic-addon1">%</span>
                                                             </div>
 
@@ -561,7 +566,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"]  !== "Admin") {
                                             <div class="form-group row mt-3">
                                                 <center>
                                                     <div class="row mt-3">
-                                                        <div class="col-12"><input class="btn btn-primary btn-user btn-block" id="submit" name="math" type="submit" value="บันทึก"></div>                               
+                                                        <div class="col-12"><input class="btn btn-primary btn-user btn-block" id="submit" name="math" type="submit" value="บันทึก"></div>
                                                     </div>
                                             </div>
                                         </div>

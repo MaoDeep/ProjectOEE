@@ -91,12 +91,12 @@ if (isset($_GET["id"]) && $_GET["id"] !== "") {
                                                       if ($row["std2"] == "ปกติ" ) {
                                                       ?>
                                                             <option value="ปกติ">ปกติ</option>
-                                                            <option value="หยุดงาน">หยุดงาน</option>
+                                                            <option value="หยุดงาน">ยกเลิกใช้งาน</option>
                                                             
                                                       <?php
                                                       } else {
                                                       ?>
-                                                            <option value="หยุดงาน">หยุดงาน</option>
+                                                            <option value="หยุดงาน">ยกเลิกใช้งาน</option>
                                                             <option value="ปกติ">ปกติ</option>
                                                             
                                                       <?php

@@ -84,15 +84,16 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
             }
       }
       ?>
-      
-<script>
-function chkdel(){if(confirm('  กรุณายืนยันการลบอีกครั้ง !!!  ')){
-	return true;
-}else{
-	return false;
-}
-}
-</script>
+
+      <script>
+            function chkdel() {
+                  if (confirm('  กรุณายืนยันการลบอีกครั้ง !!!  ')) {
+                        return true;
+                  } else {
+                        return false;
+                  }
+            }
+      </script>
 
       <!-- Page Wrapper -->
       <div id="wrapper">
@@ -108,52 +109,58 @@ function chkdel(){if(confirm('  กรุณายืนยันการลบ
                         </div>
                   </a>
 
-                <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="home.php">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>หน้าหลัก</span></a>
-            </li>
+             <!-- Nav Item - Dashboard -->
+             <li class="nav-item active">
+                    <a class="nav-link" href="home.php">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>หน้าหลัก</span></a>
+                </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="tables.php">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>บันทึกยอดผลิตประจำวัน</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="form.php">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>กรอกข้อมูลการทำงาน</span></a>
-            </li>
-
-
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.php">
-                    <i class="fas fa-fw fa-chart-line"></i>
-                    <span>กราฟ</span></a>
-            </li>
-
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="user.php">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>จัดการข้อมูลเครื่องจักร</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
-            <!-- Sidebar Message -->
+                <li class="nav-item">
+                    <a class="nav-link" href="tables.php">
+                        <i class="fas fa-fw fa-book"></i>
+                        <span>บันทึกยอดผลิตประจำวัน</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="form.php">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>กรอกข้อมูลการทำงาน</span></a>
+                </li>
 
 
-        </ul>
-        <!-- End of Sidebar -->
+                <!-- Nav Item - Charts -->
+                <li class="nav-item">
+                    <a class="nav-link" href="charts.php">
+                        <i class="fas fa-fw fa-chart-line"></i>
+                        <span>กราฟ</span></a>
+                </li>
+                <!-- Nav Item - Tables -->
+                <li class="nav-item">
+                    <a class="nav-link" href="machine.php">
+                        <i class="fas fa-fw fa-microchip"></i>
+                        <span>จัดการข้อมูลเครื่องจักร</span></a>
+                </li>
+
+                <!-- Nav Item - Tables -->
+                <li class="nav-item">
+                    <a class="nav-link" href="user.php">
+                        <i class="fas fa-fw fa-users"></i>
+                        <span>จัดการข้อมูลผู้ใช้</span></a>
+                </li>
+
+                  <!-- Divider -->
+                  <hr class="sidebar-divider d-none d-md-block">
+
+                  <!-- Sidebar Toggler (Sidebar) -->
+                  <div class="text-center d-none d-md-inline">
+                        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+                  </div>
+
+                  <!-- Sidebar Message -->
+
+
+            </ul>
+            <!-- End of Sidebar -->
 
             <!-- Content Wrapper -->
             <div id="content-wrapper" class="d-flex flex-column">
@@ -241,7 +248,7 @@ function chkdel(){if(confirm('  กรุณายืนยันการลบ
                                                             <thead>
                                                                   <tr>
                                                                         <th>ลำดับ</th>
-                                                                        <th>ชื่อเครื่องจักร</th>                          
+                                                                        <th>ชื่อเครื่องจักร</th>
                                                                         <th>เเก้ไข</th>
                                                                         <th>ลบ</th>
                                                                   </tr>
@@ -255,14 +262,14 @@ function chkdel(){if(confirm('  กรุณายืนยันการลบ
                                                                         <tr>
                                                                               <td><?= ($k + 1) ?></td>
                                                                               <td><?= $row["mac_name"]; ?></td>
-                                                                           
+
                                                                               <td><a href="post/edit.php?id=<?= $row["mac_id"]; ?>"><button class="btn btn-warning ">เเก้ไข</button></a></td>
                                                                               <?php
                                                                               if ($row["mac_name"] == $_SESSION["user"]) {
                                                                                     echo '<td></td>';
                                                                               } else {
                                                                               ?>
-                                                                                    <td><a href="post/del.php?id=<?= $row["mac_id"]; ?>" ><button  class="btn btn-danger " OnClick="return chkdel();" >ลบ</button></a></td>
+                                                                                    <td><a href="post/del.php?id=<?= $row["mac_id"]; ?>"><button class="btn btn-danger " OnClick="return chkdel();">ลบ</button></a></td>
                                                                               <?php
                                                                               }
                                                                               ?>
