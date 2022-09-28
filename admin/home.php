@@ -51,8 +51,8 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                     </div>
                 </a>
 
-                <!-- Nav Item - Dashboard -->
-                <li class="nav-item active">
+             <!-- Nav Item - Dashboard -->
+             <li class="nav-item active">
                     <a class="nav-link" href="home.php">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span>หน้าหลัก</span></a>
@@ -60,7 +60,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
 
                 <li class="nav-item">
                     <a class="nav-link" href="tables.php">
-                        <i class="fas fa-fw fa-table"></i>
+                        <i class="fas fa-fw fa-book"></i>
                         <span>บันทึกยอดผลิตประจำวัน</span></a>
                 </li>
                 <li class="nav-item">
@@ -79,14 +79,14 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                 <!-- Nav Item - Tables -->
                 <li class="nav-item">
                     <a class="nav-link" href="machine.php">
-                        <i class="fas fa-fw fa-table"></i>
+                        <i class="fas fa-fw fa-microchip"></i>
                         <span>จัดการข้อมูลเครื่องจักร</span></a>
                 </li>
 
                 <!-- Nav Item - Tables -->
                 <li class="nav-item">
                     <a class="nav-link" href="user.php">
-                        <i class="fas fa-fw fa-table"></i>
+                        <i class="fas fa-fw fa-users"></i>
                         <span>จัดการข้อมูลผู้ใช้</span></a>
                 </li>
 
