@@ -249,20 +249,21 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                                                   <tr>
                                                                         <th>ลำดับ</th>
                                                                         <th>ชื่อเครื่องจักร</th>
+                                                                        <th>ชื่อรุ่น</th>
                                                                         <th>เเก้ไข</th>
                                                                         <th>ลบ</th>
                                                                   </tr>
                                                             </thead>
                                                             <tbody>
                                                                   <?php
-                                                                  $sql = "SELECT * FROM `machine`";
+                                                                  $sql = "SELECT b_name,mac_name FROM `machinemaster` INNER JOIN brand ON brand.b_id = machinemaster.b_id INNER JOIN machine on machine.mac_id =machinemaster.mac_id;";
                                                                   $re = mysqli_query($conn, $sql);
                                                                   foreach ($re as $k => $row) {
                                                                   ?>
                                                                         <tr>
                                                                               <td><?= ($k + 1) ?></td>
                                                                               <td><?= $row["mac_name"]; ?></td>
-
+                                                                              <td><?= $row["b_name"]; ?></td>
                                                                               <td><a href="post/edit.php?id=<?= $row["mac_id"]; ?>"><button class="btn btn-warning ">เเก้ไข</button></a></td>
                                                                               <?php
                                                                               if ($row["mac_name"] == $_SESSION["user"]) {
