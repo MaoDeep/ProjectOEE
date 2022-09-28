@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.3.0-dev+20220519.4c1c1fcc18
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 28, 2022 at 02:12 PM
+-- Generation Time: Sep 28, 2022 at 03:58 PM
 -- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.5
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -80,20 +80,38 @@ INSERT INTO `employee` (`E_id`, `EName`, `Nmac`, `Econ`, `Epro`, `Edel`, `Etime`
 
 CREATE TABLE `machine` (
   `mac_id` int(50) NOT NULL,
-  `mac_name` varchar(50) NOT NULL,
-  `b_id` int(20) NOT NULL
+  `mac_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `machine`
 --
 
-INSERT INTO `machine` (`mac_id`, `mac_name`, `b_id`) VALUES
-(1, 'MC-HTP-2016-1', 1),
-(2, 'MC-HTP-2009-2', 3),
-(3, 'MC-HTP-2005-3', 2),
-(4, 'MC-HTP-2014-4', 4),
-(5, 'MC-HTP-2015-5', 3);
+INSERT INTO `machine` (`mac_id`, `mac_name`) VALUES
+(1, 'MC-HTP-2016-1'),
+(2, 'MC-HTP-2009-2'),
+(3, 'MC-HTP-2005-3'),
+(4, 'MC-HTP-2014-4'),
+(5, 'MC-HTP-2015-5');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `machinemaster`
+--
+
+CREATE TABLE `machinemaster` (
+  `id` int(11) NOT NULL,
+  `mac_id` int(60) NOT NULL,
+  `b_id` int(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `machinemaster`
+--
+
+INSERT INTO `machinemaster` (`id`, `mac_id`, `b_id`) VALUES
+(1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -186,6 +204,12 @@ ALTER TABLE `machine`
   ADD PRIMARY KEY (`mac_id`);
 
 --
+-- Indexes for table `machinemaster`
+--
+ALTER TABLE `machinemaster`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `report`
 --
 ALTER TABLE `report`
@@ -205,7 +229,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `brand`
 --
 ALTER TABLE `brand`
-  MODIFY `b_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `b_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `employee`
@@ -217,7 +241,13 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `machine`
 --
 ALTER TABLE `machine`
-  MODIFY `mac_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `mac_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT for table `machinemaster`
+--
+ALTER TABLE `machinemaster`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `report`
@@ -235,6 +265,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
-
