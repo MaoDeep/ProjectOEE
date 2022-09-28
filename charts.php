@@ -384,12 +384,12 @@ if (isset($_POST['submit'])) {
                                                     ?>
                                                             <tr>
                                                                 <th><?php echo $d ?></th>
-                                                                <th><?php echo number_format($row["AT"], 2). " ชม."; ?></th>
-                                                                <th><?php echo number_format($row["SP"], 2). " ชม.";  ?></th>
-                                                                <th><?php echo number_format($row["WT"], 2). " ชม.";  ?></th>
-                                                                <th><?php echo number_format($row["MS"], 2). " ชม.";  ?></th>
-                                                                <th><?php echo number_format($row["RT"], 2). " ชม.";  ?></th>
-                                                                <th><?php echo number_format($row["MSS"], 2) . " ชม."; ?></th>
+                                                                <th><?php echo number_format($row["AT"], ). " นาที."; ?></th>
+                                                                <th><?php echo number_format($row["SP"], ). " นาที.";  ?></th>
+                                                                <th><?php echo number_format($row["WT"], ). " นาที.";  ?></th>
+                                                                <th><?php echo number_format($row["MS"], ). " นาที.";  ?></th>
+                                                                <th><?php echo number_format($row["RT"], ). " นาที.";  ?></th>
+                                                                <th><?php echo number_format($row["MSS"], ) . " นาที."; ?></th>
                                                                 <th><?php echo number_format($row["NO"],) . " ชิ้น."; ?></th>
                                                                 <th><?php echo number_format($row["NUM"], ) . " ชิ้น."; ?></th>
                                                                 <th><?php echo $row["u_usersname"] ?></th>
