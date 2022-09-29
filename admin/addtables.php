@@ -123,12 +123,12 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
 
                                         <select name="txt3" id="txt3" class="form-select form-select-sm">
                                             <?php
-                                            $sqlrow = "SELECT * FROM `machine`";
+                                            $sqlrow = "SELECT * FROM `machinemaster` INNER JOIN brand ON brand.b_id = machinemaster.b_id INNER JOIN machine on machine.mac_id =machinemaster.mac_id;";
                                             $rerow = mysqli_query($conn, $sqlrow);
                                             foreach ($rerow as $row) {
                                             ?>
-                                                <option value="<?=$row["mac_id"]?>"><?=$row["mac_name"]?></option>
-                                                
+                                                <option value="<?= $row["id"] ?>"><?= $row["mac_name"] ?></option>
+
                                             <?php
                                             }
                                             ?>
@@ -151,16 +151,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                         ?>
 
                                         <select name="txt8" id="txt8" class="form-select form-select-sm">
-                                        <?php
-                                            $sqlrow = "SELECT * FROM `brand`";
-                                            $rerow = mysqli_query($conn, $sqlrow);
-                                            foreach ($rerow as $row) {
-                                            ?>
-                                                <option value="<?=$row["b_id"]?>"><?=$row["b_name"]?></option>
-                                                
-                                            <?php
-                                            }
-                                            ?>
+
                                         </select>
                                         <div class="invalid-feedback">
                                             กรุณาใส่ข้อมูลให้ครบ
@@ -276,6 +267,23 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
     </script>
     <script type="text/javascript">
         $(document).ready(function() {
+            $("#txt3").change(function() {
+                $("#txt8").empty();
+                var txt3 = $("#txt3").val();
+
+                $.ajax({
+                    type: "post",
+                    url: "post/getdatamac.php",
+                    data: "id=" + txt3,
+                    dataType: "text",
+                    success: function(response) {
+                        var de = $.parseJSON(response);
+                        $("#txt8").append('<option value="' + de[0].b_id + '">' + de[0].b_name + '</option>');
+                        console.log(de[0].b_id);
+                    }
+                });
+            });
+
             function timeDiffCalc(dateFuture, dateNow) {
                 let diffInMilliSeconds = Math.abs(dateFuture - dateNow) / 1000;
 
