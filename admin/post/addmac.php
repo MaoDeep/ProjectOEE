@@ -1,3 +1,6 @@
+<?php
+include "../config.php";
+?>
 <!doctype html>
 <html lang="en">
 
@@ -24,7 +27,7 @@
                         <div class="card-body">
                             <label for=""> เพิ่มชื่อเครื่องจัก</label>
                             <input class="form-control form-control-sm" type="text" id="in_mac">
-                            <button type="button" value="" class="btn btn-success btn-sm mt-3 mx-auto" id="bt_mac">บันทึก</button>
+                            <button type="button" value="bt_mac" class="btn btn-success btn-sm mt-3 mx-auto" id="bt_mac">บันทึก</button>
                         </div>
                     </div>
                 </div>
@@ -36,7 +39,7 @@
                         <div class="card-body">
                             <label for=""> เพิ่มชื่อรุ่น</label>
                             <input class="form-control form-control-sm" type="text" id="in_brand">
-                            <button type="button" value="" class="btn btn-success btn-sm mt-3 " id="bt_brand">บันทึก</button>
+                            <button type="button" value="bt_brand" class="btn btn-success btn-sm mt-3 " id="bt_brand">บันทึก</button>
                         </div>
 
                     </div>
@@ -50,17 +53,30 @@
                         </div>
                         <div class="card-body">
                             <label for="" class="form-label">ชื่อเครื่องจัก</label>
-                            <select class="form-select form-select-sm" name="" id="">
-                                <option>New Delhi</option>
-                                <option>Istanbul</option>
-                                <option>Jakarta</option>
+                            <select class="form-select form-select-sm" name="master_mac" id="master_mac">
+                                <?php
+                                $sql_mac = "SELECT * FROM `machine`";
+                                $re_mac = mysqli_query($conn, $sql_mac);
+                                foreach ($re_mac as $row) {
+                                ?>
+                                    <option value="<?= $row["mac_id"]; ?>"><?= $row["mac_name"]; ?></option>
+                                <?php
+                                }
+                                ?>
+
                             </select>
                             <div class="mt-3"></div>
                             <label for="" class="form-label">ชื่อรุ่น</label>
-                            <select class="form-select form-select-sm" name="" id="">
-                                <option>New Delhi</option>
-                                <option>Istanbul</option>
-                                <option>Jakarta</option>
+                            <select class="form-select form-select-sm" name="master_brand" id="master_brand">
+                                <?php
+                                $sql_brand = "SELECT * FROM `brand`";
+                                $re_brand = mysqli_query($conn, $sql_brand);
+                                foreach ($re_brand as $row) {
+                                ?>
+                                    <option value="<?= $row["b_id"]; ?>"><?= $row["b_name"]; ?></option>
+                                <?php
+                                }
+                                ?>
                             </select>
                             <button type="button" value="" class="btn btn-success btn-sm mt-3 " id="bt_master">บันทึก</button>
                         </div>
@@ -84,7 +100,11 @@
                     data: "status=1&mac=" + mac,
                     dataType: "text",
                     success: function(response) {
-                        console.log(response);
+                        if (response == "true") {
+                            alert("Y");
+                        } else if (response == "false") {
+                            alert("N");
+                        }
                     }
                 });
             });
@@ -97,24 +117,34 @@
                     data: "status=2&brand=" + brand,
                     dataType: "text",
                     success: function(response) {
-                        console.log(response);
+                        if (response == "true") {
+                            alert("Y");
+                        } else if (response == "false") {
+                            alert("N");
+                        }
                     }
                 });
             });
-            /*
-                        $("#bt_mac").click(function(e) {
-                            var mac = $("#in_mac").val();
-                            $.ajax({
-                                type: "post",
-                                url: "addmacjson.php",
-                                data: "status=1&mac=" + mac,
-                                dataType: "text",
-                                success: function(response) {
-                                    console.log(response);
-                                }
-                            });
-                        });
-                        */
+
+            $("#bt_master").click(function(e) {
+                var master_brand = $("#master_brand").val();
+                var master_mac = $("#master_mac").val();
+                $.ajax({
+                    type: "post",
+                    url: "addmacjson.php",
+                    data: "status=3&master_mac=" + master_mac + "&master_brand=" + master_brand,
+                    dataType: "text",
+                    success: function(response) {
+                        if (response == "true") {
+                            alert("Y");
+                        } else if (response == "false") {
+                            alert("N");
+                        }
+                    }
+                });
+
+            });
+
 
         });
     </script>

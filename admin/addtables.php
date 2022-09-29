@@ -151,10 +151,16 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                         ?>
 
                                         <select name="txt8" id="txt8" class="form-select form-select-sm">
-                                            <option value="ผ้าเบรค Yasaki VIP กล่องรุ่น WA<">ผ้าเบรค Yasaki VIP กล่องรุ่น WA</option>
-                                            <option value="ผ้าเบรค Yasaki VIP รุ่น CL">ผ้าเบรค Yasaki VIP รุ่น CL</option>
-                                            <option value="ผ้าเบรค Yasaki VIP รุ่น RX-Z,Dream">ผ้าเบรค Yasaki VIP รุ่น RX-Z,Dream</option>
-                                            <option value="ผ้าเบรค Yasaki VIP Super รุ่น CL">ผ้าเบรค Yasaki VIP Super รุ่น CL</option>
+                                        <?php
+                                            $sqlrow = "SELECT * FROM `brand`";
+                                            $rerow = mysqli_query($conn, $sqlrow);
+                                            foreach ($rerow as $row) {
+                                            ?>
+                                                <option value="<?=$row["b_id"]?>"><?=$row["b_name"]?></option>
+                                                
+                                            <?php
+                                            }
+                                            ?>
                                         </select>
                                         <div class="invalid-feedback">
                                             กรุณาใส่ข้อมูลให้ครบ

@@ -109,44 +109,44 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                         </div>
                   </a>
 
-             <!-- Nav Item - Dashboard -->
-             <li class="nav-item active">
-                    <a class="nav-link" href="home.php">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>หน้าหลัก</span></a>
-                </li>
+                  <!-- Nav Item - Dashboard -->
+                  <li class="nav-item active">
+                        <a class="nav-link" href="home.php">
+                              <i class="fas fa-fw fa-tachometer-alt"></i>
+                              <span>หน้าหลัก</span></a>
+                  </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="tables.php">
-                        <i class="fas fa-fw fa-book"></i>
-                        <span>บันทึกยอดผลิตประจำวัน</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="form.php">
-                        <i class="fas fa-fw fa-table"></i>
-                        <span>กรอกข้อมูลการทำงาน</span></a>
-                </li>
+                  <li class="nav-item">
+                        <a class="nav-link" href="tables.php">
+                              <i class="fas fa-fw fa-book"></i>
+                              <span>บันทึกยอดผลิตประจำวัน</span></a>
+                  </li>
+                  <li class="nav-item">
+                        <a class="nav-link" href="form.php">
+                              <i class="fas fa-fw fa-table"></i>
+                              <span>กรอกข้อมูลการทำงาน</span></a>
+                  </li>
 
 
-                <!-- Nav Item - Charts -->
-                <li class="nav-item">
-                    <a class="nav-link" href="charts.php">
-                        <i class="fas fa-fw fa-chart-line"></i>
-                        <span>กราฟ</span></a>
-                </li>
-                <!-- Nav Item - Tables -->
-                <li class="nav-item">
-                    <a class="nav-link" href="machine.php">
-                        <i class="fas fa-fw fa-microchip"></i>
-                        <span>จัดการข้อมูลเครื่องจักร</span></a>
-                </li>
+                  <!-- Nav Item - Charts -->
+                  <li class="nav-item">
+                        <a class="nav-link" href="charts.php">
+                              <i class="fas fa-fw fa-chart-line"></i>
+                              <span>กราฟ</span></a>
+                  </li>
+                  <!-- Nav Item - Tables -->
+                  <li class="nav-item">
+                        <a class="nav-link" href="machine.php">
+                              <i class="fas fa-fw fa-microchip"></i>
+                              <span>จัดการข้อมูลเครื่องจักร</span></a>
+                  </li>
 
-                <!-- Nav Item - Tables -->
-                <li class="nav-item">
-                    <a class="nav-link" href="user.php">
-                        <i class="fas fa-fw fa-users"></i>
-                        <span>จัดการข้อมูลผู้ใช้</span></a>
-                </li>
+                  <!-- Nav Item - Tables -->
+                  <li class="nav-item">
+                        <a class="nav-link" href="user.php">
+                              <i class="fas fa-fw fa-users"></i>
+                              <span>จัดการข้อมูลผู้ใช้</span></a>
+                  </li>
 
                   <!-- Divider -->
                   <hr class="sidebar-divider d-none d-md-block">
@@ -256,24 +256,17 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                                             </thead>
                                                             <tbody>
                                                                   <?php
-                                                                  $sql = "SELECT b_name,mac_name FROM `machinemaster` INNER JOIN brand ON brand.b_id = machinemaster.b_id INNER JOIN machine on machine.mac_id =machinemaster.mac_id;";
+                                                                  $sql = "SELECT machinemaster.id AS master_id,b_name,mac_name FROM `machinemaster` INNER JOIN brand ON brand.b_id = machinemaster.b_id INNER JOIN machine on machine.mac_id =machinemaster.mac_id;";
                                                                   $re = mysqli_query($conn, $sql);
                                                                   foreach ($re as $k => $row) {
+                                                                        var_dump($row);
                                                                   ?>
                                                                         <tr>
                                                                               <td><?= ($k + 1) ?></td>
                                                                               <td><?= $row["mac_name"]; ?></td>
                                                                               <td><?= $row["b_name"]; ?></td>
-                                                                              <td><a href="post/edit.php?id=<?= $row["mac_id"]; ?>"><button class="btn btn-warning ">เเก้ไข</button></a></td>
-                                                                              <?php
-                                                                              if ($row["mac_name"] == $_SESSION["user"]) {
-                                                                                    echo '<td></td>';
-                                                                              } else {
-                                                                              ?>
-                                                                                    <td><a href="post/del.php?id=<?= $row["mac_id"]; ?>"><button class="btn btn-danger " OnClick="return chkdel();">ลบ</button></a></td>
-                                                                              <?php
-                                                                              }
-                                                                              ?>
+                                                                              <td><a href="post/edit.php?id=<?= $row["master_id"] ?>"><button class="btn btn-warning ">เเก้ไข</button></a></td>
+                                                                              <td><a href="post/edit.php?id=<?= $row["master_id"] ?>"><button class="btn btn-warning ">ลบ</button></a></td>
                                                                         </tr>
 
                                                                   <?php
