@@ -51,7 +51,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
             $_POST["workmin"]
         );
         $sql = "INSERT INTO `employee`(`E_id`, `EName`, `Nmac`, `Econ`, `Epro`, `Edel`, `Etime`, `Etimet`, `DATE`) VALUES (NULL ,'" . $arr1[0] . "','" . $arr1[1] . "' , " . $arr1[2] . " , '" . $arr1[3] . "', " . $arr1[4] . " , '" . $arr1[5] . "' , '" . $arr1[6] . "' , '" . $arr1[7] . "')";
-
+        var_dump($sql);
         $date1 = new DateTime($arr1[5]);
         $date2 = new DateTime($arr1[6]);
 
@@ -122,7 +122,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                         ?>
 
                                         <select name="txt3" id="txt3" class="form-select form-select-sm">
-                                        <option value="">โปรดเลือก.....</option>
+                                            <option value="">โปรดเลือก.....</option>
                                             <?php
                                             $sqlrow = "SELECT * FROM `machinemaster` INNER JOIN brand ON brand.b_id = machinemaster.b_id INNER JOIN machine on machine.mac_id =machinemaster.mac_id;";
                                             $rerow = mysqli_query($conn, $sqlrow);
