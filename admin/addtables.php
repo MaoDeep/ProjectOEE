@@ -122,6 +122,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                         ?>
 
                                         <select name="txt3" id="txt3" class="form-select form-select-sm">
+                                        <option value="">โปรดเลือก.....</option>
                                             <?php
                                             $sqlrow = "SELECT * FROM `machinemaster` INNER JOIN brand ON brand.b_id = machinemaster.b_id INNER JOIN machine on machine.mac_id =machinemaster.mac_id;";
                                             $rerow = mysqli_query($conn, $sqlrow);

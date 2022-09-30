@@ -137,7 +137,10 @@ include "../config.php";
                     success: function(response) {
                         if (response == "true") {
                             alert("บันทึกสำเร็จ");
-                            header('Location: ../machine.php');
+
+                            setInterval(
+                                window.location = "../machine.php", 1000);
+
                         } else if (response == "false") {
                             alert("บันทึกไม่สำเร็จ");
                         }
