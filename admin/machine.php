@@ -259,14 +259,14 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                                                   $sql = "SELECT machinemaster.id AS master_id,b_name,mac_name FROM `machinemaster` INNER JOIN brand ON brand.b_id = machinemaster.b_id INNER JOIN machine on machine.mac_id =machinemaster.mac_id;";
                                                                   $re = mysqli_query($conn, $sql);
                                                                   foreach ($re as $k => $row) {
-                                                                        var_dump($row);
+                                                                        
                                                                   ?>
                                                                         <tr>
                                                                               <td><?= ($k + 1) ?></td>
                                                                               <td><?= $row["mac_name"]; ?></td>
                                                                               <td><?= $row["b_name"]; ?></td>
-                                                                              <td><a href="post/edit.php?id=<?= $row["master_id"] ?>"><button class="btn btn-warning ">เเก้ไข</button></a></td>
-                                                                              <td><a href="post/edit.php?id=<?= $row["master_id"] ?>"><button class="btn btn-warning ">ลบ</button></a></td>
+                                                                              <td><a href="post/editmac.php?id=<?= $row["master_id"] ?>"><button class="btn btn-warning ">เเก้ไข</button></a></td>
+                                                                              <td><a href="post/delmac.php?id=<?= $row["master_id"] ?>"><button class="btn btn-danger ">ลบ</button></a></td>
                                                                         </tr>
 
                                                                   <?php

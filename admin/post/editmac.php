@@ -1,5 +1,6 @@
 <?php
 include "../config.php";
+if (isset($_GET["id"]) && $_GET["id"] !== "") {
 ?>
 <!doctype html>
 <html lang="en">
@@ -21,16 +22,25 @@ include "../config.php";
             <div class="row text-center">
                 <div class="col-6">
                     <div class="card shadow-lg">
+                        
                         <div class="card-header">
-                            เพิ่มชื่อเครื่องจัก
+                            ชื่อเครื่องจัก
                         </div>
                         <div class="card-body">
+                           
+                        <label for=""> ลำดับที่</label>
+                        <input class="form-control form-control-sm" type="text" id="id_mac">
+                                                           
+                            <br>
+                            
                             <label for=""> เพิ่มชื่อเครื่องจัก</label>
                             <input class="form-control form-control-sm" type="text" id="in_mac">
+                            
                             <button type="button" value="bt_mac" class="btn btn-success btn-sm mt-3 mx-auto" id="bt_mac">บันทึก</button>
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-6">
                     <div class="card shadow-lg">
                         <div class="card-header">
@@ -45,6 +55,7 @@ include "../config.php";
                     </div>
                 </div>
             </div>
+            
             <div class="row text-center mt-3">
                 <div class="col-12">
                     <div class="card shadow-lg">
@@ -65,6 +76,7 @@ include "../config.php";
                                 ?>
 
                             </select>
+                            
                             <div class="mt-3"></div>
                             <label for="" class="form-label">ชื่อรุ่น</label>
                             <select class="form-select form-select-sm" name="master_brand" id="master_brand">
@@ -96,7 +108,7 @@ include "../config.php";
                 var mac = $("#in_mac").val();
                 $.ajax({
                     type: "post",
-                    url: "addmacjson.php",
+                    url: "editmacjson.php",
                     data: "status=1&mac=" + mac,
                     dataType: "text",
                     success: function(response) {
@@ -113,7 +125,7 @@ include "../config.php";
                 var brand = $("#in_brand").val();
                 $.ajax({
                     type: "post",
-                    url: "addmacjson.php",
+                    url: "editmacjson.php",
                     data: "status=2&brand=" + brand,
                     dataType: "text",
                     success: function(response) {
@@ -131,13 +143,12 @@ include "../config.php";
                 var master_mac = $("#master_mac").val();
                 $.ajax({
                     type: "post",
-                    url: "addmacjson.php",
+                    url: "editmacjson.php",
                     data: "status=3&master_mac=" + master_mac + "&master_brand=" + master_brand,
                     dataType: "text",
                     success: function(response) {
                         if (response == "true") {
                             alert("บันทึกสำเร็จ");
-                            header('Location: ../machine.php');
                         } else if (response == "false") {
                             alert("บันทึกไม่สำเร็จ");
                         }
@@ -175,5 +186,6 @@ include "../config.php";
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
 </body>
-
+  <?php  }
+    ?>
 </html>
