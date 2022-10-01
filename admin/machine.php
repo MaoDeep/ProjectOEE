@@ -256,14 +256,55 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                                             </thead>
                                                             <tbody>
                                                                   <?php
-                                                                  $sql = "SELECT machinemaster.id AS master_id,b_name,mac_name FROM `machinemaster` INNER JOIN brand ON brand.b_id = machinemaster.b_id INNER JOIN machine on machine.mac_id =machinemaster.mac_id;";
+                                                                  $sql = "SELECT * FROM `machine`";
                                                                   $re = mysqli_query($conn, $sql);
                                                                   foreach ($re as $k => $row) {
                                                                         
                                                                   ?>
                                                                         <tr>
                                                                               <td><?= ($k + 1) ?></td>
+                                                                              <td><?= $row["mac_id"]; ?></td>
                                                                               <td><?= $row["mac_name"]; ?></td>
+                                                                              <td><a href="post/editmac.php?id=<?= $row["master_id"] ?>"><button class="btn btn-warning ">เเก้ไข</button></a></td>
+                                                                              <td><a href="post/delmac.php?id=<?= $row["master_id"] ?>"><button class="btn btn-danger ">ลบ</button></a></td>
+                                                                        </tr>
+
+                                                                  <?php
+                                                                  }
+                                                                  ?>
+                                                            </tbody>
+                                                      </table>
+
+                                                </div>
+                                          </div>
+                                          <div class="card shadow mb-4">
+                                                <div class="card-header py-3">
+                                                      <h5 class="m-0 font-weight-bold text-primary">จัดการข้อมูลรุ่น</h5>
+                                                </div>
+                                                <div class="card-body">
+                                                      <div class="d-flex flex-row-reverse">
+                                                            <div class="p-2"><a href="post/addmac.php"><button type="button" class="btn btn-info ">เพิ่มข้อมูล</button></a></div>
+                                                      </div>
+                                                      <table class="table table-bordered table-sm" id="dataTable" width="100%" cellspacing="0">
+                                                            <thead>
+                                                                  <tr>
+                                                                        <th>ลำดับ</th>
+                                                                        <th>ชื่อเครื่องจักร</th>
+                                                                        <th>ชื่อรุ่น</th>
+                                                                        <th>เเก้ไข</th>
+                                                                        <th>ลบ</th>
+                                                                  </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                  <?php
+                                                                  $sql = "SELECT * FROM `brand` ";
+                                                                  $re = mysqli_query($conn, $sql);
+                                                                  foreach ($re as $k => $row) {
+                                                                        
+                                                                  ?>
+                                                                        <tr>
+                                                                              <td><?= ($k + 1) ?></td>
+                                                                              <td><?= $row["b_id"]; ?></td>
                                                                               <td><?= $row["b_name"]; ?></td>
                                                                               <td><a href="post/editmac.php?id=<?= $row["master_id"] ?>"><button class="btn btn-warning ">เเก้ไข</button></a></td>
                                                                               <td><a href="post/delmac.php?id=<?= $row["master_id"] ?>"><button class="btn btn-danger ">ลบ</button></a></td>

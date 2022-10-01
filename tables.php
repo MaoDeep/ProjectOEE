@@ -252,7 +252,7 @@ if (isset($_POST['submit'])) {
                                   
                                   require('config.php');
                                   mysqli_query($conn, 'SET NAMES UTF8');
-                                  $sql = "SELECT * FROM `employee` INNER JOIN machinemaster ON machinemaster.id = employee.Nmac INNER JOIN brand ON brand.b_id = machinemaster.b_id INNER JOIN machine ON machine.mac_id = machinemaster.mac_id;";
+                                  $sql = "SELECT * FROM `employee`";
                                   $query = mysqli_query($conn, $sql);
                                   $n1 = 0;
                                   while ($value = mysqli_fetch_array($query)) {
@@ -263,8 +263,8 @@ if (isset($_POST['submit'])) {
                   <td>' . $n1 . '</td>
                   <td>' . $d1 . '</td>
                   <td>' . $value['EName'] . '</td>
-                  <td>' . $value['mac_name'] . '</td>
-                  <td>' . $value['b_name'] . '</td>
+                  <td>' . $value['Nmac'] . '</td>
+                  <td>' . $value['Epro'] . '</td>
                   <td>' . $value['Econ'] . '</td>
                   <td>' . $value['Edel'] . '</td>
                   <td>' . $value['Etime'] . '</td>

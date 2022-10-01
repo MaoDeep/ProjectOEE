@@ -122,13 +122,13 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                         ?>
 
                                         <select name="txt3" id="txt3" class="form-select form-select-sm">
-                                            <option value="">โปรดเลือก.....</option>
+
                                             <?php
-                                            $sqlrow = "SELECT * FROM `machinemaster` INNER JOIN brand ON brand.b_id = machinemaster.b_id INNER JOIN machine on machine.mac_id =machinemaster.mac_id;";
+                                            $sqlrow = "SELECT * FROM `machine` ;";
                                             $rerow = mysqli_query($conn, $sqlrow);
                                             foreach ($rerow as $row) {
                                             ?>
-                                                <option value="<?= $row["id"] ?>"><?= $row["mac_name"] ?></option>
+                                                <option value="<?= $row["mac_name"] ?>"><?= $row["mac_name"] ?></option>
 
                                             <?php
                                             }
@@ -141,17 +141,18 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="col-form-label-sm">รุ่นที่ผลิต :</div>
-                                        <?php
-                                        $sqlrow = "SELECT * FROM `users` INNER JOIN brand ON brand.b_id = users.b_id where users.u_usersname = '" . $_SESSION["user"] . "' ";
-                                        $rerow = mysqli_query($conn, $sqlrow);
-                                        foreach ($rerow as $row) {
-
-                                            $user = $row["u_usersname"];
-                                            $bra = $row["b_name"];
-                                        }
-                                        ?>
-
                                         <select name="txt8" id="txt8" class="form-select form-select-sm">
+                                            <?php
+                                            $sqlrow = "SELECT * FROM `brand` ;";
+                                            $rerow = mysqli_query($conn, $sqlrow);
+                                            foreach ($rerow as $row) {
+                                            ?>
+                                                <option value="<?= $row["b_name"] ?>"><?= $row["b_name"] ?></option>
+                                            <?php
+                                            }
+                                            ?>
+
+
 
                                         </select>
                                         <div class="invalid-feedback">
@@ -268,18 +269,20 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
     </script>
     <script type="text/javascript">
         $(document).ready(function() {
+            
             $("#txt3").change(function() {
                 $("#txt8").empty();
                 var txt3 = $("#txt3").val();
-
+                console.log(txt3);
                 $.ajax({
                     type: "post",
                     url: "post/getdatamac.php",
                     data: "id=" + txt3,
                     dataType: "text",
                     success: function(response) {
+                        console.log(response);
                         var de = $.parseJSON(response);
-                        $("#txt8").append('<option value="' + de[0].b_id + '">' + de[0].b_name + '</option>');
+                        $("#txt8").append('<option value="' + de[0].b_name + '">' + de[0].b_name + '</option>');
                         console.log(de[0].b_id);
                     }
                 });

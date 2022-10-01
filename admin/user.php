@@ -249,7 +249,10 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                                                   <tr>
                                                                         <th>ลำดับ</th>
                                                                         <th>ชื่อ</th>
+                                                                        <th>เครื่องจักร</th>
+                                                                        <th>รุ่น</th>
                                                                         <th>สิทธิ์ผู้ใช้งาน</th>
+                                                                        
                                                                         <th>สถานะ</th>
                                                                         <th>เเก้ไข</th>
                                                                         <th>ลบ</th>
@@ -257,13 +260,15 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                                             </thead>
                                                             <tbody>
                                                                   <?php
-                                                                  $sql = "SELECT * FROM `users`";
+                                                                  $sql = "SELECT * FROM `users` LEFT JOIN machine ON machine.mac_id = users.mac_id LEFT JOIN brand ON brand.b_id = users.b_id ORDER BY `brand`.`b_name` ASC;";
                                                                   $re = mysqli_query($conn, $sql);
                                                                   foreach ($re as $k => $row) {
                                                                   ?>
                                                                         <tr>
                                                                               <td><?= ($k + 1) ?></td>
                                                                               <td><?= $row["u_usersname"]; ?></td>
+                                                                              <td><?= $row["mac_name"]; ?></td>
+                                                                              <td><?= $row["b_name"]; ?></td>
                                                                               <td><?= $row["Status"]; ?></td>
                                                                               <td><?= $row["std2"]; ?></td>
                                                                               <td><a href="post/edit.php?id=<?= $row["u_id"]; ?>"><button class="btn btn-warning ">เเก้ไข</button></a></td>

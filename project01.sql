@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 28, 2022 at 03:58 PM
+-- Generation Time: Oct 01, 2022 at 02:37 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -70,7 +70,8 @@ INSERT INTO `employee` (`E_id`, `EName`, `Nmac`, `Econ`, `Epro`, `Edel`, `Etime`
 (397, ' joe wen', 'MC-HTP-2005-3', 4000, 'ผ้าเบรค Yasaki VIP รุ่น RX-Z,Dream', 10, '08:00', '18:30', '2022-09-22'),
 (398, ' tun naing', 'MC-HTP-2014-4', 5000, 'ผ้าเบรค  Yasaki VIP Super รุ่น CL', 100, '08:00', '20:30', '2022-09-22'),
 (399, 'admin', 'MC-HTP-2016-1', 4100, 'ผ้าเบรค Yasaki VIP กล่องรุ่น WA<', 47, '08:00', '17:00', '2022-09-27'),
-(400, 'sen win', 'MC-HTP-2016-1', 4100, 'ผ้าเบรค Yasaki VIP รุ่น WA', 47, '08:00', '17:00', '2022-09-27');
+(400, 'sen win', 'MC-HTP-2016-1', 4100, 'ผ้าเบรค Yasaki VIP รุ่น WA', 47, '08:00', '17:00', '2022-09-27'),
+(402, 'admin', 'MC-HTP-2014-4', 500, 'ผ้าเบรค  Yasaki VIP Super รุ่น CL', 10, '08:00', '17:00', '2022-10-01');
 
 -- --------------------------------------------------------
 
@@ -93,25 +94,6 @@ INSERT INTO `machine` (`mac_id`, `mac_name`) VALUES
 (3, 'MC-HTP-2005-3'),
 (4, 'MC-HTP-2014-4'),
 (5, 'MC-HTP-2015-5');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `machinemaster`
---
-
-CREATE TABLE `machinemaster` (
-  `id` int(11) NOT NULL,
-  `mac_id` int(60) NOT NULL,
-  `b_id` int(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `machinemaster`
---
-
-INSERT INTO `machinemaster` (`id`, `mac_id`, `b_id`) VALUES
-(1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -151,7 +133,9 @@ INSERT INTO `report` (`id`, `AT`, `SP`, `WT`, `MS`, `MIX`, `RT`, `MSS`, `TT`, `N
 (142, 750, 63, 687, 63, 90.83, 750, 63, 91.6, 5000, 100, 98, 90.83, 91.6, 98, 81.54, '2022-09-22', '48'),
 (143, 540, 60, 480, 60, 87.5, 540, 60, 88.89, 4100, 47, 98.85, 87.5, 88.89, 99, 76.89, '2022-09-27', '5'),
 (144, 540, 60, 480, 60, 87.5, 540, 60, 88.89, 4100, 47, 98.85, 87.5, 88.89, 99, 76.89, '2022-09-27', '5'),
-(145, 540, 90, 450, 90, 80, 540, 90, 83.33, 4100, 47, 98.85, 80, 83.33, 99, 65.9, '2022-09-27', '45');
+(145, 540, 90, 450, 90, 80, 540, 90, 83.33, 4100, 47, 98.85, 80, 83.33, 99, 65.9, '2022-09-27', '45'),
+(146, 540, 60, 480, 60, 87.5, 540, 60, 88.89, 4001, 500, 87.5, 87.5, 88.89, 88, 68.06, '2022-10-01', '5'),
+(147, 540, 60, 480, 60, 87.5, 540, 60, 88.89, 500, 10, 98, 87.5, 88.89, 98, 76.22, '2022-10-01', '5');
 
 -- --------------------------------------------------------
 
@@ -175,7 +159,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`u_id`, `u_usersname`, `u_pssaword`, `Status`, `std2`, `mac_id`, `b_id`) VALUES
 (0, 'ชิด', 1111, 'Admin', 'ปกติ', '', ''),
-(5, 'admin', 1111, 'Admin', 'ปกติ', '', ''),
+(5, 'admin', 1111, 'Admin', 'ปกติ', '1', '1'),
 (45, 'sen win', 1111, 'User', 'หยุดงาน', '1', '1'),
 (46, 'Saw maung tin', 1111, 'User', 'หยุดงาน', '2', '2'),
 (47, ' joe wen', 1111, 'User', 'ปกติ', '3', '3'),
@@ -204,12 +188,6 @@ ALTER TABLE `machine`
   ADD PRIMARY KEY (`mac_id`);
 
 --
--- Indexes for table `machinemaster`
---
-ALTER TABLE `machinemaster`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `report`
 --
 ALTER TABLE `report`
@@ -235,7 +213,7 @@ ALTER TABLE `brand`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `E_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=401;
+  MODIFY `E_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=403;
 
 --
 -- AUTO_INCREMENT for table `machine`
@@ -244,22 +222,16 @@ ALTER TABLE `machine`
   MODIFY `mac_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT for table `machinemaster`
---
-ALTER TABLE `machinemaster`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT for table `report`
 --
 ALTER TABLE `report`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

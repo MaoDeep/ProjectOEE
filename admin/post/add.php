@@ -2,15 +2,16 @@
 include "../config.php";
 if (isset($_POST["submit"])) {
     $arr = array(
-
         $_POST["txt2"],
         $_POST["txt3"],
         $_POST["txt4"],
-        $_POST["txt5"]
+        $_POST["txt5"],
+        $_POST["txt6"],
+        $_POST["txt7"]
     );
 
 
-    $sql = "INSERT INTO `users` (`u_id`, `u_usersname`, `u_pssaword`, `Status`, `std2`) VALUES (NULL, '" . $arr[0] . "', '" . $arr[1] . "', '" . $arr[2] . "', '" . $arr[3] . "');";
+    $sql = "INSERT INTO `users` (`u_id`, `u_usersname`, `u_pssaword`, `Status`, `std2`,`mac_id`,`b_id`) VALUES (NULL, '" . $arr[0] . "', '" . $arr[1] . "', '" . $arr[2] . "', '" . $arr[3] . "','" . $arr[4] . "','" . $arr[5] . "');";
     $re = mysqli_query($conn, $sql);
 
 
@@ -62,8 +63,8 @@ if (isset($_POST["submit"])) {
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">สิทธิ์ผู้ใช้งาน</label>
-                            <select name="txt4" id="txt4" class="form-select form-select-sm" value="" required >
-                            <option value="">--เลือกสิทธิ์ผู้ใช้งาน--</option>
+                            <select name="txt4" id="txt4" class="form-select form-select-sm" value="" required>
+                                <option value="">--เลือกสิทธิ์ผู้ใช้งาน--</option>
                                 <option value="Admin">Admin</option>
                                 <option value="User">User</option>
 
@@ -71,11 +72,48 @@ if (isset($_POST["submit"])) {
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">สถานะ</label>
-                            <select name="txt5" id="txt5" class="form-select form-select-sm" value="" required >
+                            <select name="txt5" id="txt5" class="form-select form-select-sm" value="" required>
                                 <option value="">--เลือกสถานะ--</option>
                                 <option value="ปกติ">ปกติ</option>
                                 <option value="หยุดงาน">หยุดงาน</option>
-                                
+
+
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">เครื่องจักร</label>
+                            <select name="txt6" id="txt6" class="form-select form-select-sm" value="" required>
+                                <option value="">--เลือกสถานะ--</option>
+                                <?php
+                                $sql = "SELECT * FROM `machine`";
+                                $re = mysqli_query($conn, $sql);
+                                foreach ($re as $row) {
+                                ?>
+                                    <option value="<?= $row["mac_id"] ?>"><?= $row["mac_name"] ?></option>
+                                <?php
+
+                                }
+
+                                ?>
+
+
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">รุ่น</label>
+                            <select name="txt7" id="txt7" class="form-select form-select-sm" value="" required>
+                                <option value="">--เลือกสถานะ--</option>
+                                <?php
+                                $sql = "SELECT * FROM `brand`";
+                                $re = mysqli_query($conn, $sql);
+                                foreach ($re as $row) {
+                                ?>
+                                    <option value="<?= $row["b_id"] ?>"><?= $row["b_name"] ?></option>
+                                <?php
+
+                                }
+
+                                ?>
 
                             </select>
                         </div>
