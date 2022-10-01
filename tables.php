@@ -222,7 +222,7 @@ if (isset($_POST['submit'])) {
 
                                         </tr>
                                     </thead>
-                                    <?php
+                                    <?php /*
                                     require('config.php');
                                     mysqli_query($conn, 'SET NAMES UTF8');
                                     $sql = "SELECT * FROM employee ";
@@ -245,8 +245,35 @@ if (isset($_POST['submit'])) {
                     
                 </tr>';
                                     }
-
+*/
                                     ?>
+                                       
+                                  <?php
+                                  
+                                  require('config.php');
+                                  mysqli_query($conn, 'SET NAMES UTF8');
+                                  $sql = "SELECT * FROM `employee` INNER JOIN machinemaster ON machinemaster.id = employee.Nmac INNER JOIN brand ON brand.b_id = machinemaster.b_id INNER JOIN machine ON machine.mac_id = machinemaster.mac_id;";
+                                  $query = mysqli_query($conn, $sql);
+                                  $n1 = 0;
+                                  while ($value = mysqli_fetch_array($query)) {
+                                      $d = date_create($value['DATE']);
+                                      $d1 = date_format($d, "d/m/Y");
+                                      $n1++;
+                                      echo '<tr>
+                  <td>' . $n1 . '</td>
+                  <td>' . $d1 . '</td>
+                  <td>' . $value['EName'] . '</td>
+                  <td>' . $value['mac_name'] . '</td>
+                  <td>' . $value['b_name'] . '</td>
+                  <td>' . $value['Econ'] . '</td>
+                  <td>' . $value['Edel'] . '</td>
+                  <td>' . $value['Etime'] . '</td>
+                  <td>' . $value['Etimet'] . '</td>
+                
+              </tr>';
+                                  }
+
+                                  ?>
                                     </tbody>
                                 </table>
                             </div>

@@ -250,7 +250,9 @@ if (isset($_POST['submit'])) {
                                             <th>ลบ</th>
                                         </tr>
                                     </thead>
-                                    <?php
+                                    
+                                  <?php
+                                  
                                     require('config.php');
                                     mysqli_query($conn, 'SET NAMES UTF8');
                                     $sql = "SELECT * FROM `employee` INNER JOIN machinemaster ON machinemaster.id = employee.Nmac INNER JOIN brand ON brand.b_id = machinemaster.b_id INNER JOIN machine ON machine.mac_id = machinemaster.mac_id;";
@@ -275,6 +277,33 @@ if (isset($_POST['submit'])) {
                 </tr>';
                                     }
 
+                                    ?>
+                                    <?php
+                                    /*
+                                    require('config.php');
+                                    mysqli_query($conn, 'SET NAMES UTF8');
+                                    $sql = "SELECT * FROM employee ";
+                                    $query = mysqli_query($conn, $sql);
+                                    $n1 = 0;
+                                    while ($value = mysqli_fetch_array($query)) {
+                                        $d = date_create($value['DATE']);
+                                        $d1 = date_format($d, "d/m/Y");
+                                        $n1++;
+                                        echo '<tr>
+                    <td>' . $n1 . '</td>
+                    <td>' . $d1 . '</td>
+                    <td>' . $value['EName'] . '</td>
+                    <td>' . $value['Nmac'] . '</td>
+                    <td>' . $value['Epro'] . '</td>
+                    <td>' . $value['Econ'] . '</td>
+                    <td>' . $value['Edel'] . '</td>
+                    <td>' . $value['Etime'] . '</td>
+                    <td>' . $value['Etimet'] . '</td>
+                    <td><a href="edittables.php?id=' . $value['E_id'] . '"><button class="btn-warning btn-md btn">เเก้ไข</button></a></td>
+                    <td><a href="Delete.php?edit=' . $value['E_id'] . '"><button class="btn-danger btn-md btn" OnClick="return chkdel();">ลบ</button><a/></td>
+                </tr>';
+                                    }
+*/
                                     ?>
                                     </tbody>
                                 </table>

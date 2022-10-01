@@ -22,10 +22,10 @@ include "../config.php";
                 <div class="col-6">
                     <div class="card shadow-lg">
                         <div class="card-header">
-                            เพิ่มชื่อเครื่องจัก
+                            เพิ่มชื่อเครื่องจักร
                         </div>
                         <div class="card-body">
-                            <label for=""> เพิ่มชื่อเครื่องจัก</label>
+                            <label for=""> ชื่อเครื่องจักร</label>
                             <input class="form-control form-control-sm" type="text" id="in_mac">
                             <button type="button" value="bt_mac" class="btn btn-success btn-sm mt-3 mx-auto" id="bt_mac">บันทึก</button>
                         </div>
@@ -37,7 +37,7 @@ include "../config.php";
                             เพิ่มชื่อรุ่น
                         </div>
                         <div class="card-body">
-                            <label for=""> เพิ่มชื่อรุ่น</label>
+                            <label for=""> ชื่อรุ่น</label>
                             <input class="form-control form-control-sm" type="text" id="in_brand">
                             <button type="button" value="bt_brand" class="btn btn-success btn-sm mt-3 " id="bt_brand">บันทึก</button>
                         </div>
@@ -49,10 +49,10 @@ include "../config.php";
                 <div class="col-12">
                     <div class="card shadow-lg">
                         <div class="card-header">
-                            เพิ่มชื่อเครื่องจัก
+                            เลือกเครื่องจักร
                         </div>
                         <div class="card-body">
-                            <label for="" class="form-label">ชื่อเครื่องจัก</label>
+                            <label for="" class="form-label">ชื่อเครื่องจักร</label>
                             <select class="form-select form-select-sm" name="master_mac" id="master_mac">
                                 <?php
                                 $sql_mac = "SELECT * FROM `machine`";

@@ -26,7 +26,7 @@ if (isset($_GET["id"]) && $_GET["id"] !== "") {
                         <div class="col-12">
                             <div class="card shadow-lg">
                                 <div class="card-header">
-                                    เพิ่มชื่อเครื่องจัก
+                                    แก้ไขข้อมูลเครื่องจักร
                                 </div>
                                 <div class="card-body">
                                     <input type="hidden" id="id_master" name="id_master" value="<?php echo $_GET["id"] ?>">
