@@ -2,7 +2,7 @@
 include "../config.php";
 if (isset($_GET["id"]) && $_GET["id"] !== "") {
   header('Location: ../machine.php');
-  $sql = "DELETE FROM machine WHERE machine.mac_id = " . $_GET["id"];
+  $sql = "DELETE FROM brand WHERE brand.b_id = " . $_GET["id"];
   $re = mysqli_query($conn, $sql);
   if ($re) {
     echo '<script>alert("ลบสำเร็จ")</script>';

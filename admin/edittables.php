@@ -82,14 +82,44 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                     </div>
                                     <div class="col-6 ">
                                         <div class="col-form-label-sm">รหัสเครื่อง : </div>
-                                        <input name="txt2" id="txt2" class="form-control form-control-sm" placeholder="" required value="<?php echo $op['Nmac'] ?>">
+                                        <select name="txt2" id="txt2" class="form-select form-select-sm">
+                                        <option value="" disabled>กรุณาเลือกรหัสเครื่อง</option>
+                                            <?php
+                                            $sqlrow = "SELECT * FROM `machine` ;";
+                                            $rerow = mysqli_query($conn, $sqlrow);
+                                            foreach ($rerow as $row) {
+                                            ?>
+                                                <option value="<?= $row["mac_name"] ?>"><?= $row["mac_name"] ?></option>
+
+                                            <?php
+                                            }
+                                            ?>
+
+                                        </select>
+                                      
+
+
                                         <div class="invalid-feedback">
                                             กรุณาใส่ข้อมูลให้ครบ
                                         </div>
                                     </div>
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <div class="col-form-label-sm">รุ่นที่ผลิต : </div>
-                                        <input type="text" class="form-control form-control-sm" id="txt4" name="txt4" placeholder="" required value="<?php echo $op['Epro'] ?>">
+                                        <option value="" >กรุณาเลือกรหัสเครื่อง</option>
+                                        <select name="txt4" id="txt4" class="form-select form-select-sm">
+                                            <?php
+                                            $sqlrow = "SELECT * FROM `brand` ;";
+                                            $rerow = mysqli_query($conn, $sqlrow);
+                                            foreach ($rerow as $row) {
+                                            ?>
+                                                <option value="<?= $row["b_name"] ?>"><?= $row["b_name"] ?></option>
+                                            <?php
+                                            }
+                                            ?>
+
+
+
+                                        </select>
                                         <div class="invalid-feedback">
                                             กรุณาใส่ข้อมูลให้ครบ
                                         </div>

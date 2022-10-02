@@ -17,25 +17,26 @@ include "../config.php";
 
 <body>
     <form action="addmac.php" method="post" class="needs-validation" name="myform" novalidate>
-        <div class="container mt-3">
+        <div class="container mt-3" >
             <div class="row text-center">
+            
+            <div class="row text-center mt-3">
                 <div class="col-12">
+                    
                     <div class="card shadow-lg">
+                        
                         <div class="card-header">
-                            เพิ่มชื่อเครื่องจักร
+                            เพิ่มชื่อรุ่น
                         </div>
                         <div class="card-body">
-                            <label for=""> ชื่อเครื่องจักร</label>
-                            <input class="form-control form-control-sm" type="text" id="in_mac">
-                            <button type="button" value="bt_mac" class="btn btn-success btn-sm mt-3 mx-auto" id="bt_mac">บันทึก</button>
-                            
+                            <label for=""> ชื่อรุ่น</label>
+                            <input class="form-control form-control-sm" type="text" id="in_brand">
+                            <button type="button" value="bt_brand" class="btn btn-success btn-sm mt-3 " id="bt_brand">บันทึก</button>
                             <a href="../machine.php"><button type="button" class="btn btn-danger btn-sm mt-3 mx-auto">กลับไปหน้าหลัก</button></a>
-                                              
-                                          </div>
                         </div>
+
                     </div>
                 </div>
-                
             </div>
             
         </div>
@@ -55,8 +56,6 @@ include "../config.php";
                     success: function(response) {
                         if (response == "true") {
                             alert("บันทึกสำเร็จ");
-                            setInterval(
-                                window.location = "../machine.php", 1000);
                         } else if (response == "false") {
                             alert("บันทึกไม่สำเร็จ");
                         }

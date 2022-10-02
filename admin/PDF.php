@@ -80,7 +80,7 @@ if (isset($_GET["d1"]) && isset($_GET["d2"])) {
     if ($_GET["d1"] !== "" && $_GET["d2"] !== "") {
         $sql = "SELECT * FROM `employee` WHERE DATE BETWEEN '" . $_GET["d1"] . "' AND '" . $_GET["d2"] . "'; ";
     } else {
-        $sql = "SELECT * FROM `employee` INNER JOIN machinemaster ON machinemaster.id = employee.Nmac INNER JOIN brand ON brand.b_id = machinemaster.b_id INNER JOIN machine ON machine.mac_id = machinemaster.mac_id; ";
+        $sql = "SELECT * FROM `employee`";
     }
 }
 
@@ -91,10 +91,10 @@ while ($array = mysqli_fetch_assoc($result)) {
     $E_id = $array['E_id'];
     $DATE = date_format($d, "d/m/Y");
     $EName = $array['EName'];
-    $Nmac = $array['mac_name'];
+    $Nmac = $array['Nmac'];
     $Econ = number_format($array['Econ']) . " ชิ้น";
     $Edel = number_format($array['Edel']) . " ชิ้น";
-    $Epro = $array['b_name'];
+    $Epro = $array['Epro'];
     $Etime = $array['Etime'] . " น.";
     $Etimet = $array['Etimet'] . " น.";
 

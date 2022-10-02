@@ -55,7 +55,7 @@ if (isset($_POST["submit"])) {
 
                         <div class="mb-3">
                             <label for="" class="form-label">ชื่อ</label>
-                            <input type="text" name="txt2" id="tx2" class="form-control form-control-sm" value="" required>
+                            <input type="text" name="txt2" id="txt2" class="form-control form-control-sm" value="" required>
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">รหัสผ่าน</label>
@@ -73,7 +73,7 @@ if (isset($_POST["submit"])) {
                         <div class="mb-3">
                             <label for="" class="form-label">สถานะ</label>
                             <select name="txt5" id="txt5" class="form-select form-select-sm" value="" required>
-                                <option value="">--เลือกสถานะ--</option>
+                                <option value="">เลือกสถานะ</option>
                                 <option value="ปกติ">ปกติ</option>
                                 <option value="หยุดงาน">หยุดงาน</option>
 
@@ -83,7 +83,7 @@ if (isset($_POST["submit"])) {
                         <div class="mb-3">
                             <label for="" class="form-label">เครื่องจักร</label>
                             <select name="txt6" id="txt6" class="form-select form-select-sm" value="" required>
-                                <option value="">--เลือกสถานะ--</option>
+                                <option value="">เลือกเครื่องจักร</option>
                                 <?php
                                 $sql = "SELECT * FROM `machine`";
                                 $re = mysqli_query($conn, $sql);
@@ -102,7 +102,7 @@ if (isset($_POST["submit"])) {
                         <div class="mb-3">
                             <label for="" class="form-label">รุ่น</label>
                             <select name="txt7" id="txt7" class="form-select form-select-sm" value="" required>
-                                <option value="">--เลือกสถานะ--</option>
+                                <option value="">เลือกรุ่น</option>
                                 <?php
                                 $sql = "SELECT * FROM `brand`";
                                 $re = mysqli_query($conn, $sql);

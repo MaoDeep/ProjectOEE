@@ -252,7 +252,6 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                                                         <th>เครื่องจักร</th>
                                                                         <th>รุ่น</th>
                                                                         <th>สิทธิ์ผู้ใช้งาน</th>
-                                                                        
                                                                         <th>สถานะ</th>
                                                                         <th>เเก้ไข</th>
                                                                         <th>ลบ</th>
