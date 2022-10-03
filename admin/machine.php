@@ -248,7 +248,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                                             <thead>
                                                                   <tr>
                                                                         <th>ลำดับ</th>
-                                                                        <th>ชื่อเครื่องจักร</th> 
+                                                                        <th>ชื่อเครื่องจักร</th>
                                                                         <th>เเก้ไข</th>
                                                                         <th>ลบ</th>
                                                                   </tr>
@@ -258,7 +258,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                                                   $sql = "SELECT * FROM `machine` ";
                                                                   $re = mysqli_query($conn, $sql);
                                                                   foreach ($re as $k => $row) {
-                                                                        
+
                                                                   ?>
                                                                         <tr>
                                                                               <td><?= ($k + 1) ?></td>
@@ -286,7 +286,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                                       <table class="table table-bordered table-sm" id="dataTable" width="100%" cellspacing="0">
                                                             <thead>
                                                                   <tr>
-                                                                        <th>ลำดับ</th>                                                                       
+                                                                        <th>ลำดับ</th>
                                                                         <th>ชื่อรุ่น</th>
                                                                         <th>เเก้ไข</th>
                                                                         <th>ลบ</th>
@@ -297,7 +297,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                                                   $sql = "SELECT * FROM `brand` ";
                                                                   $re = mysqli_query($conn, $sql);
                                                                   foreach ($re as $k => $row) {
-                                                                        
+
                                                                   ?>
                                                                         <tr>
                                                                               <td><?= ($k + 1) ?></td>
@@ -352,12 +352,6 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                   </div>
             </div>
       </div>
-      <script>
-            $(document).ready(function() {
-                  $("#dataTable").DataTable();
-                  $("#tabel1").DataTable();
-            });
-      </script>
       <script>
             (function() {
                   'use strict'
