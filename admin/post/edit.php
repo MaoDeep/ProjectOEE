@@ -111,35 +111,47 @@ if (isset($_GET["id"]) && $_GET["id"] !== "") {
                                           </div>
                                           <div class="mb-3">
                                                 <label for="" class="form-label">เครื่องจักร</label>
-                                                <select name="txt7" id="txt7" class="form-select form-select-sm" value="" onchange="optionCheck();" required>
-                                                
-                                                      <?php
-                                                      $sql = "SELECT * FROM `machine`";
-                                                      $re = mysqli_query($conn, $sql);
-                                                      foreach ($re as $row) {
-                                                      ?>
-                                                            <option value="<?= $row["mac_id"] ?>"><?= $row["mac_name"] ?></option>
-                                                      <?php
+                                                <select name="txt7" id="txt7" class="form-select form-select-sm" value="" required>
 
+                                                      <?php
+                                                      $sql_type = "SELECT * FROM machine ORDER BY mac_id ";
+                                                      $result_type = $conn->query($sql_type);
+
+                                                      if ($result_type->num_rows > 0) {
+                                                            while ($row_type = $result_type->fetch_assoc()) {
+                                                                  $name = $row_type['mac_name'];
+                                                                  $id = $row_type['mac_id'];
+                                                                  $type_selected = 'none';
+                                                                  $status_selected = 'none';
+                                                                  if ($id == $row['mac_id']) {
+                                                                        $type_selected = 'selected';
+                                                                  }
+                                                                  echo "<option value=\"$id\" $type_selected>$name</option>";
+                                                            }
                                                       }
-
                                                       ?>
                                                 </select>
                                           </div>
                                           <div class="mb-3">
                                                 <label for="" class="form-label">รุ่น</label>
                                                 <select name="txt8" id="txt8" class="form-select form-select-sm" value="" required>
-                                                      <option value="">กรุณาเลือกรุ่นที่ผลิต</option>
-                                                      <?php
-                                                      $sql = "SELECT * FROM `brand`";
-                                                      $re = mysqli_query($conn, $sql);
-                                                      foreach ($re as $row) {
-                                                      ?>
-                                                            <option value="<?= $row["b_id"] ?>"><?= $row["b_name"] ?></option>
-                                                      <?php
 
+                                                <?php
+                                                      $sql_type = "SELECT * FROM brand ORDER BY b_id ASC";
+                                                      $result_type = $conn->query($sql_type);
+
+                                                      if ($result_type->num_rows > 0) {
+                                                            while ($row_type = $result_type->fetch_assoc()) {
+                                                                  $name = $row_type['b_name'];
+                                                                  $id = $row_type['b_id'];
+                                                                  $type_selected = 'none';
+                                                                  $status_selected = 'none';
+                                                                  if ($id == $row['b_id']) {
+                                                                        $type_selected = 'selected';
+                                                                  }
+                                                                  echo "<option value=\"$id\" $type_selected>$name</option>";
+                                                            }
                                                       }
-
                                                       ?>
 
                                                 </select>
