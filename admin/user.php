@@ -259,7 +259,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                                             </thead>
                                                             <tbody>
                                                                   <?php
-                                                                  $sql = "SELECT * FROM `users` LEFT JOIN machine ON machine.mac_id = users.mac_id LEFT JOIN brand ON brand.b_id = users.b_id ORDER BY `brand`.`b_name` ASC;";
+                                                                  $sql = "SELECT * FROM `users` LEFT JOIN machine ON machine.mac_id = users.mac_id LEFT JOIN brand ON brand.b_id = users.b_id ORDER BY `brand`.`b_name` ;";
                                                                   $re = mysqli_query($conn, $sql);
                                                                   foreach ($re as $k => $row) {
                                                                   ?>
@@ -323,7 +323,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                         <div class="modal-body">คุณแน่ใจนะว่าจะออกจากระบบ</div>
                         <div class="modal-footer">
                               <button class="btn btn-secondary" type="button" data-dismiss="modal">ยกเลิก</button>
-                              <a class="btn btn-primary" href="index.php">ตกลง</a>
+                              <a class="btn btn-primary" href="index.php">ออกจากระบบ</a>
                         </div>
                   </div>
             </div>

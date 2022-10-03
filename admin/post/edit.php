@@ -9,7 +9,7 @@ if (isset($_POST["txt1"])) {
             $_POST["txt6"],
             $_POST["txt7"],
             $_POST["txt8"]
-            
+
       );
 
 
@@ -62,7 +62,7 @@ if (isset($_GET["id"]) && $_GET["id"] !== "") {
                                                 <label for="" class="form-label">ชื่อ</label>
                                                 <input type="text" name="txt2" id="txt2" class="form-control form-control-sm" value="<?= $row["u_usersname"] ?>" required>
                                           </div>
-                                         
+
                                           <div class="mb-3">
                                                 <label for="" class="form-label">รหัสผ่าน</label>
                                                 <input type="text" name="txt3" id="txt3" class="form-control form-control-sm" value="<?= $row["u_pssaword"] ?>" required>
@@ -92,59 +92,57 @@ if (isset($_GET["id"]) && $_GET["id"] !== "") {
                                                 <label for="" class="form-label">สถานะ</label>
                                                 <select name="txt6" id="txt6" class="form-select form-select-sm" value="" required>
                                                       <?php
-                                                      if ($row["std2"] == "ปกติ" ) {
+                                                      if ($row["std2"] == "ปกติ") {
                                                       ?>
                                                             <option value="ปกติ">ปกติ</option>
                                                             <option value="หยุดงาน">ยกเลิกใช้งาน</option>
-                                                            
+
                                                       <?php
                                                       } else {
                                                       ?>
                                                             <option value="หยุดงาน">ยกเลิกใช้งาน</option>
                                                             <option value="ปกติ">ปกติ</option>
-                                                            
+
                                                       <?php
                                                       }
                                                       ?>
                                                 </select>
-                                                
+
                                           </div>
                                           <div class="mb-3">
                                                 <label for="" class="form-label">เครื่องจักร</label>
-                                                <select name="txt7" id="txt7" class="form-select form-select-sm" value="" required>
-                                                   
-                                <option value="">กรุณาเลือกเครื่องจักร</option>
-                                
-                                <?php
-                                $sql = "SELECT * FROM `machine`";
-                                $re = mysqli_query($conn, $sql);
-                                foreach ($re as $row) {
-                                ?>
-                                    <option value="<?= $row["mac_id"] ?>"><?= $row["mac_name"] ?></option>
-                                <?php
+                                                <select name="txt7" id="txt7" class="form-select form-select-sm" value="" onchange="optionCheck();" required>
+                                                
+                                                      <?php
+                                                      $sql = "SELECT * FROM `machine`";
+                                                      $re = mysqli_query($conn, $sql);
+                                                      foreach ($re as $row) {
+                                                      ?>
+                                                            <option value="<?= $row["mac_id"] ?>"><?= $row["mac_name"] ?></option>
+                                                      <?php
 
-                                }
+                                                      }
 
-                                ?>
-                                </select>
+                                                      ?>
+                                                </select>
                                           </div>
                                           <div class="mb-3">
                                                 <label for="" class="form-label">รุ่น</label>
                                                 <select name="txt8" id="txt8" class="form-select form-select-sm" value="" required>
-                                                <option value="">กรุณาเลือกรุ่นที่ผลิต</option>
-                                <?php
-                                $sql = "SELECT * FROM `brand`";
-                                $re = mysqli_query($conn, $sql);
-                                foreach ($re as $row) {
-                                ?>
-                                    <option value="<?= $row["b_id"] ?>"><?= $row["b_name"] ?></option>
-                                <?php
+                                                      <option value="">กรุณาเลือกรุ่นที่ผลิต</option>
+                                                      <?php
+                                                      $sql = "SELECT * FROM `brand`";
+                                                      $re = mysqli_query($conn, $sql);
+                                                      foreach ($re as $row) {
+                                                      ?>
+                                                            <option value="<?= $row["b_id"] ?>"><?= $row["b_name"] ?></option>
+                                                      <?php
 
-                                }
+                                                      }
 
-                                ?>
+                                                      ?>
 
-                            </select>
+                                                </select>
                                           </div>
                                     <?php } ?>
                                     <div class="row">

@@ -39,7 +39,7 @@ if (isset($_GET["id"]) && $_GET["id"] !== "") {
                   <div class="container mt-3">
                         <div class="card">
                               <div class="card-header">
-                                    <b>ข้อมูลผู้ใช้</b>
+                                    <b>แก้ไขข้อมูลรุ่นผลิต</b>
                               </div>
                               <div class="card-body">
                                     <?php
