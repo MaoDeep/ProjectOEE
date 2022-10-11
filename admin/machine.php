@@ -277,7 +277,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                           </div>
                                           <div class="card shadow mb-4">
                                                 <div class="card-header py-3">
-                                                      <h5 class="m-0 font-weight-bold text-primary">จัดการข้อมูลรุ่น</h5>
+                                                      <h5 class="m-0 font-weight-bold text-primary">จัดการข้อมูลสินค้าที่ผลิต</h5>
                                                 </div>
                                                 <div class="card-body">
                                                       <div class="d-flex flex-row-reverse">
@@ -287,7 +287,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                                             <thead>
                                                                   <tr>
                                                                         <th>ลำดับ</th>
-                                                                        <th>ชื่อรุ่น</th>
+                                                                        <th>ชื่อสินค้าที่ผลิต</th>
                                                                         <th>เเก้ไข</th>
                                                                         <th>ลบ</th>
                                                                   </tr>

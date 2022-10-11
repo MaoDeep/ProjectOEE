@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 session_start();
 include "config.php";
 if (isset($_GET["id"])) {
@@ -83,7 +84,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                     <div class="col-6 ">
                                         <div class="col-form-label-sm">รหัสเครื่อง : </div>
                                         <select name="txt2" id="txt2" class="form-select form-select-sm">
-                                        <option value="" disabled>กรุณาเลือกรหัสเครื่อง</option>
+                                        <option value="<?= $row["mac_name"] ?>" hidden ><?php echo $op['Nmac'] ?></option>
                                             <?php
                                             $sqlrow = "SELECT * FROM `machine` ;";
                                             $rerow = mysqli_query($conn, $sqlrow);
@@ -105,8 +106,9 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                     </div>
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <div class="col-form-label-sm">รุ่นที่ผลิต : </div>
-                                        <option value="" >กรุณาเลือกรหัสเครื่อง</option>
+                                        
                                         <select name="txt4" id="txt4" class="form-select form-select-sm">
+                                        <option value="<?= $row["b_name"] ?>" hidden><?php echo $op['Epro'] ?></option>
                                             <?php
                                             $sqlrow = "SELECT * FROM `brand` ;";
                                             $rerow = mysqli_query($conn, $sqlrow);

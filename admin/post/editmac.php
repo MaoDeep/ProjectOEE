@@ -1,6 +1,6 @@
 <?php
 include "../config.php";
-if (isset($_POST["txt1"])) {
+if (isset($_POST["submit"])) {
       $arr = array(
             $_POST["txt1"],
             $_POST["txt2"],
@@ -62,7 +62,7 @@ if (isset($_GET["id"]) && $_GET["id"] !== "") {
                                     <div class="row">
                                           <div class="col-12 text-center">
                                                 <div class="d-grid gap-2 mt-3">
-                                                      <a href="../machine.php"><button type="submit" class="btn btn-sm btn-primary w-100" name="submit">บันทึก</button>
+                                                      <a href="../machine.php"><button type="submit" class="btn btn-sm btn-primary w-100" name="submit" >บันทึก</button>
                                                 </div>
                                                 <div class="d-grid gap-2 mt-3">
                                                       <a href="../machine.php"><button type="button" class="btn btn-sm btn-danger w-100">กลับไปหน้าหลัก</button></a>
@@ -103,7 +103,7 @@ if (isset($_GET["id"]) && $_GET["id"] !== "") {
              <script>
         $(document).ready(function() {
             $("#bt_mac").click(function(e) {
-                var mac = $("#in_mac").val();
+                var mac = $("#txt2").val();
                 $.ajax({
                     type: "post",
                     url: "addmacjson.php",

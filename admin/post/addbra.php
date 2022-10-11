@@ -5,7 +5,7 @@ include "../config.php";
 <html lang="en">
 
 <head>
-    <title>เพิ่มรหัสเครื่องจักร</title>
+    <title>เพิ่มรหัสรุ่น</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -26,10 +26,10 @@ include "../config.php";
                     <div class="card shadow-lg">
                         
                         <div class="card-header">
-                            เพิ่มชื่อรุ่น
+                            เพิ่มชื่อสินค้าที่ผลิต
                         </div>
                         <div class="card-body">
-                            <label for=""> ชื่อรุ่น</label>
+                            <label for=""> ชื่อสินค้า</label>
                             <input class="form-control form-control-sm" type="text" id="in_brand">
                             <button type="button" value="bt_brand" class="btn btn-success btn-sm mt-3 " id="bt_brand">บันทึก</button>
                             <a href="../machine.php"><button type="button" class="btn btn-danger btn-sm mt-3 mx-auto">กลับไปหน้าหลัก</button></a>
