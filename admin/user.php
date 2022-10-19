@@ -271,11 +271,13 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                                                               <td><?= $row["Status"]; ?></td>
                                                                               <td><?= $row["std2"]; ?></td>
                                                                               <?php
-                                                                            if ($row["u_usersname"] == $_SESSION["id"]) {
+                                                                            if ($row["u_usersname"] !== $_SESSION["user"] && $row["Status"]  == "Admin" ) {
                                                                                     echo '<td></td>';
                                                                               } else { 
                                                                               ?>
-                                                                              <td><a href="post/edit.php?id=<?= $row["u_id"]; ?>"><button class="btn btn-warning ">เเก้ไข</button></a></td>
+                                                                              <td>
+                                                                                    <a href="post/edit.php?id=<?= $row["u_id"]; ?>"><button class="btn btn-warning ">เเก้ไข</button></a>
+                                                                              </td>
                                                                               <?php
                                                                               } 
                                                                               ?>
