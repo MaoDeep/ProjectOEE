@@ -9,25 +9,27 @@ $arr = array(
 $sql = "SELECT * FROM `users` WHERE users.u_usersname = '" . $arr[0] . "' AND users.u_pssaword = '" . $arr[1] . "'";
 $re = mysqli_query($conn, $sql);
 
-if ($re->num_rows !== 0) {
+if ($re->num_rows > 0) {
       foreach ($re as $rw) {
             $_SESSION["id"] = $rw["u_id"];
             $_SESSION["user"] = $rw["u_usersname"];
             $_SESSION["status"] = $rw["Status"];
       }
-      if($_SESSION["status"]=="Admin"){ //ถ้าเป็น admin ให้กระโดดไปหน้า admin_page.php
+      if ($_SESSION["status"] == "Admin") { //ถ้าเป็น admin ให้กระโดดไปหน้า admin_page.php
 
             Header("Location: admin/home.php");
-      exit(0);
-}
+            exit(0);
+      }
 
-if($_SESSION["status"]=="User"){ //ถ้าเป็น admin ให้กระโดดไปหน้า admin_page.php
+      if ($_SESSION["status"] == "User") { //ถ้าเป็น admin ให้กระโดดไปหน้า admin_page.php
 
-      Header("Location: home.php");
-exit(0);
-}
- else {
+            Header("Location: home.php");
+            exit(0);
+      } else {
+            header("location: index.php");
+            exit(0);
+      }
+} else {
       header("location: index.php");
       exit(0);
-}
 }

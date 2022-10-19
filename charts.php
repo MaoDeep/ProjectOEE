@@ -176,7 +176,7 @@ if (isset($_POST['submit'])) {
                     <span>กราฟ</span></a>
             </li>
 
-           
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -269,31 +269,31 @@ if (isset($_POST['submit'])) {
                     <!-- Page Heading -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                         
+
                         </div>
 
                         <div class="card-body">
                             <div class="mx-auto col-12">
                                 <div class="card">
-                                    
 
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary"> ตารางประสิทธิผลโดยรวมของเครื่องจักร</h6>
-                        </div>
 
-                        <div class="card-body">
-                            <div class="mx-auto col-12">
-                              
-                                    
-                                        <div class="row mt-3">
-                                            <div class="col-12 mx-auto">
-                                                <form action="charts.php" method="get">
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                <a href=" charts.php=' . $value["id"] . '&name=' . $value["u_usersname"] . '&date=' . $d1 . '"><button type="submit"  class="btn btn-warning" style="width: 3rem;" name="button" >ดู</button>
+                                    <!-- DataTales Example -->
+                                    <div class="card shadow mb-4">
+                                        <div class="card-header py-3">
+                                            <h6 class="m-0 font-weight-bold text-primary"> ตารางประสิทธิผลโดยรวมของเครื่องจักร</h6>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <div class="mx-auto col-12">
+
+
+                                                <div class="row mt-3">
+                                                    <div class="col-12 mx-auto">
+                                                        <form action="charts.php" method="get">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <a href=" charts.php=' . $value[" id"] . '&name=' . $value["u_usersname"] . '&date=' . $d1 . '"><button type="submit"  class="btn btn-warning" style="width: 3rem;" name="button" >ดู</button>
                                                         
                                                         </button>
                                                            </a>
@@ -396,14 +396,14 @@ if (isset($_POST['submit'])) {
                                                     ?>
                                                             <tr>
                                                                 <th><?php echo $d ?></th>
-                                                                <th><?php echo number_format($row["AT"], ) ?></th>
-                                                                <th><?php echo number_format($row["SP"], )  ?></th>
-                                                                <th><?php echo number_format($row["WT"], )  ?></th>
-                                                                <th><?php echo number_format($row["MS"], )  ?></th>
-                                                                <th><?php echo number_format($row["RT"], ) ?></th>
-                                                                <th><?php echo number_format($row["MSS"], ) ?></th>
+                                                                <th><?php echo number_format($row["AT"],) ?></th>
+                                                                <th><?php echo number_format($row["SP"],)  ?></th>
+                                                                <th><?php echo number_format($row["WT"],)  ?></th>
+                                                                <th><?php echo number_format($row["MS"],)  ?></th>
+                                                                <th><?php echo number_format($row["RT"],) ?></th>
+                                                                <th><?php echo number_format($row["MSS"],) ?></th>
                                                                 <th><?php echo number_format($row["NO"],) ?></th>
-                                                                <th><?php echo number_format($row["NUM"], )  ?></th>
+                                                                <th><?php echo number_format($row["NUM"],)  ?></th>
                                                                 <th><?php echo $row["u_usersname"] ?></th>
                                                             </tr>
                                                     <?php
@@ -465,210 +465,184 @@ if (isset($_POST['submit'])) {
     </div>
 
     <script>
-        const ctx = document.getElementById('myChart').getContext('2d');
-        const myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['อัตราการเดินเครื่อง', 'ประสิทธิภาพเครื่องจักร', 'อัตราคุณภาพ', 'ผลรวมOEE'],
-                datasets: [
-                    <?php
+        const ctx = document.getElementById(' myChart').getContext('2d'); const myChart=new Chart(ctx, { type: 'bar' , data: { labels: ['อัตราการเดินเครื่อง', 'ประสิทธิภาพเครื่องจักร' , 'อัตราคุณภาพ' , 'ผลรวมOEE' ], datasets: [ <?php
 
-                    if (isset($_GET["no"])) {
-                        foreach ($_GET["no"] as $k =>  $row) {
-                            $sql = "SELECT * FROM `report` INNER JOIN users on report.u_id = users.u_id WHERE report.id =" . $row;
-                            $re = mysqli_query($conn, $sql);
-                            $color = array(
-                                'rgba(255, 20, 147)',
-                                'rgba(154, 50, 205)',
-                                'rgba(0, 139, 69)',
-                                'rgba(139, 0, 0)',
+                                                                                                                                                                                                                                    if (isset($_GET["no"])) {
+                                                                                                                                                                                                                                        foreach ($_GET["no"] as $k =>  $row) {
+                                                                                                                                                                                                                                            $sql = "SELECT * FROM `report` INNER JOIN users on report.u_id = users.u_id WHERE report.id =" . $row;
+                                                                                                                                                                                                                                            $re = mysqli_query($conn, $sql);
+                                                                                                                                                                                                                                            $color = array(
+                                                                                                                                                                                                                                                'rgba(255, 20, 147)',
+                                                                                                                                                                                                                                                'rgba(154, 50, 205)',
+                                                                                                                                                                                                                                                'rgba(0, 139, 69)',
+                                                                                                                                                                                                                                                'rgba(139, 0, 0)',
 
 
-                            );
-                            foreach ($re as $row) {
+                                                                                                                                                                                                                                            );
+                                                                                                                                                                                                                                            foreach ($re as $row) {
 
-                    ?> {
-                                    label: <?= json_encode($row["u_usersname"]) ?>,
-                                    data: [<?= $row["TR"] ?>, <?= $row["TS"] ?>, <?= $row["NT"] ?>, <?= $row["EU"] ?>],
-                                    backgroundColor: [
-                                        '<?php if (count($_GET["no"]) <= 4) {
-                                                echo  $color[$k];
-                                            } else {
-                                                echo $color[rand(0, 3)];
-                                            }
-                                            ?>',
-                                    ],
-                                    borderColor: [
-                                        '<?php if (count($_GET["no"]) <= 4) {
-                                                echo $color[$k];
-                                            } else {
-                                                echo $color[rand(0, 3)];
-                                            }
-                                            ?>',
-                                    ],
-                                    borderWidth: 1,
-                                    datalabels: {
-                                        color: [
-                                            '<?php if (count($_GET["no"]) <= 4) {
-                                                    echo $color[$k];
-                                                } else {
-                                                    echo $color[rand(0, 3)];
-                                                }
-                                                ?>',
-                                        ],
-                                        anchor: "end",
-                                        align: "top",
-                                        formatter: function addCommas(value) {
-                                            value += '';
-                                            x = value.split('.');
-                                            x1 = x[0];
-                                            x2 = x.length > 1 ? '.' + x[1] : '';
-                                            var rgx = /(\d+)(\d{3})/;
-                                            while (rgx.test(x1)) {
-                                                x1 = x1.replace(rgx, '$1' + ',' + '$2');
-                                            }
-                                            return x1 + x2;
-                                        }
-                                    }
-                                },
-                    <?php
-                            }
-                        }
-                    }
-                    ?>
-                ]
-            },
-            plugins: [ChartDataLabels],
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                },
-                plugins: {
-                    legend: true // Hide legend
-                }
-            }
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
-            $("#dataTable").DataTable();
-            $("#tabel1").DataTable();
-        });
-    </script>
+                                                                                                                                                                                                                                    ?> { label: <?= json_encode($row["u_usersname"]) ?>, data: [<?= $row["TR"] ?>, <?= $row["TS"] ?>, <?= $row["NT"] ?>, <?= $row["EU"] ?>], backgroundColor: [ '<?php if (count($_GET["no"]) <= 4) {
+                                                                                                                                                                                                                                                    echo  $color[$k];
+                                                                                                                                                                                                                                                } else {
+                                                                                                                                                                                                                                                    echo $color[rand(0, 3)];
+                                                                                                                                                                                                                                                }
+                                                                                                                                                                                    ?>' , ], borderColor: [ '<?php if (count($_GET["no"]) <= 4) {
+                                                                                                                                                                                                                                                    echo $color[$k];
+                                                                                                                                                                                                                                                } else {
+                                                                                                                                                                                                                                                    echo $color[rand(0, 3)];
+                                                                                                                                                                                                                                                }
+                                                                        ?>' , ], borderWidth: 1, datalabels: { color: [ '<?php if (count($_GET["no"]) <= 4) {
+                                                                                                                                                                                                                                                    echo $color[$k];
+                                                                                                                                                                                                                                                } else {
+                                                                                                                                                                                                                                                    echo $color[rand(0, 3)];
+                                                                                                                                                                                                                                                }
+                                                                                                ?>' , ], anchor: "end" , align: "top" , formatter: function addCommas(value) { value +='' ; x=value.split('.'); x1=x[0]; x2=x.length> 1 ? '.' + x[1] : '';
+                                                                var rgx = /(\d+)(\d{3})/;
+                                                                while (rgx.test(x1)) {
+                                                                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                                                                }
+                                                                return x1 + x2;
+                                                                }
+                                                                }
+                                                                },
+                                                    <?php
+                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                    }
+                                                    ?>
+                                                    ]
+                                                    },
+                                                    plugins: [ChartDataLabels],
+                                                    options: {
+                                                    scales: {
+                                                    y: {
+                                                    beginAtZero: true
+                                                    }
+                                                    },
+                                                    plugins: {
+                                                    legend: true // Hide legend
+                                                    }
+                                                    }
+                                                    });
+                                                    </script>
+                                                    <script>
+                                                        $(document).ready(function() {
+                                                            $("#dataTable").DataTable();
+                                                            $("#tabel1").DataTable();
+                                                        });
+                                                    </script>
 
-    <script>
-        // Select all links with hashes
-        $('a[href*="#"]')
-            // Remove links that don't actually link to anything
-            .not('[href="#"]')
-            .not('[href="#0"]')
-            .click(function(event) {
-                // On-page links
-                if (
-                    location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') &&
-                    location.hostname == this.hostname
-                ) {
-                    // Figure out element to scroll to
-                    var target = $(this.hash);
-                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                    // Does a scroll target exist?
-                    if (target.length) {
-                        // Only prevent default if animation is actually gonna happen
-                        event.preventDefault();
-                        $('html, body').animate({
-                            scrollTop: target.offset().top
-                        }, 1000, function() {
-                            // Callback after animation
-                            // Must change focus!
-                            var $target = $(target);
-                            $target.focus();
-                            if ($target.is(":focus")) { // Checking if the target was focused
-                                return false;
-                            } else {
-                                $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
-                                $target.focus(); // Set focus again
-                            };
-                        });
-                    }
-                }
-            });
-    </script>
+                                                    <script>
+                                                        // Select all links with hashes
+                                                        $('a[href*="#"]')
+                                                            // Remove links that don't actually link to anything
+                                                            .not('[href="#"]')
+                                                            .not('[href="#0"]')
+                                                            .click(function(event) {
+                                                                // On-page links
+                                                                if (
+                                                                    location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') &&
+                                                                    location.hostname == this.hostname
+                                                                ) {
+                                                                    // Figure out element to scroll to
+                                                                    var target = $(this.hash);
+                                                                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                                                                    // Does a scroll target exist?
+                                                                    if (target.length) {
+                                                                        // Only prevent default if animation is actually gonna happen
+                                                                        event.preventDefault();
+                                                                        $('html, body').animate({
+                                                                            scrollTop: target.offset().top
+                                                                        }, 1000, function() {
+                                                                            // Callback after animation
+                                                                            // Must change focus!
+                                                                            var $target = $(target);
+                                                                            $target.focus();
+                                                                            if ($target.is(":focus")) { // Checking if the target was focused
+                                                                                return false;
+                                                                            } else {
+                                                                                $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
+                                                                                $target.focus(); // Set focus again
+                                                                            };
+                                                                        });
+                                                                    }
+                                                                }
+                                                            });
+                                                    </script>
 
-    <script>
-        //Get the button
-        var mybutton = document.getElementById("myBtn");
+                                                    <script>
+                                                        //Get the button
+                                                        var mybutton = document.getElementById("myBtn");
 
-        // When the user scrolls down 20px from the top of the document, show the button
-        window.onscroll = function() {
-            scrollFunction()
-        };
+                                                        // When the user scrolls down 20px from the top of the document, show the button
+                                                        window.onscroll = function() {
+                                                            scrollFunction()
+                                                        };
 
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                mybutton.style.display = "block";
-            } else {
-                mybutton.style.display = "none";
-            }
-        }
+                                                        function scrollFunction() {
+                                                            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                                                                mybutton.style.display = "block";
+                                                            } else {
+                                                                mybutton.style.display = "none";
+                                                            }
+                                                        }
 
-        // When the user clicks on the button, scroll to the top of the document
-        function topFunction() {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
-        }
-    </script>
-    <script>
-        //Get the button
-        var mybutton = document.getElementById("myBtn");
+                                                        // When the user clicks on the button, scroll to the top of the document
+                                                        function topFunction() {
+                                                            document.body.scrollTop = 0;
+                                                            document.documentElement.scrollTop = 0;
+                                                        }
+                                                    </script>
+                                                    <script>
+                                                        //Get the button
+                                                        var mybutton = document.getElementById("myBtn");
 
-        // When the user scrolls down 20px from the top of the document, show the button
-        window.onscroll = function() {
-            scrollFunction()
-        };
+                                                        // When the user scrolls down 20px from the top of the document, show the button
+                                                        window.onscroll = function() {
+                                                            scrollFunction()
+                                                        };
 
-        function scrollFunction() {
-            if (document.body.arrowbtn > 20 || document.documentElement.arrowbtn > 20) {
-                mybutton.style.display = "block";
-            } else {
-                mybutton.style.display = "none";
-            }
-        }
+                                                        function scrollFunction() {
+                                                            if (document.body.arrowbtn > 20 || document.documentElement.arrowbtn > 20) {
+                                                                mybutton.style.display = "block";
+                                                            } else {
+                                                                mybutton.style.display = "none";
+                                                            }
+                                                        }
 
-        // When the user clicks on the button, scroll to the top of the document
-        function topFunction() {
-            document.body.arrowbtn = 0;
-            document.documentElement.arrowbtn = 0;
-        }
-    </script>
-    <script>
-    var offset = -100;
+                                                        // When the user clicks on the button, scroll to the top of the document
+                                                        function topFunction() {
+                                                            document.body.arrowbtn = 0;
+                                                            document.documentElement.arrowbtn = 0;
+                                                        }
+                                                    </script>
+                                                    <script>
+                                                        var offset = -100;
 
-function pageScroll() {
-        window.scrollBy(0,50); // horizontal and vertical scroll increments
-        if(window.pageYOffset == offset) return;
-        offset = window.pageYOffset;
-        scrolldelay = setTimeout('pageScroll()',100); // scrolls every 100 milliseconds
-}
+                                                        function pageScroll() {
+                                                            window.scrollBy(0, 50); // horizontal and vertical scroll increments
+                                                            if (window.pageYOffset == offset) return;
+                                                            offset = window.pageYOffset;
+                                                            scrolldelay = setTimeout('pageScroll()', 100); // scrolls every 100 milliseconds
+                                                        }
 
-//actually scroll
-pageScroll();
-</script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+                                                        //actually scroll
+                                                        pageScroll();
+                                                    </script>
+                                                    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+                                                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+                                                    <!-- Core plugin JavaScript-->
+                                                    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-    
-    <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+                                                    <!-- Custom scripts for all pages-->
+                                                    <script src="js/sb-admin-2.min.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
+                                                    <!-- Page level plugins -->
+                                                    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+                                                    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+                                                    <!-- Page level custom scripts -->
+                                                    <script src="js/demo/datatables-demo.js"></script>
 
 
 
