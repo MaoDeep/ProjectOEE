@@ -3,9 +3,13 @@ error_reporting(0);
 session_start();
 include "config.php";
 if (isset($_GET["id"])) {
-    $sql = "SELECT * FROM `employee` WHERE E_id ='" . $_GET["id"] . "'";
+    $sql = "SELECT * FROM `employee` INNER JOIN brand ON brand.b_id = employee.b_id INNER JOIN machine ON machine.mac_id = employee.mac_id WHERE E_id ='" . $_GET["id"] . "'";
     $re = mysqli_query($conn, $sql);
     $op = mysqli_fetch_assoc($re);
+    foreach ($re as $k  => $row) 
+        $mac_name[$k] = $row["mac_name"];
+        $b_name[$k] = $row["b_name"];
+
 }
 
 if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
@@ -84,13 +88,13 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                     <div class="col-6 ">
                                         <div class="col-form-label-sm">รหัสเครื่อง : </div>
                                         <select name="txt2" id="txt2" class="form-select form-select-sm">
-                                        <option value="<?= $row["mac_name"] ?>" hidden ><?php echo $op['Nmac'] ?></option>
+                                        <option value="<?= $row["mac_id"] ?>" hidden ><?php echo $op['mac_name'] ?></option>
                                             <?php
                                             $sqlrow = "SELECT * FROM `machine` ;";
                                             $rerow = mysqli_query($conn, $sqlrow);
                                             foreach ($rerow as $row) {
                                             ?>
-                                                <option value="<?= $row["mac_name"] ?>"><?= $row["mac_name"] ?></option>
+                                                <option value="<?= $row["mac_id"] ?>"><?= $row["mac_name"] ?></option>
 
                                             <?php
                                             }
@@ -108,13 +112,13 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                         <div class="col-form-label-sm">รุ่นที่ผลิต : </div>
                                         
                                         <select name="txt4" id="txt4" class="form-select form-select-sm">
-                                        <option value="<?= $row["b_name"] ?>" hidden><?php echo $op['Epro'] ?></option>
+                                        <option value="<?= $row["b_name"] ?>" hidden><?php echo $op['b_name'] ?></option>
                                             <?php
                                             $sqlrow = "SELECT * FROM `brand` ;";
                                             $rerow = mysqli_query($conn, $sqlrow);
                                             foreach ($rerow as $row) {
                                             ?>
-                                                <option value="<?= $row["b_name"] ?>"><?= $row["b_name"] ?></option>
+                                                <option value="<?= $row["b_id"] ?>"><?= $row["b_name"] ?></option>
                                             <?php
                                             }
                                             ?>
@@ -184,7 +188,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                 </div>
 
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="index.php">Logout</a>
+                <a class="btn btn-primary" href="../index.php">ออกจากระบบ</a>
             </div>
         </div>
     </div>

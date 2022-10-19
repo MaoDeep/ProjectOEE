@@ -3,7 +3,7 @@ include "../config.php";
 
 if (isset($_POST["id"])) {
 
-    $sql_mac = "SELECT * FROM `machine` WHERE machine.mac_name = '" . $_POST["id"] . "';";
+    $sql_mac = "SELECT * FROM `machine` WHERE machine.mac_id = '" . $_POST["id"] . "';";
 
     $re_mac = mysqli_query($conn, $sql_mac);
     foreach ($re_mac as $row) {

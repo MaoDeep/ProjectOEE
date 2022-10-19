@@ -10,7 +10,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
 }
 
 if (isset($_POST['submit'])) {
-    $sql = "UPDATE `employee` SET `EName` = '" . $_POST['txt1'] . "', `Nmac` = '" . $_POST['txt2'] . "' , `Econ` = " . $_POST['txt3'] . " ,`EPro` = '" . $_POST['txt4'] . "', `Edel` = " . $_POST['txt5'] . " , `Etime` =  '" . $_POST['txt6'] . "' ,  `Etimet` = '" . $_POST['txt7'] . "' 
+    $sql = "UPDATE `employee` SET `EName` = '" . $_POST['txt1'] . "', `mac_id` = '" . $_POST['txt2'] . "' , `Econ` = " . $_POST['txt3'] . " ,`b_id` = '" . $_POST['txt4'] . "', `Edel` = " . $_POST['txt5'] . " , `Etime` =  '" . $_POST['txt6'] . "' ,  `Etimet` = '" . $_POST['txt7'] . "' 
      WHERE `employee`. `E_id` = " . $_POST['txt0'] . "";
     $re = mysqli_query($conn, $sql);
     if ($re) {
@@ -255,7 +255,13 @@ if (isset($_POST['submit'])) {
                                   
                                     require('config.php');
                                     mysqli_query($conn, 'SET NAMES UTF8');
-                                    $sql = "SELECT * FROM `employee`";
+                                    $sql = "SELECT * FROM `employee` INNER JOIN brand ON brand.b_id = employee.b_id INNER JOIN machine ON machine.mac_id = employee.mac_id INNER JOIN users ON users.u_id = employee.u_id;";
+                                    $re = mysqli_query($conn, $sql);
+               foreach ($re as $k  => $row) {
+                                     $mac_name[$k] = $row["mac_name"];
+                                     $b_name[$k] = $row["b_name"];
+                                     $u_usersname[$k] = $row["u_usersname"];
+               }
                                     $query = mysqli_query($conn, $sql);
                                     $n1 = 0;
                                     while ($value = mysqli_fetch_array($query)) {
@@ -265,9 +271,9 @@ if (isset($_POST['submit'])) {
                                         echo '<tr>
                     <td>' . $n1 . '</td>
                     <td>' . $d1 . '</td>
-                    <td>' . $value['EName'] . '</td>
-                    <td>' . $value['Nmac'] . '</td>
-                    <td>' . $value['Epro'] . '</td>
+                    <td>' . $value['u_usersname'] . '</td>
+                    <td>' . $value['mac_name'] . '</td>
+                    <td>' . $value['b_name'] . '</td>
                     <td>' . $value['Econ'] . '</td>
                     <td>' . $value['Edel'] . '</td>
                     <td>' . $value['Etime'] . '</td>
@@ -341,7 +347,7 @@ if (isset($_POST['submit'])) {
                 <div class="modal-body">คุณแน่ใจเเล้วนะว่าจะออกจากระบบ</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">ยกเลิก</button>
-                    <a class="btn btn-primary" href="index.php">ออกจากระบบ</a>
+                    <a class="btn btn-primary" href="../index.php">ออกจากระบบ</a>
                 </div>
             </div>
         </div>

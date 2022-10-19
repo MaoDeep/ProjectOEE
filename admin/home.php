@@ -1,6 +1,6 @@
 <?php
 include "config.php";
-session_start();
+session_start(); 
 if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
     header('Location: index.php');
     exit(0);
@@ -319,7 +319,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                     <div class="modal-body">คุณแน่ใจเเล้วนะว่าจะออกจากระบบ</div>
                                     <div class="modal-footer">
                                         <button class="btn btn-secondary" type="button" data-dismiss="modal">ยกเลิก</button>
-                                        <a class="btn btn-primary" href="index.php">ออกจากระบบ</a>
+                                        <a class="btn btn-primary" href="../index.php">ออกจากระบบ</a>
                                     </div>
                                 </div>
                             </div>

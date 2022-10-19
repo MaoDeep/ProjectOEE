@@ -63,12 +63,7 @@ if (isset($_POST["submit"])) {
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">สิทธิ์ผู้ใช้งาน</label>
-                            <select name="txt4" id="txt4" class="form-select form-select-sm" value="" required>
-                                <option value="">--เลือกสิทธิ์ผู้ใช้งาน--</option>
-                                <option value="Admin">Admin</option>
-                                <option value="User">User</option>
-
-                            </select>
+                            <input type="text" name="txt4" id="txt4" class="form-control form-control-sm" readonly="" value="User"  required>
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">สถานะ</label>

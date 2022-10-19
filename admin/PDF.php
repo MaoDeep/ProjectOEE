@@ -23,7 +23,7 @@ class PDF extends FPDF
         $this->Cell(5);
         // Title
         $this->Image('img/logo.png', 20, 10, 40, 0, 'PNG');
-        $this->Cell(265, 45, iconv('UTF-8', 'cp874', 'รายงานผลผลิตประจำวัน'), 0, 0, 'C');
+        $this->Cell(265, 45, iconv('UTF-8', 'cp874', 'รายงานผลผลิต'), 0, 0, 'C');
 
         $this->AddFont('THSarabun', '', 'THSarabun Bold.php');
         $this->SetFont('THSarabun', '', 15);
@@ -37,17 +37,18 @@ class PDF extends FPDF
         $this->SetDrawColor(50, 50, 100);
 
 
-        $this->Cell(7);
+        $this->Cell(6);
 
 
+        $this->Cell(10, 10, iconv('UTF-8', 'cp874', 'ลำดับ'), 1, 0, 'C', true);
         $this->Cell(30, 10, iconv('UTF-8', 'cp874', 'วันที่'), 1, 0, 'C', true);
         $this->Cell(35, 10, iconv('UTF-8', 'cp874', 'ผู้บันทึก'), 1, 0, 'C', true);
         $this->Cell(32, 10, iconv('UTF-8', 'cp874', 'รหัสเครื่อง'), 1, 0, 'C', true);
-        $this->Cell(25, 10, iconv('UTF-8', 'cp874', 'ชิ้นงานที่ได้'), 1, 0, 'C', true);
+        $this->Cell(35, 10, iconv('UTF-8', 'cp874', 'จำนวนผลผลิตทั้งหมด'), 1, 0, 'C', true);
         $this->Cell(22, 10, iconv('UTF-8', 'cp874', 'ชิ้นงานที่เสีย'), 1, 0, 'C', true);
         $this->Cell(60, 10, iconv('UTF-8', 'cp874', 'รุ่นที่ผลิต'), 1, 0, 'C', true);
-        $this->Cell(30, 10, iconv('UTF-8', 'cp874', 'เวลาเข้างาน'), 1, 0, 'C', true);
-        $this->Cell(30, 10, iconv('UTF-8', 'cp874', 'เวลาเลิกงาน'), 1, 0, 'C', true);
+        $this->Cell(20, 10, iconv('UTF-8', 'cp874', 'เวลาเข้างาน'), 1, 0, 'C', true);
+        $this->Cell(20, 10, iconv('UTF-8', 'cp874', 'เวลาเลิกงาน'), 1, 0, 'C', true);
         $this->Ln();
     }
 
@@ -78,38 +79,42 @@ $pdf->SetFont('THSarabun', '', 14);
 
 if (isset($_GET["d1"]) && isset($_GET["d2"])) {
     if ($_GET["d1"] !== "" && $_GET["d2"] !== "") {
-        $sql = "SELECT * FROM `employee` WHERE DATE BETWEEN '" . $_GET["d1"] . "' AND '" . $_GET["d2"] . "'; ";
+        $sql = "SELECT * FROM `employee` INNER JOIN brand ON brand.b_id = employee.b_id INNER JOIN machine ON machine.mac_id = employee.mac_id INNER JOIN users ON users.u_id = employee.u_id WHERE DATE BETWEEN '" . $_GET["d1"] . "' AND '" . $_GET["d2"] . "'; ";
     } else {
-        $sql = "SELECT * FROM `employee`";
+        $sql = "SELECT * FROM `employee` INNER JOIN brand ON brand.b_id = employee.b_id INNER JOIN machine ON machine.mac_id = employee.mac_id INNER JOIN users ON users.u_id = employee.u_id;";
     }
 }
 
 
 $result = mysqli_query($conn, $sql);
+$n1 = 0;
 while ($array = mysqli_fetch_assoc($result)) {
+    
     $d = date_create($array['DATE']);
     $E_id = $array['E_id'];
     $DATE = date_format($d, "d/m/Y");
-    $EName = $array['EName'];
-    $Nmac = $array['Nmac'];
+    $n1++;
+    $u_id = $array['u_usersname'];
+    $mac_id = $array['mac_name'];
     $Econ = number_format($array['Econ']) . " ชิ้น";
     $Edel = number_format($array['Edel']) . " ชิ้น";
-    $Epro = $array['Epro'];
+    $b_id = $array['b_name'];
     $Etime = $array['Etime'] . " น.";
     $Etimet = $array['Etimet'] . " น.";
 
 
 
-    $pdf->Cell(7);
+    $pdf->Cell(6);
 
+    $pdf->Cell(10, 10, iconv('UTF-8', 'cp874', $n1), 1, 0, 'C');
     $pdf->Cell(30, 10, iconv('UTF-8', 'cp874', $DATE), 1, 0, 'C');
-    $pdf->Cell(35, 10, iconv('UTF-8', 'cp874', $EName), 1, 0, 'C');
-    $pdf->Cell(32, 10, iconv('UTF-8', 'cp874', $Nmac), 1, 0, 'C');
-    $pdf->Cell(25, 10, iconv('UTF-8', 'cp874', $Econ), 1, 0, 'C');
+    $pdf->Cell(35, 10, iconv('UTF-8', 'cp874', $u_id), 1, 0, 'C');
+    $pdf->Cell(32, 10, iconv('UTF-8', 'cp874', $mac_id), 1, 0, 'C');
+    $pdf->Cell(35, 10, iconv('UTF-8', 'cp874', $Econ), 1, 0, 'C');
     $pdf->Cell(22, 10, iconv('UTF-8', 'cp874', $Edel), 1, 0, 'C');
-    $pdf->Cell(60, 10, iconv('UTF-8', 'cp874', $Epro), 1, 0, 'C');
-    $pdf->Cell(30, 10, iconv('UTF-8', 'cp874', $Etime), 1, 0, 'C');
-    $pdf->Cell(30, 10, iconv('UTF-8', 'cp874', $Etimet), 1, 0, 'C');
+    $pdf->Cell(60, 10, iconv('UTF-8', 'cp874', $b_id), 1, 0, 'C');
+    $pdf->Cell(20, 10, iconv('UTF-8', 'cp874', $Etime), 1, 0, 'C');
+    $pdf->Cell(20, 10, iconv('UTF-8', 'cp874', $Etimet), 1, 0, 'C');
     $pdf->Ln();
 }
 

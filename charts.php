@@ -267,7 +267,15 @@ if (isset($_POST['submit'])) {
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                         
+                        </div>
 
+                        <div class="card-body">
+                            <div class="mx-auto col-12">
+                                <div class="card">
+                                    
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -277,11 +285,19 @@ if (isset($_POST['submit'])) {
 
                         <div class="card-body">
                             <div class="mx-auto col-12">
-                                <div class="card">
+                              
                                     
                                         <div class="row mt-3">
                                             <div class="col-12 mx-auto">
                                                 <form action="charts.php" method="get">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <a href=" charts.php=' . $value["id"] . '&name=' . $value["u_usersname"] . '&date=' . $d1 . '"><button type="submit"  class="btn btn-warning" style="width: 3rem;" name="button" >ดู</button>
+                                                        
+                                                        </button>
+                                                           </a>
+                                                           <br><br>
                                                     <table class="table table-bordered text-center table-sm " id="dataTable">
                                                         <thead>
                                                             <tr bgcolor="PeachPuff">
@@ -293,7 +309,7 @@ if (isset($_POST['submit'])) {
                                                                 <th>อัตราคุณภาพ</th>
                                                                 <th>ผลรวม OEE</th>
                                                                 <th>ผู้บันทึก</th>
-                                                                <th>รายละเอียด</th>
+                                                                
 
                                                         </thead>
                                                         <?php
@@ -320,11 +336,7 @@ if (isset($_POST['submit'])) {
                                                         <td>' . $value['NT'] . '%' . '</td>
                                                         <td>' . $value['EU'] . '%' . '</td>
                                                         <td>' . $value['u_usersname'] . '</td>
-                                                        <td><a href=" charts.php=' . $value["id"] . '&name=' . $value["u_usersname"] . '&date=' . $d1 . '"><button type="submit"  class="btn btn-warning  "name="button" >ดู</button>
-                                                        
-                                                     </button>
-                                                        </a></td>
-            
+                                                       
                                                     </a>
                                     
                                                     </tr>';
@@ -360,14 +372,14 @@ if (isset($_POST['submit'])) {
                                                 <thead>
                                                     <tr bgcolor="PeachPuff">
                                                         <th>วันที่</th>
-                                                        <th>เวลาทำงานทั้งหมด</th>
-                                                        <th>เวลาทำงานตอนพัก</th>
-                                                        <th>เวลาทำงานจริง</th>
-                                                        <th>เวลาเปิดเครื่องจักร</th>
-                                                        <th>เวลาปิดเครื่องจักร</th>
-                                                        <th>เวลาหยุดเครื่องจักร</th>
-                                                        <th>ชิ้นงานที่ผลิตได้</th>
-                                                        <th>ชิ้นงานเสีย</th>
+                                                        <th>เวลาทำงานทั้งหมด (นาที)</th>
+                                                        <th>เวลาทำงานตอนพัก (นาที)</th>
+                                                        <th>เวลาทำงานจริง (นาที)</th>
+                                                        <th>เวลาเปิดเครื่องจักร (นาที)</th>
+                                                        <th>เวลาปิดเครื่องจักร (นาที)</th>
+                                                        <th>เวลาหยุดเครื่องจักร (นาที)</th>
+                                                        <th>ชิ้นงานที่ผลิตได้ (ชิ้น)</th>
+                                                        <th>ชิ้นงานเสีย(ชิ้น) </th>
                                                         <th>ชื่อ</th>
                                                     </tr>
                                                 </thead>
@@ -375,7 +387,7 @@ if (isset($_POST['submit'])) {
                                                     <?php
 
                                                     foreach ($_GET["no"] as $row) {
-                                                        $sql = "SELECT * FROM `report` INNER JOIN users on report.u_id = users.u_id WHERE report.id =" . $row;
+                                                        $sql = "SELECT * FROM `report` INNER JOIN users on report.u_id = users.u_id WHERE report.id = " . $row;
                                                         $re = mysqli_query($conn, $sql);
 
                                                         foreach ($re as $row) {
@@ -384,14 +396,14 @@ if (isset($_POST['submit'])) {
                                                     ?>
                                                             <tr>
                                                                 <th><?php echo $d ?></th>
-                                                                <th><?php echo number_format($row["AT"], ). " นาที."; ?></th>
-                                                                <th><?php echo number_format($row["SP"], ). " นาที.";  ?></th>
-                                                                <th><?php echo number_format($row["WT"], ). " นาที.";  ?></th>
-                                                                <th><?php echo number_format($row["MS"], ). " นาที.";  ?></th>
-                                                                <th><?php echo number_format($row["RT"], ). " นาที.";  ?></th>
-                                                                <th><?php echo number_format($row["MSS"], ) . " นาที."; ?></th>
-                                                                <th><?php echo number_format($row["NO"],) . " ชิ้น."; ?></th>
-                                                                <th><?php echo number_format($row["NUM"], ) . " ชิ้น."; ?></th>
+                                                                <th><?php echo number_format($row["AT"], ) ?></th>
+                                                                <th><?php echo number_format($row["SP"], )  ?></th>
+                                                                <th><?php echo number_format($row["WT"], )  ?></th>
+                                                                <th><?php echo number_format($row["MS"], )  ?></th>
+                                                                <th><?php echo number_format($row["RT"], ) ?></th>
+                                                                <th><?php echo number_format($row["MSS"], ) ?></th>
+                                                                <th><?php echo number_format($row["NO"],) ?></th>
+                                                                <th><?php echo number_format($row["NUM"], )  ?></th>
                                                                 <th><?php echo $row["u_usersname"] ?></th>
                                                             </tr>
                                                     <?php

@@ -37,8 +37,9 @@ class PDF extends FPDF
         $this->SetDrawColor(50, 50, 100);
 
 
-        $this->Cell(7);
+        $this->Cell(1);
 
+        $this->Cell(10, 10, iconv('UTF-8', 'cp874', 'ลำดับ'), 1, 0, 'C', true);
         $this->Cell(30, 10, iconv('UTF-8', 'cp874', 'วันที่'), 1, 0, 'C', true);
         $this->Cell(30, 10, iconv('UTF-8', 'cp874', 'ชื่อผู้บันทึก'), 1, 0, 'C', true);
         $this->Cell(30, 10, iconv('UTF-8', 'cp874', 'อัตราการเดินเครื่อง'), 1, 0, 'C', true);
@@ -83,10 +84,12 @@ if (isset($_GET["d1"]) && isset($_GET["d2"])) {
 
 
 $result = mysqli_query($conn, $sql);
+$n1 = 0;
 while ($array = mysqli_fetch_assoc($result)) {
     $d = date_create($array['date']);
     $user = $array['u_usersname'];
     $date = date_format($d, "d/m/Y");
+    $n1++;
     $TR = $array['TR'] . " %";
     $TS = $array['TS'] . " %" ;
     $NT = $array['NT'] . " %";
@@ -95,8 +98,9 @@ while ($array = mysqli_fetch_assoc($result)) {
 
 
 
-    $pdf->Cell(7);
+    $pdf->Cell(1);
 
+    $pdf->Cell(10, 10, iconv('UTF-8', 'cp874', $n1), 1, 0, 'C');
     $pdf->Cell(30, 10, iconv('UTF-8', 'cp874', $date), 1, 0, 'C');
     $pdf->Cell(30, 10, iconv('UTF-8', 'cp874', $user), 1, 0, 'C');
     $pdf->Cell(30, 10, iconv('UTF-8', 'cp874', $TR), 1, 0, 'C');

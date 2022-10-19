@@ -61,20 +61,28 @@ date_default_timezone_set('Asia/Bangkok')
         } else {
             echo '<script>alert("บันทึกไม่สำเร็จ")</script>';
         }          
-     
+        $sqlrow = "SELECT * FROM report INNER JOIN users ON users.u_id = report.u_id INNER JOIN machine ON machine.mac_id = users.mac_id ORDER BY id ";
+        $rerow = mysqli_query($conn, $sqlrow);
+        foreach ($rerow as $row) {
+            $t = $row["mac_name"];
+        }
+
         $L1 = $_POST['txt12'];
         $L2 = $_POST['txt13'];
         $L3 = $_POST['txt14'];
         $L4 = $_POST['txt15'];
-        $NName = $_SESSION['user']; 
+        $NName = $_SESSION['user'];
+        $t = $row["mac_name"]; 
 
-        $sToken = "cz8VFUTRNX5Pcu2PUKBJNHhbPvYTwJtI7OmMDPmgVtI";
-        $sMessage = "ประสิทธิผลโดยรวมของเครื่องจักร \n";
-        $sMessage .= "ชื่อพนักงาน : ". $NName.  " \n";
-        $sMessage .= "อัตราการเดินเครื่องจักร : ". $L1 .  " \n";
-        $sMessage .= "ประสิทธิภาพของเครื่องจักร : ". $L2 . " \n";
-        $sMessage .= "อัตราคุณภาพเครื่องจักร : ". $L3 . " \n";
-        $sMessage .= "ผลรวม : ". $L4 . " \n";
+       $sToken = "cz8VFUTRNX5Pcu2PUKBJNHhbPvYTwJtI7OmMDPmgVtI";
+        
+      $sMessage = "ประสิทธิผลโดยรวมของเครื่องจักร \n";
+      $sMessage .= "ชื่อเครื่องจักร : $t \n";
+      $sMessage .= "ชื่อพนักงาน : ". $NName.  " \n";
+      $sMessage .= "อัตราการเดินเครื่องจักร : ". $L1 . " %25 \n";
+      $sMessage .= "ประสิทธิภาพของเครื่องจักร : ". $L2 . " %25 \n";
+      $sMessage .= "อัตราคุณภาพเครื่องจักร : ". $L3 . " %25 \n";
+      $sMessage .= "ผลรวม : ". $L4 . " %25 \n";
     
 	
 	$chOne = curl_init(); 

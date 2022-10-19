@@ -305,14 +305,32 @@ if (isset($_POST['submit'])) {
                                                 </div>
                                                 <div class="col-auto"><input type="date" name="d2" id="d2" class="form-control form-control-sm"></div>
                                                 <div class="col-auto"><button type="submit" id="pdf" class="btn btn-sm btn-success" style="width: 10rem;"><i class="bi bi-filetype-pdf"></i> ออกรายงาน PDF</button></div>
+                                                
                                             </div>
+                                            
                                         </form>
+                                        
                                         <div class="row mt-3">
+                                            
+                                        
                                             <div class="col-12 mx-auto">
+                                                
                                                 <form action="charts.php" method="get">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <a href=" charts.php=' . $value["id"] . '&name=' . $value["u_usersname"] . '&date=' . $d1 . '"><button type="submit"  class="btn btn-warning" style="width: 5rem;" name="button" >ดู</button>
+                                                        
+                                                        </button>
+                                                           </a>
+                                                           <br><br>
                                                     <table class="table table-bordered text-center table-sm " id="dataTable">
+                                                    
+                                                         
                                                         <thead>
+                                                            
                                                             <tr bgcolor="PeachPuff">
+                                                            
                                                                 <th>#</th>
                                                                 <th>ลำดับ</th>
                                                                 <th>วันที่</th>
@@ -321,9 +339,11 @@ if (isset($_POST['submit'])) {
                                                                 <th>อัตราคุณภาพ</th>
                                                                 <th>ผลรวม OEE</th>
                                                                 <th>ผู้บันทึก</th>
-                                                                <th>รายละเอียด</th>
+                                                               
+                                                                
 
                                                         </thead>
+                                                        
                                                         <?php
 
                                                         mysqli_query($conn, 'SET NAMES UTF8');
@@ -348,20 +368,22 @@ if (isset($_POST['submit'])) {
                                                         <td>' . $value['NT'] . '%' . '</td>
                                                         <td>' . $value['EU'] . '%' . '</td>
                                                         <td>' . $value['u_usersname'] . '</td>
-                                                        <td><a href=" charts.php=' . $value["id"] . '&name=' . $value["u_usersname"] . '&date=' . $d1 . '"><button type="submit"  class="btn btn-warning  "name="button" >ดู</button>
-                                                        
-                                                     </button>
-                                                        </a></td>
+                                                       
             
                                                     </a>
                                     
                                                     </tr>';
-                                                        }
+                                                        
+                                                }
 
                                                         ?>
+                                                        
                                                         </tbody>
+                                                        
                                                     </table>
+                                                    
                                                 </form>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -389,14 +411,14 @@ if (isset($_POST['submit'])) {
                                                 <br>
                                                 <tr bgcolor="PeachPuff">
                                                     <th>วันที่</th>
-                                                    <th>เวลาทำงานทั้งหมด</th>
-                                                    <th>เวลาทำงานตอนพัก</th>
-                                                    <th>เวลาทำงานจริง</th>
-                                                    <th>เวลาเปิดเครื่องจักร</th>
-                                                    <th>เวลาปิดเครื่องจักร</th>
-                                                    <th>เวลาหยุดเครื่องจักร</th>
-                                                    <th>ชิ้นงานที่ผลิตได้</th>
-                                                    <th>ชิ้นงานเสีย</th>
+                                                    <th>เวลาทำงานทั้งหมด (นาที)</th>
+                                                    <th>เวลาทำงานตอนพัก (นาที)</th>
+                                                    <th>เวลาทำงานจริง (นาที)</th>
+                                                    <th>เวลาเปิดเครื่องจักร (นาที)</th>
+                                                    <th>เวลาปิดเครื่องจักร (นาที)</th>
+                                                    <th>เวลาหยุดเครื่องจักร (นาที)</th>
+                                                    <th>ชิ้นงานที่ผลิตได้ (ชิ้นงาน)</th>
+                                                    <th>ชิ้นงานเสีย (ชิ้นงาน)</th>
                                                     <th>ชื่อ</th>
                                                 </tr>
                                             </thead>
@@ -413,14 +435,14 @@ if (isset($_POST['submit'])) {
                                                 ?>
                                                         <tr>
                                                             <th><?php echo $d ?></th>
-                                                            <th><?php echo number_format($row["AT"],) . " นาที."; ?></th>
-                                                            <th><?php echo number_format($row["SP"],) . " นาที.";  ?></th>
-                                                            <th><?php echo number_format($row["WT"],) . " นาที.";  ?></th>
-                                                            <th><?php echo number_format($row["MS"],) . " นาที.";  ?></th>
-                                                            <th><?php echo number_format($row["RT"],) . " นาที.";  ?></th>
-                                                            <th><?php echo number_format($row["MSS"],) . " นาที."; ?></th>
-                                                            <th><?php echo number_format($row["NO"],) . " ชิ้น."; ?></th>
-                                                            <th><?php echo number_format($row["NUM"],) . " ชิ้น."; ?></th>
+                                                            <th><?php echo number_format($row["AT"],) ?></th>
+                                                            <th><?php echo number_format($row["SP"],)   ?></th>
+                                                            <th><?php echo number_format($row["WT"],)  ?></th>
+                                                            <th><?php echo number_format($row["MS"],)   ?></th>
+                                                            <th><?php echo number_format($row["RT"],)   ?></th>
+                                                            <th><?php echo number_format($row["MSS"],)  ?></th>
+                                                            <th><?php echo number_format($row["NO"],)  ?></th>
+                                                            <th><?php echo number_format($row["NUM"],)  ?></th>
                                                             <th><?php echo $row["u_usersname"] ?></th>
                                                         </tr>
                                                 <?php
@@ -474,7 +496,7 @@ if (isset($_POST['submit'])) {
                 <div class="modal-body">คุณแน่ใจเเล้วนะว่าจะออกจากระบบ</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">ยกเลิก</button>
-                    <a class="btn btn-primary" href="index.php">ออกจากระบบ</a>
+                    <a class="btn btn-primary" href="../index.php">ออกจากระบบ</a>
                 </div>
             </div>
         </div>

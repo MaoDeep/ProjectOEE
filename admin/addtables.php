@@ -19,7 +19,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>กรอกข้อมูล</title>
+    <title>เพิ่มข้อมูล</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -50,7 +50,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
             $_POST["breakmin"],
             $_POST["workmin"]
         );
-        $sql = "INSERT INTO `employee`(`E_id`, `EName`, `Nmac`, `Econ`, `Epro`, `Edel`, `Etime`, `Etimet`, `DATE`) VALUES (NULL ,'" . $arr1[0] . "','" . $arr1[1] . "' , " . $arr1[2] . " , '" . $arr1[3] . "', " . $arr1[4] . " , '" . $arr1[5] . "' , '" . $arr1[6] . "' , '" . $arr1[7] . "')";
+        $sql = "INSERT INTO `employee`(`E_id`, `u_id`, `mac_id`, `Econ`, `b_id`, `Edel`, `Etime`, `Etimet`, `DATE`) VALUES (NULL ,'" . $arr1[0] . "','" . $arr1[1] . "' , " . $arr1[2] . " , '" . $arr1[3] . "', " . $arr1[4] . " , '" . $arr1[5] . "' , '" . $arr1[6] . "' , '" . $arr1[7] . "')";
         var_dump($sql);
         $date1 = new DateTime($arr1[5]);
         $date2 = new DateTime($arr1[6]);
@@ -98,7 +98,18 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="col-form-label-sm">ชื่อ :</div>
-                                        <input type="text" class="form-control form-control-sm" id="txt2" name="txt2" readonly placeholder="" value="<?= $_SESSION["user"] ?>" required>
+                                        <?php
+                                        $sqlrow = "SELECT * FROM `users`  where users.u_usersname = '" . $_SESSION["user"] . "' ";
+                                        $rerow = mysqli_query($conn, $sqlrow);
+                                        foreach ($rerow as $row) {
+
+                                            $user = $row["u_usersname"];
+                                            $iuuu = $row["u_id"];
+                                            
+                                        }
+                                        ?>
+                                        <input type="hidden" class="form-control form-control-sm" id="txt2" name="txt2" readonly placeholder="" value="<?= $iuuu ?>" required>
+                                        <input type="text" class="form-control form-control-sm" id="txt18" name="txt18" readonly placeholder="" value="<?= $user ?>" required>
                                         <div class="invalid-feedback">
                                             กรุณาใส่ข้อมูลให้ครบ
                                         </div>
@@ -128,7 +139,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                             $rerow = mysqli_query($conn, $sqlrow);
                                             foreach ($rerow as $row) {
                                             ?>
-                                                <option value="<?= $row["mac_name"] ?>"><?= $row["mac_name"] ?></option>
+                                                <option value="<?= $row["mac_id"] ?>"><?= $row["mac_name"] ?></option>
 
                                             <?php
                                             }
@@ -142,12 +153,13 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                     <div class="col-sm-6">
                                         <div class="col-form-label-sm">รุ่นที่ผลิต :</div>
                                         <select name="txt8" id="txt8" class="form-select form-select-sm">
-                                            <?php
-                                            $sqlrow = "SELECT * FROM `brand` ;";
+                                        <?php
+                                            $sqlrow = "SELECT * FROM `brand` ";
                                             $rerow = mysqli_query($conn, $sqlrow);
                                             foreach ($rerow as $row) {
                                             ?>
-                                                <option value="<?= $row["b_name"] ?>"><?= $row["b_name"] ?></option>
+                                                <option value="<?= $row["b_id"] ?>"><?= $row["b_name"] ?></option>
+
                                             <?php
                                             }
                                             ?>
@@ -282,7 +294,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                     success: function(response) {
                         console.log(response);
                         var de = $.parseJSON(response);
-                        $("#txt8").append('<option value="' + de[0].b_name + '">' + de[0].b_name + '</option>');
+                        $("#txt8").append('<option value="' + de[0].b_id + '">' + de[0].b_name + '</option>');
                         console.log(de[0].b_id);
                     }
                 });

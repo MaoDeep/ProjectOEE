@@ -13,7 +13,7 @@ include "config.php";
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>กรอกข้อมูล</title>
+    <title>เพิ่มข้อมูล</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -44,7 +44,7 @@ include "config.php";
             $_POST["breakmin"],
             $_POST["workmin"]
         );
-        $sql = "INSERT INTO `employee`(`E_id`, `EName`, `Nmac`, `Econ`, `Epro`, `Edel`, `Etime`, `Etimet`, `DATE`) VALUES (NULL ,'" . $arr1[0] . "','" . $arr1[1] . "' , " . $arr1[2] . " , '" . $arr1[3] . "', " . $arr1[4] . " , '" . $arr1[5] . "' , '" . $arr1[6] . "' , '" . $arr1[7] . "')";
+        $sql = "INSERT INTO `employee`(`E_id`, `u_id`, `mac_id`, `Econ`, `b_id`, `Edel`, `Etime`, `Etimet`, `DATE`) VALUES (NULL ,'" . $arr1[0] . "','" . $arr1[1] . "' , " . $arr1[2] . " , '" . $arr1[3] . "', " . $arr1[4] . " , '" . $arr1[5] . "' , '" . $arr1[6] . "' , '" . $arr1[7] . "')";
 
         $date1 = new DateTime($arr1[5]);
         $date2 = new DateTime($arr1[6]);
@@ -92,7 +92,18 @@ include "config.php";
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="col-form-label-sm">ชื่อ :</div>
-                                        <input type="text" class="form-control form-control-sm" id="txt2" name="txt2" readonly placeholder="" value="<?= $_SESSION["user"] ?>" required>
+                                        <?php
+                                        $sqlrow = "SELECT * FROM `users`  where users.u_usersname = '" . $_SESSION["user"] . "' ";
+                                        $rerow = mysqli_query($conn, $sqlrow);
+                                        foreach ($rerow as $row) {
+
+                                            $user = $row["u_usersname"];
+                                            $iuuu = $row["u_id"];
+                                            
+                                        }
+                                        ?>
+                                        <input type="hidden" class="form-control form-control-sm" id="txt2" name="txt2" readonly placeholder="" value="<?= $iuuu ?>" required>
+                                        <input type="text" class="form-control form-control-sm" id="txt18" name="txt18" readonly placeholder="" value="<?= $user ?>" required>
                                         <div class="invalid-feedback">
                                             กรุณาใส่ข้อมูลให้ครบ
                                         </div>
@@ -108,9 +119,11 @@ include "config.php";
 
                                             $user = $row["u_usersname"];
                                             $mac = $row["mac_name"];
+                                            $imac = $row["mac_id"];
                                         }
                                         ?>
-                                        <input type="text" class="form-control form-control-sm" id="txt3" name="txt3" readonly placeholder="" value="<?= $mac ?>" required>
+                                        <input type="hidden" class="form-control form-control-sm" id="txt3" name="txt3" readonly placeholder="" value="<?= $imac ?>" required>
+                                        <input type="text" class="form-control form-control-sm" id="txt15" name="txt15" readonly placeholder="" value="<?= $mac ?>" required>
                                         <div class="invalid-feedback">
                                             กรุณาใส่ข้อมูลให้ครบ
                                         </div>
@@ -124,9 +137,11 @@ include "config.php";
 
                                             $user = $row["u_usersname"];
                                             $bra = $row["b_name"];
+                                            $ibra = $row["b_id"];
                                         }
                                         ?>
-                                        <input type="text" class="form-control form-control-sm" id="txt8" name="txt8" readonly placeholder="" value="<?= $bra ?>" required>
+                                        <input type="hidden" class="form-control form-control-sm" id="txt8" name="txt8" readonly placeholder="" value="<?= $ibra ?>" required>
+                                        <input type="text" class="form-control form-control-sm" id="txt16" name="txt16" readonly placeholder="" value="<?= $bra ?>" required>
                                         <div class="invalid-feedback">
                                             กรุณาใส่ข้อมูลให้ครบ
                                         </div>

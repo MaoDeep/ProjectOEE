@@ -15,9 +15,19 @@ if ($re->num_rows !== 0) {
             $_SESSION["user"] = $rw["u_usersname"];
             $_SESSION["status"] = $rw["Status"];
       }
-      header("location: home.php");
+      if($_SESSION["status"]=="Admin"){ //ถ้าเป็น admin ให้กระโดดไปหน้า admin_page.php
+
+            Header("Location: admin/home.php");
       exit(0);
-} else {
+}
+
+if($_SESSION["status"]=="User"){ //ถ้าเป็น admin ให้กระโดดไปหน้า admin_page.php
+
+      Header("Location: home.php");
+exit(0);
+}
+ else {
       header("location: index.php");
       exit(0);
+}
 }

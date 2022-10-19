@@ -347,7 +347,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                         <div class="modal-body">คุณแน่ใจนะว่าจะออกจากระบบ</div>
                         <div class="modal-footer">
                               <button class="btn btn-secondary" type="button" data-dismiss="modal">ยกเลิก</button>
-                              <a class="btn btn-primary" href="index.php">ออกจากระบบ</a>
+                              <a class="btn btn-primary" href="../index.php">ออกจากระบบ</a>
                         </div>
                   </div>
             </div>

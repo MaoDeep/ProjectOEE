@@ -270,9 +270,17 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                                                               <td><?= $row["b_name"]; ?></td>
                                                                               <td><?= $row["Status"]; ?></td>
                                                                               <td><?= $row["std2"]; ?></td>
+                                                                              <?php
+                                                                            if ($row["u_usersname"] == $_SESSION["id"]) {
+                                                                                    echo '<td></td>';
+                                                                              } else { 
+                                                                              ?>
                                                                               <td><a href="post/edit.php?id=<?= $row["u_id"]; ?>"><button class="btn btn-warning ">เเก้ไข</button></a></td>
                                                                               <?php
-                                                                              if ($row["u_usersname"] == $_SESSION["user"]) {
+                                                                              } 
+                                                                              ?>
+                                                                              <?php
+                                                                              if ($row["Status"] == $_SESSION["status"]) {
                                                                                     echo '<td></td>';
                                                                               } else {
                                                                               ?>
@@ -283,7 +291,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                                                                         </tr>
 
                                                                   <?php
-                                                                  }
+                                                                  } 
                                                                   ?>
                                                             </tbody>
                                                       </table>
@@ -323,7 +331,7 @@ if (empty($_SESSION["status"]) || $_SESSION["status"] !== "Admin") {
                         <div class="modal-body">คุณแน่ใจนะว่าจะออกจากระบบ</div>
                         <div class="modal-footer">
                               <button class="btn btn-secondary" type="button" data-dismiss="modal">ยกเลิก</button>
-                              <a class="btn btn-primary" href="index.php">ออกจากระบบ</a>
+                              <a class="btn btn-primary" href="../index.php">ออกจากระบบ</a>
                         </div>
                   </div>
             </div>

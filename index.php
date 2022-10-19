@@ -1,6 +1,45 @@
 <?php
 session_start();
-session_destroy();
+include "config.php";
+if(isset($_POST['submit'])){
+    $arr = array(
+        $_POST["txt1"],
+        $_POST["txt2"]
+  );
+  
+  $sql = "SELECT * FROM `users` WHERE users.u_usersname = '" . $arr[0] . "' AND users.u_pssaword = '" . $arr[1] . "'";
+  $re = mysqli_query($conn, $sql);
+    
+      if(mysqli_num_rows($result)==1){
+
+          $row = mysqli_fetch_array($result);
+
+          $_SESSION["u_id"] = $rw["id"];
+          $_SESSION["user"] = $rw["u_usersname"];
+            $_SESSION["status"] = $rw["Status"];
+
+            if($_SESSION["status"]=="Admin"){ //ถ้าเป็น admin ให้กระโดดไปหน้า admin_page.php
+
+            Header("Location: admin/home.php");
+
+          }
+
+          if ($_SESSION["Status"]=="User"){  //ถ้าเป็น member ให้กระโดดไปหน้า user_page.php
+
+            Header("Location: home.php");
+
+          }
+
+      }else{
+        echo "<script>";
+            echo "alert(\" user หรือ  password ไม่ถูกต้อง\");"; 
+            echo "window.history.back()";
+        echo "</script>";
+
+      }
+
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,6 +70,9 @@ session_destroy();
 
     <div class="container">
 
+
+        
+
         <!-- Outer Row -->
         <div class="row justify-content-center">
 
@@ -42,14 +84,17 @@ session_destroy();
                         <div class="row">
                             <div class="col-md-6 d-none d-lg-block ">
                                 <center>
-                                <img src="img/user.jpg" height="520px" width="550px">
+                                    <img src="img/low.png" height="420px" width="330px">
 
                             </div>
                             <div class="col-md-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-primary mb-4">ยินดีต้อนรับ</h1>
+                                        <h1 class="h4 text-primary mb-2">ระบบแสดงประสิทธิผลโดยรวมของเครื่องจักร</h1>
+                                        <h1 class="h4 text-danger mb-4">บริษัท Yasaki </h1>
                                     </div>
+                                     
+                                    
                                     <form class="user" method="POST" action="ch.php">
                                         <div class="form-group">
                                             <input type="text" name="txt1" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Username" required>
@@ -62,9 +107,7 @@ session_destroy();
                                             Login
                                         </button>
                                         <hr>
-                                        <a href="admin/index.php"><button type="button" class="btn btn-primary btn-user btn-block">
-                                            Admin
-                                        </button></a>
+                                        
 
 
                                     </form>

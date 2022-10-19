@@ -1,6 +1,6 @@
 <?php
 include "../config.php";
-if (isset($_POST["txt1"])) {
+if (isset($_POST["submit"])) {
       $arr = array(
             $_POST["txt1"],
             $_POST["txt2"],
@@ -15,13 +15,12 @@ if (isset($_POST["txt1"])) {
 
       $sql = "UPDATE users SET   u_usersname = '" . $arr[1] . "', u_pssaword = " . $arr[2] . ", Status = '" . $arr[3] . "' , std2 = '" . $arr[4] . "', mac_id = '" . $arr[5] . "' , b_id = '" . $arr[6] . "'   WHERE u_id = " . $arr[0] . "";
       $re = mysqli_query($conn, $sql);
-
       if ($re) {
-            echo '<script>alert("บันทึกสำเร็จ")</script>';
+            echo "<script>alert('บันทึกสำเร็จ')</script>";
             header('Location: ../user.php');
             exit(0);
       } else {
-            echo '<script>alert("บันทึกไม่สำเร็จ")</script>';
+            echo "<script>alert('บันทึกไม่สำเร็จ')</script>";
       }
 }
 if (isset($_GET["id"]) && $_GET["id"] !== "") {
@@ -69,24 +68,10 @@ if (isset($_GET["id"]) && $_GET["id"] !== "") {
                                           </div>
                                           <div class="mb-3">
                                                 <label for="" class="form-label">สิทธิ์ผู้ใช้งาน</label>
-                                                <select name="txt4" id="txt4" class="form-select form-select-sm" value="" required>
-                                                      <?php
-                                                      if ($row["Status"] == "Admin") {
-                                                      ?>
+                                                <input name="txt4" id="txt4" class="form-control form-control-sm" readonly="" value="<?= $row["Status"] ?>" required>
+                                                      
 
-                                                            <option value="Admin">Admin</option>
-                                                            <option value="User">User</option>
-                                                      <?php
-                                                      } else {
-                                                      ?>
-
-                                                            <option value="User">User</option>
-                                                            <option value="Admin">Admin</option>
-                                                      <?php
-                                                      }
-                                                      ?>
-
-                                                </select>
+                                                
                                           </div>
                                           <div class="mb-3">
                                                 <label for="" class="form-label">สถานะ</label>
